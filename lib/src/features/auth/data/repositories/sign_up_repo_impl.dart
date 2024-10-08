@@ -13,8 +13,7 @@ class SignUpRepositoryImpl implements SignUpRepository{
    @FactoryMethod()
    SignUpRepositoryImpl(this.signUpDatasourceOnline);
   @override
-  Future<Result<SignUpResponse>> signUp({required SignUpEntity signUpEntity}) {
-    // TODO: implement signUp
-    throw UnimplementedError();
+  Future<Result<SignUpResponse>> signUp({required SignUpEntity signUpEntity}) async {
+    return await signUpDatasourceOnline.signUp(signUpModel: signUpEntity.toModel());
   }
 }
