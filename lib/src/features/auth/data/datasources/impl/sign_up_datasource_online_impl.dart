@@ -7,7 +7,7 @@ import 'package:online_exam_app/src/features/auth/data/api/models/response/sign_
 @Injectable(as: SignUpDatasourceOnline)
 class SignUpDatasourceOnlineImpl implements SignUpDatasourceOnline {
   @override
-  Future<SignUpResponse> signUp({required SignUpModel signUpEntity}) {
+  Future<SignUpResponse> signUp({required SignUpModel signUpModel}) {
     // TODO: implement signUp
     throw UnimplementedError();
   }

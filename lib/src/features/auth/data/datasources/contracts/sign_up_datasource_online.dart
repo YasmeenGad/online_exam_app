@@ -3,5 +3,5 @@ import 'package:online_exam_app/src/features/auth/data/api/models/response/sign_
 
 abstract class SignUpDatasourceOnline {
 
-  Future<SignUpResponse> signUp({required SignUpModel signUpEntity});
+  Future<SignUpResponse> signUp({required SignUpModel signUpModel});
 }
