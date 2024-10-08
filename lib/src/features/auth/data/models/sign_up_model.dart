@@ -1,3 +1,5 @@
+import 'package:online_exam_app/src/features/auth/domain/entities/sign_up_entity.dart';
+
 class SignUpModel {
   final String? username;
   final String? firstName;
@@ -27,18 +29,19 @@ class SignUpModel {
     'phone': phone,
   };
 
-  factory SignUpModel.fromJson(Map<String, dynamic> json) {
-    return SignUpModel(
-      username: json['username'],
-      firstName: json['firstName'],
-      lastName: json['lastName'],
-      email: json['email'],
-      password: json['password'],
-      rePassword: json['rePassword'],
-      phone: json['phone'],
+
+  SignUpEntity toEntity() {
+    return SignUpEntity(
+      username: username,
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      password: password,
+      rePassword: rePassword,
+      phone: phone,
     );
-
-
   }
+}
+
   
-  }
+  

@@ -5,8 +5,6 @@ class ParsingErrorMessage implements Exception{
 }
 
 class NoInternetException implements Exception{
-  final String? noInternetErrorMessage;
-  NoInternetException({required this.noInternetErrorMessage});
 }
 
 class ServerErrorException implements Exception{
@@ -14,3 +12,5 @@ class ServerErrorException implements Exception{
   final int? serverErrorCode;
   ServerErrorException({required this.serverErrorMessage, required this.serverErrorCode});
 }
+
+class UnknownErrorException implements Exception {}

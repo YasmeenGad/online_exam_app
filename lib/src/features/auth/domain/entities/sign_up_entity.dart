@@ -1,3 +1,5 @@
+import 'package:online_exam_app/src/features/auth/data/models/sign_up_model.dart';
+
 class SignUpEntity {
   final String? username;
   final String? firstName;
@@ -16,4 +18,17 @@ class SignUpEntity {
     this.rePassword,
     this.phone, 
   });
+
+
+  SignUpModel toModel() {
+    return SignUpModel(
+      username: username,
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      password: password,
+      rePassword: rePassword,
+      phone: phone,
+    );
+  }
 }

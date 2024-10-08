@@ -6,4 +6,11 @@ class SignUpResponse {
     this.token,
     this.message,
   });
+
+  factory SignUpResponse.fromJson(Map<String, dynamic> json) {
+    return SignUpResponse(
+      token: json['token'],
+      message: json['message'],
+    );
+  }
 }
