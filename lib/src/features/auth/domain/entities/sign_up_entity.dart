@@ -1,4 +1,4 @@
-import 'package:online_exam_app/src/features/auth/data/models/sign_up_model.dart';
+import 'package:online_exam_app/src/features/auth/data/api/models/request/sign_up_model.dart';
 
 class SignUpEntity {
   final String? username;
