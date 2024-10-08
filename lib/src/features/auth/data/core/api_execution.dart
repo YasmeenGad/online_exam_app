@@ -21,14 +21,20 @@ Future<Result<T>> apiExecution<T>({
 
     return Success(fromJson(response.data));
   } on TimeoutException catch (_) {
-    return Failure(NoInternetException());
+    return  Failure(NoInternetException(
+      noInternetErrorMessage: "No internet connection, please try again",
+    ));
   } on SocketException catch (_) {
-    return Failure(NoInternetException());
+    return Failure(NoInternetException(
+      noInternetErrorMessage: "No internet connection, please try again",
+    ));
   } on DioException catch (e) {
     if (e.type == DioExceptionType.connectionTimeout ||
         e.type == DioExceptionType.receiveTimeout ||
         e.type == DioExceptionType.sendTimeout) {
-      return Failure(NoInternetException());
+      return Failure(NoInternetException(
+        noInternetErrorMessage: "No internet connection, please try again",
+      ));
     } else if (e.type == DioExceptionType.badResponse) {
       return Failure(ServerErrorException(
         serverErrorCode: e.response?.statusCode,
@@ -41,6 +47,8 @@ Future<Result<T>> apiExecution<T>({
       ));
     }
   } catch (_) {
-    return Failure(UnknownErrorException());
+    return Failure(UnknownErrorException(
+      unknownErrorMessage: "Unknown error, please try again",
+    ));
   }
 }
