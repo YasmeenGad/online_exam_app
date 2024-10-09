@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_exam_app/src/features/auth/presentation/widgets/text_field_widget.dart';
@@ -62,7 +61,7 @@ class ForgetPasswordView extends StatelessWidget {
                 ButtonWidget(
                   loading: state is PasswordLoading,
                   onPressed: () {
-                    cubit.forgetPassword();
+                    cubit.doAction();
                   },
                   text: 'Continue',
                 ),

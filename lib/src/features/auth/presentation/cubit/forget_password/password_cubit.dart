@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
@@ -23,9 +22,13 @@ class PasswordCubit extends Cubit<PasswordState> {
   var forgetFormKey = GlobalKey<FormState>();
 
 
+  void doAction() {
+    _forgetPassword();
+  }
 
 
-  void forgetPassword() async {
+
+  void _forgetPassword() async {
     if (forgetFormKey.currentState!.validate()) {
       emit(PasswordLoading());
           var result =  await passwordUseCase.invoke(emailController.text);
