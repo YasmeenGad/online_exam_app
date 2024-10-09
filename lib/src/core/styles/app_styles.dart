@@ -35,7 +35,12 @@ static TextStyle styleRegular13(context) {
     fontWeight: FontWeight.w400,
   );
 }
-
+static TextStyle styleMedium18(BuildContext context) {
+  return GoogleFonts.inter(
+    fontSize: getResponsiveFontSize(context, fontSize: 18),
+    fontWeight: FontWeight.w500,
+  );
+}
 static TextStyle styleMedium16(BuildContext context) {
   return GoogleFonts.roboto(
    //  height: 20,

@@ -12,7 +12,7 @@ static TextStyle styleMedium20(BuildContext context) {
 
 static TextStyle styleRegular12(context) {
   return GoogleFonts.roboto(
-    height: 16,
+   // height: 16,
     fontSize: getResponsiveFontSize(context, fontSize: 12),
     fontWeight: FontWeight.w400,
     letterSpacing: 0.4,

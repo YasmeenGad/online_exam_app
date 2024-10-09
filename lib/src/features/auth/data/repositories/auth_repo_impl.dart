@@ -4,6 +4,7 @@ import 'package:online_exam_app/src/features/auth/domain/core/result.dart';
 import 'package:online_exam_app/src/features/auth/domain/model/user_model.dart';
 
 import '../../domain/contracts/repositories/auth_repo.dart';
+import '../../domain/model/password_model.dart';
 
 @Injectable(as: AuthRepo)
 class AuthRepositoryImpl implements AuthRepo{
@@ -16,6 +17,11 @@ class AuthRepositoryImpl implements AuthRepo{
   @override
   Future<Result<AppUser?>> login(String email, String password) {
     return authDataSource.login(email, password);
+  }
+
+  @override
+  Future<Result<Password?>> forgetPassword(String email) {
+    return authDataSource.forgetPassword(email);
   }
 
 

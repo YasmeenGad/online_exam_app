@@ -1,9 +1,10 @@
 import 'package:injectable/injectable.dart';
 import 'package:online_exam_app/src/features/auth/data/datasources/constracts/auth_datasource.dart';
 import 'package:online_exam_app/src/features/auth/domain/core/result.dart';
-import 'package:online_exam_app/src/features/auth/domain/model/user_login.dart';
+import 'package:online_exam_app/src/features/auth/domain/model/user_model.dart';
 
 import '../../domain/contracts/repositories/auth_repo.dart';
+import '../models/ForgetPasswordRequest.dart';
 
 @Injectable(as: AuthRepo)
 class AuthRepositoryImpl implements AuthRepo{
@@ -14,8 +15,13 @@ class AuthRepositoryImpl implements AuthRepo{
   AuthRepositoryImpl( this.authDataSource);
 
   @override
-  Future<Result<UserLogin?>> login(String email, String password) {
+  Future<Result<AppUser?>> login(String email, String password) {
     return authDataSource.login(email, password);
+  }
+
+  @override
+  Future<Result<ForgetPasswordRequest?>> forgetPassword(String email) {
+    return authDataSource.forgetPassword(email);
   }
 
 

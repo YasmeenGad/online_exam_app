@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:online_exam_app/src/features/auth/data/models/login_model.dart';
+import '../models/ForgetPasswordRequest.dart';
 import 'api_constants.dart';
 
 @singleton
@@ -28,6 +29,13 @@ class ApiManager {
       "password": password
     });
     return LoginModel.fromJson(apiCall.data);
+  }
+
+  Future<ForgetPasswordRequest?> forgetPassword(String email) async {
+    var apiCall = await _dio.post(ApiConstants.forgetPassword, data: {
+      "email": email,
+    });
+  return ForgetPasswordRequest.fromJson(apiCall.data);
   }
 
 

@@ -30,27 +30,13 @@ class ApiManager {
     return LoginModel.fromJson(apiCall.data);
   }
 
-  // Future<LoginModel?> login(String email, String password) async {
-  //   try {
-  //     var response = await _dio.post(ApiConstants.login, data: {
-  //       "email": email,
-  //       "password": password,
-  //     });
-  //
-  //     if (response.data != null) {
-  //       return LoginModel.fromJson(response.data);
-  //     } else {
-  //       print('Response data is null');
-  //       return null;
-  //     }
-  //   } on DioException catch (e) {
-  //     print('DioException: ${e.message}');
-  //     return null;
-  //   } catch (e) {
-  //     print('Unknown exception occurred: $e');
-  //     return null;
-  //   }
-  // }
+  Future<void> forgetPassword(String email) async {
+    var apiCall = await _dio.post(ApiConstants.forgetPassword, data: {
+      "email": email,
+    });
+    return apiCall.data;
+  }
+
 
 
 

@@ -25,6 +25,7 @@ class TextFieldWidget extends StatelessWidget {
         children: [
           Expanded(
             child: TextFormField(
+              key: key,
               controller: controller,
               validator: validator,
               keyboardType: keyboardType,
@@ -71,7 +72,7 @@ class TextFieldWidget extends StatelessWidget {
                 ),
                 suffixIcon: suffixIcon,
                 prefixIcon: prefixIcon,
-                errorMaxLines: 2, // Allow more space for error messages if needed
+                errorMaxLines: 2,
               ),
             ),
           ),

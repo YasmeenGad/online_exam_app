@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_exam_app/src/features/auth/presentation/widgets/account_text.dart';
 import 'package:online_exam_app/src/features/auth/presentation/widgets/build_login_form.dart';
-import 'package:online_exam_app/src/features/auth/presentation/widgets/button_widget.dart';
 import 'package:online_exam_app/src/features/auth/presentation/widgets/dialog.dart';
-import 'package:online_exam_app/src/features/auth/presentation/widgets/text_field_widget.dart';
 import '../../../../core/dependency injection/di.dart';
 import '../cubit/login/login_cubit.dart';
-import '../widgets/forget_password_text.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
