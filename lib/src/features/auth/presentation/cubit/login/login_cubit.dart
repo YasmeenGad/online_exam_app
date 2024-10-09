@@ -23,31 +23,26 @@ class LoginCubit extends Cubit<LoginState> {
   void doAction() {
     _login();
   }
-
-    void _login() async {
-      if (loginFormKey.currentState!.validate()) {
-        emit(LoginLoading());
-        try {
-          var result = await loginUseCase.invoke(
-            emailController.text,
-            passwordController.text,
-          );
-          if (result is Success<AppUser?>) {
-            if (result.data != null && result.data!.token != null) {
-              emit(LoginSuccess());
-            } else {
-              emit(LoginError(Exception('Incorrect email or password')));
-            }
-          } else if (result is Fail<AppUser?>) {
-            emit(LoginError(Exception(result.message?.message ?? 'An error occurred')));
-          }
-        } catch (e) {
-          emit(LoginError(Exception(e.toString())));
+  void _login() async {
+    if (loginFormKey.currentState!.validate()) {
+      emit(LoginLoading());
+      var result = await loginUseCase.invoke(
+        emailController.text,
+        passwordController.text,
+      );
+      switch (result) {
+        case Success<AppUser?>():{
+          emit(LoginSuccess(result.data));
+          break;
         }
-      } else {
-        print('Form is not valid');
+        case Fail<AppUser?>():{
+          emit(LoginError(result.exception));
+          break;
+        }
+
       }
     }
+  }
 
 
 

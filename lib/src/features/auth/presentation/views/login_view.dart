@@ -25,8 +25,8 @@ class LoginView extends StatelessWidget {
         child: BlocConsumer<LoginCubit, LoginState>(
           listener: (context, state)  {
             if (state is LoginError) {
-             // showToast(state.message);
-              showToast('incorrect email or password');
+              showToast(state.exception.toString());
+            //  showToast('incorrect email or password');
               print(state.exception);
             } else if (state is LoginSuccess) {
              showToast('Login Success');

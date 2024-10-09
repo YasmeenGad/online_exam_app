@@ -13,23 +13,14 @@ final class LoginInitial extends LoginState {}
 final class LoginLoading extends LoginState {}
 
 final class LoginSuccess extends LoginState {
+  final AppUser? user;
+
+  LoginSuccess(this.user);
 
 }
 
-// final class LoginError extends LoginState {
-//   final String message;
-//
-//   LoginError(this.message);
-// }
-// final class errorLogin extends LoginState {
-//   final AppUser? user;
-//
-//   errorLogin(this.user);
-// }
-
-
 class LoginError extends LoginState {
-  final Exception exception;
+  final Exception? exception;
 
   LoginError(this.exception);
 }
