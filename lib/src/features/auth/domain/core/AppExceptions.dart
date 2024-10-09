@@ -1,0 +1,45 @@
+import 'package:dio/dio.dart';
+
+class ParsingError implements Exception{
+  String? parsingErrorMessage;
+  String? parsingErrorClassName;
+  ParsingError({
+    this.parsingErrorClassName,
+    this.parsingErrorMessage
+  });
+}
+
+class NoInternetException implements Exception {
+  final String message;
+
+  NoInternetException([this.message = "No internet connection"]);
+
+  @override
+  String toString() {
+    return message;
+  }
+}
+
+
+
+
+class ServerError implements Exception {
+  final String serverMessage;
+
+  ServerError(this.serverMessage);
+
+  @override
+  String toString() {
+    return serverMessage;
+  }
+}
+
+class DioHttpException implements Exception{
+  DioException? exception;
+  DioHttpException(this.exception);
+
+  @override
+  String toString() {
+    return exception.toString();
+  }
+}

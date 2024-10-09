@@ -1,0 +1,50 @@
+import 'package:injectable/injectable.dart';
+import 'package:online_exam_app/src/features/auth/data/api/api_extention.dart';
+import '../../../domain/core/result.dart';
+import '../../../domain/model/user_model.dart';
+import '../../api/api_manager.dart';
+import '../../models/UserDto.dart';
+import '../constracts/auth_datasource.dart';
+
+@Injectable(as: AuthDataSource)
+
+class AuthDataSourceImpl implements AuthDataSource {
+
+  ApiManager apiManager;
+  AuthDataSourceImpl(this.apiManager);
+  @override
+  Future<Result<AppUser?>> login(String email, String password)async {
+
+    return executeApi<AppUser>(()async{
+      var authResponse = await apiManager.login(email, password);
+      var userDto = UserDto(token: authResponse.token,message:authResponse.message);
+      return userDto.toUser();
+
+    },);
+  }
+
+  // Future<Result<AppUser?>> login(String email, String password ) async {
+  //   return executeApi<AppUser>(() async {
+  //     var authResponse = await apiManager.login(email, password );
+  //
+  //
+  //     var userDto = UserDto(token: authResponse?.token, message: authResponse?.message, );
+  //
+  //
+  //
+  //
+  //
+  //     AppUser appUser = AppUser(
+  //       email: userDto.email,
+  //       token: userDto.token,
+  //       message: userDto.message,
+  //     );
+  //
+  //     return appUser;
+  //   });
+  // }
+
+
+
+
+}
