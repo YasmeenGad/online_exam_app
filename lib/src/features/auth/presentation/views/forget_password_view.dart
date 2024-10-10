@@ -23,7 +23,6 @@ class ForgetPasswordView extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Password'),
         backgroundColor: Colors.white,
-        centerTitle: true,
       ),
       body: BlocProvider(
         create: (context) => viewModel,
