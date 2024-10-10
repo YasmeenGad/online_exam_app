@@ -14,8 +14,8 @@ Future<Result<T>> apiExecution<T>({
 
     if (response.statusCode != 200) {
       return Failure(ServerErrorException(
-        serverErrorCode: response.statusCode,
         serverErrorMessage: response.data['message'],
+        serverErrorCode: response.statusCode,
       ));
     }
 
@@ -36,9 +36,11 @@ Future<Result<T>> apiExecution<T>({
         noInternetErrorMessage: "No internet connection, please try again",
       ));
     } else if (e.type == DioExceptionType.badResponse) {
+      print("Raw server response: ${e.response?.data}");
+      print("Raw server response: ${e.response?.statusCode}");
       return Failure(ServerErrorException(
         serverErrorCode: e.response?.statusCode,
-        serverErrorMessage: e.response?.data['message'],
+        serverErrorMessage: e.message,
       ));
     } else {
       return Failure(ParsingErrorMessage(
