@@ -46,3 +46,8 @@ class UnknownErrorException extends AppException {
   UnknownErrorException({String message = "An unknown error occurred"})
       : super(message: message);
 }
+
+class UnknownErrorException implements Exception {
+  final String? unknownErrorMessage;
+  UnknownErrorException({required this.unknownErrorMessage});
+}
