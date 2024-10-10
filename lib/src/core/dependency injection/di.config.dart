@@ -21,9 +21,12 @@ import '../../features/auth/domain/contracts/repositories/auth_repo.dart'
     as _i997;
 import '../../features/auth/domain/usecases/login_usecase.dart' as _i188;
 import '../../features/auth/domain/usecases/password_usecase.dart' as _i72;
+import '../../features/auth/domain/usecases/signup_usecase.dart' as _i57;
 import '../../features/auth/presentation/cubit/forget_password/password_cubit.dart'
     as _i490;
 import '../../features/auth/presentation/cubit/login/login_cubit.dart' as _i264;
+import '../../features/auth/presentation/cubit/signup/auth_view_model.dart'
+    as _i466;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -45,10 +48,14 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i188.LoginUseCase(gh<_i997.AuthRepo>()));
     gh.factory<_i72.PasswordUseCase>(
         () => _i72.PasswordUseCase(gh<_i997.AuthRepo>()));
+    gh.factory<_i57.SignupUsecase>(
+        () => _i57.SignupUsecase(gh<_i997.AuthRepo>()));
     gh.factory<_i490.PasswordCubit>(
         () => _i490.PasswordCubit(gh<_i72.PasswordUseCase>()));
     gh.factory<_i264.LoginCubit>(
         () => _i264.LoginCubit(gh<_i188.LoginUseCase>()));
+    gh.factory<_i466.AuthViewModel>(
+        () => _i466.AuthViewModel(gh<_i57.SignupUsecase>()));
     return this;
   }
 }

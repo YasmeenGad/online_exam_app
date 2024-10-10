@@ -44,6 +44,9 @@ dependencies:
   # add get_it  
   get_it:
   google_fonts: ^6.2.1
+  dio: ^5.7.0
+  flutter_bloc: ^8.1.6
+  fluttertoast: ^8.2.8
 
 dev_dependencies:
   flutter_test:
