@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:online_exam_app/src/core/styles/app_colors.dart';
 import 'package:online_exam_app/src/core/styles/app_styles.dart';
 import 'package:online_exam_app/src/features/auth/domain/entities/sign_up_entity.dart';
-import 'package:online_exam_app/src/features/auth/presentation/cubit/auth_view_model.dart';
+import 'package:online_exam_app/src/features/auth/presentation/cubit/signup/auth_view_model.dart';
 
 class SignUpButton extends StatelessWidget {
   final GlobalKey<FormState> formKey;

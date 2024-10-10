@@ -1,7 +1,0 @@
-import '../../domain/core/result.dart';
-import '../models/login_model.dart';
-
-abstract class AuthDataSource{
-  Future<Result<LoginModel>> login(String email,String password);
-
-}

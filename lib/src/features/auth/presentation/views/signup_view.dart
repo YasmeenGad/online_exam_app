@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_exam_app/src/core/dependency%20injection/di.dart';
 import 'package:online_exam_app/src/core/global/custom_toast.dart';
-import 'package:online_exam_app/src/features/auth/domain/core/app_exception.dart';
-import 'package:online_exam_app/src/features/auth/presentation/cubit/auth_states.dart';
-import 'package:online_exam_app/src/features/auth/presentation/cubit/auth_view_model.dart';
+import 'package:online_exam_app/src/features/auth/domain/core/AppExceptions.dart';
+import 'package:online_exam_app/src/features/auth/presentation/cubit/signup/auth_states.dart';
+import 'package:online_exam_app/src/features/auth/presentation/cubit/signup/auth_view_model.dart';
 import 'package:online_exam_app/src/features/auth/presentation/widgets/custom_signup_appbar.dart';
 import 'package:online_exam_app/src/features/auth/presentation/widgets/signup_button.dart';
 import 'package:online_exam_app/src/features/auth/presentation/widgets/signup_footer.dart';
@@ -44,9 +44,9 @@ class SignUpView extends StatelessWidget {
                   var message = "Something went wrong";
 
                   if (exception is NoInternetException) {
-                    message = exception.noInternetErrorMessage.toString();
-                  } else if (exception is ServerErrorException) {
-                    message = exception.serverErrorMessage.toString();
+                    message = exception.message.toString();
+                  } else if (exception is ServerError) {
+                    message = exception.serverMessage.toString();
                   } else if (exception is UnknownErrorException) {
                     message = exception.unknownErrorMessage.toString();
                   }

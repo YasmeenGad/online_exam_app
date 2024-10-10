@@ -4,7 +4,7 @@ import 'package:online_exam_app/src/features/auth/data/api/models/response/sign_
 import 'package:online_exam_app/src/features/auth/domain/core/result.dart';
 import 'package:online_exam_app/src/features/auth/domain/entities/sign_up_entity.dart';
 import 'package:online_exam_app/src/features/auth/domain/usecases/signup_usecase.dart';
-import 'package:online_exam_app/src/features/auth/presentation/cubit/auth_states.dart';
+import 'package:online_exam_app/src/features/auth/presentation/cubit/signup/auth_states.dart';
 
 @Injectable()
 class AuthViewModel extends Cubit<AuthState> {
@@ -22,7 +22,7 @@ class AuthViewModel extends Cubit<AuthState> {
           break;
         }
 
-      case Failure<SignUpResponse>():
+      case Fail<SignUpResponse>():
         {
           emit(AuthErrorState(exception: result.exception));
           break;

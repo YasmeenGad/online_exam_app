@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:online_exam_app/src/core/styles/app_colors.dart';
 import 'package:online_exam_app/src/core/styles/app_styles.dart';
 
-import '../../../../core/constants/app_colors.dart';
 
 Column forgetPasswordDescription(BuildContext context) {
   return Column(

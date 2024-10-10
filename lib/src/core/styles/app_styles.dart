@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 abstract class AppStyles {
   static TextStyle styleMedium20(BuildContext context) {
     return GoogleFonts.inter(
-      //  height: 24.2, // line height
       fontSize: getResponsiveFontSize(context, fontSize: 20),
       fontWeight: FontWeight.w500,
     );
@@ -12,7 +11,6 @@ abstract class AppStyles {
 
 static TextStyle styleRegular12(context) {
   return GoogleFonts.roboto(
-    height: 16,
     fontSize: getResponsiveFontSize(context, fontSize: 12),
     fontWeight: FontWeight.w400,
     letterSpacing: 0.4,
@@ -21,7 +19,6 @@ static TextStyle styleRegular12(context) {
 
 static TextStyle styleRegular14(context) {
   return GoogleFonts.roboto(
-    height: 24,
     fontSize: getResponsiveFontSize(context, fontSize: 14),
     fontWeight: FontWeight.w400,
     letterSpacing: 0.5,
@@ -30,7 +27,6 @@ static TextStyle styleRegular14(context) {
 
 static TextStyle styleRegular13(context) {
   return GoogleFonts.inter(
-    height: 15.73,
     fontSize: getResponsiveFontSize(context, fontSize: 13),
     fontWeight: FontWeight.w400,
   );
@@ -38,8 +34,15 @@ static TextStyle styleRegular13(context) {
 
 static TextStyle styleMedium16(BuildContext context) {
   return GoogleFonts.roboto(
-     height: 20, 
     fontSize: getResponsiveFontSize(context, fontSize: 16),
+    fontWeight: FontWeight.w500,
+    letterSpacing: 0.1
+  );
+}
+
+static TextStyle styleMedium18(BuildContext context) {
+  return GoogleFonts.roboto(
+    fontSize: getResponsiveFontSize(context, fontSize: 18),
     fontWeight: FontWeight.w500,
     letterSpacing: 0.1
   );
@@ -47,7 +50,6 @@ static TextStyle styleMedium16(BuildContext context) {
 
 static TextStyle styleRegular16(context) {
   return GoogleFonts.inter(
-    height: 19.36,
     fontSize: getResponsiveFontSize(context, fontSize: 16),
     fontWeight: FontWeight.w400,
   );

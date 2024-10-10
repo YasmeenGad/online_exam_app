@@ -43,3 +43,8 @@ class DioHttpException implements Exception{
     return exception.toString();
   }
 }
+
+class UnknownErrorException implements Exception {
+  final String? unknownErrorMessage;
+  UnknownErrorException({required this.unknownErrorMessage});
+}

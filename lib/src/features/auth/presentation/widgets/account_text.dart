@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:online_exam_app/src/core/styles/app_colors.dart';
 
-import '../../../../core/constants/app_colors.dart';
 import '../../../../core/styles/app_styles.dart';
 
 class AccountText extends StatelessWidget {

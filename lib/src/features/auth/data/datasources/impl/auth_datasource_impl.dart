@@ -1,5 +1,7 @@
 import 'package:injectable/injectable.dart';
 import 'package:online_exam_app/src/features/auth/data/api/api_extention.dart';
+import 'package:online_exam_app/src/features/auth/data/api/models/request/sign_up_model.dart';
+import 'package:online_exam_app/src/features/auth/data/api/models/response/sign_up_response.dart';
 import '../../../domain/core/result.dart';
 import '../../../domain/model/password_model.dart';
 import '../../../domain/model/user_model.dart';
@@ -36,6 +38,11 @@ class AuthDataSourceImpl implements AuthDataSource {
 
 
 
+@override
 
+  Future<Result<SignUpResponse>> signUp({required SignUpModel signUpModel}) async{
+    var response = await apiManager.signUp(signUpModel: signUpModel);
+    return response;
+  }
 
 }

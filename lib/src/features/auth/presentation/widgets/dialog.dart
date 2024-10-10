@@ -1,6 +1,6 @@
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:online_exam_app/src/core/styles/app_colors.dart';
 
-import '../../../../core/constants/app_colors.dart';
 
 showToast(String message) {
   Fluttertoast.showToast(

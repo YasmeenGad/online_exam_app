@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:online_exam_app/src/features/auth/domain/core/app_exception.dart';
+import 'package:online_exam_app/src/features/auth/domain/core/AppExceptions.dart';
 import 'package:online_exam_app/src/features/auth/domain/core/result.dart';
 
 Future<Result<T>> apiExecution<T>({
@@ -13,44 +13,31 @@ Future<Result<T>> apiExecution<T>({
     Response<dynamic> response = await request;
 
     if (response.statusCode != 200) {
-      return Failure(ServerErrorException(
-        serverErrorMessage: response.data['message'],
-        serverErrorCode: response.statusCode,
-      ));
+      return Fail(exception: ServerError(response.data['message']));
     }
 
     return Success(fromJson(response.data));
   } on TimeoutException catch (_) {
-    return  Failure(NoInternetException(
-      noInternetErrorMessage: "No internet connection, please try again",
-    ));
+    return  Fail(exception: NoInternetException());
   } on SocketException catch (_) {
-    return Failure(NoInternetException(
-      noInternetErrorMessage: "No internet connection, please try again",
-    ));
+    return Fail(exception: NoInternetException());
   } on DioException catch (e) {
     if (e.type == DioExceptionType.connectionTimeout ||
         e.type == DioExceptionType.receiveTimeout ||
         e.type == DioExceptionType.sendTimeout) {
-      return Failure(NoInternetException(
-        noInternetErrorMessage: "No internet connection, please try again",
-      ));
+      return Fail(exception: NoInternetException());
     } else if (e.type == DioExceptionType.badResponse) {
-      print("Raw server response: ${e.response?.data}");
-      print("Raw server response: ${e.response?.statusCode}");
-      return Failure(ServerErrorException(
-        serverErrorCode: e.response?.statusCode,
-        serverErrorMessage: e.message,
-      ));
+
+      return Fail(exception: ServerError(e.message.toString()));
     } else {
-      return Failure(ParsingErrorMessage(
+      return Fail(exception: ParsingError(
         parsingErrorMessage: "Failed to parse data",
         parsingErrorClassName: "ApiManager",
       ));
     }
   } catch (_) {
-    return Failure(UnknownErrorException(
+    return Fail(exception:(UnknownErrorException(
       unknownErrorMessage: "Unknown error, please try again",
-    ));
+    )));
   }
 }
