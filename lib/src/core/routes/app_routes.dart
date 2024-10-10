@@ -8,7 +8,7 @@ import 'package:online_exam_app/src/features/auth/presentation/views/signup_view
 class AppRoutes {
   static Map<String, WidgetBuilder> getRoutes() {
     return {
-      RoutesName.loginView: (context) => const SignUpView(),
+      RoutesName.loginView: (context) =>  SignUpView(),
     };
   }
 }
