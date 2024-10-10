@@ -9,7 +9,7 @@ class CustomToast {
     required IconData icon,
   }) {
     Fluttertoast.showToast(
-      msg: " ${iconToText(icon)}  $message",  // Prepend icon text before message
+      msg: "$message",
       toastLength: Toast.LENGTH_SHORT,
       gravity: gravity,
       timeInSecForIosWeb: 1,
