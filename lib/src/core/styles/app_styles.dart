@@ -70,6 +70,7 @@ double getResponsiveFontSize(context, {required double fontSize}) {
   return responsiveFontSize.clamp(lowerLimit, upperLimit);
 }
 
+
 double getScaleFactor(BuildContext context) {
   double width = MediaQuery.sizeOf(context).width;
 

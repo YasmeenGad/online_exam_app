@@ -1,18 +1,8 @@
-import 'package:dio/dio.dart';
-
-class ParsingError implements Exception{
-  String? parsingErrorMessage;
-  String? parsingErrorClassName;
-  ParsingError({
-    this.parsingErrorClassName,
-    this.parsingErrorMessage
-  });
-}
-
-class NoInternetException implements Exception {
+class AppException implements Exception {
   final String message;
+  final String? details;
 
-  NoInternetException([this.message = "No internet connection"]);
+  AppException({required this.message, this.details});
 
   @override
   String toString() {
@@ -20,31 +10,35 @@ class NoInternetException implements Exception {
   }
 }
 
-
-
-
-class ServerError implements Exception {
-  final String serverMessage;
-
-  ServerError(this.serverMessage);
-
-  @override
-  String toString() {
-    return serverMessage;
-  }
+class UnauthorizedException extends AppException {
+  UnauthorizedException({String message = "Unauthorized Access"})
+      : super(message: message);
 }
 
-class DioHttpException implements Exception{
-  DioException? exception;
-  DioHttpException(this.exception);
-
-  @override
-  String toString() {
-    return exception.toString();
-  }
+class NoInternetException extends AppException {
+  NoInternetException({String message = "No Internet Connection"})
+      : super(message: message);
 }
 
-class UnknownErrorException implements Exception {
-  final String? unknownErrorMessage;
-  UnknownErrorException({required this.unknownErrorMessage});
+class ServerError extends AppException {
+  ServerError({String message = "Server Error", String? details})
+      : super(message: message, details: details);
+}
+class ConflictException extends AppException {
+  ConflictException({String message = "Email or Username already exists"})
+      : super(message: message);
+}
+class NotFound extends AppException {
+  NotFound({String message = "There is no account with this email address"})
+      : super(message: message);
+}
+
+class ParsingError extends AppException {
+  ParsingError({String message = "Data Parsing Error"})
+      : super(message: message);
+}
+
+class UnknownErrorException extends AppException {
+  UnknownErrorException({String message = "An unknown error occurred"})
+      : super(message: message);
 }

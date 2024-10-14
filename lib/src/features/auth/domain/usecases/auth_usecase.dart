@@ -2,32 +2,31 @@ import 'package:injectable/injectable.dart';
 import 'package:online_exam_app/src/features/auth/data/api/models/response/forget_password_response.dart';
 import 'package:online_exam_app/src/features/auth/data/api/models/response/sign_in_response.dart';
 import 'package:online_exam_app/src/features/auth/data/api/models/response/sign_up_response.dart';
-import 'package:online_exam_app/src/features/auth/data/datasources/contracts/auth_datasource.dart';
+import 'package:online_exam_app/src/features/auth/domain/contracts/auth_repo.dart';
 import 'package:online_exam_app/src/features/auth/domain/core/result.dart';
 import 'package:online_exam_app/src/features/auth/domain/entities/forget_password_entity.dart';
 import 'package:online_exam_app/src/features/auth/domain/entities/sign_in_entity.dart';
 import 'package:online_exam_app/src/features/auth/domain/entities/sign_up_entity.dart';
-import '../../domain/contracts/auth_repo.dart';
-@Injectable(as: AuthRepo)
-class AuthRepositoryImpl implements AuthRepo {
-  AuthDataSource authDataSource;
 
-  @factoryMethod
-  AuthRepositoryImpl(this.authDataSource);
+@Injectable()
+class AuthUsecase {
+  final AuthRepo authRepo;
+  @FactoryMethod()
+  AuthUsecase({required this.authRepo});
 
-  @override
-  Future<Result<SignInResponse>> login({required SignInEntity signInEntity}) {
-    return authDataSource.login(signInModel: signInEntity.toModel());
+  Future<Result<SignInResponse>> login(
+      {required SignInEntity signInEntity}) async {
+    return await authRepo.login(signInEntity: signInEntity);
   }
 
-  @override
-  Future<Result<ForgetPasswordResponse>> forgetPassword({required ForgetPasswordEntity forgetPasswordEntity}) {
-    return authDataSource.forgetPassword(forgetPasswordModel: forgetPasswordEntity.toModel());
+  Future<Result<ForgetPasswordResponse>> forgetPassword(
+      {required ForgetPasswordEntity forgetPasswordEntity}) async {
+    return await authRepo.forgetPassword(
+        forgetPasswordEntity: forgetPasswordEntity);
   }
 
-  @override
   Future<Result<SignUpResponse>> signUp(
       {required SignUpEntity signUpEntity}) async {
-    return await authDataSource.signUp(signUpModel: signUpEntity.toModel());
+    return await authRepo.signUp(signUpEntity: signUpEntity);
   }
 }

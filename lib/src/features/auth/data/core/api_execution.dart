@@ -11,33 +11,35 @@ Future<Result<T>> apiExecution<T>({
 }) async {
   try {
     Response<dynamic> response = await request;
-
-    if (response.statusCode != 200) {
-      return Fail(exception: ServerError(response.data['message']));
-    }
-
     return Success(fromJson(response.data));
-  } on TimeoutException catch (_) {
-    return  Fail(exception: NoInternetException());
-  } on SocketException catch (_) {
-    return Fail(exception: NoInternetException());
+  } on SocketException {
+    return Failure(exception: NoInternetException());
+  } on TimeoutException {
+    return Failure(exception: NoInternetException(message: "Request Timeout"));
   } on DioException catch (e) {
-    if (e.type == DioExceptionType.connectionTimeout ||
-        e.type == DioExceptionType.receiveTimeout ||
-        e.type == DioExceptionType.sendTimeout) {
-      return Fail(exception: NoInternetException());
-    } else if (e.type == DioExceptionType.badResponse) {
-
-      return Fail(exception: ServerError(e.message.toString()));
-    } else {
-      return Fail(exception: ParsingError(
-        parsingErrorMessage: "Failed to parse data",
-        parsingErrorClassName: "ApiManager",
-      ));
+    if (e.response?.statusCode == 401) {
+      return Failure(
+          exception: UnauthorizedException(
+              message: e.response?.data['message'] ?? "Unauthorized"));
+    } else if (e.response?.statusCode == 404) {
+      return Failure(
+          exception: NotFound(message: e.response?.data['message']));
     }
-  } catch (_) {
-    return Fail(exception:(UnknownErrorException(
-      unknownErrorMessage: "Unknown error, please try again",
-    )));
+    
+    else if (e.response?.statusCode == 409) {
+      return Failure(
+          exception: ConflictException(message: e.response?.data['message']));
+    } else if (e.response != null && e.response!.statusCode! >= 500) {
+      return Failure(
+          exception: ServerError(
+              message: "Server error", details: e.response!.data.toString()));
+    } else {
+      return Failure(
+          exception: ParsingError(message: "Failed to parse response"));
+    }
+  } catch (e) {
+    return Failure(
+        exception:
+            UnknownErrorException(message: "Unknown error occurred"));
   }
 }

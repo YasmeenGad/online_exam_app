@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:online_exam_app/src/core/styles/app_colors.dart';
 import 'package:online_exam_app/src/core/styles/app_styles.dart';
 
-class SignUpFooter extends StatelessWidget {
-  const SignUpFooter({Key? key}) : super(key: key);
+class AuthFooter extends StatelessWidget {
+  const AuthFooter({Key? key, required this.question, required this.txt, required this.route}) : super(key: key);
+  final String question, txt, route;
 
   @override
   Widget build(BuildContext context) {
@@ -11,17 +12,17 @@ class SignUpFooter extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          "Already have an account?",
+          question,
           style: AppStyles.styleRegular14(context).copyWith(
             color: AppColors.blackBaseColor,
           ),
         ),
         TextButton(
           onPressed: () {
-            // Navigate to Login page
+            Navigator.pushReplacementNamed(context, route);
           },
           child: Text(
-            "Login",
+            txt,
             style: AppStyles.styleMedium16(context).copyWith(
               color: AppColors.blueBaseColor,
               decoration: TextDecoration.underline,

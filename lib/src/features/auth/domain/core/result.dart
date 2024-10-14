@@ -6,10 +6,10 @@ class Success<T> extends Result<T> {
   Success(this.data);
 }
 
- class Fail<T> extends Result<T> {
+ class Failure<T> extends Result<T> {
   final Exception? exception;
 
-  Fail({this.exception});
+  Failure({this.exception});
 }
 
 

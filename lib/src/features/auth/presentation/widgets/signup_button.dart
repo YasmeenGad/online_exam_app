@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:online_exam_app/src/core/styles/app_colors.dart';
-import 'package:online_exam_app/src/core/styles/app_styles.dart';
 import 'package:online_exam_app/src/features/auth/domain/entities/sign_up_entity.dart';
-import 'package:online_exam_app/src/features/auth/presentation/cubit/signup/auth_view_model.dart';
+import 'package:online_exam_app/src/features/auth/presentation/cubit/auth/auth_view_model.dart';
+import 'package:online_exam_app/src/core/global/custom_button.dart';
 
 class SignUpButton extends StatelessWidget {
   final GlobalKey<FormState> formKey;
@@ -42,24 +41,10 @@ class SignUpButton extends StatelessWidget {
             rePassword: confirmPasswordController.text.trim(),
             phone: phoneNumberController.text.trim(),
           ));
+          
         }
       },
-      child: Container(
-        width: MediaQuery.sizeOf(context).width,
-        height: 48,
-        decoration: BoxDecoration(
-          color: AppColors.blueBaseColor,
-          borderRadius: BorderRadius.circular(100),
-        ),
-        child: Center(
-          child: Text(
-            "Sign Up",
-            style: AppStyles.styleMedium16(context).copyWith(
-              color: AppColors.whiteColor,
-            ),
-          ),
-        ),
-      ),
+      child: CustomButton(txt: "Sign Up",)
     );
   }
 }

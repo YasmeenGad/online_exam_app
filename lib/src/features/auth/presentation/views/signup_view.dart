@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_exam_app/src/core/dependency%20injection/di.dart';
 import 'package:online_exam_app/src/core/global/custom_toast.dart';
-import 'package:online_exam_app/src/features/auth/domain/core/AppExceptions.dart';
-import 'package:online_exam_app/src/features/auth/presentation/cubit/signup/auth_states.dart';
-import 'package:online_exam_app/src/features/auth/presentation/cubit/signup/auth_view_model.dart';
-import 'package:online_exam_app/src/features/auth/presentation/widgets/custom_signup_appbar.dart';
+import 'package:online_exam_app/src/core/routes/routes_name.dart';
+import 'package:online_exam_app/src/features/auth/presentation/cubit/auth/auth_states.dart';
+import 'package:online_exam_app/src/features/auth/presentation/cubit/auth/auth_view_model.dart';
+import 'package:online_exam_app/src/core/global/custom_appbar.dart';
 import 'package:online_exam_app/src/features/auth/presentation/widgets/signup_button.dart';
-import 'package:online_exam_app/src/features/auth/presentation/widgets/signup_footer.dart';
+import 'package:online_exam_app/src/features/auth/presentation/widgets/auth_footer.dart';
 import 'package:online_exam_app/src/features/auth/presentation/widgets/signup_form.dart';
 
 class SignUpView extends StatelessWidget {
@@ -32,30 +32,22 @@ class SignUpView extends StatelessWidget {
         body: BlocConsumer<AuthViewModel, AuthState>(
           listener: (context, state) {
             switch (state) {
-              case AuthLoadingState():
+              case SignUpLoadingState():
                 {
                   CustomToast.showLoadingToast(message: "Loading...");
 
                   break;
                 }
-              case AuthErrorState():
+              case SignUpErrorState():
                 {
-                  var exception = state.exception;
-                  var message = "Something went wrong";
-
-                  if (exception is NoInternetException) {
-                    message = exception.message.toString();
-                  } else if (exception is ServerError) {
-                    message = exception.serverMessage.toString();
-                  } else if (exception is UnknownErrorException) {
-                    message = exception.unknownErrorMessage.toString();
-                  }
-                  CustomToast.showErrorToast(message: message);
+                  CustomToast.showErrorToast(
+                      message: state.exception.toString());
                   break;
                 }
-              case AuthSuccessState():
+              case SignUpSuccessState():
                 {
                   CustomToast.showSuccessToast(message: "Success");
+                  Navigator.pushReplacementNamed(context, RoutesName.loginView);
                   break;
                 }
               default:
@@ -73,7 +65,9 @@ class SignUpView extends StatelessWidget {
                     child: CustomScrollView(
                       slivers: [
                         SliverToBoxAdapter(
-                          child: CustomSignUpAppBar(),
+                          child: CustomAppBar(
+                            appBarTxt: 'Sign Up',
+                          ),
                         ),
                         SliverToBoxAdapter(
                           child: SizedBox(
@@ -114,7 +108,11 @@ class SignUpView extends StatelessWidget {
                                     confirmPasswordController,
                                 phoneNumberController: phoneNumberController,
                               ),
-                              const SignUpFooter(),
+                              const AuthFooter(
+                                question: "Already have an account?",
+                                txt: "Login",
+                                route: RoutesName.loginView,
+                              ),
                             ],
                           ),
                         )),

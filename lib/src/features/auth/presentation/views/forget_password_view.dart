@@ -1,76 +1,89 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_exam_app/src/features/auth/presentation/widgets/text_field_widget.dart';
+import 'package:online_exam_app/src/core/global/custom_toast.dart';
+import 'package:online_exam_app/src/core/validators/validators.dart';
+import 'package:online_exam_app/src/features/auth/domain/entities/forget_password_entity.dart';
+import 'package:online_exam_app/src/features/auth/presentation/cubit/auth/auth_states.dart';
+import 'package:online_exam_app/src/features/auth/presentation/cubit/auth/auth_view_model.dart';
+import 'package:online_exam_app/src/core/global/custom_button.dart';
+import 'package:online_exam_app/src/core/global/custom_appbar.dart';
+import 'package:online_exam_app/src/features/auth/presentation/widgets/custom_text_form_field.dart';
 import '../../../../core/dependency injection/di.dart';
-import '../cubit/forget_password/password_cubit.dart';
-import '../widgets/button_widget.dart';
-import '../widgets/dialog.dart';
 import '../widgets/forget_password_description.dart';
 
 class ForgetPasswordView extends StatelessWidget {
   const ForgetPasswordView({super.key});
 
-  static const routeName = '/forgetPassword';
-
-
-
   @override
   Widget build(BuildContext context) {
-    PasswordCubit viewModel = getIt.get<PasswordCubit>();
-
+    AuthViewModel authViewModel = getIt.get<AuthViewModel>();
+    GlobalKey<FormState> forgetFormKey = GlobalKey<FormState>();
+    TextEditingController emailController = TextEditingController();
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: const Text('Password'),
-        backgroundColor: Colors.white,
-      ),
-      body: BlocProvider(
-        create: (context) => viewModel,
-        child: BlocConsumer <PasswordCubit, PasswordState>(
+      body: BlocProvider<AuthViewModel>(
+        create: (context) => authViewModel,
+        child: BlocConsumer<AuthViewModel, AuthState>(
           listener: (context, state) {
-            if (state is PasswordError) {
-              // Show the extracted error message
-              showToast(state.exception.toString());
-              print('error: ${state.exception}');
-            } else if (state is PasswordSuccess) {
-              showToast(state.password!.message!);
+            switch (state) {
+              case ForgetPasswordLoading():
+                {
+                  CustomToast.showLoadingToast(message: "Loading...");
+
+                  break;
+                }
+              case ForgetPasswordError():
+                {
+                  CustomToast.showErrorToast(
+                      message: state.exception.toString());
+                  break;
+                }
+              case ForgetPasswordSuccess():
+                {
+                  CustomToast.showSuccessToast(message: "Success");
+                  // Navigator.pushReplacementNamed(context, RoutesName.loginView);
+                  break;
+                }
+              default:
             }
           },
-
-            builder: (context, state) {
-            final cubit = context.read<PasswordCubit>();
-            return  Form(
-            key: cubit.forgetFormKey,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
+          buildWhen: (previous, current) => current is AuthInitialState,
+          builder: (context, state) {
+            return Padding(
+              padding: const EdgeInsets.only(top: 56, left: 16, right: 16),
               child: Column(
-                  children: [
-                forgetPasswordDescription(context),
-                SizedBox(height: 30),
-                TextFieldWidget(
-                  controller: cubit.emailController ,
-                  validator: (value) => cubit.validEmail(value),
-                  keyboardType: TextInputType.emailAddress,
-                  textInputAction: TextInputAction.next,
-                  labelText: 'Email',
-                  hintText: 'Enter your email',
-                ),
-                const SizedBox(height: 50),
-
-                ButtonWidget(
-                  loading: state is PasswordLoading,
-                  onPressed: () {
-                    cubit.doAction();
-                  },
-                  text: 'Continue',
-                ),
-              ]),
-            ),
-          );
+                children: [
+                  CustomAppBar(
+                    appBarTxt: 'Password',
+                  ),
+                  Form(
+                    key: forgetFormKey,
+                    child: Column(children: [
+                      forgetPasswordDescription(context),
+                      SizedBox(height: 30),
+                      CustomTextFormField(
+                        controller: emailController,
+                        hintText: 'Enter your email',
+                        labelText: 'Email',
+                        validator: (value) => Validators.validateEmail(value),
+                      ),
+                      const SizedBox(height: 50),
+                      GestureDetector(
+                          onTap: () {
+                            if (forgetFormKey.currentState!.validate()) {
+                              authViewModel.forgetPassword(ForgetPasswordEntity(
+                                  email: emailController.text.trim()));
+                            }
+                          },
+                          child: CustomButton(txt: 'Continue')),
+                    ]),
+                  ),
+                ],
+              ),
+            );
           },
-          ),
         ),
-
+      ),
     );
   }
 }

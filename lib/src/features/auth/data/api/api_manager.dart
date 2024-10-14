@@ -1,14 +1,14 @@
-
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:online_exam_app/src/core/constants/app_apis.dart';
+import 'package:online_exam_app/src/features/auth/data/api/models/request/forget_password_model.dart';
+import 'package:online_exam_app/src/features/auth/data/api/models/request/sign_in_model.dart';
 import 'package:online_exam_app/src/features/auth/data/api/models/request/sign_up_model.dart';
+import 'package:online_exam_app/src/features/auth/data/api/models/response/forget_password_response.dart';
+import 'package:online_exam_app/src/features/auth/data/api/models/response/sign_in_response.dart';
 import 'package:online_exam_app/src/features/auth/data/api/models/response/sign_up_response.dart';
 import 'package:online_exam_app/src/features/auth/data/core/api_execution.dart';
-import 'package:online_exam_app/src/features/auth/data/models/login_model.dart';
 import 'package:online_exam_app/src/features/auth/domain/core/result.dart';
-import '../models/ForgetPasswordRequest.dart';
-import 'api_constants.dart';
 
 @singleton
 class ApiManager {
@@ -16,7 +16,7 @@ class ApiManager {
 
   ApiManager()
       : _dio = Dio(BaseOptions(
-    baseUrl: ApiConstants.baseUrl,
+    baseUrl: AppApis.baseUrl,
   )) {
     // Add interceptors for logging requests and responses
     _dio.interceptors.add(LogInterceptor(
@@ -29,19 +29,24 @@ class ApiManager {
       },
     ));
   }
-  Future<LoginModel> login(String email, String password) async {
-    var apiCall = await _dio.post(ApiConstants.login, data: {
-      "email": email,
-      "password": password
-    });
-    return LoginModel.fromJson(apiCall.data);
+  Future<Result<SignInResponse>> login({required SignInModel signInModel}) async {
+    return apiExecution<SignInResponse>(
+      request: _dio.post<dynamic>(
+        AppApis.login,
+        data: signInModel.toJson(),
+      ),
+      fromJson: (data) => SignInResponse.fromJson(data),
+    );
   }
 
-  Future<ForgetPasswordRequest?> forgetPassword(String email) async {
-    var apiCall = await _dio.post(ApiConstants.forgetPassword, data: {
-      "email": email,
-    });
-  return ForgetPasswordRequest.fromJson(apiCall.data);
+  Future<Result<ForgetPasswordResponse>> forgetPassword({required ForgetPasswordModel forgetPasswordModel}) async {
+    return apiExecution<ForgetPasswordResponse>(
+      request: _dio.post<dynamic>(
+        AppApis.forgetPassword,
+        data: forgetPasswordModel.toJson(),
+      ),
+      fromJson: (data) => ForgetPasswordResponse.fromJson(data),
+    );
   }
 
   Future<Result<SignUpResponse>> signUp(
