@@ -8,7 +8,7 @@ Align forgetPasswordText(BuildContext context) {
     alignment: Alignment.centerRight,
     child: InkWell(
       onTap: () {
-         Navigator.pushReplacementNamed(context, RoutesName.forgetPasswordView);
+         Navigator.pushNamed(context, RoutesName.forgetPasswordView);
       },
       child: Text('Forget Password ?',
           style: AppStyles.styleRegular12(context).copyWith(
