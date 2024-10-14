@@ -8,6 +8,9 @@ import 'package:online_exam_app/src/features/auth/domain/entities/forget_passwor
 import 'package:online_exam_app/src/features/auth/domain/entities/sign_in_entity.dart';
 import 'package:online_exam_app/src/features/auth/domain/entities/sign_up_entity.dart';
 
+import '../../data/api/models/response/email_verification_response.dart';
+import '../entities/email_verification_entity.dart';
+
 @Injectable()
 class AuthUsecase {
   final AuthRepo authRepo;
@@ -28,5 +31,9 @@ class AuthUsecase {
   Future<Result<SignUpResponse>> signUp(
       {required SignUpEntity signUpEntity}) async {
     return await authRepo.signUp(signUpEntity: signUpEntity);
+  }
+
+  Future<Result<EmailVerificationResponse>> verifyEmail({required EmailVerificationEntity emailVerificationEntity}) async {
+    return await authRepo.verifyEmail(emailVerificationEntity: emailVerificationEntity);
   }
 }

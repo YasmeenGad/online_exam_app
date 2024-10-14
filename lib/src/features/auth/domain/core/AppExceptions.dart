@@ -10,6 +10,10 @@ class AppException implements Exception {
   }
 }
 
+class BadRequestException extends AppException {
+  BadRequestException({String message = "Bad Request"})
+      : super(message: message);
+}
 class UnauthorizedException extends AppException {
   UnauthorizedException({String message = "Unauthorized Access"})
       : super(message: message);

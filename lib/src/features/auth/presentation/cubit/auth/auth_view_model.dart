@@ -11,6 +11,9 @@ import 'package:online_exam_app/src/features/auth/domain/entities/sign_up_entity
 import 'package:online_exam_app/src/features/auth/domain/usecases/auth_usecase.dart';
 import 'package:online_exam_app/src/features/auth/presentation/cubit/auth/auth_states.dart';
 
+import '../../../data/api/models/response/email_verification_response.dart';
+import '../../../domain/entities/email_verification_entity.dart';
+
 @Injectable()
 class AuthViewModel extends Cubit<AuthState> {
   AuthUsecase authUsecase;
@@ -93,6 +96,35 @@ class AuthViewModel extends Cubit<AuthState> {
         emit(ForgetPasswordError(exception: exception.message));
       } else {
         emit(ForgetPasswordError(exception: "An unknown error occurred"));
+      }
+      break;}
+    }
+  }
+
+
+  void verifyEmail(EmailVerificationEntity emailVerificationEntity) async {
+    emit(VerifyEmailLoading());
+
+    var result = await authUsecase.verifyEmail(
+        emailVerificationEntity: emailVerificationEntity);
+
+    switch (result) {
+      case Success<EmailVerificationResponse>():
+        {
+          emit(VerifyEmailSuccess(emailVerificationResponse: result.data!));
+          break;
+        }
+
+      case Failure<EmailVerificationResponse>():
+        {final exception = result.exception;
+    if (exception is BadRequestException) {
+              emit(VerifyEmailError(exception: exception.message));
+      } else if (exception is NoInternetException) {
+        emit(VerifyEmailError(exception: exception.message));
+      } else if (exception is ServerError) {
+        emit(VerifyEmailError(exception: exception.message));
+      } else {
+        emit(VerifyEmailError(exception: "An unknown error occurred"));
       }
       break;}
     }

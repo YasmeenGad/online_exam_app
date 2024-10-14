@@ -17,7 +17,11 @@ Future<Result<T>> apiExecution<T>({
   } on TimeoutException {
     return Failure(exception: NoInternetException(message: "Request Timeout"));
   } on DioException catch (e) {
-    if (e.response?.statusCode == 401) {
+    if (e.response?.statusCode == 400) {
+      return Failure(
+          exception: BadRequestException(
+              message: e.response?.data['message'] ?? "Bad Request"));
+    } else if (e.response?.statusCode == 401) {
       return Failure(
           exception: UnauthorizedException(
               message: e.response?.data['message'] ?? "Unauthorized"));

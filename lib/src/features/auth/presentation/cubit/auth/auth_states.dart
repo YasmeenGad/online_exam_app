@@ -2,6 +2,8 @@ import 'package:online_exam_app/src/features/auth/data/api/models/response/forge
 import 'package:online_exam_app/src/features/auth/data/api/models/response/sign_in_response.dart';
 import 'package:online_exam_app/src/features/auth/data/api/models/response/sign_up_response.dart';
 
+import '../../../data/api/models/response/email_verification_response.dart';
+
 sealed class AuthState {}
 
 class AuthInitialState extends AuthState {}
@@ -38,4 +40,14 @@ final class LoginSuccess extends AuthState {
 class LoginError<T> extends AuthState {
   T exception;
   LoginError({required this.exception});
+}
+
+final class VerifyEmailLoading extends AuthState {}
+final class VerifyEmailSuccess extends AuthState {
+  final EmailVerificationResponse emailVerificationResponse;
+  VerifyEmailSuccess({required this.emailVerificationResponse});
+}
+class VerifyEmailError<T> extends AuthState {
+  T exception;
+  VerifyEmailError({required this.exception});
 }
