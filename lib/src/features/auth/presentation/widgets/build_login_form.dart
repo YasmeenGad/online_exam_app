@@ -66,6 +66,7 @@ class BuildLoginForm extends StatelessWidget {
                   controller: passwordController,
                   hintText: 'Enter Password',
                   labelText: 'Password',
+                  validator: (value) => Validators.validatePassword(value),
                 ),
                 const SizedBox(height: 16),
                 forgetPasswordText(context),
