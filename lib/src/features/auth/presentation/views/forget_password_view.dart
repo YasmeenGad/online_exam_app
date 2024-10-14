@@ -9,16 +9,29 @@ import 'package:online_exam_app/src/core/global/custom_button.dart';
 import 'package:online_exam_app/src/core/global/custom_appbar.dart';
 import 'package:online_exam_app/src/features/auth/presentation/widgets/custom_text_form_field.dart';
 import '../../../../core/dependency injection/di.dart';
+import '../../../../core/routes/routes_name.dart';
 import '../widgets/forget_password_description.dart';
 
-class ForgetPasswordView extends StatelessWidget {
+class ForgetPasswordView extends StatefulWidget {
   const ForgetPasswordView({super.key});
 
   @override
+  State<ForgetPasswordView> createState() => _ForgetPasswordViewState();
+}
+
+class _ForgetPasswordViewState extends State<ForgetPasswordView> {
+  final GlobalKey<FormState> forgetFormKey = GlobalKey<FormState>();
+  final TextEditingController emailController = TextEditingController();
+  late final AuthViewModel authViewModel;
+
+  @override
+  void initState() {
+    super.initState();
+    authViewModel = getIt.get<AuthViewModel>();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    AuthViewModel authViewModel = getIt.get<AuthViewModel>();
-    GlobalKey<FormState> forgetFormKey = GlobalKey<FormState>();
-    TextEditingController emailController = TextEditingController();
     return Scaffold(
       backgroundColor: Colors.white,
       body: BlocProvider<AuthViewModel>(
@@ -41,7 +54,7 @@ class ForgetPasswordView extends StatelessWidget {
               case ForgetPasswordSuccess():
                 {
                   CustomToast.showSuccessToast(message: "Success");
-                  // Navigator.pushReplacementNamed(context, RoutesName.loginView);
+                   Navigator.pushReplacementNamed(context, RoutesName.emailVerificationView);
                   break;
                 }
               default:
@@ -58,8 +71,13 @@ class ForgetPasswordView extends StatelessWidget {
                   ),
                   Form(
                     key: forgetFormKey,
-                    child: Column(children: [
-                      forgetPasswordDescription(context),
+                    child: Column(
+                        children: [
+                      forgetPasswordDescription(
+                        context,
+                        'Forget password?',
+                        'Please enter your email associated to your account',
+                      ),
                       SizedBox(height: 30),
                       CustomTextFormField(
                         controller: emailController,
