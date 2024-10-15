@@ -45,6 +45,7 @@ class _BuildEmailVerificationFormState
               hasError = false;
             });
             CustomToast.showSuccessToast(message: "Success");
+            Navigator.pushNamed(context, RoutesName.resetPasswordView);
           } else if (state is VerifyEmailLoading) {
             CustomToast.showLoadingToast(message: "Loading...");
           }
