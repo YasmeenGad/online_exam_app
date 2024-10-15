@@ -7,6 +7,7 @@ import 'package:online_exam_app/src/features/auth/presentation/views/login_view.
 import 'package:online_exam_app/src/features/auth/presentation/views/signup_view.dart';
 
 import '../../features/auth/presentation/views/email_verification_view.dart';
+import '../../features/auth/presentation/views/reset_password_view.dart';
 
 
 class AppRoutes {
@@ -16,6 +17,9 @@ class AppRoutes {
       RoutesName.signUpView: (context) => const SignUpView(),
       RoutesName.forgetPasswordView: (context) => const ForgetPasswordView(),
       RoutesName.emailVerificationView: (context) => const EmailVerificationView(),
+      RoutesName.resetPasswordView: (context) => const ResetPasswordView(),
+
+
     };
   }
 }

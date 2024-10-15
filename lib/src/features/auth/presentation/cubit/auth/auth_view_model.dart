@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:online_exam_app/src/features/auth/data/api/models/response/forget_password_response.dart';
+import 'package:online_exam_app/src/features/auth/data/api/models/response/reset_password_response.dart';
 import 'package:online_exam_app/src/features/auth/data/api/models/response/sign_in_response.dart';
 import 'package:online_exam_app/src/features/auth/data/api/models/response/sign_up_response.dart';
 import 'package:online_exam_app/src/features/auth/domain/core/AppExceptions.dart';
@@ -13,10 +14,12 @@ import 'package:online_exam_app/src/features/auth/presentation/cubit/auth/auth_s
 
 import '../../../data/api/models/response/email_verification_response.dart';
 import '../../../domain/entities/email_verification_entity.dart';
+import '../../../domain/entities/reset_password_entity.dart';
 
 @Injectable()
 class AuthViewModel extends Cubit<AuthState> {
   AuthUsecase authUsecase;
+
   @FactoryMethod()
   AuthViewModel(this.authUsecase) : super(AuthInitialState());
 
@@ -31,47 +34,49 @@ class AuthViewModel extends Cubit<AuthState> {
         }
 
       case Failure<SignUpResponse>():
-        {final exception = result.exception;
-      if (exception is ConflictException) {
-        emit(SignUpErrorState(exception: exception.message));
-      } else if (exception is NoInternetException) {
-        emit(SignUpErrorState(exception: exception.message));
-      } else if (exception is ServerError) {
-        emit(SignUpErrorState(exception: exception.message));
-      } else {
-        emit(SignUpErrorState(exception: "An unknown error occurred"));
-      }
-      break;}
+        {
+          final exception = result.exception;
+          if (exception is ConflictException) {
+            emit(SignUpErrorState(exception: exception.message));
+          } else if (exception is NoInternetException) {
+            emit(SignUpErrorState(exception: exception.message));
+          } else if (exception is ServerError) {
+            emit(SignUpErrorState(exception: exception.message));
+          } else {
+            emit(SignUpErrorState(exception: "An unknown error occurred"));
+          }
+          break;
+        }
     }
   }
 
   void login(SignInEntity signInEntity) async {
-  emit(LoginLoading());
+    emit(LoginLoading());
 
-  var result = await authUsecase.login(signInEntity: signInEntity);
+    var result = await authUsecase.login(signInEntity: signInEntity);
 
-  switch (result) {
-    case Success<SignInResponse>():
-      {
-        emit(LoginSuccess(signInResponse: result.data!));
-        break;
-      }
-    case Failure<SignInResponse>():
-      {
-        final exception = result.exception;
-        if (exception is UnauthorizedException) {
-          emit(LoginError(exception: exception.message));
-        } else if (exception is NoInternetException) {
-          emit(LoginError(exception: exception.message));
-        } else if (exception is ServerError) {
-          emit(LoginError(exception: exception.message));
-        } else {
-          emit(LoginError(exception: "An unknown error occurred"));
+    switch (result) {
+      case Success<SignInResponse>():
+        {
+          emit(LoginSuccess(signInResponse: result.data!));
+          break;
         }
-        break;
-      }
+      case Failure<SignInResponse>():
+        {
+          final exception = result.exception;
+          if (exception is UnauthorizedException) {
+            emit(LoginError(exception: exception.message));
+          } else if (exception is NoInternetException) {
+            emit(LoginError(exception: exception.message));
+          } else if (exception is ServerError) {
+            emit(LoginError(exception: exception.message));
+          } else {
+            emit(LoginError(exception: "An unknown error occurred"));
+          }
+          break;
+        }
+    }
   }
-}
 
   void forgetPassword(ForgetPasswordEntity forgetPasswordEntity) async {
     emit(ForgetPasswordLoading());
@@ -87,20 +92,21 @@ class AuthViewModel extends Cubit<AuthState> {
         }
 
       case Failure<ForgetPasswordResponse>():
-        {final exception = result.exception;
-      if (exception is NotFound) {
-        emit(ForgetPasswordError(exception: exception.message));
-      } else if (exception is NoInternetException) {
-        emit(ForgetPasswordError(exception: exception.message));
-      } else if (exception is ServerError) {
-        emit(ForgetPasswordError(exception: exception.message));
-      } else {
-        emit(ForgetPasswordError(exception: "An unknown error occurred"));
-      }
-      break;}
+        {
+          final exception = result.exception;
+          if (exception is NotFound) {
+            emit(ForgetPasswordError(exception: exception.message));
+          } else if (exception is NoInternetException) {
+            emit(ForgetPasswordError(exception: exception.message));
+          } else if (exception is ServerError) {
+            emit(ForgetPasswordError(exception: exception.message));
+          } else {
+            emit(ForgetPasswordError(exception: "An unknown error occurred"));
+          }
+          break;
+        }
     }
   }
-
 
   void verifyEmail(EmailVerificationEntity emailVerificationEntity) async {
     emit(VerifyEmailLoading());
@@ -116,17 +122,51 @@ class AuthViewModel extends Cubit<AuthState> {
         }
 
       case Failure<EmailVerificationResponse>():
-        {final exception = result.exception;
-    if (exception is BadRequestException) {
-              emit(VerifyEmailError(exception: exception.message));
-      } else if (exception is NoInternetException) {
-        emit(VerifyEmailError(exception: exception.message));
-      } else if (exception is ServerError) {
-        emit(VerifyEmailError(exception: exception.message));
-      } else {
-        emit(VerifyEmailError(exception: "An unknown error occurred"));
-      }
-      break;}
+        {
+          final exception = result.exception;
+          if (exception is BadRequestException) {
+            emit(VerifyEmailError(exception: exception.message));
+          } else if (exception is NoInternetException) {
+            emit(VerifyEmailError(exception: exception.message));
+          } else if (exception is ServerError) {
+            emit(VerifyEmailError(exception: exception.message));
+          } else {
+            emit(VerifyEmailError(exception: "An unknown error occurred"));
+          }
+          break;
+        }
+    }
+  }
+
+  void resetPassword(ResetPasswordEntity resetPasswordEntity) async {
+    emit(ResetPasswordLoading());
+
+    var result = await authUsecase.resetPassword(
+        resetPasswordEntity: resetPasswordEntity);
+
+    switch (result) {
+      case Success<ResetPasswordResponse>():
+        {
+          emit(ResetPasswordSuccess(resetPasswordResponse: result.data!));
+          break;
+        }
+
+      case Failure<ResetPasswordResponse>():
+        {
+          final exception = result.exception;
+          if (exception is BadRequestException) {
+            emit(ResetPasswordError(exception: exception.message));
+          } else if (exception is NotFound) {
+            emit(ResetPasswordError(exception: exception.message));
+          } else if (exception is NoInternetException) {
+            emit(ResetPasswordError(exception: exception.message));
+          } else if (exception is ServerError) {
+            emit(ResetPasswordError(exception: exception.message));
+          } else {
+            emit(ResetPasswordError(exception: "An unknown error occurred"));
+          }
+          break;
+        }
     }
   }
 }

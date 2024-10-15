@@ -12,6 +12,8 @@ import 'package:online_exam_app/src/features/auth/data/core/api_execution.dart';
 import 'package:online_exam_app/src/features/auth/domain/core/result.dart';
 
 import 'models/request/email_verification_model.dart';
+import 'models/request/reset_password_model.dart';
+import 'models/response/reset_password_response.dart';
 
 @singleton
 class ApiManager {
@@ -71,6 +73,16 @@ class ApiManager {
         data: emailVerificationModel.toJson(),
       ),
       fromJson: (data) => EmailVerificationResponse.fromJson(data),
+    );
+  }
+
+  Future<Result<ResetPasswordResponse>>resetPassword({required ResetPasswordModel resetPasswordModel}) async {
+    return apiExecution<ResetPasswordResponse>(
+    request: _dio.put<dynamic>(
+      AppApis.resetPassword,
+      data: resetPasswordModel.toJson(),
+    ),
+      fromJson: (data) => ResetPasswordResponse.fromJson(data),
     );
   }
 

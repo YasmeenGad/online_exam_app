@@ -3,6 +3,7 @@ import 'package:online_exam_app/src/features/auth/data/api/models/response/sign_
 import 'package:online_exam_app/src/features/auth/data/api/models/response/sign_up_response.dart';
 
 import '../../../data/api/models/response/email_verification_response.dart';
+import '../../../data/api/models/response/reset_password_response.dart';
 
 sealed class AuthState {}
 
@@ -50,4 +51,15 @@ final class VerifyEmailSuccess extends AuthState {
 class VerifyEmailError<T> extends AuthState {
   T exception;
   VerifyEmailError({required this.exception});
+}
+
+
+final class ResetPasswordLoading extends AuthState {}
+final class ResetPasswordSuccess extends AuthState {
+  final ResetPasswordResponse resetPasswordResponse;
+  ResetPasswordSuccess({required this.resetPasswordResponse});
+}
+class ResetPasswordError<T> extends AuthState {
+  T exception;
+  ResetPasswordError({required this.exception});
 }
