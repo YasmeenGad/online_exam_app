@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:online_exam_app/src/features/auth/presentation/widgets/build_login_form.dart';
 import 'package:online_exam_app/src/core/global/custom_appbar.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
@@ -14,7 +16,7 @@ class LoginView extends StatelessWidget {
         child: CustomScrollView(
           slivers: [
             SliverToBoxAdapter(
-              child: CustomAppBar(appBarTxt: 'Login'),
+              child: CustomAppBar(appBarTxt: '${AppLocalizations.of(context)!.login}'),
             ),
             SliverToBoxAdapter(
               child: BuildLoginForm(),

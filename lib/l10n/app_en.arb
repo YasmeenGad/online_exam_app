@@ -29,12 +29,10 @@
     "emailVerificationDescription": "Please enter the code sent to your email address.",
     "resetPasswordTitle": "Reset password",
     "resetPasswordDescription": "Password must not be empty and must contain 6 characters with upper case letter and one number at least",
-    "signInSuccess": "Success",
-    "loginLoading": "Loading...",
+    "success": "Success",
+    "loading": "Loading...",
     "loginError": "An error occurred while logging in. Please try again.",
-    "resetPasswordSuccess": "Success",
     "resetPasswordError": "An error occurred while resetting the password. Please try again.",
-    "verifyingEmail": "Loading...",
     "emailVerificationError": "An error occurred while verifying the email. Please try again.",
     "requestTimeout": "Request Timeout.",
     "unauthorizedException": "Unauthorized Access",
@@ -43,6 +41,18 @@
     "conflictException": "Email or Username already exists",
     "notFoundException": "There is no account with this email address",
     "parsingErrorException": "Data Parsing Error",
-    "unknownErrorException": "An unknown error occurred"
-  }
-  
+    "unknownErrorException": "An unknown error occurred",
+    "badRequestException": "Bad Request",
+    "forgetPassword": "Forget Password",
+    "pleaseEnterYourEmailAssociatedToYourAccount": "Please enter your email associated to your account",
+    "labelContinue": "Continue",
+    "login": "Login",
+    "signUp": "Sign Up",
+    "alreadyHaveAnAccount": "Already have an account?",
+    "dontReceiveCode": "Did not receive code?",
+    "resend": "Resend",
+    "dontHaveAnAccount": "Do not have an account?",
+    "enterNewPassword": "Enter new password",
+    "newPassword": "New Password"
+    
+}

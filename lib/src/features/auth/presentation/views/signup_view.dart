@@ -9,6 +9,7 @@ import 'package:online_exam_app/src/core/global/custom_appbar.dart';
 import 'package:online_exam_app/src/features/auth/presentation/widgets/signup_button.dart';
 import 'package:online_exam_app/src/features/auth/presentation/widgets/auth_footer.dart';
 import 'package:online_exam_app/src/features/auth/presentation/widgets/signup_form.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SignUpView extends StatelessWidget {
   const SignUpView({super.key});
@@ -34,7 +35,7 @@ class SignUpView extends StatelessWidget {
             switch (state) {
               case SignUpLoadingState():
                 {
-                  CustomToast.showLoadingToast(message: "Loading...");
+                  CustomToast.showLoadingToast(message: "${AppLocalizations.of(context)!.loading}");
 
                   break;
                 }
@@ -46,7 +47,7 @@ class SignUpView extends StatelessWidget {
                 }
               case SignUpSuccessState():
                 {
-                  CustomToast.showSuccessToast(message: "Success");
+                  CustomToast.showSuccessToast(message: "${AppLocalizations.of(context)!.success}");
                   Navigator.pushReplacementNamed(context, RoutesName.loginView);
                   break;
                 }
@@ -66,7 +67,7 @@ class SignUpView extends StatelessWidget {
                       slivers: [
                         SliverToBoxAdapter(
                           child: CustomAppBar(
-                            appBarTxt: 'Sign Up',
+                            appBarTxt: '${AppLocalizations.of(context)!.signUp}',
                           ),
                         ),
                         SliverToBoxAdapter(
@@ -108,9 +109,9 @@ class SignUpView extends StatelessWidget {
                                     confirmPasswordController,
                                 phoneNumberController: phoneNumberController,
                               ),
-                              const AuthFooter(
-                                question: "Already have an account?",
-                                txt: "Login",
+                               AuthFooter(
+                                question: "${AppLocalizations.of(context)!.alreadyHaveAnAccount}?",
+                                txt: "${AppLocalizations.of(context)!.login}",
                                 route: RoutesName.loginView,
                               ),
                             ],

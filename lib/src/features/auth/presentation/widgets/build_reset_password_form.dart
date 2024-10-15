@@ -10,6 +10,8 @@ import '../cubit/auth/auth_states.dart';
 import '../cubit/auth/auth_view_model.dart';
 import 'custom_text_form_field.dart';
 import 'forget_password_description.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class BuildResetPasswordForm extends StatefulWidget {
   const BuildResetPasswordForm({super.key});
@@ -38,10 +40,10 @@ class _BuildResetPasswordFormState extends State<BuildResetPasswordForm> {
           if (state is ResetPasswordError) {
             CustomToast.showErrorToast(message: state.exception.toString());
           } else if (state is ResetPasswordSuccess) {
-            CustomToast.showSuccessToast(message: "Success");
+            CustomToast.showSuccessToast(message: "${AppLocalizations.of(context)!.success}");
             Navigator.pushNamed(context, RoutesName.loginView);
           } else if (state is ResetPasswordLoading) {
-            CustomToast.showLoadingToast(message: "Loading...");
+            CustomToast.showLoadingToast(message: "${AppLocalizations.of(context)!.loading}");
           }
         },
         buildWhen: (previous, current) {
@@ -54,22 +56,22 @@ class _BuildResetPasswordFormState extends State<BuildResetPasswordForm> {
               children: [
                 forgetPasswordDescription(
                   context,
-                  'Reset password',
-                  'Password must not be empty and must contain 6 characters with upper case letter and one number at least ',
+                  '${AppLocalizations.of(context)!.resetPasswordTitle}',
+                  '${AppLocalizations.of(context)!.resetPasswordDescription}',
                 ),
                 const SizedBox(height: 30),
                 CustomTextFormField(
                   controller: emailController,
-                  hintText: 'Enter your email',
-                  labelText: 'Email',
-                  validator: (value) => Validators.validateEmail(value),
+                  hintText: '${AppLocalizations.of(context)!.hintEmail}',
+                  labelText: '${AppLocalizations.of(context)!.labelEmail}',
+                  validator: (value) => Validators.validateEmail(value,context),
                 ),
                 const SizedBox(height: 30),
                 CustomTextFormField(
                   controller: passwordController,
-                  hintText: 'Enter New Password',
-                  labelText: 'New Password',
-                  validator: (value) => Validators.validatePassword(value),
+                  hintText: '${AppLocalizations.of(context)!.enterNewPassword}',
+                  labelText: '${AppLocalizations.of(context)!.newPassword}',
+                  validator: (value) => Validators.validatePassword(value, context),
                 ),
                 const SizedBox(height: 50),
                 GestureDetector(
@@ -79,12 +81,12 @@ class _BuildResetPasswordFormState extends State<BuildResetPasswordForm> {
                       ResetPasswordEntity(
                         email: emailController.text,
                         newPassword: passwordController.text,
-                      )
+                      ), context
                         );
                       }
                     },
                     child: CustomButton(
-                      txt: "Continue",
+                      txt: "${AppLocalizations.of(context)!.labelContinue}",
                     )),
               ],
             ),

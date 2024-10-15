@@ -8,6 +8,8 @@ import '../../../../core/routes/routes_name.dart';
 import '../cubit/auth/auth_states.dart';
 import '../cubit/auth/auth_view_model.dart';
 import 'forget_password_description.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class BuildEmailVerificationForm extends StatefulWidget {
   BuildEmailVerificationForm({super.key});
@@ -44,10 +46,10 @@ class _BuildEmailVerificationFormState
             setState(() {
               hasError = false;
             });
-            CustomToast.showSuccessToast(message: "Success");
+            CustomToast.showSuccessToast(message: "${AppLocalizations.of(context)!.success}");
             Navigator.pushNamed(context, RoutesName.resetPasswordView);
           } else if (state is VerifyEmailLoading) {
-            CustomToast.showLoadingToast(message: "Loading...");
+            CustomToast.showLoadingToast(message: "${AppLocalizations.of(context)!.loading}");
           }
         },
         buildWhen: (previous, current) {
@@ -60,16 +62,16 @@ class _BuildEmailVerificationFormState
               children: [
                 forgetPasswordDescription(
                   context,
-                  'Email verification',
-                  'Please enter the code sent to your email address.',
+                  '${AppLocalizations.of(context)!.emailVerificationTitle}',
+                  '${AppLocalizations.of(context)!.emailVerificationDescription}',
                 ),
                 const SizedBox(height: 30),
                 VerificationCode(
                     hasError: hasError, authViewModel: authViewModel),
                 const SizedBox(height: 50),
                 AuthFooter(
-                  question: "Didn't receive the code?",
-                  txt: 'Resend',
+                  question: "${AppLocalizations.of(context)!.dontReceiveCode}?",
+                  txt: '${AppLocalizations.of(context)!.resend}',
                   route: RoutesName.forgetPasswordView,
                 ),
               ],
