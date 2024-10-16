@@ -28,6 +28,7 @@ class _WelcomeViewState extends State<WelcomeView> {
   }
 
   @override
+
   Widget build(BuildContext context) {
     final languageProvider = Provider.of<LanguageProvider>(context);
 
