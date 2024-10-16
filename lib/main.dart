@@ -15,19 +15,9 @@ class OnlineExamApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      supportedLocales: [
-        Locale("en"),
-        Locale("ar")
-      ],
+      supportedLocales: AppLocalizations.supportedLocales,
       locale: const Locale("ar"),
-      localizationsDelegates: [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate
-      ],
-
-      
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
       debugShowCheckedModeBanner: false,
       initialRoute: RoutesName.loginView,
       routes: AppRoutes.getRoutes(),
