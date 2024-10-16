@@ -10,11 +10,6 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Icon(
-          Icons.arrow_back_ios,
-          size: 20,
-          color: AppColors.blackBaseColor,
-        ),
         SizedBox(width: 8),
         Text(
           '${appBarTxt}',
