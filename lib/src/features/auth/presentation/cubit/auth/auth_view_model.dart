@@ -35,19 +35,22 @@ class AuthViewModel extends Cubit<AuthState> {
         }
 
       case Failure<SignUpResponse>():
-        {
-          final exception = result.exception;
-          if (exception is ConflictException) {
-            emit(SignUpErrorState(exception: "${AppLocalizations.of(context)?.conflictException}"));
-          } else if (exception is NoInternetException) {
-            emit(SignUpErrorState(exception: "${AppLocalizations.of(context)?.noInternetException}"));
-          } else if (exception is ServerError) {
-            emit(SignUpErrorState(exception: "${AppLocalizations.of(context)?.serverErrorException}"));
-          } else {
-            emit(SignUpErrorState(exception: "${AppLocalizations.of(context)?.unknownErrorException}"));
-          }
-          break;
+        final exception = result.exception;
+        String message;
+        if (exception is ConflictException) {
+          message = "${AppLocalizations.of(context)?.conflictException}";
+          emit(SignUpErrorState(exception: message));
+        } else if (exception is NoInternetException) {
+          message = "${AppLocalizations.of(context)?.noInternetException}";
+          emit(SignUpErrorState(exception: message));
+        } else if (exception is ServerError) {
+          message = "${AppLocalizations.of(context)?.serverErrorException}";
+          emit(SignUpErrorState(exception: message));
+        } else {
+          message = "${AppLocalizations.of(context)?.unknownErrorException}";
+          emit(SignUpErrorState(exception: message));
         }
+        break;
     }
   }
 
@@ -66,20 +69,29 @@ class AuthViewModel extends Cubit<AuthState> {
         {
           final exception = result.exception;
           if (exception is UnauthorizedException) {
-            emit(LoginError(exception: "${AppLocalizations.of(context)?.unauthorizedException}"));
+            emit(LoginError(
+                exception:
+                    "${AppLocalizations.of(context)?.unauthorizedException}"));
           } else if (exception is NoInternetException) {
-            emit(LoginError(exception: "${AppLocalizations.of(context)?.noInternetException}"));
+            emit(LoginError(
+                exception:
+                    "${AppLocalizations.of(context)?.noInternetException}"));
           } else if (exception is ServerError) {
-            emit(LoginError(exception: "${AppLocalizations.of(context)?.serverErrorException}"));
+            emit(LoginError(
+                exception:
+                    "${AppLocalizations.of(context)?.serverErrorException}"));
           } else {
-            emit(LoginError(exception: "${AppLocalizations.of(context)?.unknownErrorException}"));
+            emit(LoginError(
+                exception:
+                    "${AppLocalizations.of(context)?.unknownErrorException}"));
           }
           break;
         }
     }
   }
 
-  void forgetPassword(ForgetPasswordEntity forgetPasswordEntity, BuildContext context) async {
+  void forgetPassword(
+      ForgetPasswordEntity forgetPasswordEntity, BuildContext context) async {
     emit(ForgetPasswordLoading());
 
     var result = await authUsecase.forgetPassword(
@@ -96,20 +108,29 @@ class AuthViewModel extends Cubit<AuthState> {
         {
           final exception = result.exception;
           if (exception is NotFound) {
-            emit(ForgetPasswordError(exception: "${AppLocalizations.of(context)?.notFoundException}"));
+            emit(ForgetPasswordError(
+                exception:
+                    "${AppLocalizations.of(context)?.notFoundException}"));
           } else if (exception is NoInternetException) {
-            emit(ForgetPasswordError(exception: "${AppLocalizations.of(context)?.noInternetException}"));
+            emit(ForgetPasswordError(
+                exception:
+                    "${AppLocalizations.of(context)?.noInternetException}"));
           } else if (exception is ServerError) {
-            emit(ForgetPasswordError(exception: "${AppLocalizations.of(context)?.serverErrorException}"));
+            emit(ForgetPasswordError(
+                exception:
+                    "${AppLocalizations.of(context)?.serverErrorException}"));
           } else {
-            emit(ForgetPasswordError(exception: "${AppLocalizations.of(context)?.unknownErrorException}"));
+            emit(ForgetPasswordError(
+                exception:
+                    "${AppLocalizations.of(context)?.unknownErrorException}"));
           }
           break;
         }
     }
   }
 
-  void verifyEmail(EmailVerificationEntity emailVerificationEntity, BuildContext context) async {
+  void verifyEmail(EmailVerificationEntity emailVerificationEntity,
+      BuildContext context) async {
     emit(VerifyEmailLoading());
 
     var result = await authUsecase.verifyEmail(
@@ -126,20 +147,29 @@ class AuthViewModel extends Cubit<AuthState> {
         {
           final exception = result.exception;
           if (exception is BadRequestException) {
-            emit(VerifyEmailError(exception: "${AppLocalizations.of(context)?.badRequestException}"));
+            emit(VerifyEmailError(
+                exception:
+                    "${AppLocalizations.of(context)?.badRequestException}"));
           } else if (exception is NoInternetException) {
-            emit(VerifyEmailError(exception: "${AppLocalizations.of(context)?.noInternetException}"));
+            emit(VerifyEmailError(
+                exception:
+                    "${AppLocalizations.of(context)?.noInternetException}"));
           } else if (exception is ServerError) {
-            emit(VerifyEmailError(exception: "${AppLocalizations.of(context)?.serverErrorException}"));
+            emit(VerifyEmailError(
+                exception:
+                    "${AppLocalizations.of(context)?.serverErrorException}"));
           } else {
-            emit(VerifyEmailError(exception: "${AppLocalizations.of(context)?.unknownErrorException}"));
+            emit(VerifyEmailError(
+                exception:
+                    "${AppLocalizations.of(context)?.unknownErrorException}"));
           }
           break;
         }
     }
   }
 
-  void resetPassword(ResetPasswordEntity resetPasswordEntity, BuildContext context) async {
+  void resetPassword(
+      ResetPasswordEntity resetPasswordEntity, BuildContext context) async {
     emit(ResetPasswordLoading());
 
     var result = await authUsecase.resetPassword(
@@ -156,15 +186,25 @@ class AuthViewModel extends Cubit<AuthState> {
         {
           final exception = result.exception;
           if (exception is BadRequestException) {
-            emit(ResetPasswordError(exception: "${AppLocalizations.of(context)?.badRequestException}"));
+            emit(ResetPasswordError(
+                exception:
+                    "${AppLocalizations.of(context)?.badRequestException}"));
           } else if (exception is NotFound) {
-            emit(ResetPasswordError(exception: "${AppLocalizations.of(context)?.notFoundException}"));
+            emit(ResetPasswordError(
+                exception:
+                    "${AppLocalizations.of(context)?.notFoundException}"));
           } else if (exception is NoInternetException) {
-            emit(ResetPasswordError(exception: "${AppLocalizations.of(context)?.noInternetException}"));
+            emit(ResetPasswordError(
+                exception:
+                    "${AppLocalizations.of(context)?.noInternetException}"));
           } else if (exception is ServerError) {
-            emit(ResetPasswordError(exception: "${AppLocalizations.of(context)?.serverErrorException}"));
+            emit(ResetPasswordError(
+                exception:
+                    "${AppLocalizations.of(context)?.serverErrorException}"));
           } else {
-            emit(ResetPasswordError(exception: "${AppLocalizations.of(context)?.unknownErrorException}"));
+            emit(ResetPasswordError(
+                exception:
+                    "${AppLocalizations.of(context)?.unknownErrorException}"));
           }
           break;
         }

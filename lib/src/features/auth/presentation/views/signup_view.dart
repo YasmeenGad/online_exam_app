@@ -49,6 +49,7 @@ class SignUpView extends StatelessWidget {
                 {
                   CustomToast.showSuccessToast(message: "${AppLocalizations.of(context)!.success}");
                   Navigator.pushReplacementNamed(context, RoutesName.loginView);
+                  // Navigator.pushNamed(context, RoutesName.homeView);
                   break;
                 }
               default:

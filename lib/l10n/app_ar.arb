@@ -53,5 +53,7 @@
   "resend": "إعادة الإرسال",
   "dontHaveAnAccount": "لا تملك حساباً؟",
   "enterNewPassword": "أدخل كلمة المرور الجديدة",
-  "newPassword": "كلمة المرور الجديدة"
+  "newPassword": "كلمة المرور الجديدة",
+  "languages" : "اللغات",
+  "selectLanguage": "اختر اللغة"
 }

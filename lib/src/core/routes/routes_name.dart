@@ -5,5 +5,6 @@ class RoutesName {
   static const String signUpView = 'signUpView';
   static const String emailVerificationView = 'emailVerificationView';
   static const String resetPasswordView = 'resetPasswordView';
+  static const String welcomeView = 'welcomeView';
 
 }

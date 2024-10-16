@@ -53,6 +53,8 @@
     "resend": "Resend",
     "dontHaveAnAccount": "Do not have an account?",
     "enterNewPassword": "Enter new password",
-    "newPassword": "New Password"
+    "newPassword": "New Password",
+    "languages" : "Languages",
+    "selectLanguage": "Select Language"
     
 }
