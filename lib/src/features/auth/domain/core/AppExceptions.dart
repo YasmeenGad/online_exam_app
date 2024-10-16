@@ -1,48 +1,48 @@
 class AppException implements Exception {
-  final String message;
+  final String? message;
   final String? details;
 
   AppException({required this.message, this.details});
 
   @override
   String toString() {
-    return message;
+    return message?? '';
   }
 }
 
 class BadRequestException extends AppException {
-  BadRequestException({String message = "Bad Request"})
+  BadRequestException({String? message} )
       : super(message: message);
 }
 class UnauthorizedException extends AppException {
-  UnauthorizedException({String message = "Unauthorized Access"})
+  UnauthorizedException({String? message})
       : super(message: message);
 }
 
 class NoInternetException extends AppException {
-  NoInternetException({String message = "No Internet Connection"})
+  NoInternetException({String? message})
       : super(message: message);
 }
 
 class ServerError extends AppException {
-  ServerError({String message = "Server Error", String? details})
+  ServerError({String? message , String? details})
       : super(message: message, details: details);
 }
 class ConflictException extends AppException {
-  ConflictException({String message = "Email or Username already exists"})
+  ConflictException({String? message})
       : super(message: message);
 }
 class NotFound extends AppException {
-  NotFound({String message = "There is no account with this email address"})
+  NotFound({String? message})
       : super(message: message);
 }
 
 class ParsingError extends AppException {
-  ParsingError({String message = "Data Parsing Error"})
+  ParsingError({String? message})
       : super(message: message);
 }
 
 class UnknownErrorException extends AppException {
-  UnknownErrorException({String message = "An unknown error occurred"})
+  UnknownErrorException({String? message})
       : super(message: message);
 }

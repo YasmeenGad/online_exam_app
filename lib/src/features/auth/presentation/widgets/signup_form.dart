@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:online_exam_app/src/core/validators/validators.dart';
 import 'package:online_exam_app/src/features/auth/presentation/widgets/custom_text_form_field.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SignUpForm extends StatelessWidget {
   final TextEditingController usernameController;
@@ -32,9 +33,9 @@ class SignUpForm extends StatelessWidget {
         children: [
           CustomTextFormField(
             controller: usernameController,
-            hintText: 'Enter your user name',
-            labelText: 'User Name',
-            validator: (value) => Validators.validateUserName(value),
+            hintText: '${AppLocalizations.of(context)!.hintUserName}',
+            labelText: '${AppLocalizations.of(context)!.labelUserName}',
+            validator: (value) => Validators.validateUserName(value, context),
           ),
           const SizedBox(height: 20),
           Row(
@@ -42,18 +43,18 @@ class SignUpForm extends StatelessWidget {
               Expanded(
                 child: CustomTextFormField(
                   controller: firstNameController,
-                  hintText: 'Enter first name',
-                  labelText: 'First Name',
-                  validator: (value) => Validators.validateFirstName(value),
+                  hintText: '${AppLocalizations.of(context)!.hintFirstName}',
+                  labelText: '${AppLocalizations.of(context)!.labelFirstName}',
+                  validator: (value) => Validators.validateFirstName(value, context),
                 ),
               ),
               const SizedBox(width: 20),
               Expanded(
                 child: CustomTextFormField(
                   controller: lastNameController,
-                  hintText: 'Enter last name',
-                  labelText: 'Last Name',
-                  validator: (value) => Validators.validateLastName(value),
+                  hintText: '${AppLocalizations.of(context)!.hintLastName}',
+                  labelText: '${AppLocalizations.of(context)!.labelLastName}',
+                  validator: (value) => Validators.validateLastName(value, context),
                 ),
               ),
             ],
@@ -61,9 +62,9 @@ class SignUpForm extends StatelessWidget {
           const SizedBox(height: 20),
           CustomTextFormField(
             controller: emailController,
-            hintText: 'Enter your Email',
-            labelText: 'Email',
-            validator: (value) => Validators.validateEmail(value),
+            hintText: '${AppLocalizations.of(context)!.hintEmail}',
+            labelText: '${AppLocalizations.of(context)!.labelEmail}',
+            validator: (value) => Validators.validateEmail(value, context),
           ),
           const SizedBox(height: 20),
           Row(
@@ -71,18 +72,18 @@ class SignUpForm extends StatelessWidget {
               Expanded(
                 child: CustomTextFormField(
                   controller: passwordController,
-                  hintText: 'Enter password',
-                  labelText: 'Password',
-                  validator: (value) => Validators.validatePassword(value),
+                  hintText: '${AppLocalizations.of(context)!.hintPassword}',
+                  labelText: '${AppLocalizations.of(context)!.labelPassword}',
+                  validator: (value) => Validators.validatePassword(value,context),
                 ),
               ),
               const SizedBox(width: 20),
               Expanded(
                 child: CustomTextFormField(
                   controller: confirmPasswordController,
-                  hintText: 'Confirm password',
-                  labelText: 'Password',
-                  validator: (value) => Validators.validateConfirmPassword(value, passwordController.text),
+                  hintText: '${AppLocalizations.of(context)!.hintConfirmPassword}',
+                  labelText: '${AppLocalizations.of(context)!.labelConfirmPassword}',
+                  validator: (value) => Validators.validateConfirmPassword(value, passwordController.text, context),
                 ),
               ),
             ],
@@ -90,9 +91,9 @@ class SignUpForm extends StatelessWidget {
           const SizedBox(height: 20),
           CustomTextFormField(
             controller: phoneNumberController,
-            hintText: 'Enter phone number',
-            labelText: 'Phone Number',
-            validator: (value) => Validators.validatePhoneNumber(value),
+            hintText: '${AppLocalizations.of(context)!.hintPhoneNumber}',
+            labelText: '${AppLocalizations.of(context)!.labelPhoneNumber}',
+            validator: (value) => Validators.validatePhoneNumber(value,context),
           ),
         ],
       ),

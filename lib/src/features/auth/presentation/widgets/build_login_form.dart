@@ -11,6 +11,8 @@ import 'package:online_exam_app/src/features/auth/presentation/widgets/custom_te
 import 'package:online_exam_app/src/features/auth/presentation/widgets/auth_footer.dart';
 import '../cubit/auth/auth_view_model.dart';
 import '../widgets/forget_password_text.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class BuildLoginForm extends StatelessWidget {
   const BuildLoginForm({super.key});
@@ -28,7 +30,7 @@ class BuildLoginForm extends StatelessWidget {
           switch (state) {
             case LoginLoading():
               {
-                CustomToast.showLoadingToast(message: "Loading...");
+                CustomToast.showLoadingToast(message: "${AppLocalizations.of(context)!.loading}");
 
                 break;
               }
@@ -39,7 +41,7 @@ class BuildLoginForm extends StatelessWidget {
               }
             case LoginSuccess():
               {
-                CustomToast.showSuccessToast(message: "Success");
+                CustomToast.showSuccessToast(message: "${AppLocalizations.of(context)!.success}");
                 // Navigator.pushReplacementNamed(context, RoutesName.loginView);
                 break;
               }
@@ -57,16 +59,16 @@ class BuildLoginForm extends StatelessWidget {
                 const SizedBox(height: 30),
                 CustomTextFormField(
                   controller: emailController,
-                  hintText: 'Enter your email',
-                  labelText: 'Email',
-                  validator: (value) => Validators.validateEmail(value),
+                  hintText: '${AppLocalizations.of(context)!.hintEmail}',
+                  labelText: '${AppLocalizations.of(context)!.labelEmail}',
+                  validator: (value) => Validators.validateEmail(value, context),
                 ),
                 const SizedBox(height: 30),
                 CustomTextFormField(
                   controller: passwordController,
-                  hintText: 'Enter Password',
-                  labelText: 'Password',
-                  validator: (value) => Validators.validatePassword(value),
+                  hintText: '${AppLocalizations.of(context)!.hintPassword}',
+                  labelText: '${AppLocalizations.of(context)!.labelPassword}',
+                  validator: (value) => Validators.validatePassword(value, context),
                 ),
                 const SizedBox(height: 16),
                 forgetPasswordText(context),
@@ -77,14 +79,14 @@ class BuildLoginForm extends StatelessWidget {
                         authViewModel.login(SignInEntity(
                           email: emailController.text.trim(),
                           password: passwordController.text.trim(),
-                        ));
+                        ), context);
                       }
                     },
                     child: CustomButton(
-                      txt: "Sign In",
+                      txt: "${AppLocalizations.of(context)!.login}",
                     )),
                 const SizedBox(height: 13),
-                AuthFooter(question: "Don't have an account?", txt: "Sign Up", route: RoutesName.signUpView,),
+                AuthFooter(question: "${AppLocalizations.of(context)!.dontHaveAnAccount}", txt: "${AppLocalizations.of(context)!.signUp}", route: RoutesName.signUpView,),
               ],
             ),
           );

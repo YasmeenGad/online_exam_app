@@ -11,6 +11,8 @@ import 'package:online_exam_app/src/features/auth/presentation/widgets/custom_te
 import '../../../../core/dependency injection/di.dart';
 import '../../../../core/routes/routes_name.dart';
 import '../widgets/forget_password_description.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class ForgetPasswordView extends StatefulWidget {
   const ForgetPasswordView({super.key});
@@ -38,26 +40,13 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
         create: (context) => authViewModel,
         child: BlocConsumer<AuthViewModel, AuthState>(
           listener: (context, state) {
-            switch (state) {
-              case ForgetPasswordLoading():
-                {
-                  CustomToast.showLoadingToast(message: "Loading...");
-
-                  break;
-                }
-              case ForgetPasswordError():
-                {
-                  CustomToast.showErrorToast(
-                      message: state.exception.toString());
-                  break;
-                }
-              case ForgetPasswordSuccess():
-                {
-                  CustomToast.showSuccessToast(message: "Success");
-                   Navigator.pushReplacementNamed(context, RoutesName.emailVerificationView);
-                  break;
-                }
-              default:
+            if (state is ForgetPasswordLoading) {
+              CustomToast.showLoadingToast(message: "${AppLocalizations.of(context)!.loading}");
+            } else if (state is ForgetPasswordError) {
+              CustomToast.showErrorToast(message: state.exception.toString());
+            } else if (state is ForgetPasswordSuccess) {
+              CustomToast.showSuccessToast(message: "${AppLocalizations.of(context)!.success}");
+              Navigator.pushReplacementNamed(context, RoutesName.emailVerificationView);
             }
           },
           buildWhen: (previous, current) => current is AuthInitialState,
@@ -67,34 +56,38 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
               child: Column(
                 children: [
                   CustomAppBar(
-                    appBarTxt: 'Password',
+                    appBarTxt: '${AppLocalizations.of(context)!.labelPassword}',
                   ),
                   Form(
                     key: forgetFormKey,
                     child: Column(
-                        children: [
-                      forgetPasswordDescription(
-                        context,
-                        'Forget password?',
-                        'Please enter your email associated to your account',
-                      ),
-                      SizedBox(height: 30),
-                      CustomTextFormField(
-                        controller: emailController,
-                        hintText: 'Enter your email',
-                        labelText: 'Email',
-                        validator: (value) => Validators.validateEmail(value),
-                      ),
-                      const SizedBox(height: 50),
-                      GestureDetector(
+                      children: [
+                        forgetPasswordDescription(
+                          context,
+                          '${AppLocalizations.of(context)!.forgetPassword}',
+                          '${AppLocalizations.of(context)!.pleaseEnterYourEmailAssociatedToYourAccount}',
+                        ),
+                        SizedBox(height: 30),
+                        CustomTextFormField(
+                          controller: emailController,
+                          hintText: '${AppLocalizations.of(context)!.hintEmail}',
+                          labelText: '${AppLocalizations.of(context)!.labelEmail}',
+                          validator: (value) => Validators.validateEmail(value, context),
+                        ),
+                        const SizedBox(height: 50),
+                        GestureDetector(
                           onTap: () {
                             if (forgetFormKey.currentState!.validate()) {
-                              authViewModel.forgetPassword(ForgetPasswordEntity(
-                                  email: emailController.text.trim()));
+                              authViewModel.forgetPassword(
+                                ForgetPasswordEntity(email: emailController.text.trim()),
+                                context
+                              );
                             }
                           },
-                          child: CustomButton(txt: 'Continue')),
-                    ]),
+                          child: CustomButton(txt: '${AppLocalizations.of(context)!.labelContinue}'),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),

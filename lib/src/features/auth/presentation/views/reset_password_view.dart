@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/global/custom_appbar.dart';
 import '../widgets/build_reset_password_form.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class ResetPasswordView extends StatelessWidget {
   const ResetPasswordView({super.key});
@@ -15,7 +17,7 @@ class ResetPasswordView extends StatelessWidget {
         child: CustomScrollView(
           slivers: [
             SliverToBoxAdapter(
-              child: CustomAppBar(appBarTxt: 'Password'),
+              child: CustomAppBar(appBarTxt: '${AppLocalizations.of(context)!.labelPassword}'),
             ),
             SliverToBoxAdapter(
               child:BuildResetPasswordForm(),

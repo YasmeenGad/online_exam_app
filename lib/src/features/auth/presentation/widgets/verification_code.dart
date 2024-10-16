@@ -38,6 +38,7 @@ class VerificationCode extends StatelessWidget {
                           .join();
                       authViewModel.verifyEmail(
                         EmailVerificationEntity(resetCode: code),
+                        context
                       );
                     }
                   }

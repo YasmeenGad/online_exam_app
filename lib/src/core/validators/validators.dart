@@ -1,68 +1,71 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class Validators {
-  static String? validateUserName(String? value) {
+  static String? validateUserName(String? value, BuildContext context) {
     if (value == null || value.isEmpty) {
-      return 'This user name is not valid';
+      return '${AppLocalizations.of(context)!.invalidUserName}';
     }
     if (value.length < 3) {
-      return 'User name must be at least 3 characters long';
+      return '${AppLocalizations.of(context)!.userNameLength}';
     }
     return null;
   }
 
-  static String? validateFirstName(String? value) {
+  static String? validateFirstName(String? value, BuildContext context) {
     if (value == null || value.isEmpty) {
-      return 'Please enter first name';
+      return '${AppLocalizations.of(context)!.enterFirstName}';
     }
     return null;
   }
 
-  static String? validateLastName(String? value) {
+  static String? validateLastName(String? value, BuildContext context) {
     if (value == null || value.isEmpty) {
-      return 'Please enter last name';
+      return '${AppLocalizations.of(context)!.enterLastName}';
     }
     return null;
   }
 
-  static String? validateEmail(String? value) {
+  static String? validateEmail(String? value, BuildContext context) {
     if (value == null || value.isEmpty) {
-      return 'Please enter your email';
+      return '${AppLocalizations.of(context)!.enterEmail}';
     }
     final emailRegExp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
     if (!emailRegExp.hasMatch(value)) {
-      return 'This email is not valid';
+      return '${AppLocalizations.of(context)!.invalidEmail}';
     }
     return null;
   }
 
-  static String? validatePassword(String? value) {
+  static String? validatePassword(String? value, BuildContext context) {
     if (value == null || value.isEmpty) {
-      return 'Please enter password';
+      return '${AppLocalizations.of(context)!.enterPassword}';
     }
     final passwordRegExp = RegExp(
         r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$');
     if (!passwordRegExp.hasMatch(value)) {
-      return 'Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.';
+      return '${AppLocalizations.of(context)!.passwordComplexity}';
     }
     return null;
   }
 
-  static String? validateConfirmPassword(String? value, String? password) {
+  static String? validateConfirmPassword(String? value, String? password, BuildContext context) {
     if (value == null || value.isEmpty) {
-      return 'Please confirm your password';
+      return '${AppLocalizations.of(context)!.confirmPassword}';
     }
     if (value != password) {
-      return 'Passwords do not match';
+      return '${AppLocalizations.of(context)!.passwordMismatch}';
     }
     return null;
   }
 
-  static String? validatePhoneNumber(String? value) {
+  static String? validatePhoneNumber(String? value, BuildContext context) {
     if (value == null || value.isEmpty) {
-      return 'Please enter your phone number';
+      return '${AppLocalizations.of(context)!.enterPhoneNumber}';
     }
     final phoneRegExp = RegExp(r'^\d{10,15}$');
     if (!phoneRegExp.hasMatch(value)) {
-      return 'Please enter a valid phone number';
+      return '${AppLocalizations.of(context)!.invalidPhoneNumber}';
     }
     return null;
   }

@@ -21,6 +21,8 @@ import '../../features/auth/domain/contracts/auth_repo.dart' as _i670;
 import '../../features/auth/domain/usecases/auth_usecase.dart' as _i436;
 import '../../features/auth/presentation/cubit/auth/auth_view_model.dart'
     as _i616;
+import '../provider/language_provider.dart' as _i538;
+import '../provider/language_service.dart' as _i734;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -34,6 +36,9 @@ extension GetItInjectableX on _i174.GetIt {
       environmentFilter,
     );
     gh.singleton<_i1023.ApiManager>(() => _i1023.ApiManager());
+    gh.lazySingleton<_i734.LanguageService>(() => _i734.LanguageService());
+    gh.factory<_i538.LanguageProvider>(
+        () => _i538.LanguageProvider(gh<_i734.LanguageService>()));
     gh.factory<_i449.AuthDataSource>(
         () => _i239.AuthDataSourceImpl(gh<_i1023.ApiManager>()));
     gh.factory<_i670.AuthRepo>(
