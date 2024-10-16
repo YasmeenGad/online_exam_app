@@ -1,15 +1,28 @@
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
+import 'package:online_exam_app/src/core/models/language.dart';
+import 'language_service.dart';
 
-class LanguageService {
-  static const _languageKey = 'selected_language';
+@Injectable()
+class LanguageProvider with ChangeNotifier {
+  Language _selectedLanguage = Language(code: 'en');
+  final LanguageService _languageService;
 
-  Future<void> saveSelectedLanguage(String languageCode) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(_languageKey, languageCode);
+  LanguageProvider(this._languageService);
+
+  Language get selectedLanguage => _selectedLanguage;
+
+  Future<void> loadSelectedLanguage() async {
+    final languageCode = await _languageService.getSelectedLanguage();
+    if (languageCode != null) {
+      _selectedLanguage = Language(code: languageCode);
+      notifyListeners();
+    }
   }
 
-  Future<String?> getSelectedLanguage() async {
-    final prefs = await SharedPreferences.getInstance();
-    return prefs.getString(_languageKey);
+  Future<void> changeLanguage(Language language) async {
+    _selectedLanguage = language;
+    await _languageService.saveSelectedLanguage(language.code);
+    notifyListeners();
   }
 }
