@@ -55,5 +55,8 @@
     "enterNewPassword": "Geben Sie Ihr neues Passwort ein",
     "newPassword": "Neues Passwort",
     "languages" : "Sprachen",
-    "selectLanguage": "Sprache auswählen"
+    "selectLanguage": "Sprache auswählen",
+    "home": "Startseite",
+    "profile": "Profil",
+    "result": "Ergebnis"
   }

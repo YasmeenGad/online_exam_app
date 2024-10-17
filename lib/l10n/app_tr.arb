@@ -55,5 +55,11 @@
     "enterNewPassword": "Yeni şifrenizi girin",
     "newPassword": "Yeni şifre",
     "languages": "Diller",
-    "selectLanguage": "Dil seçin"}
+    "selectLanguage": "Dil seçin",
+    "home": "Ana Sayfa",
+    "profile": "Profil",
+    "result": "Sonuç"
+
+
+}
   

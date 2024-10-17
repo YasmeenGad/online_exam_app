@@ -55,5 +55,8 @@
   "enterNewPassword": "أدخل كلمة المرور الجديدة",
   "newPassword": "كلمة المرور الجديدة",
   "languages" : "اللغات",
-  "selectLanguage": "اختر اللغة"
+  "selectLanguage": "اختر اللغة",
+  "home": "الرئيسية",
+  "result": "النتائج",
+  "profile": "الملف الشخصي"
 }
