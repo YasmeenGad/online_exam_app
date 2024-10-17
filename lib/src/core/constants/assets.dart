@@ -21,5 +21,15 @@ class Assets {
   /// Assets for imagesUS
   /// assets/images/US.png
   static const String imagesUS = "assets/images/US.png";
+
+  /// Assets for imagesHome
+  /// assets/images/home.svg
+  static const String imageHome = "assets/images/home.svg";
+  /// Assets for imagesProfile
+  /// assets/images/profile.svg
+  static const String imageProfile = "assets/images/profile.svg";
+  /// Assets for imagesResult
+  /// assets/images/result.svg
+  static const String imageResult = "assets/images/result.svg";
 }
 
