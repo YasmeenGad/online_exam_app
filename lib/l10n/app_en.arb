@@ -55,6 +55,9 @@
     "enterNewPassword": "Enter new password",
     "newPassword": "New Password",
     "languages" : "Languages",
-    "selectLanguage": "Select Language"
+    "selectLanguage": "Select Language",
+    "home": "Home",
+    "profile": "Profile",
+    "result": "Result"
     
 }

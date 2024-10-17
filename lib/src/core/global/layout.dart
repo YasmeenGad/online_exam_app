@@ -4,9 +4,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:online_exam_app/src/core/styles/app_colors.dart';
 import 'package:online_exam_app/src/core/styles/app_styles.dart';
 import 'package:online_exam_app/src/features/exam/presentation/views/subjects_view.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../constants/assets.dart';
-
 
 class Layout extends StatefulWidget {
   @override
@@ -18,6 +18,23 @@ class LayoutState extends State<Layout> {
 
   @override
   Widget build(BuildContext context) {
+    List<String> listOfIcons = [
+      Assets.imageHome,
+      Assets.imageResult,
+      Assets.imageProfile,
+    ];
+
+    List<String> listOfTitles = [
+      AppLocalizations.of(context)!.home,
+      AppLocalizations.of(context)!.result,
+      AppLocalizations.of(context)!.profile,
+    ];
+
+    final List<Widget> _pages = [
+      const SubjectsView(),
+      const SubjectsView(),
+      const SubjectsView(),
+    ];
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
@@ -26,10 +43,10 @@ class LayoutState extends State<Layout> {
         height: screenWidth * .170,
         color: AppColors.lightGray,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround, // Distribute the items evenly
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: List.generate(
-            3, // Number of items
-                (index) => Expanded( // Use Expanded to evenly distribute space
+            3,
+            (index) => Expanded(
               child: InkWell(
                 onTap: () {
                   setState(() {
@@ -52,11 +69,10 @@ class LayoutState extends State<Layout> {
                           height: index == _currentIndex ? 34 : 0,
                           width: index == _currentIndex ? 66 : 0,
                           decoration: BoxDecoration(
-                            color: index == _currentIndex
-                                ? AppColors.lightBlue
-                                : Colors.transparent,
-                            borderRadius: BorderRadius.circular(50)
-                          ),
+                              color: index == _currentIndex
+                                  ? AppColors.lightBlue
+                                  : Colors.transparent,
+                              borderRadius: BorderRadius.circular(50)),
                         ),
                         Container(
                           width: 70,
@@ -88,22 +104,4 @@ class LayoutState extends State<Layout> {
       ),
     );
   }
-
-  List<String> listOfIcons = [
-    Assets.imageHome,
-    Assets.imageResult,
-    Assets.imageProfile,
-  ];
-
-  List<String> listOfTitles = [
-    'Home',
-    'Result',
-    'Profile',
-  ];
-
-  final List<Widget> _pages = [
-    const SubjectsView(),
-    const SubjectsView(),
-    const SubjectsView(),
-  ];
 }
