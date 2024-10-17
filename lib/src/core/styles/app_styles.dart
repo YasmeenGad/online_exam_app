@@ -39,6 +39,12 @@ static TextStyle styleMedium16(BuildContext context) {
     letterSpacing: 0.1
   );
 }
+  static TextStyle styleMedium12(BuildContext context) {
+    return GoogleFonts.roboto(
+        fontSize: getResponsiveFontSize(context, fontSize: 12),
+        fontWeight: FontWeight.w500,
+    );
+  }
 
 static TextStyle styleMedium18(BuildContext context) {
   return GoogleFonts.roboto(

@@ -42,7 +42,7 @@ class BuildLoginForm extends StatelessWidget {
             case LoginSuccess():
               {
                 CustomToast.showSuccessToast(message: "${AppLocalizations.of(context)!.success}");
-                // Navigator.pushReplacementNamed(context, RoutesName.loginView);
+                 Navigator.pushReplacementNamed(context, RoutesName.bottomNavigationBar);
                 break;
               }
             default:
