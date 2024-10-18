@@ -1,9 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'error_profile_data_response.g.dart';
+part 'error_profile_data_response_dto.g.dart';
 
 @JsonSerializable()
-class ErrorProfileDataResponse {
+class ErrorProfileDataResponseDto {
   @JsonKey(name: "message")
   final String? message;
   @JsonKey(name: "code")
@@ -11,18 +11,18 @@ class ErrorProfileDataResponse {
   @JsonKey(name: "stack")
   final String? stack;
 
-  ErrorProfileDataResponse ({
+  ErrorProfileDataResponseDto({
     this.message,
     this.code,
     this.stack,
   });
 
-  factory ErrorProfileDataResponse.fromJson(Map<String, dynamic> json) {
-    return _$ErrorProfileDataResponseFromJson(json);
+  factory ErrorProfileDataResponseDto.fromJson(Map<String, dynamic> json) {
+    return _$ErrorProfileDataResponseDtoFromJson(json);
   }
 
   Map<String, dynamic> toJson() {
-    return _$ErrorProfileDataResponseToJson(this);
+    return _$ErrorProfileDataResponseDtoToJson(this);
   }
 }
 

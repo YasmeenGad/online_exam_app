@@ -1,25 +1,25 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'profile_data_response.g.dart';
+part 'profile_data_response_dto.g.dart';
 
 @JsonSerializable()
-class ProfileDataResponse {
+class ProfileDataResponseDto {
   @JsonKey(name: "message")
   final String? message;
   @JsonKey(name: "user")
   final User? user;
 
-  ProfileDataResponse ({
+  ProfileDataResponseDto({
     this.message,
     this.user,
   });
 
-  factory ProfileDataResponse.fromJson(Map<String, dynamic> json) {
-    return _$ProfileDataResponseFromJson(json);
+  factory ProfileDataResponseDto.fromJson(Map<String, dynamic> json) {
+    return _$ProfileDataResponseDtoFromJson(json);
   }
 
   Map<String, dynamic> toJson() {
-    return _$ProfileDataResponseToJson(this);
+    return _$ProfileDataResponseDtoToJson(this);
   }
 }
 
