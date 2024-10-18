@@ -5,6 +5,7 @@ import 'package:online_exam_app/src/core/styles/app_styles.dart';
 class CustomTextFormField extends StatefulWidget {
   const CustomTextFormField(
       {super.key,
+      this.isPassword,
       this.hintText,
       this.labelText,
       this.controller,
@@ -12,6 +13,7 @@ class CustomTextFormField extends StatefulWidget {
   final String? hintText;
   final String? labelText;
   final dynamic controller;
+  final bool? isPassword;
   final String? Function(String?)? validator;
 
   @override
@@ -22,6 +24,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      obscureText: widget.isPassword ?? false,
       controller: widget.controller,
       decoration: InputDecoration(
         floatingLabelBehavior: FloatingLabelBehavior.always,
