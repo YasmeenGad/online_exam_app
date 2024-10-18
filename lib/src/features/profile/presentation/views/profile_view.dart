@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
-class ProfileThree extends StatelessWidget {
-  const ProfileThree({super.key});
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return const Placeholder();
   }
 }
