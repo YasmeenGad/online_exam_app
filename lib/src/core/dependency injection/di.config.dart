@@ -25,6 +25,15 @@ import '../../features/auth/presentation/cubit/auth/auth_view_model.dart'
     as _i616;
 import '../../features/profile/data/api/network_module.dart' as _i442;
 import '../../features/profile/data/api/profile_retrofit_client.dart' as _i915;
+import '../../features/profile/data/datasources/contracts/online_datasource/profile_datasource.dart'
+    as _i907;
+import '../../features/profile/data/datasources/impl/profile_datasource_impl.dart'
+    as _i966;
+import '../../features/profile/data/repositories/profile_repository_impl.dart'
+    as _i334;
+import '../../features/profile/domain/contracts/profile_repository.dart'
+    as _i435;
+import '../../features/profile/domain/usecases/profile_usecase.dart' as _i996;
 import '../provider/language_provider.dart' as _i538;
 import '../provider/language_service.dart' as _i734;
 
@@ -51,12 +60,18 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i239.AuthDataSourceImpl(gh<_i1023.ApiManager>()));
     gh.singleton<_i915.ProfileRetrofitClient>(
         () => _i915.ProfileRetrofitClient(gh<_i361.Dio>()));
+    gh.factory<_i907.OnlineProfileDataSource>(
+        () => _i966.ProfileDataSourceImpl(gh<_i915.ProfileRetrofitClient>()));
+    gh.factory<_i435.ProfileRepository>(
+        () => _i334.ProfileRepositoryImpl(gh<_i907.OnlineProfileDataSource>()));
     gh.factory<_i670.AuthRepo>(
         () => _i662.AuthRepositoryImpl(gh<_i449.AuthDataSource>()));
     gh.factory<_i436.AuthUsecase>(
         () => _i436.AuthUsecase(authRepo: gh<_i670.AuthRepo>()));
     gh.factory<_i616.AuthViewModel>(
         () => _i616.AuthViewModel(gh<_i436.AuthUsecase>()));
+    gh.factory<_i996.ProfileUseCase>(
+        () => _i996.ProfileUseCase(gh<_i435.ProfileRepository>()));
     return this;
   }
 }

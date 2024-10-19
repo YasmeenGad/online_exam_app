@@ -1,18 +1,14 @@
-import 'package:json_annotation/json_annotation.dart';
-
-@JsonSerializable()
-class ProfileDataResponseDto {
+class ProfileDataResponse {
   final String? message;
-  final User? user;
+  final UserEntity? user;
 
-  ProfileDataResponseDto({
+  ProfileDataResponse({
     this.message,
     this.user,
   });
 }
 
-@JsonSerializable()
-class User {
+class UserEntity {
   final String? Id;
   final String? username;
   final String? firstName;
@@ -23,7 +19,7 @@ class User {
   final bool? isVerified;
   final String? createdAt;
 
-  User({
+  UserEntity({
     this.Id,
     this.username,
     this.firstName,

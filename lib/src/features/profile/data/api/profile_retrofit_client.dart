@@ -10,7 +10,7 @@ part 'profile_retrofit_client.g.dart';
 abstract class ProfileRetrofitClient{
 
   @factoryMethod
-  factory ProfileRetrofitClient(Dio dio) => _$ProfileRetrofitClient;
+  factory ProfileRetrofitClient(Dio dio) = _ProfileRetrofitClient;
 
   @GET(AppApis.profileData)
   Future<ProfileDataResponseDto> getProfileData(@Header("token") String token);

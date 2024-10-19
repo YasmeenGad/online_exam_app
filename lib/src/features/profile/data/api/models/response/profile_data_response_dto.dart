@@ -1,5 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../../../domain/entities/response/profile_data_response.dart';
+
 part 'profile_data_response_dto.g.dart';
 
 @JsonSerializable()
@@ -20,6 +22,13 @@ class ProfileDataResponseDto {
 
   Map<String, dynamic> toJson() {
     return _$ProfileDataResponseDtoToJson(this);
+  }
+
+  ProfileDataResponse toDomain() {
+    return ProfileDataResponse(
+      message: message,
+      user: user?.toDomain(),
+    );
   }
 }
 
@@ -62,6 +71,20 @@ class User {
 
   Map<String, dynamic> toJson() {
     return _$UserToJson(this);
+  }
+
+  UserEntity toDomain() {
+    return UserEntity(
+      Id: Id,
+      username: username,
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      phone: phone,
+      role: role,
+      isVerified: isVerified,
+      createdAt: createdAt,
+    );
   }
 }
 
