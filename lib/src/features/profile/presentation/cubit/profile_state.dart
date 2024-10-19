@@ -7,9 +7,9 @@ class ProfileInitial extends ProfileState {}
 class ProfileDataLoading extends ProfileState {}
 
 class ProfileDataSuccess extends ProfileState {
-  final ProfileDataResponse _profileDataResponse;
+  final ProfileDataResponse profileDataResponse;
 
-  ProfileDataSuccess(this._profileDataResponse);
+  ProfileDataSuccess(this.profileDataResponse);
 }
 
 class ProfileDataError extends ProfileState {
