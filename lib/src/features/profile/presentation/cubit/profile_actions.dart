@@ -4,8 +4,7 @@ import 'package:online_exam_app/src/features/profile/domain/entities/response/pr
 sealed class ProfileActions {}
 
 class GetProfileData extends ProfileActions {
-  final String token;
   BuildContext context;
 
-  GetProfileData({required this.token, required this.context});
+  GetProfileData({required this.context});
 }

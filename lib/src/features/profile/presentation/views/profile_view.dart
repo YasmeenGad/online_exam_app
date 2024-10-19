@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:online_exam_app/src/core/global/custom_appbar.dart';
-import 'package:online_exam_app/src/features/auth/presentation/widgets/signup_form.dart';
 import 'package:online_exam_app/src/features/profile/presentation/cubit/profile_actions.dart';
 import 'package:online_exam_app/src/features/profile/presentation/cubit/profile_state.dart';
 import 'package:online_exam_app/src/features/profile/presentation/cubit/profile_view_model.dart';
@@ -26,8 +25,6 @@ class _ProfileViewState extends State<ProfileView> {
     super.initState();
     profileViewModel = getIt.get<ProfileViewModel>();
     profileViewModel.doAction(GetProfileData(
-        token:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MTI5ZmNmM2MwMTliMzMyOTQ3MTM1ZSIsInJvbGUiOiJ1c2VyIiwidXNlciI6eyJ1c2VybmFtZSI6IldhbGFhIiwiZmlyc3ROYW1lIjoiV2FsYWEiLCJsYXN0TmFtZSI6IkFsaSIsImVtYWlsIjoid2FsYUBlbGV2YXRlLmNvbSIsInBob25lIjoiMDEwOTQxNTU3MTEiLCJyb2xlIjoidXNlciIsImlzVmVyaWZpZWQiOmZhbHNlLCJfaWQiOiI2NzEyOWZjZjNjMDE5YjMzMjk0NzEzNWUiLCJjcmVhdGVkQXQiOiIyMDI0LTEwLTE4VDE3OjUwOjA3Ljc3MVoifSwiaWF0IjoxNzI5MjczODA3fQ.45-qgVR4HLpD4bBQlcjvQVFPMDLfv2UGWg8tX9OKyuo",
         context: context));
   }
 
