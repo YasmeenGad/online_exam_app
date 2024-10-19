@@ -17,7 +17,7 @@ import '../../../domain/entities/email_verification_entity.dart';
 import '../../../domain/entities/reset_password_entity.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-@Injectable()
+@injectable
 class AuthViewModel extends Cubit<AuthState> {
   AuthUsecase authUsecase;
 
