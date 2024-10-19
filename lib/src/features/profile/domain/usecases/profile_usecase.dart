@@ -1,4 +1,5 @@
 import 'package:injectable/injectable.dart';
+import 'package:online_exam_app/src/features/profile/domain/core/profile_%20result.dart';
 import 'package:online_exam_app/src/features/profile/domain/entities/response/profile_data_response.dart';
 
 import '../contracts/profile_repository.dart';
@@ -10,7 +11,8 @@ class ProfileUseCase {
   @factoryMethod
   ProfileUseCase(this._profileRepository);
 
-  Future<ProfileDataResponse> getProfileData(String token) async {
+  Future<ProfileResult<ProfileDataResponse>> getProfileData(
+      String token) async {
     return await _profileRepository.getProfileData(token);
   }
 }
