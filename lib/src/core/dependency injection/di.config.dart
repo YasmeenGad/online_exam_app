@@ -14,8 +14,12 @@ import 'package:injectable/injectable.dart' as _i526;
 import '../../features/auth/data/api/api_manager.dart' as _i1023;
 import '../../features/auth/data/datasources/contracts/auth_datasource.dart'
     as _i449;
+import '../../features/auth/data/datasources/contracts/offline_auth_datasource.dart'
+    as _i331;
 import '../../features/auth/data/datasources/impl/auth_datasource_impl.dart'
     as _i239;
+import '../../features/auth/data/datasources/impl/offline_auth_datasource_impl.dart'
+    as _i110;
 import '../../features/auth/data/repositories/auth_repo_impl.dart' as _i662;
 import '../../features/auth/domain/contracts/auth_repo.dart' as _i670;
 import '../../features/auth/domain/usecases/auth_usecase.dart' as _i436;
@@ -41,12 +45,16 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i538.LanguageProvider(gh<_i734.LanguageService>()));
     gh.factory<_i449.AuthDataSource>(
         () => _i239.AuthDataSourceImpl(gh<_i1023.ApiManager>()));
+    gh.factory<_i331.OfflineAuthDataSource>(
+        () => _i110.OfflineAuthDataSourceImpl());
     gh.factory<_i670.AuthRepo>(
         () => _i662.AuthRepositoryImpl(gh<_i449.AuthDataSource>()));
     gh.factory<_i436.AuthUsecase>(
         () => _i436.AuthUsecase(authRepo: gh<_i670.AuthRepo>()));
-    gh.factory<_i616.AuthViewModel>(
-        () => _i616.AuthViewModel(gh<_i436.AuthUsecase>()));
+    gh.factory<_i616.AuthViewModel>(() => _i616.AuthViewModel(
+          gh<_i436.AuthUsecase>(),
+          gh<_i331.OfflineAuthDataSource>(),
+        ));
     return this;
   }
 }
