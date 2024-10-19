@@ -23,10 +23,6 @@ class ServerError extends AppException {
       : super(message: message, details: details);
 }
 
-class ParsingError extends AppException {
-  ParsingError({String? message}) : super(message: message);
-}
-
 class UnknownErrorException extends AppException {
   UnknownErrorException({String? message}) : super(message: message);
 }
