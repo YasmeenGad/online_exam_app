@@ -51,6 +51,7 @@ dependencies:
   shared_preferences: ^2.3.2
   flutter_localization: ^0.2.2
   intl: ^0.19.0
+  pretty_dio_logger: ^1.4.0
   hive: ^2.2.3
   hive_flutter:
 
@@ -76,7 +77,6 @@ dev_dependencies:
   json_serializable: ^6.8.0
   flutter_lints: ^3.0.0
   injectable_generator:
-  hive_generator:
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

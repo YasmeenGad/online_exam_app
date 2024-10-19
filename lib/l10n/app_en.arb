@@ -35,7 +35,7 @@
     "resetPasswordError": "An error occurred while resetting the password. Please try again.",
     "emailVerificationError": "An error occurred while verifying the email. Please try again.",
     "requestTimeout": "Request Timeout.",
-    "unauthorizedException": "Unauthorized Access",
+    "unauthorizedException": "Incorrect email or password",
     "noInternetException": "No Internet Connection",
     "serverErrorException": "Server Error",
     "conflictException": "Email or Username already exists",

@@ -35,7 +35,7 @@
     "resetPasswordError": "Beim Zurücksetzen des Passworts ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
     "emailVerificationError": "Beim Überprüfen der E-Mail ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
     "requestTimeout": "Anfragezeitüberschreitung.",
-    "unauthorizedException": "Nicht autorisierter Zugriff",
+    "unauthorizedException": "falsche E-Mail oder falsches Passwort",
     "noInternetException": "Keine Internetverbindung",
     "serverErrorException": "Serverfehler",
     "conflictException": "E-Mail oder Benutzername existiert bereits",
