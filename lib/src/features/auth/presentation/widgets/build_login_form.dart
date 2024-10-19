@@ -75,6 +75,7 @@ class _BuildLoginFormState extends State<BuildLoginForm> {
                 ),
                 const SizedBox(height: 30),
                 CustomTextFormField(
+                  isPassword: true,
                   controller: passwordController,
                   hintText: '${AppLocalizations.of(context)!.hintPassword}',
                   labelText: '${AppLocalizations.of(context)!.labelPassword}',

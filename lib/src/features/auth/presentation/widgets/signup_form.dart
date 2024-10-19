@@ -71,6 +71,7 @@ class SignUpForm extends StatelessWidget {
             children: [
               Expanded(
                 child: CustomTextFormField(
+                  isPassword: true,
                   controller: passwordController,
                   hintText: '${AppLocalizations.of(context)!.hintPassword}',
                   labelText: '${AppLocalizations.of(context)!.labelPassword}',
@@ -80,6 +81,7 @@ class SignUpForm extends StatelessWidget {
               const SizedBox(width: 20),
               Expanded(
                 child: CustomTextFormField(
+                  isPassword: true,
                   controller: confirmPasswordController,
                   hintText: '${AppLocalizations.of(context)!.hintConfirmPassword}',
                   labelText: '${AppLocalizations.of(context)!.labelConfirmPassword}',
