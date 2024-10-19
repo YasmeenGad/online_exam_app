@@ -14,15 +14,26 @@ import '../widgets/forget_password_text.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
-class BuildLoginForm extends StatelessWidget {
+class BuildLoginForm extends StatefulWidget {
   const BuildLoginForm({super.key});
 
   @override
+  State<BuildLoginForm> createState() => _BuildLoginFormState();
+}
+
+class _BuildLoginFormState extends State<BuildLoginForm> {
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  late final AuthViewModel authViewModel;
+
+  @override
+  void initState() {
+    super.initState();
+    authViewModel = getIt.get<AuthViewModel>();
+  }
   Widget build(BuildContext context) {
-    GlobalKey<FormState> formKey = GlobalKey<FormState>();
-    AuthViewModel authViewModel = getIt.get<AuthViewModel>();
-    TextEditingController emailController = TextEditingController();
-    TextEditingController passwordController = TextEditingController();
+
     return BlocProvider<AuthViewModel>(
       create: (context) => authViewModel,
       child: BlocConsumer<AuthViewModel, AuthState>(
@@ -42,7 +53,6 @@ class BuildLoginForm extends StatelessWidget {
             case LoginSuccess():
               {
                 CustomToast.showSuccessToast(message: "${AppLocalizations.of(context)!.success}");
-                 Navigator.pushReplacementNamed(context, RoutesName.bottomNavigationBar);
                 break;
               }
             default:

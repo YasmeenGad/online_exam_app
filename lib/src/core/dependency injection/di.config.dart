@@ -16,8 +16,12 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart' as _i528;
 import '../../features/auth/data/api/api_manager.dart' as _i1023;
 import '../../features/auth/data/datasources/contracts/auth_datasource.dart'
     as _i449;
+import '../../features/auth/data/datasources/contracts/offline_auth_datasource.dart'
+    as _i331;
 import '../../features/auth/data/datasources/impl/auth_datasource_impl.dart'
     as _i239;
+import '../../features/auth/data/datasources/impl/offline_auth_datasource_impl.dart'
+    as _i110;
 import '../../features/auth/data/repositories/auth_repo_impl.dart' as _i662;
 import '../../features/auth/domain/contracts/auth_repo.dart' as _i670;
 import '../../features/auth/domain/usecases/auth_usecase.dart' as _i436;
@@ -60,6 +64,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i239.AuthDataSourceImpl(gh<_i1023.ApiManager>()));
     gh.singleton<_i915.ProfileRetrofitClient>(
         () => _i915.ProfileRetrofitClient(gh<_i361.Dio>()));
+    gh.factory<_i331.OfflineAuthDataSource>(
+        () => _i110.OfflineAuthDataSourceImpl());
     gh.factory<_i907.OnlineProfileDataSource>(
         () => _i966.ProfileDataSourceImpl(gh<_i915.ProfileRetrofitClient>()));
     gh.factory<_i435.ProfileRepository>(
@@ -68,10 +74,12 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i662.AuthRepositoryImpl(gh<_i449.AuthDataSource>()));
     gh.factory<_i436.AuthUsecase>(
         () => _i436.AuthUsecase(authRepo: gh<_i670.AuthRepo>()));
-    gh.factory<_i616.AuthViewModel>(
-        () => _i616.AuthViewModel(gh<_i436.AuthUsecase>()));
     gh.factory<_i996.ProfileUseCase>(
         () => _i996.ProfileUseCase(gh<_i435.ProfileRepository>()));
+    gh.factory<_i616.AuthViewModel>(() => _i616.AuthViewModel(
+          gh<_i436.AuthUsecase>(),
+          gh<_i331.OfflineAuthDataSource>(),
+        ));
     return this;
   }
 }
