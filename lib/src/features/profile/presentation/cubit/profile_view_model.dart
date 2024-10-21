@@ -77,6 +77,7 @@ class ProfileViewModel extends Cubit<ProfileState> {
       case Success<ChangePasswordResponseEntity>():
         {
           emit(ChangePasswordSuccess(result.data!));
+          await offlineAuthDataSource.saveToken(result.data!.token);
           break;
         }
       case Failure<ChangePasswordResponseEntity>():
@@ -91,6 +92,7 @@ class ProfileViewModel extends Cubit<ProfileState> {
             emit(ChangePasswordError(exception: message));
           } else if (exception is UnauthorizedException) {
             message = exception.message ?? "";
+            emit(ChangePasswordError(exception: message));
           } else {
             message = "${AppLocalizations.of(context)?.unknownErrorException}";
             emit(ChangePasswordError(exception: message));

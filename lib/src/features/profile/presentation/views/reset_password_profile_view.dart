@@ -28,12 +28,6 @@ class ResetPasswordProfileView extends StatelessWidget {
                     height: 34,
                   ),
                   const SectionResetPasswordForm(),
-                  const SizedBox(
-                    height: 55,
-                  ),
-                  CustomButton(
-                    txt: '${AppLocalizations.of(context)!.update}',
-                  ),
                 ],
               ),
             )

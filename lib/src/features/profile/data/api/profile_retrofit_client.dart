@@ -17,8 +17,9 @@ abstract class ProfileRetrofitClient{
   @GET(AppApis.profileData)
   Future<ProfileDataResponseDto> getProfileData(@Header("token") String token);
 
-  @POST(AppApis.changePassword)
+  @PATCH(AppApis.changePassword)
   Future<ChangePasswordResponseDto> changePassword(
       @Header("token") String token,
       @Body() ChangePasswordRequestDto changePasswordRequestDto);
 }
+

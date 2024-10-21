@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:online_exam_app/src/features/profile/presentation/cubit/profile_actions.dart';
 import 'package:online_exam_app/src/features/profile/presentation/widgets/reset_password_form.dart';
 
 import '../../../../core/dependency injection/di.dart';
+import '../../../../core/global/custom_button.dart';
+import '../../../../core/global/custom_toast.dart';
+import '../../domain/entities/request/change_password_request_entity.dart';
 import '../cubit/profile_state.dart';
 import '../cubit/profile_view_model.dart';
 
@@ -28,7 +33,6 @@ class _SectionResetPasswordFormState extends State<SectionResetPasswordForm> {
     passwordController = TextEditingController();
     rePasswordController = TextEditingController();
     profileViewModel = getIt.get<ProfileViewModel>();
-    // profileViewModel.doAction(GetProfileData(context: context));
   }
 
   @override
@@ -45,13 +49,57 @@ class _SectionResetPasswordFormState extends State<SectionResetPasswordForm> {
         create: (context) => profileViewModel,
         child: BlocConsumer<ProfileViewModel, ProfileState>(
           builder: (context, state) {
-            return ResetPasswordForm(
-                oldPasswordController: oldPasswordController,
-                passwordController: passwordController,
-                rePasswordController: rePasswordController,
-                formKey: formKey);
+            return Column(
+              children: [
+                ResetPasswordForm(
+                    oldPasswordController: oldPasswordController,
+                    passwordController: passwordController,
+                    rePasswordController: rePasswordController,
+                    formKey: formKey),
+                const SizedBox(
+                  height: 55,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    if (formKey.currentState!.validate()) {
+                      profileViewModel.doAction(ChangePassword(
+                          context: context,
+                          request: ChangePasswordRequestEntity(
+                              oldPassword: oldPasswordController.text,
+                              password: passwordController.text,
+                              rePassword: rePasswordController.text)));
+                    }
+                  },
+                  child: CustomButton(
+                    txt: '${AppLocalizations.of(context)!.update}',
+                  ),
+                ),
+              ],
+            );
           },
-          listener: (context, state) {},
+          listener: (context, state) {
+            switch (state) {
+              case ChangePasswordLoading():
+                {
+                  CustomToast.showLoadingToast(
+                      message: "${AppLocalizations.of(context)!.loading}");
+                  break;
+                }
+              case ChangePasswordSuccess():
+                {
+                  CustomToast.showSuccessToast(
+                      message: "${AppLocalizations.of(context)!.success}");
+                  break;
+                }
+              case ChangePasswordError():
+                {
+                  CustomToast.showErrorToast(
+                      message: state.exception.toString());
+                  break;
+                }
+              default:
+            }
+          },
         ));
   }
 }

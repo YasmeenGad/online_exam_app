@@ -32,7 +32,7 @@ class ResetPasswordForm extends StatelessWidget {
             controller: oldPasswordController,
             hintText: '${AppLocalizations.of(context)!.currentPassword}',
             labelText: '${AppLocalizations.of(context)!.currentPassword}',
-            validator: (value) => Validators.validateUserName(value, context),
+            validator: (value) => Validators.validatePassword(value, context),
           ),
           const SizedBox(height: 20),
           CustomTextFormField(
@@ -40,7 +40,7 @@ class ResetPasswordForm extends StatelessWidget {
             controller: passwordController,
             hintText: '${AppLocalizations.of(context)!.newPassword}',
             labelText: '${AppLocalizations.of(context)!.newPassword}',
-            validator: (value) => Validators.validateFirstName(value, context),
+            validator: (value) => Validators.validatePassword(value, context),
           ),
           const SizedBox(height: 20),
           CustomTextFormField(
@@ -48,7 +48,8 @@ class ResetPasswordForm extends StatelessWidget {
             controller: rePasswordController,
             hintText: '${AppLocalizations.of(context)!.confirmPassword}',
             labelText: '${AppLocalizations.of(context)!.confirmPassword}',
-            validator: (value) => Validators.validateLastName(value, context),
+            validator: (value) => Validators.validateConfirmPassword(
+                value, passwordController.text, context),
           ),
         ],
       ),
