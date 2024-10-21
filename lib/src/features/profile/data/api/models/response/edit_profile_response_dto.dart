@@ -1,5 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../../../domain/entities/response/edit_profile_response_entity.dart';
+
 part 'edit_profile_response_dto.g.dart';
 
 @JsonSerializable()
@@ -20,6 +22,13 @@ class EditProfileResponseDto {
 
   Map<String, dynamic> toJson() {
     return _$EditProfileResponseDtoToJson(this);
+  }
+
+  EditProfileResponseEntity toEntity() {
+    return EditProfileResponseEntity(
+      message: message,
+      user: user?.toEntity(),
+    );
   }
 }
 
@@ -68,5 +77,19 @@ class User {
 
   Map<String, dynamic> toJson() {
     return _$UserToJson(this);
+  }
+
+  UserEntity toEntity() {
+    return UserEntity(
+      Id: Id,
+      username: username,
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      phone: phone,
+      role: role,
+      isVerified: isVerified,
+      createdAt: createdAt,
+    );
   }
 }

@@ -5,6 +5,7 @@ import 'package:online_exam_app/src/features/profile/domain/entities/response/pr
 import '../contracts/profile_repository.dart';
 import '../entities/request/change_password_request_entity.dart';
 import '../entities/response/change_password_response_entity.dart';
+import '../entities/response/edit_profile_response_entity.dart';
 
 @injectable
 class ProfileUseCase {
@@ -21,5 +22,10 @@ class ProfileUseCase {
   Future<ProfileResult<ChangePasswordResponseEntity>> changePassword(
       String token, ChangePasswordRequestEntity request) async {
     return await _profileRepository.changePassword(token, request);
+  }
+
+  Future<ProfileResult<EditProfileResponseEntity>> editProfile(
+      String token, Map<String, dynamic> profileData) async {
+    return await _profileRepository.editProfile(token, profileData);
   }
 }
