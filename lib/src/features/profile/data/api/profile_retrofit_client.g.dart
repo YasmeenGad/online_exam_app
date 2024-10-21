@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'api_client.dart';
+part of 'profile_retrofit_client.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,12 +8,14 @@ part of 'api_client.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element
 
-class _ApiClient implements ApiClient {
-  _ApiClient(
+class _ProfileRetrofitClient implements ProfileRetrofitClient {
+  _ProfileRetrofitClient(
     this._dio, {
     this.baseUrl,
     this.errorLogger,
-  });
+  }) {
+    baseUrl ??= 'https://exam.elevateegy.com/';
+  }
 
   final Dio _dio;
 
@@ -22,20 +24,20 @@ class _ApiClient implements ApiClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<SubjectResponse> getSubjects(String token) async {
+  Future<ProfileDataResponseDto> getProfileData(String token) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{r'token': token};
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<SubjectResponse>(Options(
+    final _options = _setStreamType<ProfileDataResponseDto>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
         .compose(
           _dio.options,
-          'api/v1/subjects',
+          'api/v1/auth/profileData',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -45,9 +47,9 @@ class _ApiClient implements ApiClient {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late SubjectResponse _value;
+    late ProfileDataResponseDto _value;
     try {
-      _value = SubjectResponse.fromJson(_result.data!);
+      _value = ProfileDataResponseDto.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -56,23 +58,24 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<ExamResponse> getExams(
+  Future<ChangePasswordResponseDto> changePassword(
     String token,
-    String id,
+    ChangePasswordRequestDto changePasswordRequestDto,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{r'token': token};
     _headers.removeWhere((k, v) => v == null);
-    const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<ExamResponse>(Options(
-      method: 'GET',
+    final _data = <String, dynamic>{};
+    _data.addAll(changePasswordRequestDto.toJson());
+    final _options = _setStreamType<ChangePasswordResponseDto>(Options(
+      method: 'PATCH',
       headers: _headers,
       extra: _extra,
     )
         .compose(
           _dio.options,
-          'api/v1/exams/${id}',
+          'api/v1/auth/changePassword',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -82,9 +85,47 @@ class _ApiClient implements ApiClient {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late ExamResponse _value;
+    late ChangePasswordResponseDto _value;
     try {
-      _value = ExamResponse.fromJson(_result.data!);
+      _value = ChangePasswordResponseDto.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<EditProfileResponseDto> editProfile(
+    String token,
+    Map<String, dynamic> body,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'token': token};
+    _headers.removeWhere((k, v) => v == null);
+    final _data = <String, dynamic>{};
+    _data.addAll(body);
+    final _options = _setStreamType<EditProfileResponseDto>(Options(
+      method: 'PUT',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'api/v1/auth/editProfile',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late EditProfileResponseDto _value;
+    try {
+      _value = EditProfileResponseDto.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
