@@ -61,6 +61,7 @@
     "result": "Result",
     "update": "Update",
     "resetPassword": "Reset Password",
-    "currentPassword": "Current Password"
-    
+    "currentPassword": "Current Password",
+    "updating": "Updating...",
+    "updated": "Updated"
 }

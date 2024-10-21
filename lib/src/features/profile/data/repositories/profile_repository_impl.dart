@@ -3,6 +3,7 @@ import 'package:online_exam_app/src/features/profile/data/datasources/contracts/
 import 'package:online_exam_app/src/features/profile/domain/core/profile_%20result.dart';
 import 'package:online_exam_app/src/features/profile/domain/entities/request/change_password_request_entity.dart';
 import 'package:online_exam_app/src/features/profile/domain/entities/response/change_password_response_entity.dart';
+import 'package:online_exam_app/src/features/profile/domain/entities/response/edit_profile_response_entity.dart';
 import 'package:online_exam_app/src/features/profile/domain/entities/response/profile_data_response.dart';
 
 import '../../domain/contracts/profile_repository.dart';
@@ -25,6 +26,13 @@ class ProfileRepositoryImpl implements ProfileRepository {
   Future<ProfileResult<ChangePasswordResponseEntity>> changePassword(
       String token, ChangePasswordRequestEntity request) async {
     var response = await _profileDataSource.changePassword(token, request);
+    return response;
+  }
+
+  @override
+  Future<ProfileResult<EditProfileResponseEntity>> editProfile(
+      String token, Map<String, dynamic> profileData) async {
+    var response = await _profileDataSource.editProfile(token, profileData);
     return response;
   }
 }

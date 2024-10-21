@@ -61,5 +61,7 @@
   "profile": "الملف الشخصي",
   "update": "تحديث",
   "resetPassword": "اعادة تعيين كلمة المرور",
-  "currentPassword": "كلمة المرور الحالية"
+  "currentPassword": "كلمة المرور الحالية",
+  "updating": "جاري التحديث...",
+  "updated": "تم التحديث بنجاح"
 }

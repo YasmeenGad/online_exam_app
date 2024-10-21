@@ -61,5 +61,7 @@
     "profile": "Profil",
     "update": "Mettre à jour",
     "resetPassword": "Reinitialiser le mot de passe",
-    "currentPassword": "Mot de passe actuel"
+    "currentPassword": "Mot de passe actuel",
+    "updating": "Mise à jour...",
+    "updated": "Mise à jour !"
   }

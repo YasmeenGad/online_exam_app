@@ -61,6 +61,8 @@
     "result": "Sonuç",
     "update": "Güncelle",
     "resetPassword": "Şifreyi sıfırla",
-    "currentPassword": "Mevcut sifre"
+    "currentPassword": "Mevcut sifre",
+    "updating": "Güncelleniyor...",
+    "updated": "Güncellendi"
 }
   

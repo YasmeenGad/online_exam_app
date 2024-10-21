@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:online_exam_app/src/core/global/custom_appbar.dart';
-import 'package:online_exam_app/src/core/global/custom_button.dart';
 import 'package:online_exam_app/src/features/profile/presentation/widgets/custom_profile_picture.dart';
 import 'package:online_exam_app/src/features/profile/presentation/widgets/section_profile_form.dart';
 
@@ -28,11 +27,6 @@ class _ProfileViewState extends State<ProfileView> {
             const ProfilePic(),
             const SizedBox(height: 20),
             const SectionProfileForm(),
-            const SizedBox(height: 40),
-            CustomButton(
-              txt: '${AppLocalizations.of(context)!.update}',
-              color: Colors.black38,
-            ),
           ],
         ),
       ),
