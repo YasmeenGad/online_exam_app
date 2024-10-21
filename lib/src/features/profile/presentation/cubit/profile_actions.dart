@@ -17,3 +17,10 @@ class ChangePassword extends ProfileActions {
 
   ChangePassword({required this.context, required this.request});
 }
+
+class EditProfile extends ProfileActions {
+  BuildContext context;
+  Map<String, dynamic> profileData;
+
+  EditProfile({required this.context, required this.profileData});
+}

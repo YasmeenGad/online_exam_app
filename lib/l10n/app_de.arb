@@ -61,5 +61,7 @@
     "result": "Ergebnis",
     "update": "Aktualisieren",
     "resetPassword": "Passwort zurücksetzen",
-    "currentPassword": "Aktuelles Passwort"
+    "currentPassword": "Aktuelles Passwort",
+    "updating": "Aktualisierung...",
+    "updated": "Aktualisiert"
   }

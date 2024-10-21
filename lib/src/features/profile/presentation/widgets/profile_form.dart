@@ -77,7 +77,7 @@ class ProfileForm extends StatelessWidget {
             controller: passwordController,
             hintText: '******',
             labelText: '${AppLocalizations.of(context)!.labelPassword}',
-            validator: (value) => Validators.validatePassword(value, context),
+            // validator: (value) => Validators.validatePassword(value, context),
           ),
           const SizedBox(width: 20),
           const SizedBox(height: 20),
