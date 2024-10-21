@@ -95,9 +95,9 @@ class _SectionProfileFormState extends State<SectionProfileForm> {
                 phoneNumberController: phoneNumberController,
                 formKey: formKey,
               ),
-              const SizedBox(height: 40),
+              const SizedBox(height: 30),
               GestureDetector(
-                onTap: isModified // Only update if fields are modified
+                onTap: isModified
                     ? () {
                         if (formKey.currentState!.validate()) {
                           Map<String, dynamic> profileData = {
@@ -111,7 +111,7 @@ class _SectionProfileFormState extends State<SectionProfileForm> {
                               context: context, profileData: profileData));
                         }
                       }
-                    : null, // Disable tap if nothing is modified
+                    : null,
                 child: CustomButton(
                   txt: AppLocalizations.of(context)!.update,
                   color: isModified
@@ -124,7 +124,6 @@ class _SectionProfileFormState extends State<SectionProfileForm> {
         },
         listener: (context, state) {
           if (state is ProfileDataSuccess) {
-            // Set old values when data is loaded
             oldUsername = state.profileDataResponse.user?.username ?? "";
             oldFirstName = state.profileDataResponse.user?.firstName ?? "";
             oldLastName = state.profileDataResponse.user?.lastName ?? "";
