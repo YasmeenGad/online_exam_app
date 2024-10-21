@@ -1,33 +1,41 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'sign_up_response.g.dart';
+import '../../../../domain/entities/response/profile_data_response.dart';
+
+part 'profile_data_response_dto.g.dart';
 
 @JsonSerializable()
-class SignUpResponse {
+class ProfileDataResponseDto {
   @JsonKey(name: "message")
   final String? message;
-  @JsonKey(name: "token")
-  final String? token;
   @JsonKey(name: "user")
   final User? user;
 
-  SignUpResponse({
+  ProfileDataResponseDto({
     this.message,
-    this.token,
     this.user,
   });
 
-  factory SignUpResponse.fromJson(Map<String, dynamic> json) {
-    return _$SignUpResponseFromJson(json);
+  factory ProfileDataResponseDto.fromJson(Map<String, dynamic> json) {
+    return _$ProfileDataResponseDtoFromJson(json);
   }
 
   Map<String, dynamic> toJson() {
-    return _$SignUpResponseToJson(this);
+    return _$ProfileDataResponseDtoToJson(this);
+  }
+
+  ProfileDataResponse toDomain() {
+    return ProfileDataResponse(
+      message: message,
+      user: user?.toDomain(),
+    );
   }
 }
 
 @JsonSerializable()
 class User {
+  @JsonKey(name: "_id")
+  final String? Id;
   @JsonKey(name: "username")
   final String? username;
   @JsonKey(name: "firstName")
@@ -42,12 +50,11 @@ class User {
   final String? role;
   @JsonKey(name: "isVerified")
   final bool? isVerified;
-  @JsonKey(name: "_id")
-  final String? Id;
   @JsonKey(name: "createdAt")
   final String? createdAt;
 
-  User({
+  User ({
+    this.Id,
     this.username,
     this.firstName,
     this.lastName,
@@ -55,7 +62,6 @@ class User {
     this.phone,
     this.role,
     this.isVerified,
-    this.Id,
     this.createdAt,
   });
 
@@ -66,4 +72,20 @@ class User {
   Map<String, dynamic> toJson() {
     return _$UserToJson(this);
   }
+
+  UserEntity toDomain() {
+    return UserEntity(
+      Id: Id,
+      username: username,
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      phone: phone,
+      role: role,
+      isVerified: isVerified,
+      createdAt: createdAt,
+    );
+  }
 }
+
+

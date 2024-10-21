@@ -7,5 +7,6 @@ class RoutesName {
   static const String resetPasswordView = 'resetPasswordView';
   static const String welcomeView = 'welcomeView';
   static const String bottomNavigationBar = 'layout';
-
+  static const String profileView = 'profileView';
+  static const String resetPasswordProfileView = 'resetPasswordProfileView';
 }

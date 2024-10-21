@@ -35,7 +35,7 @@
     "resetPasswordError": "Une erreur s est produite lors de la réinitialisation du mot de passe. Veuillez réessayer.",
     "emailVerificationError": "Une erreur s'est produite lors de la vérification de l'e-mail. Veuillez réessayer.",
     "requestTimeout": "Délai de la demande dépassé.",
-    "unauthorizedException": "Accès non autorisé",
+    "unauthorizedException": "email ou mot de passe incorrect",
     "noInternetException": "Aucune connexion Internet",
     "serverErrorException": "Erreur du serveur",
     "conflictException": "L'e-mail ou le nom d'utilisateur existe déjà",
@@ -58,5 +58,10 @@
     "selectLanguage": "Sélectionner la langue",
     "home": "Accueil",
     "result": "Résultat",
-    "profile": "Profil"
+    "profile": "Profil",
+    "update": "Mettre à jour",
+    "resetPassword": "Reinitialiser le mot de passe",
+    "currentPassword": "Mot de passe actuel",
+    "updating": "Mise à jour...",
+    "updated": "Mise à jour !"
   }
