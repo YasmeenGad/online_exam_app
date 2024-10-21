@@ -58,5 +58,8 @@
     "selectLanguage": "Sélectionner la langue",
     "home": "Accueil",
     "result": "Résultat",
-    "profile": "Profil"
+    "profile": "Profil",
+    "update": "Mettre à jour",
+    "resetPassword": "Reinitialiser le mot de passe",
+    "currentPassword": "Mot de passe actuel"
   }

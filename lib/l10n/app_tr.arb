@@ -58,8 +58,9 @@
     "selectLanguage": "Dil seçin",
     "home": "Ana Sayfa",
     "profile": "Profil",
-    "result": "Sonuç"
-
-
+    "result": "Sonuç",
+    "update": "Güncelle",
+    "resetPassword": "Şifreyi sıfırla",
+    "currentPassword": "Mevcut sifre"
 }
   

@@ -12,7 +12,9 @@ Future<ProfileResult<T>> apiExecute<T>(
   } on DioException catch (e) {
     if (e.response != null) {
       if (e.response!.statusCode == 401) {
-        return Failure(exception: UnauthorizedException());
+        return Failure(
+            exception:
+                UnauthorizedException(message: e.response!.data['message']));
       } else {
         return Failure(exception: ServerError());
       }
