@@ -59,5 +59,7 @@
     "home": "Accueil",
     "result": "Résultat",
     "profile": "Profil",
-    "update": "Mettre à jour"
+    "update": "Mettre à jour",
+    "resetPassword": "Reinitialiser le mot de passe",
+    "currentPassword": "Mot de passe actuel"
   }

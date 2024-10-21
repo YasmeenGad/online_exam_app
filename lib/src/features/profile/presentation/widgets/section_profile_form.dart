@@ -51,7 +51,7 @@ class _SectionProfileFormState extends State<SectionProfileForm> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
+    return BlocProvider<ProfileViewModel>(
       create: (context) => profileViewModel,
       child: BlocConsumer<ProfileViewModel, ProfileState>(
         builder: (context, state) {

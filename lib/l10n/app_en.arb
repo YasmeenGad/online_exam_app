@@ -7,7 +7,7 @@
     "invalidEmail": "This email is not valid",
     "enterPassword": "Please enter password",
     "passwordComplexity": "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.",
-    "confirmPassword": "Please confirm your password",
+    "confirmPassword": "Confirm Password",
     "passwordMismatch": "Passwords do not match",
     "enterPhoneNumber": "Please enter your phone number",
     "invalidPhoneNumber": "Please enter a valid phone number",
@@ -59,6 +59,8 @@
     "home": "Home",
     "profile": "Profile",
     "result": "Result",
-    "update": "Update"
+    "update": "Update",
+    "resetPassword": "Reset Password",
+    "currentPassword": "Current Password"
     
 }

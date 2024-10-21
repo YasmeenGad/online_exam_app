@@ -5,6 +5,7 @@ import 'package:online_exam_app/src/core/validators/validators.dart';
 import 'package:online_exam_app/src/features/auth/presentation/widgets/custom_text_form_field.dart';
 
 import '../../../../core/styles/app_colors.dart';
+import 'change_text.dart';
 
 class ProfileForm extends StatelessWidget {
   final TextEditingController usernameController;
@@ -71,11 +72,7 @@ class ProfileForm extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           CustomTextFormField(
-            suffix: Text(
-              "Change",
-              style: AppStyles.styleMedium12(context)
-                  .copyWith(color: AppColors.blueBaseColor),
-            ),
+            suffix: ChangeText(),
             isPassword: true,
             controller: passwordController,
             hintText: '******',

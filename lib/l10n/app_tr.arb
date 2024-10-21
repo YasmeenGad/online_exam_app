@@ -59,7 +59,8 @@
     "home": "Ana Sayfa",
     "profile": "Profil",
     "result": "Sonuç",
-    "update": "Güncelle"
-
+    "update": "Güncelle",
+    "resetPassword": "Şifreyi sıfırla",
+    "currentPassword": "Mevcut sifre"
 }
   
