@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:online_exam_app/src/features/profile/domain/entities/response/change_password_response_entity.dart';
 
 part 'change_password_response_dto.g.dart';
 
@@ -20,5 +21,12 @@ class ChangePasswordResponseDto {
 
   Map<String, dynamic> toJson() {
     return _$ChangePasswordResponseDtoToJson(this);
+  }
+
+  ChangePasswordResponseEntity toEntity() {
+    return ChangePasswordResponseEntity(
+      message: message,
+      token: token,
+    );
   }
 }

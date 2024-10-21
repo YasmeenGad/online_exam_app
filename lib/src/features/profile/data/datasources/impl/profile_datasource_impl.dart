@@ -1,4 +1,6 @@
 import 'package:injectable/injectable.dart';
+import 'package:online_exam_app/src/features/profile/domain/entities/request/change_password_request_entity.dart';
+import 'package:online_exam_app/src/features/profile/domain/entities/response/change_password_response_entity.dart';
 
 import '../../../domain/core/profile_ result.dart';
 import '../../../domain/entities/response/profile_data_response.dart';
@@ -19,6 +21,15 @@ class ProfileDataSourceImpl implements OnlineProfileDataSource {
     return await apiExecute(
       () => _profileRetrofitClient.getProfileData(token),
       (response) => response.toDomain(),
+    );
+  }
+
+  @override
+  Future<ProfileResult<ChangePasswordResponseEntity>> changePassword(
+      String token, ChangePasswordRequestEntity request) async {
+    return await apiExecute(
+      () => _profileRetrofitClient.changePassword(token, request.toDto()),
+      (response) => response.toEntity(),
     );
   }
 }
