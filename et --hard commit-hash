@@ -1,0 +1,277 @@
+[33mcommit 6d3a2fdfe38a6bd446ffa7c5322349090947c29a[m[33m ([m[1;36mHEAD -> [m[1;32msubject[m[33m, [m[1;31morigin/subject[m[33m)[m
+Author: Haidy <hh7234699@gmail.com>
+Date:   Tue Oct 22 18:21:31 2024 +0300
+
+    create exam and subject feature
+
+[33mcommit 35c2f2fa8f1d9eb4a814d8d18329836f9a901781[m
+Author: Haidy <hh7234699@gmail.com>
+Date:   Tue Oct 22 01:49:00 2024 +0300
+
+    create exam and subject feature
+
+[33mcommit 2bf22c2c60213cb874519d6d882b2e1923c3c43f[m
+Merge: 64e1d69 f02b785
+Author: Haidy <hh7234699@gmail.com>
+Date:   Tue Oct 22 01:41:00 2024 +0300
+
+    Merge branch 'main' of https://github.com/YasmeenGad/online_exam_app
+
+[33mcommit 64e1d690c7e8c88bfae93de318d45ed1f709dcbc[m
+Author: Haidy <hh7234699@gmail.com>
+Date:   Tue Oct 22 01:40:40 2024 +0300
+
+    create exam and subject feature
+
+[33mcommit 34c50935c7615ecbeffb2b571f44f657a8a6f032[m
+Author: Haidy <hh7234699@gmail.com>
+Date:   Tue Oct 22 01:22:36 2024 +0300
+
+    create exam and subject feature
+
+[33mcommit f02b78510b387bbe975de4af8ca6af6515c29ab6[m
+Merge: f5f098f a44097d
+Author: Yasmeen Gad <139927333+YasmeenGad@users.noreply.github.com>
+Date:   Mon Oct 21 23:41:43 2024 +0300
+
+    Merge pull request #8 from YasmeenGad/profile
+    
+    finishing from edit profile
+
+[33mcommit a44097db69e0b69427c43e4206f269a8bff459d6[m[33m ([m[1;31morigin/profile[m[33m)[m
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Mon Oct 21 23:40:30 2024 +0300
+
+    add profile view to layout
+
+[33mcommit a86e084b45cf633a9fcbfafe6b95f0812df7c0c6[m
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Mon Oct 21 23:36:06 2024 +0300
+
+    edit profile
+
+[33mcommit 678d523d6f860f3fdda4c6babbbaf1bb8fdf94bb[m
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Mon Oct 21 21:31:33 2024 +0300
+
+    create states of edit profile
+
+[33mcommit 6f6cb7359bba7146031d8b8bc0b4e79decadc7f3[m
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Mon Oct 21 21:29:08 2024 +0300
+
+    impl repository of edit profile
+
+[33mcommit 934a9e737591f812cd3a6d66dce24e00e38e5ad0[m
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Mon Oct 21 21:21:22 2024 +0300
+
+    create edit profile datasource interface
+
+[33mcommit 2d62deac1f97a1149505588291c2e705c1ebc68c[m
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Mon Oct 21 19:26:06 2024 +0300
+
+    create edit profile response dto
+
+[33mcommit f5f098fae9a146bae65ea7f144b11c0225a5a999[m
+Merge: 5535bbf 5a5519b
+Author: Yasmeen Gad <139927333+YasmeenGad@users.noreply.github.com>
+Date:   Mon Oct 21 19:07:12 2024 +0300
+
+    Merge pull request #7 from YasmeenGad/profile
+    
+    reset password at profile view
+
+[33mcommit 5a5519b09b007c60976864867fe3bf30e2a36104[m
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Mon Oct 21 19:04:57 2024 +0300
+
+    impl change password at profile view
+
+[33mcommit 6e4620982d0c641fafa98144c6420d64ad943cec[m
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Mon Oct 21 05:00:59 2024 +0300
+
+    create profile reset password view
+
+[33mcommit fea9242e104d7cb9e176719722f99279cce52b8e[m
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Mon Oct 21 04:19:43 2024 +0300
+
+    impl change password cubit
+
+[33mcommit b8249a47cde2297693951ad98bbc76b1b92d0fc4[m
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Mon Oct 21 04:11:05 2024 +0300
+
+    create states for profile change password
+
+[33mcommit f36c9029d950ff506c258a1ce3700e2d37314fd4[m
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Mon Oct 21 04:03:51 2024 +0300
+
+    impl useCase
+
+[33mcommit 3a3257c79c8ad48208eeb9b9df95402fafff0339[m
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Mon Oct 21 04:02:55 2024 +0300
+
+    impl repository
+
+[33mcommit 5d2ed2e74b263b4ff028b2ad64a31748ddeadbc4[m
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Mon Oct 21 04:01:13 2024 +0300
+
+    impl datasource
+
+[33mcommit 5aa3f32a1d63496d7d67b990570b361b00dcfe6b[m
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Mon Oct 21 03:45:30 2024 +0300
+
+    add method of change password in retrofit class
+
+[33mcommit dbd562ca8d10843e3a3c84b9a127ab6d282c6d63[m
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Mon Oct 21 03:23:12 2024 +0300
+
+    refactor profile view
+
+[33mcommit e6200bf08bdba4fccfec0d943b483ece9bf50077[m
+Merge: 8192915 5535bbf
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Sat Oct 19 22:15:23 2024 +0300
+
+    Merge remote-tracking branch 'online_exam_app/main' into profile
+
+[33mcommit 8192915ba95cda1fe50f0a4c3f01bf2595c52aea[m
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Sat Oct 19 22:15:09 2024 +0300
+
+    refactor profile
+
+[33mcommit 5535bbf3a469b433bb7082c78d65528d2d4d0292[m
+Merge: 3787237 9220531
+Author: Yasmeen Gad <139927333+YasmeenGad@users.noreply.github.com>
+Date:   Sat Oct 19 19:10:00 2024 +0300
+
+    Merge pull request #6 from YasmeenGad/profile
+    
+    create profile feature using retrofit with cubit
+
+[33mcommit 92205311672ce0594b2af7fae878d28cf9f81226[m
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Sat Oct 19 19:08:37 2024 +0300
+
+    refactor profile view
+
+[33mcommit ff03e6f3217f97c72c53b35fe90fd818d1f3e71d[m
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Sat Oct 19 18:46:22 2024 +0300
+
+    get cached token in profile
+
+[33mcommit 552c98f266baeaa066efd12ed799b547bc5cb351[m
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Sat Oct 19 18:22:54 2024 +0300
+
+    solve conflicts
+
+[33mcommit 75536a95774dacbb200e43b507355d1508ba769f[m
+Merge: c85c8be 3787237
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Sat Oct 19 18:18:44 2024 +0300
+
+    Merge remote-tracking branch 'online_exam_app/main' into profile
+    
+    # Conflicts:
+    #       lib/src/core/dependency injection/di.config.dart
+    #       pubspec.yaml
+
+[33mcommit 378723725b6d44a21f7db38e663552e564895435[m
+Merge: 6bccf91 3715e49
+Author: Haidy <hh7234699@gmail.com>
+Date:   Sat Oct 19 18:01:54 2024 +0300
+
+    Merge branch 'subject'
+
+[33mcommit 6bccf911602b3cf5732364aaa6e01c70989e0ac4[m
+Author: Haidy <hh7234699@gmail.com>
+Date:   Sat Oct 19 18:01:38 2024 +0300
+
+    cash token
+
+[33mcommit 3715e4923420db6303a778e1cb169ea0b23db36b[m
+Author: Haidy <hh7234699@gmail.com>
+Date:   Sat Oct 19 17:57:23 2024 +0300
+
+    cash token
+
+[33mcommit ff846c6db045a594895e081431942d5e77893c37[m
+Merge: 902825c c8c5c25
+Author: Haidy <hh7234699@gmail.com>
+Date:   Sat Oct 19 17:54:22 2024 +0300
+
+    Merge branch 'main' into subject
+    
+    # Conflicts:
+    #       pubspec.yaml
+
+[33mcommit 902825c4e8db48acc1f4b5b760b9467404186bbb[m
+Author: Haidy <hh7234699@gmail.com>
+Date:   Sat Oct 19 17:06:14 2024 +0300
+
+    cash token
+
+[33mcommit 889ed1800d06c33c722d18ca485f9a80c7b25514[m
+Author: Haidy <hh7234699@gmail.com>
+Date:   Sat Oct 19 16:58:10 2024 +0300
+
+    cash token
+
+[33mcommit c85c8beb31bff1769a8768365c0718a19ef0328b[m
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Sat Oct 19 14:12:53 2024 +0300
+
+    implement get profile data view model
+
+[33mcommit 3ca6ae429967a44961bc5f85d1785232291ac8ad[m
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Sat Oct 19 13:46:35 2024 +0300
+
+    create profile actions sealed class
+
+[33mcommit d63056fe1e4576a39f5b9b4634bf290852df9655[m
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Sat Oct 19 13:44:05 2024 +0300
+
+    create profile states
+
+[33mcommit c794f7abf29883dccf364b469fe804848c0bc8ce[m
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Sat Oct 19 13:38:51 2024 +0300
+
+    create generic function to handle API calls and exceptions
+
+[33mcommit c1c8456076a42bf43a2260ec1ceaaf0332ce3991[m
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Sat Oct 19 12:59:10 2024 +0300
+
+    implement profile result class
+
+[33mcommit bdcff26ae149de6fe56160dd802a1f8cb23e103a[m
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Sat Oct 19 12:52:29 2024 +0300
+
+    implement profile exception class
+
+[33mcommit bfc72ac9f37ec01f28a2ced9a6f0ac83733e1eba[m
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Sat Oct 19 12:47:04 2024 +0300
+
+    implement repo impl
+    implements repo interface
+    implements data source interface
+    implements data source impl
+
+[33mcommit ed1391833506dc49c68f979cb8
