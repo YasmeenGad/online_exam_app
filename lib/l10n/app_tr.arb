@@ -35,7 +35,7 @@
     "resetPasswordError": "Şifre sıfırlanırken bir hata oluştu. Lütfen tekrar deneyin.",
     "emailVerificationError": "E-posta doğrulama sırasında bir hata oluştu. Lütfen tekrar deneyin.",
     "requestTimeout": "İstek zaman aşımına uğradı.",
-    "unauthorizedException": "email to mot de passe ya mabe",
+    "unauthorizedException": "Şifre veya e-posta yanlış",
     "noInternetException": "İnternet bağlantısı yok",
     "serverErrorException": "Sunucu hatası",
     "conflictException": "E-posta veya kullanıcı adı zaten mevcut",
@@ -58,11 +58,8 @@
     "selectLanguage": "Dil seçin",
     "home": "Ana Sayfa",
     "profile": "Profil",
-    "result": "Sonuç",
-    "update": "Güncelle",
-    "resetPassword": "Şifreyi sıfırla",
-    "currentPassword": "Mevcut sifre",
-    "updating": "Güncelleniyor...",
-    "updated": "Güncellendi"
+    "result": "Sonuç"
+
+
 }
   
