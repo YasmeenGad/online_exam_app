@@ -39,8 +39,7 @@ class OnlineExamApp extends StatelessWidget {
               locale: Locale(languageProvider.selectedLanguage.code),
               localizationsDelegates: AppLocalizations.localizationsDelegates,
               debugShowCheckedModeBanner: false,
-            //  initialRoute: token != null ? RoutesName.bottomNavigationBar : RoutesName.welcomeView,
-
+              initialRoute: RoutesName.loginView,
               routes: AppRoutes.getRoutes(),
             );
           },

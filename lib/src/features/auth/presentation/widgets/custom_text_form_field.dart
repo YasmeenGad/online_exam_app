@@ -9,11 +9,13 @@ class CustomTextFormField extends StatefulWidget {
       this.hintText,
       this.labelText,
       this.controller,
+      this.suffix,
       this.validator});
   final String? hintText;
   final String? labelText;
   final dynamic controller;
   final bool? isPassword;
+  final Widget? suffix;
   final String? Function(String?)? validator;
 
   @override
@@ -27,6 +29,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       obscureText: widget.isPassword ?? false,
       controller: widget.controller,
       decoration: InputDecoration(
+        suffix: widget.suffix ?? SizedBox(),
         floatingLabelBehavior: FloatingLabelBehavior.always,
         labelText: '${widget.labelText ?? ''}',
         labelStyle: AppStyles.styleRegular12(context)

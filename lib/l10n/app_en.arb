@@ -7,7 +7,7 @@
     "invalidEmail": "This email is not valid",
     "enterPassword": "Please enter password",
     "passwordComplexity": "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.",
-    "confirmPassword": "Please confirm your password",
+    "confirmPassword": "Confirm Password",
     "passwordMismatch": "Passwords do not match",
     "enterPhoneNumber": "Please enter your phone number",
     "invalidPhoneNumber": "Please enter a valid phone number",
@@ -35,7 +35,7 @@
     "resetPasswordError": "An error occurred while resetting the password. Please try again.",
     "emailVerificationError": "An error occurred while verifying the email. Please try again.",
     "requestTimeout": "Request Timeout.",
-    "unauthorizedException": "Unauthorized Access",
+    "unauthorizedException": "Incorrect email or password",
     "noInternetException": "No Internet Connection",
     "serverErrorException": "Server Error",
     "conflictException": "Email or Username already exists",
@@ -58,6 +58,10 @@
     "selectLanguage": "Select Language",
     "home": "Home",
     "profile": "Profile",
-    "result": "Result"
-    
+    "result": "Result",
+    "update": "Update",
+    "resetPassword": "Reset Password",
+    "currentPassword": "Current Password",
+    "updating": "Updating...",
+    "updated": "Updated"
 }
