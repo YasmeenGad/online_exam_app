@@ -6,7 +6,6 @@ import 'package:online_exam_app/src/core/styles/app_styles.dart';
 import 'package:online_exam_app/src/features/exam/presentation/views/subjects_view.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../features/profile/presentation/views/profile_view.dart';
 import '../constants/assets.dart';
 
 class Layout extends StatefulWidget {
@@ -34,7 +33,7 @@ class LayoutState extends State<Layout> {
     final List<Widget> _pages = [
       const SubjectsView(),
       const SubjectsView(),
-      const ProfileView(),
+      const SubjectsView(),
     ];
     double screenWidth = MediaQuery.of(context).size.width;
 
