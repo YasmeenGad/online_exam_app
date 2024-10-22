@@ -35,7 +35,7 @@
     "resetPasswordError": "Beim Zurücksetzen des Passworts ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
     "emailVerificationError": "Beim Überprüfen der E-Mail ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
     "requestTimeout": "Anfragezeitüberschreitung.",
-    "unauthorizedException": "falsche E-Mail oder falsches Passwort",
+    "unauthorizedException": "Nicht autorisierter Zugriff",
     "noInternetException": "Keine Internetverbindung",
     "serverErrorException": "Serverfehler",
     "conflictException": "E-Mail oder Benutzername existiert bereits",
@@ -58,10 +58,5 @@
     "selectLanguage": "Sprache auswählen",
     "home": "Startseite",
     "profile": "Profil",
-    "result": "Ergebnis",
-    "update": "Aktualisieren",
-    "resetPassword": "Passwort zurücksetzen",
-    "currentPassword": "Aktuelles Passwort",
-    "updating": "Aktualisierung...",
-    "updated": "Aktualisiert"
+    "result": "Ergebnis"
   }
