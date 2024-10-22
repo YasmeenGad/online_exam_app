@@ -12,6 +12,8 @@ import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:pretty_dio_logger/pretty_dio_logger.dart' as _i528;
+import 'package:get_it/get_it.dart' as _i174;
+import 'package:injectable/injectable.dart' as _i526;
 
 import '../../features/auth/data/api/api_manager.dart' as _i1023;
 import '../../features/auth/data/datasources/contracts/auth_datasource.dart'
@@ -60,6 +62,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i1023.ApiManager>(() => _i1023.ApiManager());
     gh.lazySingleton<_i734.LanguageService>(() => _i734.LanguageService());
     gh.lazySingleton<_i361.Dio>(() => networkModule.provideDio());
+    gh.singleton<_i1023.ApiManager>(() => _i1023.ApiManager());
+    gh.lazySingleton<_i734.LanguageService>(() => _i734.LanguageService());
     gh.factory<_i538.LanguageProvider>(
         () => _i538.LanguageProvider(gh<_i734.LanguageService>()));
     gh.factory<_i449.AuthDataSource>(
