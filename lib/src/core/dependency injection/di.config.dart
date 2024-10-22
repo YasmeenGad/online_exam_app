@@ -8,10 +8,15 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+<<<<<<< HEAD
 import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:pretty_dio_logger/pretty_dio_logger.dart' as _i528;
+=======
+import 'package:get_it/get_it.dart' as _i174;
+import 'package:injectable/injectable.dart' as _i526;
+>>>>>>> origin/main
 
 import '../../features/auth/data/api/api_manager.dart' as _i1023;
 import '../../features/auth/data/datasources/contracts/auth_datasource.dart'
@@ -27,6 +32,7 @@ import '../../features/auth/domain/contracts/auth_repo.dart' as _i670;
 import '../../features/auth/domain/usecases/auth_usecase.dart' as _i436;
 import '../../features/auth/presentation/cubit/auth/auth_view_model.dart'
     as _i616;
+<<<<<<< HEAD
 import '../../features/profile/data/api/network_module.dart' as _i442;
 import '../../features/profile/data/api/profile_retrofit_client.dart' as _i915;
 import '../../features/profile/data/datasources/contracts/online_datasource/profile_datasource.dart'
@@ -40,6 +46,8 @@ import '../../features/profile/domain/contracts/profile_repository.dart'
 import '../../features/profile/domain/usecases/profile_usecase.dart' as _i996;
 import '../../features/profile/presentation/cubit/profile_view_model.dart'
     as _i516;
+=======
+>>>>>>> origin/main
 import '../provider/language_provider.dart' as _i538;
 import '../provider/language_service.dart' as _i734;
 
@@ -54,16 +62,22 @@ extension GetItInjectableX on _i174.GetIt {
       environment,
       environmentFilter,
     );
+<<<<<<< HEAD
     final networkModule = _$NetworkModule();
     gh.factory<_i528.PrettyDioLogger>(
         () => networkModule.provideLogInterceptor());
     gh.singleton<_i1023.ApiManager>(() => _i1023.ApiManager());
     gh.lazySingleton<_i734.LanguageService>(() => _i734.LanguageService());
     gh.lazySingleton<_i361.Dio>(() => networkModule.provideDio());
+=======
+    gh.singleton<_i1023.ApiManager>(() => _i1023.ApiManager());
+    gh.lazySingleton<_i734.LanguageService>(() => _i734.LanguageService());
+>>>>>>> origin/main
     gh.factory<_i538.LanguageProvider>(
         () => _i538.LanguageProvider(gh<_i734.LanguageService>()));
     gh.factory<_i449.AuthDataSource>(
         () => _i239.AuthDataSourceImpl(gh<_i1023.ApiManager>()));
+<<<<<<< HEAD
     gh.singleton<_i915.ProfileRetrofitClient>(
         () => _i915.ProfileRetrofitClient(gh<_i361.Dio>()));
     gh.factory<_i331.OfflineAuthDataSource>(
@@ -72,14 +86,21 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i966.ProfileDataSourceImpl(gh<_i915.ProfileRetrofitClient>()));
     gh.factory<_i435.ProfileRepository>(
         () => _i334.ProfileRepositoryImpl(gh<_i907.OnlineProfileDataSource>()));
+=======
+    gh.factory<_i331.OfflineAuthDataSource>(
+        () => _i110.OfflineAuthDataSourceImpl());
+>>>>>>> origin/main
     gh.factory<_i670.AuthRepo>(
         () => _i662.AuthRepositoryImpl(gh<_i449.AuthDataSource>()));
     gh.factory<_i436.AuthUsecase>(
         () => _i436.AuthUsecase(authRepo: gh<_i670.AuthRepo>()));
+<<<<<<< HEAD
     gh.factory<_i996.ProfileUseCase>(
         () => _i996.ProfileUseCase(gh<_i435.ProfileRepository>()));
     gh.factory<_i516.ProfileViewModel>(
         () => _i516.ProfileViewModel(gh<_i996.ProfileUseCase>()));
+=======
+>>>>>>> origin/main
     gh.factory<_i616.AuthViewModel>(() => _i616.AuthViewModel(
           gh<_i436.AuthUsecase>(),
           gh<_i331.OfflineAuthDataSource>(),
@@ -87,5 +108,8 @@ extension GetItInjectableX on _i174.GetIt {
     return this;
   }
 }
+<<<<<<< HEAD
 
 class _$NetworkModule extends _i442.NetworkModule {}
+=======
+>>>>>>> origin/main
