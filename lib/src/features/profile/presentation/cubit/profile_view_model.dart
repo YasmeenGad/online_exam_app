@@ -44,8 +44,8 @@ class ProfileViewModel extends Cubit<ProfileState> {
 
   void _getProfileData(BuildContext context) async {
     emit(ProfileDataLoading());
-    String token = await offlineAuthDataSource.getToken();
-    var result = await _profileUseCase.getProfileData(token);
+    String? token = await offlineAuthDataSource.getToken();
+    var result = await _profileUseCase.getProfileData(token!);
     switch (result) {
       case Success<ProfileDataResponse>():
         {
@@ -77,8 +77,8 @@ class ProfileViewModel extends Cubit<ProfileState> {
   void _changePassword(
       BuildContext context, ChangePasswordRequestEntity request) async {
     emit(ChangePasswordLoading());
-    String token = await offlineAuthDataSource.getToken();
-    var result = await _profileUseCase.changePassword(token, request);
+    String? token = await offlineAuthDataSource.getToken();
+    var result = await _profileUseCase.changePassword(token!, request);
     switch (result) {
       case Success<ChangePasswordResponseEntity>():
         {
@@ -110,8 +110,8 @@ class ProfileViewModel extends Cubit<ProfileState> {
 
   void _editProfile(BuildContext context, Map<String, dynamic> data) async {
     emit(EditProfileLoading());
-    String token = await offlineAuthDataSource.getToken();
-    var result = await _profileUseCase.editProfile(token, data);
+    String? token = await offlineAuthDataSource.getToken();
+    var result = await _profileUseCase.editProfile(token!, data);
     switch (result) {
       case Success<EditProfileResponseEntity>():
         {

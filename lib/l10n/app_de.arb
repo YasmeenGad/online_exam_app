@@ -63,5 +63,6 @@
     "resetPassword": "Passwort zurücksetzen",
     "currentPassword": "Aktuelles Passwort",
     "updating": "Aktualisierung...",
-    "updated": "Aktualisiert"
+    "updated": "Aktualisiert",
+    "examApp": "Prüfungs-App"
   }

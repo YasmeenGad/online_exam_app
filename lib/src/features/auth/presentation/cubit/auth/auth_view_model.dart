@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';
 import 'package:online_exam_app/src/features/auth/data/api/models/response/forget_password_response.dart';
 import 'package:online_exam_app/src/features/auth/data/api/models/response/reset_password_response.dart';
@@ -67,7 +66,6 @@ class AuthViewModel extends Cubit<AuthState> {
     switch (result) {
       case Success<SignInResponse>():
         {
-         // await _saveToken(result.data?.token);
           emit(LoginSuccess(signInResponse: result.data!));
           await offlineAuthDataSource.saveToken(result.data!.token);
           Navigator.pushReplacementNamed(
