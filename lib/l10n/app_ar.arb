@@ -68,5 +68,8 @@
   "search": "بحث",
   "survey": "الاستبيان",
   "browseBySubject": "تصفح حسب الموضوع",
-  "exams": "الامتحانات"
+  "exams": "الامتحانات",
+  "minutes": "دقيقة",
+  "questions": "الأسئلة",
+  "noSubjectsFound": "لم يتم العثور على مواضيع"
 }

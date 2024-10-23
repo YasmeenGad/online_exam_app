@@ -29,7 +29,10 @@ class AppRoutes {
       RoutesName.profileView: (context) => ProfileView(),
       RoutesName.resetPasswordProfileView: (context) =>
           ResetPasswordProfileView(),
-      RoutesName.examView: (context) => const ExamView(),
+      RoutesName.examView: (context) => ExamView(
+        subjectId: ModalRoute.of(context)!.settings.arguments as String,
+      ),
+
     };
   }
 }

@@ -68,5 +68,8 @@
     "search": "Search",
     "survey": "Survey",
     "browseBySubject": "Browse by subject",
-    "exams": "Exams"
+    "exams": "Exams",
+    "minutes": "minutes",
+    "questions": "questions",
+    "noSubjectsFound": "No subjects found"
 }

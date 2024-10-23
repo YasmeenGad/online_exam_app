@@ -68,5 +68,8 @@
     "search": "Rechercher",
     "survey": "Enquête",
     "browseBySubject": "Parcourir par matière",
-    "exams": "Examens"
+    "exams": "Examens",
+    "minutes": "minutes",
+    "questions": "questions",
+    "noSubjectsFound": "Aucune matière trouvée"
   }
