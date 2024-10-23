@@ -31,8 +31,7 @@ class _ProfilePicState extends State<ProfilePic> {
         children: [
           _image == null
               ? CircleAvatar(
-                  backgroundImage:
-                      AssetImage(Assets.imageProfile) as ImageProvider,
+                  backgroundImage: AssetImage(Assets.imageProfileImage),
                 )
               : CircleAvatar(
                   backgroundImage: FileImage(_image!) as ImageProvider),
