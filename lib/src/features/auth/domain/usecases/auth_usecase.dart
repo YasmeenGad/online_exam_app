@@ -4,7 +4,7 @@ import 'package:online_exam_app/src/features/auth/data/api/models/response/reset
 import 'package:online_exam_app/src/features/auth/data/api/models/response/sign_in_response.dart';
 import 'package:online_exam_app/src/features/auth/data/api/models/response/sign_up_response.dart';
 import 'package:online_exam_app/src/features/auth/domain/contracts/auth_repo.dart';
-import 'package:online_exam_app/src/features/auth/domain/core/result.dart';
+import 'package:online_exam_app/src/core/network/result.dart';
 import 'package:online_exam_app/src/features/auth/domain/entities/forget_password_entity.dart';
 import 'package:online_exam_app/src/features/auth/domain/entities/sign_in_entity.dart';
 import 'package:online_exam_app/src/features/auth/domain/entities/sign_up_entity.dart';

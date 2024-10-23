@@ -9,7 +9,7 @@ import 'package:online_exam_app/src/features/auth/data/api/models/response/forge
 import 'package:online_exam_app/src/features/auth/data/api/models/response/reset_password_response.dart';
 import 'package:online_exam_app/src/features/auth/data/api/models/response/sign_in_response.dart';
 import 'package:online_exam_app/src/features/auth/data/api/models/response/sign_up_response.dart';
-import '../../../domain/core/result.dart';
+import '../../../../../core/network/result.dart';
 import '../../api/api_manager.dart';
 import '../contracts/auth_datasource.dart';
 

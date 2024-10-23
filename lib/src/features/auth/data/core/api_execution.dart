@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:online_exam_app/src/features/auth/domain/core/AppExceptions.dart';
-import 'package:online_exam_app/src/features/auth/domain/core/result.dart';
+import 'package:online_exam_app/src/core/network/result.dart';
 
 Future<Result<T>> apiExecution<T>({
   required Future<Response<dynamic>> request,

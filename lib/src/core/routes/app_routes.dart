@@ -13,6 +13,8 @@ import '../../features/auth/presentation/views/email_verification_view.dart';
 import '../../features/auth/presentation/views/reset_password_view.dart';
 import 'package:online_exam_app/src/core/global/layout.dart';
 
+import '../../features/exam/presentation/views/exam_view.dart';
+
 
 class AppRoutes {
   static Map<String, WidgetBuilder> getRoutes() {
@@ -27,6 +29,10 @@ class AppRoutes {
       RoutesName.profileView: (context) => ProfileView(),
       RoutesName.resetPasswordProfileView: (context) =>
           ResetPasswordProfileView(),
+      RoutesName.examView: (context) => ExamView(
+        subjectId: ModalRoute.of(context)!.settings.arguments as String,
+      ),
+
     };
   }
 }
