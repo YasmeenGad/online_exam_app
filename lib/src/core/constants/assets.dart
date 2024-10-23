@@ -31,5 +31,7 @@ class Assets {
   /// Assets for imagesResult
   /// assets/images/result.svg
   static const String imageResult = "assets/images/result.svg";
+
+  static const String imageProfileImage = "assets/images/profileimage.png";
 }
 
