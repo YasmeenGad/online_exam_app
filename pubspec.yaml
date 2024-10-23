@@ -42,7 +42,7 @@ dependencies:
   connectivity_plus:
   injectable:
   provider:
-  # add get_it  
+  # add get_it
   get_it:
   google_fonts: ^6.2.1
   dio: ^5.7.0
@@ -54,6 +54,7 @@ dependencies:
   pretty_dio_logger: ^1.4.0
   hive: ^2.2.3
   hive_flutter:
+  cached_network_image:
 
 
 flutter_assets:

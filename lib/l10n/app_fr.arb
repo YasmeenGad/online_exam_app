@@ -64,5 +64,9 @@
     "currentPassword": "Mot de passe actuel",
     "updating": "Mise à jour...",
     "updated": "Mise à jour !",
-    "examApp": "Exam App"
+    "examApp": "Exam App",
+    "search": "Rechercher",
+    "survey": "Enquête",
+    "browseBySubject": "Parcourir par matière",
+    "exams": "Examens"
   }

@@ -38,6 +38,13 @@ static TextStyle styleRegular13(context) {
   );
 }
 
+  static TextStyle styleMedium13(context) {
+    return GoogleFonts.inter(
+      fontSize: getResponsiveFontSize(context, fontSize: 13),
+      fontWeight: FontWeight.w500,
+    );
+  }
+
 static TextStyle styleMedium16(BuildContext context) {
   return GoogleFonts.roboto(
     fontSize: getResponsiveFontSize(context, fontSize: 16),

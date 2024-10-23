@@ -64,5 +64,9 @@
     "currentPassword": "Aktuelles Passwort",
     "updating": "Aktualisierung...",
     "updated": "Aktualisiert",
-    "examApp": "Prüfungs-App"
+    "examApp": "Prüfungs-App",
+    "search": "Suche",
+    "survey": "Umfrage",
+    "browseBySubject": "Nach Fach durchsuchen",
+    "exams": "Prüfungen"
   }

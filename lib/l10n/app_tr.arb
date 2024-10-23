@@ -64,6 +64,10 @@
     "currentPassword": "Mevcut sifre",
     "updating": "Güncelleniyor...",
     "updated": "Güncellendi",
-    "examApp": "Sınav Uygulaması"
+    "examApp": "Sınav Uygulaması",
+    "search": "Arama",
+    "survey": "Anket",
+    "browseBySubject": "Konuya Göre Göz At",
+    "exams": "Sınavlar"
 }
   
