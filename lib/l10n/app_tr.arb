@@ -63,6 +63,10 @@
     "resetPassword": "Şifreyi sıfırla",
     "currentPassword": "Mevcut sifre",
     "updating": "Güncelleniyor...",
-    "updated": "Güncellendi"
+    "updated": "Güncellendi",
+    "chooseAnOption": "Seçin",
+    "gallery": "Galeri",
+    "camera": "Kamera",
+    "removePicture": "Resmi kaldır"
 }
   

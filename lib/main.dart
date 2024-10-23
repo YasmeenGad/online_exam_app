@@ -1,3 +1,5 @@
+import 'package:device_preview_plus/device_preview_plus.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:online_exam_app/src/core/dependency%20injection/di.dart';
@@ -11,17 +13,14 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   await Hive.openBox('userToken');
-
- // String? token = await getToken();
-
   configureDependencies();
-  runApp(OnlineExamApp());
+  runApp(
+    DevicePreview(
+      enabled: kReleaseMode,
+      builder: (context) => OnlineExamApp(), // Wrap your app
+    ),
+  );
 }
-
-// Future<String?> getToken() async {
-//   var box = await Hive.openBox('userToken');
-//   return box.get('token');
-// }
 
 class OnlineExamApp extends StatelessWidget {
   final String? token;
@@ -38,6 +37,8 @@ class OnlineExamApp extends StatelessWidget {
               supportedLocales: AppLocalizations.supportedLocales,
               locale: Locale(languageProvider.selectedLanguage.code),
               localizationsDelegates: AppLocalizations.localizationsDelegates,
+              useInheritedMediaQuery: true,
+              builder: DevicePreview.appBuilder,
               debugShowCheckedModeBanner: false,
               initialRoute: RoutesName.loginView,
               routes: AppRoutes.getRoutes(),

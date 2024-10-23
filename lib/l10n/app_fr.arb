@@ -63,5 +63,9 @@
     "resetPassword": "Reinitialiser le mot de passe",
     "currentPassword": "Mot de passe actuel",
     "updating": "Mise à jour...",
-    "updated": "Mise à jour !"
+    "updated": "Mise à jour !",
+    "chooseAnOption": "Choisissez une option",
+    "gallery": "Galerie",
+    "camera": "Caméra",
+    "removePicture": "Supprimer la photo"
   }

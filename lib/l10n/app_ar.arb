@@ -63,5 +63,9 @@
   "resetPassword": "اعادة تعيين كلمة المرور",
   "currentPassword": "كلمة المرور الحالية",
   "updating": "جاري التحديث...",
-  "updated": "تم التحديث بنجاح"
+  "updated": "تم التحديث بنجاح",
+  "chooseAnOption": "اختر أي من الخيارات",
+  "gallery": "المعرض",
+  "camera": "الكاميرا",
+  "removePicture": "إزالة الصورة"
 }
