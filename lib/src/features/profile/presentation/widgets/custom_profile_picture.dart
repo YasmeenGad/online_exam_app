@@ -1,11 +1,24 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:online_exam_app/src/core/styles/app_colors.dart';
+import '../../../../core/constants/assets.dart';
+import 'image_picker_sheet.dart';
 
-import '../../../../core/styles/app_colors.dart';
+class ProfilePic extends StatefulWidget {
+  const ProfilePic({Key? key}) : super(key: key);
 
-class ProfilePic extends StatelessWidget {
-  const ProfilePic({
-    Key? key,
-  }) : super(key: key);
+  @override
+  State<ProfilePic> createState() => _ProfilePicState();
+}
+
+class _ProfilePicState extends State<ProfilePic> {
+  File? _image;
+
+  void _setImage(File? image) {
+    setState(() {
+      _image = image;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,10 +29,12 @@ class ProfilePic extends StatelessWidget {
         fit: StackFit.expand,
         clipBehavior: Clip.none,
         children: [
-          const CircleAvatar(
-            backgroundImage:
-                NetworkImage("https://i.postimg.cc/0jqKB6mS/Profile-Image.png"),
-          ),
+          _image == null
+              ? CircleAvatar(
+                  backgroundImage: AssetImage(Assets.imageProfileImage),
+                )
+              : CircleAvatar(
+                  backgroundImage: FileImage(_image!) as ImageProvider),
           Positioned(
             right: -12,
             bottom: 10,
@@ -28,22 +43,26 @@ class ProfilePic extends StatelessWidget {
               width: 46,
               child: TextButton(
                 style: TextButton.styleFrom(
-                  foregroundColor: Colors.white,
+                  foregroundColor: AppColors.whiteColor,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50),
-                    side: const BorderSide(color: Colors.white),
+                    side: const BorderSide(color: AppColors.whiteColor),
                   ),
-                  backgroundColor: AppColors.lightBlue,
+                  backgroundColor:
+                      Colors.lightBlue, // Replace with AppColors.lightBlue
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  showImagePickerSheet(context, _setImage);
+                },
                 child: Icon(
                   Icons.camera_alt_outlined,
-                  color: AppColors.blueBaseColor,
+                  color: AppColors.whiteColor,
+                  // Replace with AppColors.blueBaseColor
                   size: 22,
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );
