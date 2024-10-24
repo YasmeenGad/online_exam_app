@@ -8,4 +8,6 @@ class AppApis {
   static const String profileData = "api/v1/auth/profileData";
   static const String changePassword = "api/v1/auth/changePassword";
   static const String editProfile = "api/v1/auth/editProfile";
+  static const String getSubjects = "api/v1/subjects";
+  static const String getExamsById = "api/v1/exams";
 }

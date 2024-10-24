@@ -28,6 +28,17 @@ import '../../features/auth/domain/usecases/auth_usecase.dart' as _i436;
 import '../../features/auth/presentation/cubit/auth/auth_view_model.dart'
     as _i616;
 import '../../features/profile/data/api/network_module.dart' as _i442;
+import '../../features/exam/data/api/exam_client.dart' as _i12;
+import '../../features/exam/data/data_sources/contracts/exam_online_datasource.dart'
+    as _i926;
+import '../../features/exam/data/data_sources/implement/exam_online_datasource_impl.dart'
+    as _i742;
+import '../../features/exam/data/repositories/exam_repo_impl.dart' as _i1047;
+import '../../features/exam/domain/repositories/exam_repo.dart' as _i377;
+import '../../features/exam/domain/use_case/exam_use_case.dart' as _i315;
+import '../../features/exam/presentation/manager/exam/exam_cubit.dart' as _i604;
+import '../../features/exam/presentation/manager/subject/subject_cubit.dart'
+    as _i294;
 import '../../features/profile/data/api/profile_retrofit_client.dart' as _i915;
 import '../../features/profile/data/datasources/contracts/online_datasource/profile_datasource.dart'
     as _i907;
@@ -40,6 +51,8 @@ import '../../features/profile/domain/contracts/profile_repository.dart'
 import '../../features/profile/domain/usecases/profile_usecase.dart' as _i996;
 import '../../features/profile/presentation/cubit/profile_view_model.dart'
     as _i516;
+import '../network/dio_factory.dart' as _i798;
+import '../network/network_module.dart' as _i200;
 import '../provider/language_provider.dart' as _i538;
 import '../provider/language_service.dart' as _i734;
 
@@ -60,14 +73,21 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i1023.ApiManager>(() => _i1023.ApiManager());
     gh.lazySingleton<_i734.LanguageService>(() => _i734.LanguageService());
     gh.lazySingleton<_i361.Dio>(() => networkModule.provideDio());
+    gh.factory<_i798.DioFactory>(() => _i798.DioFactory());
+    gh.singleton<_i1023.ApiManager>(() => _i1023.ApiManager());
+    gh.lazySingleton<_i734.LanguageService>(() => _i734.LanguageService());
+    gh.lazySingleton<_i361.Dio>(() => networkModule.dio);
     gh.factory<_i538.LanguageProvider>(
         () => _i538.LanguageProvider(gh<_i734.LanguageService>()));
     gh.factory<_i449.AuthDataSource>(
         () => _i239.AuthDataSourceImpl(gh<_i1023.ApiManager>()));
+    gh.lazySingleton<_i12.ExamClient>(() => _i12.ExamClient(gh<_i361.Dio>()));
     gh.singleton<_i915.ProfileRetrofitClient>(
         () => _i915.ProfileRetrofitClient(gh<_i361.Dio>()));
     gh.factory<_i331.OfflineAuthDataSource>(
         () => _i110.OfflineAuthDataSourceImpl());
+    gh.factory<_i926.ExamOnlineDataSource>(
+        () => _i742.ExamOnlineDataSourceImpl(gh<_i12.ExamClient>()));
     gh.factory<_i907.OnlineProfileDataSource>(
         () => _i966.ProfileDataSourceImpl(gh<_i915.ProfileRetrofitClient>()));
     gh.factory<_i435.ProfileRepository>(
@@ -76,6 +96,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i662.AuthRepositoryImpl(gh<_i449.AuthDataSource>()));
     gh.factory<_i436.AuthUsecase>(
         () => _i436.AuthUsecase(authRepo: gh<_i670.AuthRepo>()));
+    gh.factory<_i377.ExamRepo>(
+        () => _i1047.ExamRepoImpl(gh<_i926.ExamOnlineDataSource>()));
+    gh.factory<_i315.ExamUseCase>(
+        () => _i315.ExamUseCase(gh<_i377.ExamRepo>()));
     gh.factory<_i996.ProfileUseCase>(
         () => _i996.ProfileUseCase(gh<_i435.ProfileRepository>()));
     gh.factory<_i516.ProfileViewModel>(
@@ -84,8 +108,11 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i436.AuthUsecase>(),
           gh<_i331.OfflineAuthDataSource>(),
         ));
+    gh.factory<_i294.SubjectCubit>(
+        () => _i294.SubjectCubit(gh<_i315.ExamUseCase>()));
+    gh.factory<_i604.ExamCubit>(() => _i604.ExamCubit(gh<_i315.ExamUseCase>()));
     return this;
   }
 }
 
-class _$NetworkModule extends _i442.NetworkModule {}
+class _$NetworkModule extends _i200.NetworkModule {}

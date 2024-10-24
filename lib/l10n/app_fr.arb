@@ -68,4 +68,13 @@
     "gallery": "Galerie",
     "camera": "Caméra",
     "removePicture": "Supprimer la photo"
+    "updated": "Mise à jour !",
+    "examApp": "Exam App",
+    "search": "Rechercher",
+    "survey": "Enquête",
+    "browseBySubject": "Parcourir par matière",
+    "exams": "Examens",
+    "minutes": "minutes",
+    "questions": "questions",
+    "noSubjectsFound": "Aucune matière trouvée"
   }

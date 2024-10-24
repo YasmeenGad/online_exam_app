@@ -9,7 +9,7 @@ import 'package:online_exam_app/src/features/auth/data/api/models/response/forge
 import 'package:online_exam_app/src/features/auth/data/api/models/response/sign_in_response.dart';
 import 'package:online_exam_app/src/features/auth/data/api/models/response/sign_up_response.dart';
 import 'package:online_exam_app/src/features/auth/data/core/api_execution.dart';
-import 'package:online_exam_app/src/features/auth/domain/core/result.dart';
+import 'package:online_exam_app/src/core/network/result.dart';
 
 import 'models/request/email_verification_model.dart';
 import 'models/request/reset_password_model.dart';

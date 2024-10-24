@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';
 import 'package:online_exam_app/src/features/auth/data/api/models/response/forget_password_response.dart';
 import 'package:online_exam_app/src/features/auth/data/api/models/response/reset_password_response.dart';
@@ -8,7 +7,7 @@ import 'package:online_exam_app/src/features/auth/data/api/models/response/sign_
 import 'package:online_exam_app/src/features/auth/data/api/models/response/sign_up_response.dart';
 import 'package:online_exam_app/src/features/auth/data/datasources/contracts/offline_auth_datasource.dart';
 import 'package:online_exam_app/src/features/auth/domain/core/AppExceptions.dart';
-import 'package:online_exam_app/src/features/auth/domain/core/result.dart';
+import 'package:online_exam_app/src/core/network/result.dart';
 import 'package:online_exam_app/src/features/auth/domain/entities/forget_password_entity.dart';
 import 'package:online_exam_app/src/features/auth/domain/entities/sign_in_entity.dart';
 import 'package:online_exam_app/src/features/auth/domain/entities/sign_up_entity.dart';
@@ -67,7 +66,6 @@ class AuthViewModel extends Cubit<AuthState> {
     switch (result) {
       case Success<SignInResponse>():
         {
-         // await _saveToken(result.data?.token);
           emit(LoginSuccess(signInResponse: result.data!));
           await offlineAuthDataSource.saveToken(result.data!.token);
           Navigator.pushReplacementNamed(

@@ -8,6 +8,12 @@ abstract class AppStyles {
       fontWeight: FontWeight.w500,
     );
   }
+  static TextStyle styleMedium30(BuildContext context) {
+    return GoogleFonts.inter(
+      fontSize: getResponsiveFontSize(context, fontSize: 30),
+      fontWeight: FontWeight.w500,
+    );
+  }
 
 static TextStyle styleRegular12(context) {
   return GoogleFonts.roboto(
@@ -31,6 +37,13 @@ static TextStyle styleRegular13(context) {
     fontWeight: FontWeight.w400,
   );
 }
+
+  static TextStyle styleMedium13(context) {
+    return GoogleFonts.inter(
+      fontSize: getResponsiveFontSize(context, fontSize: 13),
+      fontWeight: FontWeight.w500,
+    );
+  }
 
 static TextStyle styleMedium16(BuildContext context) {
   return GoogleFonts.roboto(

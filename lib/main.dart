@@ -3,10 +3,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:online_exam_app/src/core/dependency%20injection/di.dart';
+import 'package:online_exam_app/src/core/global/splash.dart';
 import 'package:online_exam_app/src/core/provider/language_provider.dart';
 import 'package:online_exam_app/src/core/routes/app_routes.dart';
-import 'package:online_exam_app/src/core/routes/routes_name.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:online_exam_app/src/features/auth/data/datasources/contracts/offline_auth_datasource.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -40,8 +41,9 @@ class OnlineExamApp extends StatelessWidget {
               useInheritedMediaQuery: true,
               builder: DevicePreview.appBuilder,
               debugShowCheckedModeBanner: false,
-              initialRoute: RoutesName.loginView,
+            //  initialRoute: RoutesName.loginView,
               routes: AppRoutes.getRoutes(),
+              home: SplashView(offlineAuthDataSource: getIt<OfflineAuthDataSource>()),
             );
           },
         ));

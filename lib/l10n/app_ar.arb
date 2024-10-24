@@ -68,4 +68,13 @@
   "gallery": "المعرض",
   "camera": "الكاميرا",
   "removePicture": "إزالة الصورة"
+  "updated": "تم التحديث بنجاح",
+  "examApp": "تطبيق الامتحان",
+  "search": "بحث",
+  "survey": "الاستبيان",
+  "browseBySubject": "تصفح حسب الموضوع",
+  "exams": "الامتحانات",
+  "minutes": "دقيقة",
+  "questions": "الأسئلة",
+  "noSubjectsFound": "لم يتم العثور على مواضيع"
 }
