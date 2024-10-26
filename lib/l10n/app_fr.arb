@@ -76,5 +76,6 @@
     "exams": "Examens",
     "minutes": "minutes",
     "questions": "questions",
-    "noSubjectsFound": "Aucune matière trouvée"
+    "noSubjectsFound": "Aucune matière trouvée",
+    "change": "Changer"
   }
