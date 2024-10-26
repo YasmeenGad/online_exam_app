@@ -54,7 +54,7 @@
     "dontHaveAnAccount": "Haben Sie noch kein Konto?",
     "enterNewPassword": "Geben Sie Ihr neues Passwort ein",
     "newPassword": "Neues Passwort",
-    "languages" : "Sprachen",
+    "languages": "Sprachen",
     "selectLanguage": "Sprache auswählen",
     "home": "Startseite",
     "profile": "Profil",
@@ -77,5 +77,6 @@
     "minutes": "Minuten",
     "questions": "Fragen",
     "noSubjectsFound": "Keine Fächer gefunden",
-    "change": "Aendern"
-  }
+    "change": "Aendern",
+    "loadingItems": "Elemente werden geladen..."
+}

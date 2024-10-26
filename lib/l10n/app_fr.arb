@@ -77,5 +77,6 @@
     "minutes": "minutes",
     "questions": "questions",
     "noSubjectsFound": "Aucune matière trouvée",
-    "change": "Changer"
+    "change": "Changer",
+    "loadingItems": "Chargement des éléments..."
   }
