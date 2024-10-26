@@ -55,10 +55,12 @@ dependencies:
   hive: ^2.2.3
   hive_flutter:
   image_picker: ^1.1.2
-  device_preview_plus: ^2.1.3
+  device_preview_plus:
   cached_network_image:
   page_animation_transition: ^1.0.0
   path_provider: ^2.1.4
+  lottie:
+  skeletonizer:
 
 
 flutter_assets:

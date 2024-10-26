@@ -77,5 +77,6 @@
     "minutes": "minutes",
     "questions": "questions",
     "noSubjectsFound": "No subjects found",
-    "change": "Change"
+    "change": "Change",
+    "loadingItems": "Loading items..."
 }

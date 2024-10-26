@@ -77,5 +77,6 @@
   "minutes": "دقيقة",
   "questions": "الأسئلة",
   "noSubjectsFound": "لم يتم العثور على مواضيع",
-  "change": "تغيير"
+  "change": "تغيير",
+  "loadingItems": "جاري تحميل العناصر..."
 }
