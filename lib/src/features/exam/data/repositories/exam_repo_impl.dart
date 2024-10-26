@@ -10,7 +10,7 @@ class ExamRepoImpl implements ExamRepo{
   final ExamOnlineDataSource _examOnlineDataSource;
   ExamRepoImpl(this._examOnlineDataSource);
   @override
-  Future<Result<Exam>> getExamsById(String subjectId, String token) async {
+  Future<Result<List<Exam>>> getExamsById(String subjectId, String token) async {
     var response =  await _examOnlineDataSource.getExamById(subjectId, token);
     return response;
 

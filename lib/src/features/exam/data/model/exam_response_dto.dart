@@ -8,12 +8,12 @@ class ExamResponseDto {
   @JsonKey(name: "message")
   final String? message;
 
-  @JsonKey(name: "exam")
-  final ExamDto? exam;
+  @JsonKey(name: "exams")
+  final List<ExamDto>? exams;
 
   ExamResponseDto({
     this.message,
-    this.exam,
+    this.exams,
   });
 
   factory ExamResponseDto.fromJson(Map<String, dynamic> json) =>
@@ -21,8 +21,9 @@ class ExamResponseDto {
 
   Map<String, dynamic> toJson() => _$ExamResponseDtoToJson(this);
 
-  Exam? toDomain() {
-    return exam?.toDomain();
+
+  List<Exam> toDomain() {
+    return exams?.map((examDto) => examDto.toDomain()).toList() ?? [];
   }
 }
 
@@ -66,7 +67,7 @@ class ExamDto {
 
   Exam toDomain() {
     return Exam(
-      id: id, // Changed variable name to follow Dart conventions
+      id: id,
       title: title,
       duration: duration,
       subject: subject,

@@ -74,7 +74,7 @@ class _ExamClient implements ExamClient {
     )
         .compose(
           _dio.options,
-          'api/v1/exams/${subjectId}',
+          'api/v1/exams?subject=${subjectId}',
           queryParameters: queryParameters,
           data: _data,
         )

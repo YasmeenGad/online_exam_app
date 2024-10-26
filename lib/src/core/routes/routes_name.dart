@@ -10,4 +10,5 @@ class RoutesName {
   static const String profileView = 'profileView';
   static const String resetPasswordProfileView = 'resetPasswordProfileView';
   static const String examView = 'examView';
+  static const String splashView = 'splashView';
 }

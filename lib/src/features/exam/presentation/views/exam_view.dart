@@ -4,9 +4,11 @@ import 'package:online_exam_app/src/core/global/custom_appbar.dart';
 import 'package:online_exam_app/src/features/exam/presentation/manager/exam/exam_cubit.dart';
 import 'package:online_exam_app/src/features/exam/presentation/widgets/exam_item.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../../../core/constants/assets.dart';
 import 'package:online_exam_app/src/features/exam/presentation/widgets/exam_item_loading.dart';
 import '../../../../core/dependency injection/di.dart';
-import '../../../../core/global/dialog.dart';
+import '../widgets/build_empty_data_widget.dart';
+import '../widgets/exam_item_loading.dart';
 
 class ExamView extends StatelessWidget {
   const ExamView({super.key, required this.subjectId});
@@ -23,7 +25,9 @@ class ExamView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: 60),
-            CustomAppBar(appBarTxt: '${AppLocalizations.of(context)?.exams}', showArrow: true),
+            CustomAppBar(
+                appBarTxt: '${AppLocalizations.of(context)?.exams}',
+                showArrow: true),
             SizedBox(height: 15),
             BlocProvider(
               create: (context) =>
@@ -33,11 +37,24 @@ class ExamView extends StatelessWidget {
                   if (state is ExamLoading) {
                     return ExamItemLoading();
                   } else if (state is ExamError) {
-                    return Center(
-                      child: Text(state.exception.toString()),
-                    );
+                    return Text(state.exception.toString());
                   } else if (state is ExamSuccess) {
-                    return ExamItem(exams: state.exams);
+                    if (state.exams.isEmpty) {
+                      return EmptyDataWidget(
+                        title: AppLocalizations.of(context)!.noExamsAvailable,
+                        imageUrl: Assets.imagesNoData,
+                      );
+                    }
+                    return Expanded(
+                      child: ListView.separated(
+                        separatorBuilder: (context, index) =>
+                            SizedBox(height: 15),
+                        physics: BouncingScrollPhysics(),
+                        itemCount: state.exams.length,
+                        itemBuilder: (context, index) =>
+                            ExamItem(exams: state.exams[index]),
+                      ),
+                    );
                   } else {
                     return Container();
                   }

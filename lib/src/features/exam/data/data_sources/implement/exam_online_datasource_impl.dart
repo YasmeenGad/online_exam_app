@@ -15,7 +15,7 @@ class ExamOnlineDataSourceImpl implements ExamOnlineDataSource {
   ExamOnlineDataSourceImpl(this._examClient);
 
   @override
-  Future<Result<Exam>> getExamById(
+  Future<Result<List<Exam>>> getExamById(
       String subjectId, String token) async {
     return await ExecuteApi(
       () {

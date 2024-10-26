@@ -21,7 +21,7 @@ abstract class ExamClient {
       @Header('token') String token,
       );
 
-  @GET('${AppApis.getExamsById}/{subjectId}')
+  @GET('${AppApis.getExamsById}={subjectId}')
   Future<ExamResponseDto> getExamById(
       @Header('token') String token,
       @Path('subjectId') String subjectId,

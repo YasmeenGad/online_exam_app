@@ -77,6 +77,8 @@
     "minutes": "Minuten",
     "questions": "Fragen",
     "noSubjectsFound": "Keine Fächer gefunden",
-    "change": "Aendern",
+    "noExamsAvailable": "Keine Prüfungen verfügbar",
     "loadingItems": "Elemente werden geladen..."
+  
+    "change": "Aendern",
 }
