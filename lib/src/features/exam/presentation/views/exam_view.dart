@@ -4,6 +4,7 @@ import 'package:online_exam_app/src/core/global/custom_appbar.dart';
 import 'package:online_exam_app/src/features/exam/presentation/manager/exam/exam_cubit.dart';
 import 'package:online_exam_app/src/features/exam/presentation/widgets/exam_item.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:online_exam_app/src/features/exam/presentation/widgets/exam_item_loading.dart';
 import '../../../../core/dependency injection/di.dart';
 import '../../../../core/global/dialog.dart';
 
@@ -30,7 +31,7 @@ class ExamView extends StatelessWidget {
               child: BlocBuilder<ExamCubit, ExamState>(
                 builder: (context, state) {
                   if (state is ExamLoading) {
-                    return loadingIndicator();
+                    return ExamItemLoading();
                   } else if (state is ExamError) {
                     return Center(
                       child: Text(state.exception.toString()),
