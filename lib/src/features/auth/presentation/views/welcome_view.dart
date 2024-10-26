@@ -164,11 +164,8 @@ class _WelcomeViewState extends State<WelcomeView> {
                 SliverToBoxAdapter(
                   child: GestureDetector(
                     onTap: () {
-                      // Navigator.pushReplacementNamed(
-                      //     context, RoutesName.loginView);
-                      Navigator.of(context).push(PageAnimationTransition(
-                          page: const LoginView(),
-                          pageAnimationType: ScaleAnimationTransition()));
+                      Navigator.pushReplacementNamed(
+                          context, RoutesName.loginView);
                     },
                     child: FractionallySizedBox(
                       widthFactor: 0.5,

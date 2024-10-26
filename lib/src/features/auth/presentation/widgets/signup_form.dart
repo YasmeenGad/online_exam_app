@@ -3,7 +3,7 @@ import 'package:online_exam_app/src/core/validators/validators.dart';
 import 'package:online_exam_app/src/features/auth/presentation/widgets/custom_text_form_field.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class SignUpForm extends StatelessWidget {
+class SignUpForm extends StatefulWidget {
   final TextEditingController usernameController;
   final TextEditingController firstNameController;
   final TextEditingController lastNameController;
@@ -26,13 +26,33 @@ class SignUpForm extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  _SignUpFormState createState() => _SignUpFormState();
+}
+
+class _SignUpFormState extends State<SignUpForm> {
+  bool _isPasswordVisible = false;
+  bool _isConfirmPasswordVisible = false;
+
+  void _togglePasswordVisibility() {
+    setState(() {
+      _isPasswordVisible = !_isPasswordVisible;
+    });
+  }
+
+  void _toggleConfirmPasswordVisibility() {
+    setState(() {
+      _isConfirmPasswordVisible = !_isConfirmPasswordVisible;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Form(
-      key: formKey,
+      key: widget.formKey,
       child: Column(
         children: [
           CustomTextFormField(
-            controller: usernameController,
+            controller: widget.usernameController,
             hintText: '${AppLocalizations.of(context)!.hintUserName}',
             labelText: '${AppLocalizations.of(context)!.labelUserName}',
             validator: (value) => Validators.validateUserName(value, context),
@@ -42,7 +62,7 @@ class SignUpForm extends StatelessWidget {
             children: [
               Expanded(
                 child: CustomTextFormField(
-                  controller: firstNameController,
+                  controller: widget.firstNameController,
                   hintText: '${AppLocalizations.of(context)!.hintFirstName}',
                   labelText: '${AppLocalizations.of(context)!.labelFirstName}',
                   validator: (value) => Validators.validateFirstName(value, context),
@@ -51,7 +71,7 @@ class SignUpForm extends StatelessWidget {
               const SizedBox(width: 20),
               Expanded(
                 child: CustomTextFormField(
-                  controller: lastNameController,
+                  controller: widget.lastNameController,
                   hintText: '${AppLocalizations.of(context)!.hintLastName}',
                   labelText: '${AppLocalizations.of(context)!.labelLastName}',
                   validator: (value) => Validators.validateLastName(value, context),
@@ -61,7 +81,7 @@ class SignUpForm extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           CustomTextFormField(
-            controller: emailController,
+            controller: widget.emailController,
             hintText: '${AppLocalizations.of(context)!.hintEmail}',
             labelText: '${AppLocalizations.of(context)!.labelEmail}',
             validator: (value) => Validators.validateEmail(value, context),
@@ -71,31 +91,52 @@ class SignUpForm extends StatelessWidget {
             children: [
               Expanded(
                 child: CustomTextFormField(
-                  isPassword: true,
-                  controller: passwordController,
+                  controller: widget.passwordController,
                   hintText: '${AppLocalizations.of(context)!.hintPassword}',
                   labelText: '${AppLocalizations.of(context)!.labelPassword}',
-                  validator: (value) => Validators.validatePassword(value,context),
+                  isPassword: !_isPasswordVisible,
+                  validator: (value) =>
+                      Validators.validatePassword(value, context),
+                  suffix: IconButton(
+                    icon: Icon(
+                      _isPasswordVisible
+                          ? Icons.visibility
+                          : Icons.visibility_off,
+                      size: 20,
+                    ),
+                    onPressed: _togglePasswordVisibility,
+                  ),
                 ),
               ),
               const SizedBox(width: 20),
               Expanded(
                 child: CustomTextFormField(
-                  isPassword: true,
-                  controller: confirmPasswordController,
+                  controller: widget.confirmPasswordController,
                   hintText: '${AppLocalizations.of(context)!.hintConfirmPassword}',
                   labelText: '${AppLocalizations.of(context)!.labelConfirmPassword}',
-                  validator: (value) => Validators.validateConfirmPassword(value, passwordController.text, context),
+                  isPassword: !_isConfirmPasswordVisible,
+                  validator: (value) => Validators.validateConfirmPassword(
+                      value, widget.passwordController.text, context),
+                  suffix: IconButton(
+                    icon: Icon(
+                      _isConfirmPasswordVisible
+                          ? Icons.visibility
+                          : Icons.visibility_off,
+                      size: 20,
+                    ),
+                    onPressed: _toggleConfirmPasswordVisibility,
+                  ),
                 ),
               ),
             ],
           ),
           const SizedBox(height: 20),
           CustomTextFormField(
-            controller: phoneNumberController,
+            controller: widget.phoneNumberController,
             hintText: '${AppLocalizations.of(context)!.hintPhoneNumber}',
             labelText: '${AppLocalizations.of(context)!.labelPhoneNumber}',
-            validator: (value) => Validators.validatePhoneNumber(value,context),
+            validator: (value) =>
+                Validators.validatePhoneNumber(value, context),
           ),
         ],
       ),
