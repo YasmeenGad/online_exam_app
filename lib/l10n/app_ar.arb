@@ -71,5 +71,7 @@
   "exams": "الامتحانات",
   "minutes": "دقيقة",
   "questions": "الأسئلة",
-  "noSubjectsFound": "لم يتم العثور على مواضيع"
+  "noSubjectsFound": "لم يتم العثور على مواضيع",
+  "noExamsAvailable": "لا توجد امتحانات متاحة",
+  "loadingItems": "جاري تحميل العناصر..."
 }

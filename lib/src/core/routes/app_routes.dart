@@ -9,11 +9,14 @@ import 'package:online_exam_app/src/features/auth/presentation/views/signup_view
 import 'package:online_exam_app/src/features/profile/presentation/views/profile_view.dart';
 import 'package:online_exam_app/src/features/profile/presentation/views/reset_password_profile_view.dart';
 
+import '../../features/auth/data/datasources/contracts/offline_auth_datasource.dart';
 import '../../features/auth/presentation/views/email_verification_view.dart';
 import '../../features/auth/presentation/views/reset_password_view.dart';
 import 'package:online_exam_app/src/core/global/layout.dart';
 
 import '../../features/exam/presentation/views/exam_view.dart';
+import '../../features/splash/view/splash_view.dart';
+import '../dependency injection/di.dart';
 
 
 class AppRoutes {
@@ -31,6 +34,9 @@ class AppRoutes {
           ResetPasswordProfileView(),
       RoutesName.examView: (context) => ExamView(
         subjectId: ModalRoute.of(context)!.settings.arguments as String,
+      ),
+      RoutesName.splashView: (context) =>  SplashView(
+         offlineAuthDataSource: getIt<OfflineAuthDataSource>(),
       ),
 
     };

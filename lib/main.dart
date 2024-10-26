@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:online_exam_app/src/core/dependency%20injection/di.dart';
-import 'package:online_exam_app/src/core/global/splash.dart';
+import 'package:online_exam_app/src/core/routes/routes_name.dart';
+import 'package:online_exam_app/src/features/splash/view/splash_view.dart';
 import 'package:online_exam_app/src/core/provider/language_provider.dart';
 import 'package:online_exam_app/src/core/routes/app_routes.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -40,9 +41,8 @@ class OnlineExamApp extends StatelessWidget {
               locale: Locale(languageProvider.selectedLanguage.code),
               localizationsDelegates: AppLocalizations.localizationsDelegates,
               debugShowCheckedModeBanner: false,
-            //  initialRoute: RoutesName.loginView,
+              initialRoute: RoutesName.splashView,
               routes: AppRoutes.getRoutes(),
-              home: SplashView(offlineAuthDataSource: getIt<OfflineAuthDataSource>()),
             );
           },
         ));

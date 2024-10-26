@@ -68,8 +68,8 @@ extension GetItInjectableX on _i174.GetIt {
     final networkModule = _$NetworkModule();
     gh.factory<_i798.DioFactory>(() => _i798.DioFactory());
     gh.singleton<_i1023.ApiManager>(() => _i1023.ApiManager());
-    gh.lazySingleton<_i734.LanguageService>(() => _i734.LanguageService());
     gh.lazySingleton<_i361.Dio>(() => networkModule.dio);
+    gh.lazySingleton<_i734.LanguageService>(() => _i734.LanguageService());
     gh.factory<_i538.LanguageProvider>(
         () => _i538.LanguageProvider(gh<_i734.LanguageService>()));
     gh.factory<_i449.AuthDataSource>(
@@ -101,9 +101,9 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i436.AuthUsecase>(),
           gh<_i331.OfflineAuthDataSource>(),
         ));
+    gh.factory<_i604.ExamCubit>(() => _i604.ExamCubit(gh<_i315.ExamUseCase>()));
     gh.factory<_i294.SubjectCubit>(
         () => _i294.SubjectCubit(gh<_i315.ExamUseCase>()));
-    gh.factory<_i604.ExamCubit>(() => _i604.ExamCubit(gh<_i315.ExamUseCase>()));
     return this;
   }
 }

@@ -71,5 +71,7 @@
     "exams": "Prüfungen",
     "minutes": "Minuten",
     "questions": "Fragen",
-    "noSubjectsFound": "Keine Fächer gefunden"
+    "noSubjectsFound": "Keine Fächer gefunden",
+    "noExamsAvailable": "Keine Prüfungen verfügbar",
+    "loadingItems": "Elemente werden geladen..."
   }

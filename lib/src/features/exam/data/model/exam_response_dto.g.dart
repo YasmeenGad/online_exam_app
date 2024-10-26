@@ -9,15 +9,15 @@ part of 'exam_response_dto.dart';
 ExamResponseDto _$ExamResponseDtoFromJson(Map<String, dynamic> json) =>
     ExamResponseDto(
       message: json['message'] as String?,
-      exam: json['exam'] == null
-          ? null
-          : ExamDto.fromJson(json['exam'] as Map<String, dynamic>),
+      exams: (json['exams'] as List<dynamic>?)
+          ?.map((e) => ExamDto.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$ExamResponseDtoToJson(ExamResponseDto instance) =>
     <String, dynamic>{
       'message': instance.message,
-      'exam': instance.exam,
+      'exams': instance.exams,
     };
 
 ExamDto _$ExamDtoFromJson(Map<String, dynamic> json) => ExamDto(

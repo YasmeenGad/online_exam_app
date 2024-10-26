@@ -14,7 +14,7 @@ final class ExamError extends ExamState {
 }
 
 final class ExamSuccess extends ExamState {
-  final Exam exams;
+  final List<Exam> exams;
 
   ExamSuccess(this.exams);
 }

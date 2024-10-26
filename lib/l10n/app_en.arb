@@ -71,5 +71,7 @@
     "exams": "Exams",
     "minutes": "minutes",
     "questions": "questions",
-    "noSubjectsFound": "No subjects found"
+    "noSubjectsFound": "No subjects found",
+    "noExamsAvailable": "No exams available",
+    "loadingItems": "Loading items..."
 }

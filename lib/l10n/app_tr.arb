@@ -71,6 +71,8 @@
     "exams": "Sınavlar",
     "minutes": "Dakika",
     "questions": "Soru",
-    "noSubjectsFound": "Konu bulunamadı"
+    "noSubjectsFound": "Konu bulunamadı",
+    "noExamsAvailable": "Mevcut sınav yok",
+    "loadingItems": "Öğeler yükleniyor"
 }
   
