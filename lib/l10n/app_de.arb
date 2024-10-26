@@ -76,5 +76,6 @@
     "exams": "Prüfungen",
     "minutes": "Minuten",
     "questions": "Fragen",
-    "noSubjectsFound": "Keine Fächer gefunden"
+    "noSubjectsFound": "Keine Fächer gefunden",
+    "change": "Aendern"
   }

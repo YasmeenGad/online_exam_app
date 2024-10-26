@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:online_exam_app/src/features/profile/domain/entities/response/profile_data_response.dart';
 
 import '../../domain/entities/response/change_password_response_entity.dart';
@@ -52,4 +54,11 @@ class EditProfileError extends ProfileState {
   final String? exception;
 
   EditProfileError({this.exception});
+}
+
+/* cache image */
+class CachedProfileImageLoadedState extends ProfileState {
+  File imageFile;
+
+  CachedProfileImageLoadedState(this.imageFile);
 }

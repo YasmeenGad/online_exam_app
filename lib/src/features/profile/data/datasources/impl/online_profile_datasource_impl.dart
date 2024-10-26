@@ -7,7 +7,7 @@ import '../../../domain/core/profile_ result.dart';
 import '../../../domain/entities/response/profile_data_response.dart';
 import '../../api/profile_retrofit_client.dart';
 import '../../core/profile_api_excution.dart';
-import '../contracts/online_datasource/profile_datasource.dart';
+import '../contracts/online_datasource/online_profile_datasource.dart';
 
 @Injectable(as: OnlineProfileDataSource)
 class ProfileDataSourceImpl implements OnlineProfileDataSource {

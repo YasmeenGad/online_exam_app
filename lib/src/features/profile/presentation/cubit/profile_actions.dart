@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:online_exam_app/src/features/profile/domain/entities/response/profile_data_response.dart';
 
@@ -24,3 +26,11 @@ class EditProfile extends ProfileActions {
 
   EditProfile({required this.context, required this.profileData});
 }
+
+class CacheProfileImage extends ProfileActions {
+  File imageFile;
+
+  CacheProfileImage({required this.imageFile});
+}
+
+class GetCachedProfileImage extends ProfileActions {}

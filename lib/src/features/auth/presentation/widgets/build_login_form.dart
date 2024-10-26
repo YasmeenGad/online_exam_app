@@ -7,6 +7,7 @@ import 'package:online_exam_app/src/core/validators/validators.dart';
 import 'package:online_exam_app/src/features/auth/domain/entities/sign_in_entity.dart';
 import 'package:online_exam_app/src/features/auth/presentation/cubit/auth/auth_states.dart';
 import 'package:online_exam_app/src/core/global/custom_button.dart';
+import 'package:online_exam_app/src/features/auth/presentation/views/signup_view.dart';
 import 'package:online_exam_app/src/features/auth/presentation/widgets/custom_text_form_field.dart';
 import 'package:online_exam_app/src/features/auth/presentation/widgets/auth_footer.dart';
 import '../cubit/auth/auth_view_model.dart';
@@ -22,39 +23,36 @@ class BuildLoginForm extends StatefulWidget {
 }
 
 class _BuildLoginFormState extends State<BuildLoginForm> {
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   late final AuthViewModel authViewModel;
+  bool isPasswordVisible = false; // New variable to manage password visibility
 
   @override
   void initState() {
     super.initState();
     authViewModel = getIt.get<AuthViewModel>();
   }
-  Widget build(BuildContext context) {
 
+  @override
+  Widget build(BuildContext context) {
     return BlocProvider<AuthViewModel>(
       create: (context) => authViewModel,
       child: BlocConsumer<AuthViewModel, AuthState>(
         listener: (context, state) {
           switch (state) {
             case LoginLoading():
-              {
-                CustomToast.showLoadingToast(message: "${AppLocalizations.of(context)!.loading}");
-
-                break;
-              }
+              CustomToast.showLoadingToast(
+                  message: "${AppLocalizations.of(context)!.loading}");
+              break;
             case LoginError():
-              {
-                CustomToast.showErrorToast(message: state.exception.toString());
-                break;
-              }
+              CustomToast.showErrorToast(message: state.exception.toString());
+              break;
             case LoginSuccess():
-              {
-                CustomToast.showSuccessToast(message: "${AppLocalizations.of(context)!.success}");
-                break;
-              }
+              CustomToast.showSuccessToast(
+                  message: "${AppLocalizations.of(context)!.success}");
+              break;
             default:
           }
         },
@@ -75,7 +73,22 @@ class _BuildLoginFormState extends State<BuildLoginForm> {
                 ),
                 const SizedBox(height: 30),
                 CustomTextFormField(
-                  isPassword: true,
+                  suffix: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        isPasswordVisible =
+                            !isPasswordVisible; // Toggle password visibility
+                      });
+                    },
+                    child: Icon(
+                      isPasswordVisible
+                          ? Icons.visibility
+                          : Icons.visibility_off,
+                      size: 20,
+                    ),
+                  ),
+                  isPassword: !isPasswordVisible,
+                  // Toggle `isPassword` based on the visibility state
                   controller: passwordController,
                   hintText: '${AppLocalizations.of(context)!.hintPassword}',
                   labelText: '${AppLocalizations.of(context)!.labelPassword}',
@@ -85,19 +98,28 @@ class _BuildLoginFormState extends State<BuildLoginForm> {
                 forgetPasswordText(context),
                 const SizedBox(height: 100),
                 GestureDetector(
-                    onTap: () {
-                      if (formKey.currentState!.validate()) {
-                        authViewModel.login(SignInEntity(
+                  onTap: () {
+                    if (formKey.currentState!.validate()) {
+                      authViewModel.login(
+                        SignInEntity(
                           email: emailController.text.trim(),
                           password: passwordController.text.trim(),
-                        ), context);
-                      }
-                    },
-                    child: CustomButton(
-                      txt: "${AppLocalizations.of(context)!.login}",
-                    )),
+                        ),
+                        context,
+                      );
+                    }
+                  },
+                  child: CustomButton(
+                    txt: "${AppLocalizations.of(context)!.login}",
+                  ),
+                ),
                 const SizedBox(height: 13),
-                AuthFooter(question: "${AppLocalizations.of(context)!.dontHaveAnAccount}", txt: "${AppLocalizations.of(context)!.signUp}", route: RoutesName.signUpView,),
+                AuthFooter(
+                  question:
+                      "${AppLocalizations.of(context)!.dontHaveAnAccount}",
+                  txt: "${AppLocalizations.of(context)!.signUp}",
+                  route: SignUpView(),
+                ),
               ],
             ),
           );
