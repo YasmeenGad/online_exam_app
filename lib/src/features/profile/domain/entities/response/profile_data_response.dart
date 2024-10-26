@@ -6,6 +6,20 @@ class ProfileDataResponse {
     this.message,
     this.user,
   });
+
+  Map<dynamic, dynamic> toJson() {
+    return {
+      'message': message,
+      'user': user?.toJson(),
+    };
+  }
+
+  factory ProfileDataResponse.fromJson(Map<dynamic, dynamic> json) {
+    return ProfileDataResponse(
+      message: json['message'],
+      user: json['user'] != null ? UserEntity.fromJson(json['user']) : null,
+    );
+  }
 }
 
 class UserEntity {
@@ -30,4 +44,32 @@ class UserEntity {
     this.isVerified,
     this.createdAt,
   });
+
+  Map<dynamic, dynamic> toJson() {
+    return {
+      'Id': Id,
+      'username': username,
+      'firstName': firstName,
+      'lastName': lastName,
+      'email': email,
+      'phone': phone,
+      'role': role,
+      'isVerified': isVerified,
+      'createdAt': createdAt,
+    };
+  }
+
+  factory UserEntity.fromJson(Map<dynamic, dynamic> json) {
+    return UserEntity(
+      Id: json['Id'],
+      username: json['username'],
+      firstName: json['firstName'],
+      lastName: json['lastName'],
+      email: json['email'],
+      phone: json['phone'],
+      role: json['role'],
+      isVerified: json['isVerified'],
+      createdAt: json['createdAt'],
+    );
+  }
 }

@@ -1,5 +1,6 @@
 import 'package:injectable/injectable.dart';
-import 'package:online_exam_app/src/features/profile/data/datasources/contracts/online_datasource/profile_datasource.dart';
+import 'package:online_exam_app/src/features/profile/data/datasources/contracts/offline_datasource/offline_profile_datasource.dart';
+import 'package:online_exam_app/src/features/profile/data/datasources/contracts/online_datasource/online_profile_datasource.dart';
 import 'package:online_exam_app/src/features/profile/domain/core/profile_%20result.dart';
 import 'package:online_exam_app/src/features/profile/domain/entities/request/change_password_request_entity.dart';
 import 'package:online_exam_app/src/features/profile/domain/entities/response/change_password_response_entity.dart';
@@ -11,13 +12,20 @@ import '../../domain/contracts/profile_repository.dart';
 @Injectable(as: ProfileRepository)
 class ProfileRepositoryImpl implements ProfileRepository {
   final OnlineProfileDataSource _profileDataSource;
+  final OfflineProfileDataSource _offlineProfileDataSource;
 
   @factoryMethod
-  ProfileRepositoryImpl(this._profileDataSource);
+  ProfileRepositoryImpl(
+      this._profileDataSource, this._offlineProfileDataSource);
 
   @override
   Future<ProfileResult<ProfileDataResponse>> getProfileData(
       String token) async {
+    final cachedProfile =
+        await _offlineProfileDataSource.getCachedProfileData();
+    if (cachedProfile != null) {
+      return Success(data: cachedProfile);
+    }
     var response = await _profileDataSource.getProfileData(token);
     return response;
   }

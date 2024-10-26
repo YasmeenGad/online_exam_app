@@ -12,6 +12,7 @@ import 'package:online_exam_app/src/features/profile/presentation/cubit/profile_
 import 'package:online_exam_app/src/features/profile/presentation/cubit/profile_state.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../data/datasources/contracts/offline_datasource/offline_profile_datasource.dart';
 import '../../domain/entities/request/change_password_request_entity.dart';
 import '../../domain/entities/response/change_password_response_entity.dart';
 
@@ -19,6 +20,7 @@ import '../../domain/entities/response/change_password_response_entity.dart';
 class ProfileViewModel extends Cubit<ProfileState> {
   final ProfileUseCase _profileUseCase;
   var offlineAuthDataSource = getIt<OfflineAuthDataSource>();
+  var offlineProfileDataSource = getIt<OfflineProfileDataSource>();
 
   ProfileViewModel(this._profileUseCase) : super(ProfileInitial());
 
@@ -50,6 +52,7 @@ class ProfileViewModel extends Cubit<ProfileState> {
       case Success<ProfileDataResponse>():
         {
           emit(ProfileDataSuccess(result.data!));
+          await offlineProfileDataSource.cacheProfileData(result.data!);
           break;
         }
       case Failure<ProfileDataResponse>():
