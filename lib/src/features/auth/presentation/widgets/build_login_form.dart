@@ -7,6 +7,7 @@ import 'package:online_exam_app/src/core/validators/validators.dart';
 import 'package:online_exam_app/src/features/auth/domain/entities/sign_in_entity.dart';
 import 'package:online_exam_app/src/features/auth/presentation/cubit/auth/auth_states.dart';
 import 'package:online_exam_app/src/core/global/custom_button.dart';
+import 'package:online_exam_app/src/features/auth/presentation/views/signup_view.dart';
 import 'package:online_exam_app/src/features/auth/presentation/widgets/custom_text_form_field.dart';
 import 'package:online_exam_app/src/features/auth/presentation/widgets/auth_footer.dart';
 import '../cubit/auth/auth_view_model.dart';
@@ -97,7 +98,12 @@ class _BuildLoginFormState extends State<BuildLoginForm> {
                       txt: "${AppLocalizations.of(context)!.login}",
                     )),
                 const SizedBox(height: 13),
-                AuthFooter(question: "${AppLocalizations.of(context)!.dontHaveAnAccount}", txt: "${AppLocalizations.of(context)!.signUp}", route: RoutesName.signUpView,),
+                AuthFooter(
+                  question:
+                      "${AppLocalizations.of(context)!.dontHaveAnAccount}",
+                  txt: "${AppLocalizations.of(context)!.signUp}",
+                  route: SignUpView(),
+                ),
               ],
             ),
           );
