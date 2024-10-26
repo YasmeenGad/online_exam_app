@@ -68,15 +68,6 @@ void showImagePickerSheet(BuildContext context, Function(File?) onImagePicked) {
                   Navigator.of(context).pop();
                 },
               ),
-              ListTile(
-                leading: Icon(Icons.delete, color: Colors.redAccent),
-                title: Text('${AppLocalizations.of(context)!.removePicture}',
-                    style: TextStyle(color: Colors.redAccent)),
-                onTap: () {
-                  onImagePicked(null);
-                  Navigator.of(context).pop();
-                },
-              ),
             ],
           ),
         ),
