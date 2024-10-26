@@ -14,6 +14,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   await Hive.openBox('userToken');
+  await Hive.openBox<String>('imageCache');
   configureDependencies();
   runApp(
     DevicePreview(

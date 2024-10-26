@@ -14,13 +14,13 @@ class OfflineProfileDataSourceImpl implements OfflineProfileDataSource {
   }
 
   @override
-  Future<void> cacheProfileData(ProfileDataResponse profileData) async {
+  Future<void> cacheProfileData(dynamic profileData) async {
     final box = await Hive.openBox(_boxName);
     await box.put(_profileDataKey, profileData.toJson());
   }
 
   @override
-  Future<ProfileDataResponse?> getCachedProfileData() async {
+  Future<dynamic> getCachedProfileData() async {
     final box = await Hive.openBox(_boxName);
     final data = box.get(_profileDataKey);
     if (data != null) {
