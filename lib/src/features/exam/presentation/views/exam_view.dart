@@ -8,7 +8,6 @@ import '../../../../core/constants/assets.dart';
 import 'package:online_exam_app/src/features/exam/presentation/widgets/exam_item_loading.dart';
 import '../../../../core/dependency injection/di.dart';
 import '../widgets/build_empty_data_widget.dart';
-import '../widgets/exam_item_loading.dart';
 
 class ExamView extends StatelessWidget {
   const ExamView({super.key, required this.subjectId});

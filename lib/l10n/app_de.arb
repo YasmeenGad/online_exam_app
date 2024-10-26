@@ -78,7 +78,6 @@
     "questions": "Fragen",
     "noSubjectsFound": "Keine Fächer gefunden",
     "noExamsAvailable": "Keine Prüfungen verfügbar",
-    "loadingItems": "Elemente werden geladen..."
-  
-    "change": "Aendern",
+    "loadingItems": "Elemente werden geladen...",
+    "change": "Aendern"
 }
