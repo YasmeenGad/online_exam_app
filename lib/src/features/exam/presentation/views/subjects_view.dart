@@ -5,6 +5,9 @@ import '../../../../core/dependency injection/di.dart';
 import '../manager/subject/subject_cubit.dart';
 import '../widgets/subject_loading.dart';
 
+import '../widgets/build_success_widget.dart';
+import '../widgets/subject_loading.dart';
+
 class SubjectsView extends StatelessWidget {
   const SubjectsView({super.key});
 
@@ -33,4 +36,5 @@ class SubjectsView extends StatelessWidget {
       ),
     );
   }
+
 }

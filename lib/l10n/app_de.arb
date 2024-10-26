@@ -54,7 +54,7 @@
     "dontHaveAnAccount": "Haben Sie noch kein Konto?",
     "enterNewPassword": "Geben Sie Ihr neues Passwort ein",
     "newPassword": "Neues Passwort",
-    "languages" : "Sprachen",
+    "languages": "Sprachen",
     "selectLanguage": "Sprache auswählen",
     "home": "Startseite",
     "profile": "Profil",
@@ -63,6 +63,11 @@
     "resetPassword": "Passwort zurücksetzen",
     "currentPassword": "Aktuelles Passwort",
     "updating": "Aktualisierung...",
+    "updated": "Aktualisiert",
+    "chooseAnOption": "Wählen eine Option",
+    "gallery": "Galerie",
+    "camera": "Kamera",
+    "removePicture": "Bild entfernen",
     "updated": "Aktualisiert",
     "examApp": "Prüfungs-App",
     "search": "Suche",
@@ -74,4 +79,6 @@
     "noSubjectsFound": "Keine Fächer gefunden",
     "noExamsAvailable": "Keine Prüfungen verfügbar",
     "loadingItems": "Elemente werden geladen..."
-  }
+  
+    "change": "Aendern",
+}

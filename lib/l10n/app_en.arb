@@ -64,6 +64,11 @@
     "currentPassword": "Current Password",
     "updating": "Updating...",
     "updated": "Updated",
+    "chooseAnOption": "Choose an option",
+    "gallery": "Gallery",
+    "camera": "Camera",
+    "removePicture": "Remove Picture",
+    "updated": "Updated",
     "examApp": "Exam App",
     "search": "Search",
     "survey": "Survey",
@@ -73,5 +78,6 @@
     "questions": "questions",
     "noSubjectsFound": "No subjects found",
     "noExamsAvailable": "No exams available",
+    "change": "Change",
     "loadingItems": "Loading items..."
 }

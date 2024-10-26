@@ -38,10 +38,14 @@ import '../../features/exam/presentation/manager/exam/exam_cubit.dart' as _i604;
 import '../../features/exam/presentation/manager/subject/subject_cubit.dart'
     as _i294;
 import '../../features/profile/data/api/profile_retrofit_client.dart' as _i915;
-import '../../features/profile/data/datasources/contracts/online_datasource/profile_datasource.dart'
-    as _i907;
-import '../../features/profile/data/datasources/impl/profile_datasource_impl.dart'
-    as _i966;
+import '../../features/profile/data/datasources/contracts/offline_datasource/offline_profile_datasource.dart'
+    as _i804;
+import '../../features/profile/data/datasources/contracts/online_datasource/online_profile_datasource.dart'
+    as _i266;
+import '../../features/profile/data/datasources/impl/offline_profile_datasource_impl.dart'
+    as _i444;
+import '../../features/profile/data/datasources/impl/online_profile_datasource_impl.dart'
+    as _i407;
 import '../../features/profile/data/repositories/profile_repository_impl.dart'
     as _i334;
 import '../../features/profile/domain/contracts/profile_repository.dart'
@@ -79,14 +83,18 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i915.ProfileRetrofitClient(gh<_i361.Dio>()));
     gh.factory<_i331.OfflineAuthDataSource>(
         () => _i110.OfflineAuthDataSourceImpl());
+    gh.factory<_i804.OfflineProfileDataSource>(
+        () => _i444.OfflineProfileDataSourceImpl());
     gh.factory<_i926.ExamOnlineDataSource>(
         () => _i742.ExamOnlineDataSourceImpl(gh<_i12.ExamClient>()));
-    gh.factory<_i907.OnlineProfileDataSource>(
-        () => _i966.ProfileDataSourceImpl(gh<_i915.ProfileRetrofitClient>()));
-    gh.factory<_i435.ProfileRepository>(
-        () => _i334.ProfileRepositoryImpl(gh<_i907.OnlineProfileDataSource>()));
+    gh.factory<_i266.OnlineProfileDataSource>(
+        () => _i407.ProfileDataSourceImpl(gh<_i915.ProfileRetrofitClient>()));
     gh.factory<_i670.AuthRepo>(
         () => _i662.AuthRepositoryImpl(gh<_i449.AuthDataSource>()));
+    gh.factory<_i435.ProfileRepository>(() => _i334.ProfileRepositoryImpl(
+          gh<_i266.OnlineProfileDataSource>(),
+          gh<_i804.OfflineProfileDataSource>(),
+        ));
     gh.factory<_i436.AuthUsecase>(
         () => _i436.AuthUsecase(authRepo: gh<_i670.AuthRepo>()));
     gh.factory<_i377.ExamRepo>(

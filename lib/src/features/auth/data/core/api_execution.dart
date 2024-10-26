@@ -16,7 +16,9 @@ Future<Result<T>> apiExecution<T>({
   } on TimeoutException {
     return Failure(exception: NoInternetException());
   } on DioException catch (e) {
-    if (e.response?.statusCode == 400) {
+    if (e.type == DioErrorType.connectionError) {
+      return Failure(exception: NoInternetException());
+    } else if (e.response?.statusCode == 400) {
       return Failure(
           exception: BadRequestException(message: e.response?.data['message']));
     } else if (e.response?.statusCode == 401) {
