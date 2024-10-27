@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/styles/app_colors.dart';
 
-Container shadowContainer({required Widget child , required double height , EdgeInsetsGeometry? padding}) {
+Container shadowContainer(
+    {required Widget child,
+    required double height,
+    EdgeInsetsGeometry? padding}) {
   return Container(
     height: height,
-    padding: padding ,
+    padding: padding,
     decoration: BoxDecoration(
       color: Colors.white,
       borderRadius: BorderRadius.circular(10),

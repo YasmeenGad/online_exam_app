@@ -19,4 +19,8 @@ class ExamUseCase {
     return  await _examRepo.getSubjects(token);
 
   }
+
+  Future<Result<Exam>> getExamDetails(String examId, String token) async {
+    return await _examRepo.getExamDetails(examId, token);
+  }
 }

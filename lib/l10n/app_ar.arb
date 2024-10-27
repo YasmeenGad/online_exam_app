@@ -74,11 +74,13 @@
   "browseBySubject": "تصفح حسب الموضوع",
   "exams": "الامتحانات",
   "minutes": "دقيقة",
-  "questions": "الأسئلة",
+  "question": "سؤال",
   "noSubjectsFound": "لم يتم العثور على مواضيع",
   "noExamsAvailable": "لا توجد امتحانات متاحة",
   "change": "تغيير",
   "loadingItems": "جاري تحميل العناصر...",
   "date": "التاريخ",
-  "time": "الوقت"
+  "time": "الوقت",
+  "start": "ابدأ",
+  "instructions": "التعليمات"
 }

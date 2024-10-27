@@ -74,12 +74,14 @@
     "browseBySubject": "Konuya Göre Göz At",
     "exams": "Sınavlar",
     "minutes": "Dakika",
-    "questions": "Soru",
+    "question": "Soru",
     "noSubjectsFound": "Konu bulunamadı",
     "noExamsAvailable": "Mevcut sınav yok",
     "loadingItems": "Öğeler yükleniyor",
     "change": "Düzenle",
     "date": "Tarih",
-    "time": "Saat"
+    "time": "Saat",
+    "start": "Başla",
+    "instructions": "Talimatlar"
 }
   

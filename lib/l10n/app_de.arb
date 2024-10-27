@@ -74,11 +74,13 @@
   "browseBySubject": "Nach Fach durchsuchen",
   "exams": "Prüfungen",
   "minutes": "Minuten",
-  "questions": "Fragen",
+  "question": "Frage",
   "noSubjectsFound": "Keine Fächer gefunden",
   "noExamsAvailable": "Keine Prüfungen verfügbar",
   "loadingItems": "Elemente werden geladen...",
   "change": "Aendern",
   "date": "Datum",
-  "time": "Uhrzeit"
+  "time": "Uhrzeit",
+  "start": "Start",
+  "instructions": "Anweisungen"
 }

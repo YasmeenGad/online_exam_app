@@ -8,6 +8,8 @@ import '../../../../core/styles/app_styles.dart';
 import '../../domain/entities/exam_entity.dart';
 import 'package:intl/intl.dart';
 
+import 'exam_argument.dart';
+
 class ExamItem extends StatelessWidget {
   const ExamItem({super.key, required this.exams, required this.subjectImage});
 
@@ -24,7 +26,11 @@ class ExamItem extends StatelessWidget {
       onTap: () {
         Navigator.of(context).pushNamed(
           RoutesName.examDetailView,
-        //  arguments: exams.id,
+          arguments: ExamArguments(
+            subjectId: exams.id.toString(),
+            subjectImage: subjectImage,
+
+          ),
         );
       },
       child: shadowContainer(
@@ -66,7 +72,7 @@ class ExamItem extends StatelessWidget {
                       height: 5,
                     ),
                     Text(
-                      "${exams.numberOfQuestions.toString()} ${AppLocalizations.of(context)?.questions}",
+                      "${exams.numberOfQuestions.toString()} ${AppLocalizations.of(context)?.question}",
                       style: AppStyles.styleRegular13(context)
                           .copyWith(color: AppColors.grayColor),
                     ),

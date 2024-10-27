@@ -73,12 +73,14 @@
     "survey": "Survey",
     "browseBySubject": "Browse by subject",
     "exams": "Exams",
-    "minutes": "minutes",
-    "questions": "questions",
+    "minutes": "Minutes",
+    "question": "Question",
     "noSubjectsFound": "No subjects found",
     "noExamsAvailable": "No exams available",
     "change": "Change",
     "loadingItems": "Loading items...",
     "date": "Date",
-    "time": "Time"
+    "time": "Time",
+    "start": "Start",
+    "instructions": "Instructions"
 }

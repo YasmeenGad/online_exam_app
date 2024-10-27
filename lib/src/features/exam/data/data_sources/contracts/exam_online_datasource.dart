@@ -6,4 +6,5 @@ import 'package:online_exam_app/src/features/exam/domain/entities/subject_entity
 abstract class ExamOnlineDataSource {
   Future<Result<List<Subject>>> getSubjects( String token);
   Future<Result<List<Exam>>> getExamById(String subjectId, String token);
+  Future<Result<Exam>> getExamDetails(String examId, String token);
 }

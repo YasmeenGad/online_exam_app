@@ -73,12 +73,14 @@
     "survey": "Enquête",
     "browseBySubject": "Parcourir par matière",
     "exams": "Examens",
-    "minutes": "minutes",
-    "questions": "questions",
+    "minutes": "Minutes",
+    "question": "Question",
     "noSubjectsFound": "Aucune matière trouvée",
     "noExamsAvailable": "Aucun examen disponible",
     "change": "Changer",
     "loadingItems": "Chargement des éléments...",
     "date": "Date",
-    "time": "Temps"
+    "time": "Temps",
+    "start": "Commencer",
+    "instructions": "Instructions"
   }

@@ -6,4 +6,5 @@ import '../../../../core/network/result.dart';
 abstract class ExamRepo {
   Future<Result<List<Subject>>> getSubjects( String token);
   Future<Result<List<Exam>>> getExamsById(String subjectId , String token);
+  Future<Result<Exam>> getExamDetails(String examId , String token);
 }

@@ -1,6 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:online_exam_app/src/features/exam/domain/entities/subject_entity.dart';
 
+import 'meta_data_dto.dart';
+
 part 'subjects_response_dto.g.dart';
 
 @JsonSerializable()
@@ -31,29 +33,7 @@ class SubjectsResponseDto {
   }
 }
 
-@JsonSerializable()
-class MetadataDto {
-  @JsonKey(name: "currentPage")
-  final int? currentPage;
-  @JsonKey(name: "numberOfPages")
-  final int? numberOfPages;
-  @JsonKey(name: "limit")
-  final int? limit;
 
-  MetadataDto({
-    this.currentPage,
-    this.numberOfPages,
-    this.limit,
-  });
-
-  factory MetadataDto.fromJson(Map<String, dynamic> json) {
-    return _$MetadataDtoFromJson(json);
-  }
-
-  Map<String, dynamic> toJson() {
-    return _$MetadataDtoToJson(this);
-  }
-}
 
 @JsonSerializable()
 class SubjectsDto {
