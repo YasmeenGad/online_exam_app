@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:online_exam_app/src/features/exam/presentation/widgets/exam_argument.dart';
 import 'package:online_exam_app/src/features/exam/presentation/widgets/shadow_container_widget.dart';
 
 import '../../../../core/routes/routes_name.dart';
@@ -18,7 +19,8 @@ class SubjectListItem extends StatelessWidget {
           onTap: () {
             Navigator.pushNamed(
                 context, RoutesName.examView,
-                arguments: subject.id);
+                arguments: ExamArguments(subjectId: subject.id, subjectImage: subject.icon,));
+
           },
           leading: CachedNetworkWidget(
             imageUrl: '${subject.icon}',

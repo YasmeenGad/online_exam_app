@@ -40,5 +40,17 @@ class ExamOnlineDataSourceImpl implements ExamOnlineDataSource {
     );
   }
 
+  @override
+  Future<Result<Exam>> getExamDetails(String examId, String token) {
+    return ExecuteApi(
+          () {
+        return _examClient.getExamDetails(token, examId);
+      },
+          (response) {
+        return response.toDomain();
+      },
+    );
+  }
+
 }
 

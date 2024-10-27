@@ -18,3 +18,17 @@ final class ExamSuccess extends ExamState {
 
   ExamSuccess(this.exams);
 }
+
+final class ExamDetailsSuccess extends ExamState {
+  final Exam exam;
+
+  ExamDetailsSuccess(this.exam);
+}
+
+final class ExamDetailsLoading extends ExamState {}
+
+final class ExamDetailsError extends ExamState {
+  final Exception exception;
+
+  ExamDetailsError(this.exception);
+}

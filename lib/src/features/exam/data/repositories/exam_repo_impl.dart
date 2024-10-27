@@ -21,5 +21,12 @@ class ExamRepoImpl implements ExamRepo{
     var response = await _examOnlineDataSource.getSubjects(token);
     return response;
   }
+
+  @override
+  Future<Result<Exam>> getExamDetails(String examId, String token) async{
+    var response = await _examOnlineDataSource.getExamDetails(examId, token);
+    return response;
+  }
+
   
 }

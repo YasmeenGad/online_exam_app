@@ -25,19 +25,6 @@ Map<String, dynamic> _$SubjectsResponseDtoToJson(
       'subjects': instance.subjects,
     };
 
-MetadataDto _$MetadataDtoFromJson(Map<String, dynamic> json) => MetadataDto(
-      currentPage: (json['currentPage'] as num?)?.toInt(),
-      numberOfPages: (json['numberOfPages'] as num?)?.toInt(),
-      limit: (json['limit'] as num?)?.toInt(),
-    );
-
-Map<String, dynamic> _$MetadataDtoToJson(MetadataDto instance) =>
-    <String, dynamic>{
-      'currentPage': instance.currentPage,
-      'numberOfPages': instance.numberOfPages,
-      'limit': instance.limit,
-    };
-
 SubjectsDto _$SubjectsDtoFromJson(Map<String, dynamic> json) => SubjectsDto(
       id: json['_id'] as String?,
       name: json['name'] as String?,
