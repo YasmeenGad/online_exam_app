@@ -68,7 +68,6 @@
     "gallery": "Gallery",
     "camera": "Camera",
     "removePicture": "Remove Picture",
-    "updated": "Updated",
     "examApp": "Exam App",
     "search": "Search",
     "survey": "Survey",
@@ -79,5 +78,7 @@
     "noSubjectsFound": "No subjects found",
     "noExamsAvailable": "No exams available",
     "change": "Change",
-    "loadingItems": "Loading items..."
+    "loadingItems": "Loading items...",
+    "date": "Date",
+    "time": "Time"
 }

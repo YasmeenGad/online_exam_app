@@ -68,7 +68,6 @@
     "gallery": "Galeri",
     "camera": "Kamera",
     "removePicture": "Resmi kaldır",
-    "updated": "Güncellendi",
     "examApp": "Sınav Uygulaması",
     "search": "Arama",
     "survey": "Anket",
@@ -79,6 +78,8 @@
     "noSubjectsFound": "Konu bulunamadı",
     "noExamsAvailable": "Mevcut sınav yok",
     "loadingItems": "Öğeler yükleniyor",
-    "change": "Düzenle"
+    "change": "Düzenle",
+    "date": "Tarih",
+    "time": "Saat"
 }
   

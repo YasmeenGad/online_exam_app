@@ -2,17 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_exam_app/src/core/global/custom_appbar.dart';
 import 'package:online_exam_app/src/features/exam/presentation/manager/exam/exam_cubit.dart';
-import 'package:online_exam_app/src/features/exam/presentation/widgets/exam_item.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../core/constants/assets.dart';
 import 'package:online_exam_app/src/features/exam/presentation/widgets/exam_item_loading.dart';
 import '../../../../core/dependency injection/di.dart';
 import '../widgets/build_empty_data_widget.dart';
+import '../widgets/exam_list.dart';
 
 class ExamView extends StatelessWidget {
-  const ExamView({super.key, required this.subjectId});
+  const ExamView({super.key, required this.subjectId, required this.subjectImage});
 
   final String subjectId;
+  final String subjectImage;
+
 
   @override
   Widget build(BuildContext context) {
@@ -44,16 +46,7 @@ class ExamView extends StatelessWidget {
                         imageUrl: Assets.imagesNoData,
                       );
                     }
-                    return Expanded(
-                      child: ListView.separated(
-                        separatorBuilder: (context, index) =>
-                            SizedBox(height: 15),
-                        physics: BouncingScrollPhysics(),
-                        itemCount: state.exams.length,
-                        itemBuilder: (context, index) =>
-                            ExamItem(exams: state.exams[index]),
-                      ),
-                    );
+                    return ExamList(exams: state.exams, subjectImage: subjectImage);
                   } else {
                     return Container();
                   }
