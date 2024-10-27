@@ -45,7 +45,7 @@ class AppRoutes {
          offlineAuthDataSource: getIt<OfflineAuthDataSource>(),
       ),
       RoutesName.examDetailView: (context) =>  ExamDetailsView(
-        examId: ModalRoute.of(context)!.settings.arguments as String,
+      //  examId: ModalRoute.of(context)!.settings.arguments as String,
       ),
 
     };

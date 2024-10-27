@@ -23,8 +23,8 @@ class ExamItem extends StatelessWidget {
     return InkWell(
       onTap: () {
         Navigator.of(context).pushNamed(
-          RoutesName.examView,
-          arguments: exams.id,
+          RoutesName.examDetailView,
+        //  arguments: exams.id,
         );
       },
       child: shadowContainer(
@@ -73,10 +73,10 @@ class ExamItem extends StatelessWidget {
                     SizedBox(height: 13),
                     Row(
                       children: [
-                        Text('Date: ${formattedDate}',
+                        Text('${AppLocalizations.of(context)?.date}: ${formattedDate}',
                             style: AppStyles.styleMedium13(context)),
                         SizedBox(width: 10),
-                        Text("Time: ${formattedTime}",
+                        Text("${AppLocalizations.of(context)?.time}: ${formattedTime}",
                             style: AppStyles.styleMedium13(context)),
                       ],
                     ),

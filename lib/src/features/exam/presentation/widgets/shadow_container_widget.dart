@@ -16,6 +16,7 @@ Container shadowContainer({required Widget child , required double height , Edge
         ),
       ],
     ),
+    clipBehavior: Clip.hardEdge,
     child: child,
   );
 }
