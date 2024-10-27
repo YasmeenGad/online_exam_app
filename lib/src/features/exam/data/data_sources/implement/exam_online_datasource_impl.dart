@@ -31,7 +31,7 @@ class ExamOnlineDataSourceImpl implements ExamOnlineDataSource {
   Future<Result<List<Subject>>> getSubjects(String token) async {
     return await ExecuteApi(
           () {
-        return _examClient.getSubjects(token); // Call to get the SubjectsResponseDto
+        return _examClient.getSubjects(token);
       },
           (response) {
         final subjectsResponse = response as SubjectsResponseDto;

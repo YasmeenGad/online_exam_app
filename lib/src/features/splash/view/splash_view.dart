@@ -31,7 +31,7 @@ class _SplashViewState extends State<SplashView>
     super.initState();
 
     _controller =
-        AnimationController(vsync: this, duration: Duration(seconds: 3));
+        AnimationController(vsync: this, duration: Duration(seconds: 4));
 
     animation1 = Tween<double>(begin: 40, end: 20).animate(CurvedAnimation(
         parent: _controller, curve: Curves.fastLinearToSlowEaseIn))

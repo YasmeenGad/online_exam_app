@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:online_exam_app/src/core/styles/app_styles.dart';
 import 'package:online_exam_app/src/features/exam/presentation/widgets/search_field.dart';
 import 'package:online_exam_app/src/features/exam/presentation/widgets/subject_list.dart';
+import '../../../../core/constants/assets.dart';
 import '../../../../core/styles/app_colors.dart';
 import '../../domain/entities/subject_entity.dart';
 import '../manager/subject/subject_cubit.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import 'build_empty_data_widget.dart';
 
 class BuildSuccessWidget extends StatelessWidget {
   const BuildSuccessWidget({super.key, required this.subjects});
@@ -29,11 +32,9 @@ class BuildSuccessWidget extends StatelessWidget {
         SearchField(cubit: SubjectCubit.get(context)),
         SizedBox(height: 30),
         subjects.isEmpty
-            ? Center(
-                child: Text(
-                  '${localizations?.noSubjectsFound}',
-                  style: AppStyles.styleMedium16(context),
-                ),
+            ? EmptyDataWidget(
+                title: AppLocalizations.of(context)!.noSubjectsFound,
+                imageUrl: Assets.imagesSearch,
               )
             : Text(
                 '${localizations?.browseBySubject}',
