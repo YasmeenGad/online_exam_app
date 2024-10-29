@@ -5,7 +5,9 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:online_exam_app/src/features/exam/presentation/widgets/start_button.dart';
 
 class InstructionsExam extends StatelessWidget {
-  const InstructionsExam({super.key});
+  const InstructionsExam({super.key, required this.examId});
+
+  final String examId;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,6 @@ class InstructionsExam extends StatelessWidget {
       AppLocalizations.of(context)?.instruction3,
       AppLocalizations.of(context)?.instruction4,
     ];
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Column(
@@ -40,7 +41,9 @@ class InstructionsExam extends StatelessWidget {
             ),
           ),
           SizedBox(height: 60),
-          StartButton(),
+          StartButton(
+            examId: examId,
+          ),
         ],
       ),
     );

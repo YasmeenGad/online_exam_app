@@ -86,6 +86,12 @@
     "instruction1": "Sınavdan önce tüm talimatları dikkatlice okuyun.",
     "instruction2": "Tüm soruları elinizden geldiğince yanıtlayın.",
     "instruction3": "Zamanınızı etkili bir şekilde yönetin.",
-    "instruction4": "Sakin ve odaklanmış kalın."
+    "instruction4": "Sakin ve odaklanmış kalın.",
+    "exam": "Sınav",
+    "timeout": "Zaman doldu",
+    "viewScore": "Skoru görüntüle",
+    "next": "Sonraki",
+    "back": "Geri",
+    "noQuestions": "Bu sınavda soru yok gibi görünüyor."
 }
   

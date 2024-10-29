@@ -13,5 +13,5 @@ class AppColors {
   static const Color babyBlue = Color(0xff2988CD);
   static const Color blue30Color = Color(0xff809ACD);
   static const Color blue10Color = Color(0xffCCD7EB);
-
+  static const Color timeColor = Color(0xff11CE19);
 }

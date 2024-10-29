@@ -86,5 +86,11 @@
     "instruction1": "Veuillez lire les instructions attentivement avant de commencer l'examen.",
     "instruction2": "Veuillez repondre à toutes les questions du mieux que vous pouvez.",
     "instruction3": "Gérez votre temps efficacement.",
-    "instruction4": "Restez calme et concentré."
+    "instruction4": "Restez calme et concentré.",
+    "exam": "Examen",
+    "timeout": "Le temps s'est écoulé",
+    "viewScore": "Voir le score",
+    "next": "Suivant",
+    "back": "Retour",
+    "noQuestions": "Il semble qu'il n'y ait aucune question pour cet examen."
 }

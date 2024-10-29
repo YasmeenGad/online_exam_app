@@ -55,6 +55,18 @@ import '../../features/profile/presentation/cubit/profile_view_model.dart'
     as _i516;
 import '../../features/questions/data/api/question_retrofit_client.dart'
     as _i287;
+import '../../features/questions/data/datasource/contracts/online_datasource/questions_online_datasource.dart'
+    as _i94;
+import '../../features/questions/data/datasource/impl/questions_online_datasource_impl.dart'
+    as _i635;
+import '../../features/questions/data/repository/questions_repo_impl.dart'
+    as _i904;
+import '../../features/questions/domain/contracts/questions_repository.dart'
+    as _i912;
+import '../../features/questions/domain/usecase/questions_usecase.dart'
+    as _i279;
+import '../../features/questions/presentation/cubit/questions_view_model.dart'
+    as _i1055;
 import '../provider/language_provider.dart' as _i538;
 import '../provider/language_service.dart' as _i734;
 import '../utils/api/dio_factory.dart' as _i218;
@@ -89,6 +101,9 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i110.OfflineAuthDataSourceImpl());
     gh.factory<_i804.OfflineProfileDataSource>(
         () => _i444.OfflineProfileDataSourceImpl());
+    gh.factory<_i94.QuestionsOnlineDatasource>(() =>
+        _i635.QuestionsOnlineDatasourceImpl(
+            gh<_i287.QuestionRetrofitClient>()));
     gh.factory<_i926.ExamOnlineDataSource>(
         () => _i742.ExamOnlineDataSourceImpl(gh<_i12.ExamClient>()));
     gh.factory<_i266.OnlineProfileDataSource>(
@@ -99,6 +114,8 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i266.OnlineProfileDataSource>(),
           gh<_i804.OfflineProfileDataSource>(),
         ));
+    gh.factory<_i912.QuestionsRepository>(() =>
+        _i904.QuestionsRepositoryImpl(gh<_i94.QuestionsOnlineDatasource>()));
     gh.factory<_i436.AuthUsecase>(
         () => _i436.AuthUsecase(authRepo: gh<_i670.AuthRepo>()));
     gh.factory<_i377.ExamRepo>(
@@ -109,6 +126,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i996.ProfileUseCase(gh<_i435.ProfileRepository>()));
     gh.factory<_i516.ProfileViewModel>(
         () => _i516.ProfileViewModel(gh<_i996.ProfileUseCase>()));
+    gh.factory<_i279.QuestionsUseCase>(
+        () => _i279.QuestionsUseCase(gh<_i912.QuestionsRepository>()));
     gh.factory<_i616.AuthViewModel>(() => _i616.AuthViewModel(
           gh<_i436.AuthUsecase>(),
           gh<_i331.OfflineAuthDataSource>(),
@@ -116,6 +135,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i604.ExamCubit>(() => _i604.ExamCubit(gh<_i315.ExamUseCase>()));
     gh.factory<_i294.SubjectCubit>(
         () => _i294.SubjectCubit(gh<_i315.ExamUseCase>()));
+    gh.factory<_i1055.QuestionsViewModel>(
+        () => _i1055.QuestionsViewModel(gh<_i279.QuestionsUseCase>()));
     return this;
   }
 }

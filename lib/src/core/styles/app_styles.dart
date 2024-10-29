@@ -8,12 +8,14 @@ abstract class AppStyles {
       fontWeight: FontWeight.w500,
     );
   }
+
   static TextStyle styleMedium30(BuildContext context) {
     return GoogleFonts.inter(
       fontSize: getResponsiveFontSize(context, fontSize: 30),
       fontWeight: FontWeight.w500,
     );
   }
+
   static TextStyle styleMedium14(BuildContext context) {
     return GoogleFonts.inter(
       fontSize: getResponsiveFontSize(context, fontSize: 14),
@@ -21,28 +23,35 @@ abstract class AppStyles {
     );
   }
 
-static TextStyle styleRegular12(context) {
-  return GoogleFonts.roboto(
-    fontSize: getResponsiveFontSize(context, fontSize: 12),
-    fontWeight: FontWeight.w400,
-    letterSpacing: 0.4,
-  );
-}
+  static TextStyle styleMediumRoboto14(BuildContext context) {
+    return GoogleFonts.roboto(
+      fontSize: getResponsiveFontSize(context, fontSize: 14),
+      fontWeight: FontWeight.w500,
+    );
+  }
 
-static TextStyle styleRegular14(context) {
-  return GoogleFonts.roboto(
-    fontSize: getResponsiveFontSize(context, fontSize: 14),
-    fontWeight: FontWeight.w400,
-    letterSpacing: 0.5,
-  );
-}
+  static TextStyle styleRegular12(context) {
+    return GoogleFonts.roboto(
+      fontSize: getResponsiveFontSize(context, fontSize: 12),
+      fontWeight: FontWeight.w400,
+      letterSpacing: 0.4,
+    );
+  }
 
-static TextStyle styleRegular13(context) {
-  return GoogleFonts.inter(
-    fontSize: getResponsiveFontSize(context, fontSize: 13),
-    fontWeight: FontWeight.w400,
-  );
-}
+  static TextStyle styleRegular14(context) {
+    return GoogleFonts.roboto(
+      fontSize: getResponsiveFontSize(context, fontSize: 14),
+      fontWeight: FontWeight.w400,
+      letterSpacing: 0.5,
+    );
+  }
+
+  static TextStyle styleRegular13(context) {
+    return GoogleFonts.inter(
+      fontSize: getResponsiveFontSize(context, fontSize: 13),
+      fontWeight: FontWeight.w400,
+    );
+  }
 
   static TextStyle styleMedium13(context) {
     return GoogleFonts.inter(
@@ -51,35 +60,47 @@ static TextStyle styleRegular13(context) {
     );
   }
 
-static TextStyle styleMedium16(BuildContext context) {
-  return GoogleFonts.roboto(
-    fontSize: getResponsiveFontSize(context, fontSize: 16),
-    fontWeight: FontWeight.w500,
-    letterSpacing: 0.1
-  );
-}
+  static TextStyle styleMedium16(BuildContext context) {
+    return GoogleFonts.roboto(
+        fontSize: getResponsiveFontSize(context, fontSize: 16),
+        fontWeight: FontWeight.w500,
+        letterSpacing: 0.1);
+  }
+
   static TextStyle styleMedium12(BuildContext context) {
     return GoogleFonts.roboto(
-        fontSize: getResponsiveFontSize(context, fontSize: 12),
-        fontWeight: FontWeight.w500,
+      fontSize: getResponsiveFontSize(context, fontSize: 12),
+      fontWeight: FontWeight.w500,
     );
   }
 
-static TextStyle styleMedium18(BuildContext context) {
-  return GoogleFonts.roboto(
-    fontSize: getResponsiveFontSize(context, fontSize: 18),
-    fontWeight: FontWeight.w500,
-    letterSpacing: 0.1
-  );
-}
+  static TextStyle styleMedium18(BuildContext context) {
+    return GoogleFonts.roboto(
+        fontSize: getResponsiveFontSize(context, fontSize: 18),
+        fontWeight: FontWeight.w500,
+        letterSpacing: 0.1);
+  }
 
-static TextStyle styleRegular16(context) {
-  return GoogleFonts.inter(
-    fontSize: getResponsiveFontSize(context, fontSize: 16),
-    fontWeight: FontWeight.w400,
-  );
-}
+  static TextStyle styleMediumInter18(BuildContext context) {
+    return GoogleFonts.roboto(
+      fontSize: getResponsiveFontSize(context, fontSize: 18),
+      fontWeight: FontWeight.w500,
+    );
+  }
 
+  static TextStyle styleRegular16(context) {
+    return GoogleFonts.inter(
+      fontSize: getResponsiveFontSize(context, fontSize: 16),
+      fontWeight: FontWeight.w400,
+    );
+  }
+
+  static TextStyle styleRegular20(context) {
+    return GoogleFonts.roboto(
+      fontSize: getResponsiveFontSize(context, fontSize: 20),
+      fontWeight: FontWeight.w400,
+    );
+  }
 }
 
 // sacleFactor

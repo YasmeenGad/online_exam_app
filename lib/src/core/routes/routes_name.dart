@@ -12,4 +12,5 @@ class RoutesName {
   static const String examView = 'examView';
   static const String splashView = 'splashView';
   static const String examDetailView = 'examDetailView';
+  static const String questionsView = 'questionsView';
 }
