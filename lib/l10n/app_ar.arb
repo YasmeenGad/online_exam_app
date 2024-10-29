@@ -54,7 +54,7 @@
   "dontHaveAnAccount": "لا تملك حساباً؟",
   "enterNewPassword": "أدخل كلمة المرور الجديدة",
   "newPassword": "كلمة المرور الجديدة",
-  "languages" : "اللغات",
+  "languages": "اللغات",
   "selectLanguage": "اختر اللغة",
   "home": "الرئيسية",
   "result": "النتائج",
@@ -82,5 +82,9 @@
   "date": "التاريخ",
   "time": "الوقت",
   "start": "ابدأ",
-  "instructions": "التعليمات"
+  "instructions": "التعليمات",
+  "instruction1": "اقرأ جميع التعليمات بعناية قبل بدء الامتحان.",
+  "instruction2": "أجب عن جميع الأسئلة بأفضل ما لديك.",
+  "instruction3": "إدارة وقتك بفعالية.",
+  "instruction4": "ابق هادئًا ومركّزًا."
 }

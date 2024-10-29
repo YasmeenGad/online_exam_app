@@ -6,9 +6,10 @@ import 'package:dio/dio.dart';
 import '../../../features/auth/domain/core/AppExceptions.dart';
 import '../errors/result.dart';
 
-Future<Result<T>> apiExecute<T>(
-    {required Future<dynamic> Function() tryCode,
-    required T Function(dynamic response) domainMapper}) async {
+Future<Result<T>> apiExecute<T>({
+  required Future<dynamic> Function() tryCode,
+  required T Function(dynamic response) domainMapper, // Update to dynamic
+}) async {
   try {
     var response = await tryCode();
     return Success(data: domainMapper(response));
@@ -46,9 +47,11 @@ Future<Result<T>> apiExecute<T>(
           e.type == DioExceptionType.unknown) {
         return Failure(exception: NoInternetException());
       }
+      print("Unknown error occurred: $e");
       return Failure(exception: UnknownErrorException());
     }
   } catch (e) {
+    print("Unknown error occurred: $e");
     return Failure(exception: UnknownErrorException());
   }
 }

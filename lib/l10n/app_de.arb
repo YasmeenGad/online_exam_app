@@ -82,5 +82,9 @@
   "date": "Datum",
   "time": "Uhrzeit",
   "start": "Start",
-  "instructions": "Anweisungen"
+  "instructions": "Anweisungen",
+  "instruction1": "Lese alle Anweisungen sorgfängig durch, bevor Sie mit der Prüfung beginnen.",
+  "instruction2": "Beantworte alle Fragen so gut wie möglich.",
+  "instruction3": "Verwalte Ihre Zeit effektiv.",
+  "instruction4": "Bleibe ruhig und konzentriert."
 }

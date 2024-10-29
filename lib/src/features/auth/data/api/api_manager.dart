@@ -36,44 +36,79 @@ class ApiManager {
 
   Future<Result<SignInResponse>> login({required SignInModel signInModel}) async {
     return apiExecute<SignInResponse>(
-      tryCode: () =>
-          _dio.post<dynamic>(AppApis.login, data: signInModel.toJson()),
-      domainMapper: (data) => SignInResponse.fromJson(data),
+      tryCode: () async {
+        final response = await _dio.post<dynamic>(
+          AppApis.login,
+          data: signInModel.toJson(),
+        );
+        return response.data;
+      },
+      domainMapper: (data) {
+        return SignInResponse.fromJson(data);
+      },
     );
   }
 
   Future<Result<ForgetPasswordResponse>> forgetPassword({required ForgetPasswordModel forgetPasswordModel}) async {
     return apiExecute<ForgetPasswordResponse>(
-      tryCode: () => _dio.post<dynamic>(AppApis.forgetPassword,
-          data: forgetPasswordModel.toJson()),
-      domainMapper: (data) => ForgetPasswordResponse.fromJson(data),
+      tryCode: () async {
+        final response = await _dio.post<dynamic>(
+          AppApis.forgetPassword,
+          data: forgetPasswordModel.toJson(),
+        );
+        return response.data;
+      },
+      domainMapper: (data) {
+        return ForgetPasswordResponse.fromJson(data);
+      },
     );
   }
 
   Future<Result<SignUpResponse>> signUp(
       {required SignUpModel signUpModel}) async {
     return apiExecute<SignUpResponse>(
-      tryCode: () =>
-          _dio.post<dynamic>(AppApis.signUp, data: signUpModel.toJson()),
-      domainMapper: (data) => SignUpResponse.fromJson(data),
+      tryCode: () async {
+        final response = await _dio.post<dynamic>(
+          AppApis.signUp,
+          data: signUpModel.toJson(),
+        );
+        return response.data;
+      },
+      domainMapper: (data) {
+        return SignUpResponse.fromJson(data);
+      },
     );
   }
 
   Future<Result<EmailVerificationResponse>> verifyEmail(
       {required EmailVerificationModel emailVerificationModel}) async {
     return apiExecute<EmailVerificationResponse>(
-      tryCode: () => _dio.post<dynamic>(AppApis.verifyEmail,
-          data: emailVerificationModel.toJson()),
-      domainMapper: (data) => EmailVerificationResponse.fromJson(data),
+      tryCode: () async {
+        final response = await _dio.post<dynamic>(
+          AppApis.verifyEmail,
+          data: emailVerificationModel.toJson(),
+        );
+        return response.data;
+      },
+      domainMapper: (data) {
+        return EmailVerificationResponse.fromJson(data);
+      },
     );
   }
 
   Future<Result<ResetPasswordResponse>> resetPassword(
       {required ResetPasswordModel resetPasswordModel}) async {
     return apiExecute<ResetPasswordResponse>(
-      tryCode: () => _dio.put<dynamic>(AppApis.resetPassword,
-          data: resetPasswordModel.toJson()),
-      domainMapper: (data) => ResetPasswordResponse.fromJson(data),
+      tryCode: () async {
+        final response = await _dio.put<dynamic>(
+          AppApis.resetPassword,
+          data: resetPasswordModel.toJson(),
+        );
+        return response.data;
+      },
+      domainMapper: (data) {
+        return ResetPasswordResponse.fromJson(data);
+      },
     );
   }
 }

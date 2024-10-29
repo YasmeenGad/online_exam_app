@@ -82,6 +82,10 @@
     "date": "Tarih",
     "time": "Saat",
     "start": "Başla",
-    "instructions": "Talimatlar"
+    "instructions": "Talimatlar",
+    "instruction1": "Sınavdan önce tüm talimatları dikkatlice okuyun.",
+    "instruction2": "Tüm soruları elinizden geldiğince yanıtlayın.",
+    "instruction3": "Zamanınızı etkili bir şekilde yönetin.",
+    "instruction4": "Sakin ve odaklanmış kalın."
 }
   

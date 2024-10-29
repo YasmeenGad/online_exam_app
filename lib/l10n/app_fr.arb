@@ -82,5 +82,9 @@
     "date": "Date",
     "time": "Temps",
     "start": "Commencer",
-    "instructions": "Instructions"
-  }
+    "instructions": "Instructions",
+    "instruction1": "Veuillez lire les instructions attentivement avant de commencer l'examen.",
+    "instruction2": "Veuillez repondre à toutes les questions du mieux que vous pouvez.",
+    "instruction3": "Gérez votre temps efficacement.",
+    "instruction4": "Restez calme et concentré."
+}

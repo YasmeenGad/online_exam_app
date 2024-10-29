@@ -16,5 +16,4 @@ class Exam {
     required this.active,
     required this.createdAt,
   });
-
 }
