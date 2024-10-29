@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:online_exam_app/src/features/auth/data/api/models/request/sign_up_model.dart';
 import 'package:online_exam_app/src/features/profile/data/api/models/response/edit_profile_response_dto.dart';
 import 'package:retrofit/retrofit.dart';
 import '../../../../core/constants/app_apis.dart';
