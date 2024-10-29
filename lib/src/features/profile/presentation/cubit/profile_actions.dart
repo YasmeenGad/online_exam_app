@@ -1,8 +1,5 @@
 import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
-import 'package:online_exam_app/src/features/profile/domain/entities/response/profile_data_response.dart';
-
 import '../../domain/entities/request/change_password_request_entity.dart';
 
 sealed class ProfileActions {}

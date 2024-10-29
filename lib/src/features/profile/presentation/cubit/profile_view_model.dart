@@ -25,7 +25,7 @@ class ProfileViewModel extends Cubit<ProfileState> {
 
   ProfileViewModel(this._profileUseCase) : super(ProfileInitial());
 
-  void doAction(ProfileActions action) async {
+  void doAction(ProfileActions action) {
     switch (action) {
       case GetProfileData():
         {
