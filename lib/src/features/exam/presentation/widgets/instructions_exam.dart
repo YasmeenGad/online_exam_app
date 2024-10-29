@@ -9,13 +9,21 @@ class InstructionsExam extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Create the list of instructions here using the context
+    final listOfInstructions = [
+      AppLocalizations.of(context)?.instruction1,
+      AppLocalizations.of(context)?.instruction2,
+      AppLocalizations.of(context)?.instruction3,
+      AppLocalizations.of(context)?.instruction4,
+    ];
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            '${AppLocalizations.of(context)?.instructions}',
+            AppLocalizations.of(context)?.instructions ?? '',
             style: AppStyles.styleMedium18(context),
           ),
           SizedBox(height: 15),
@@ -32,16 +40,9 @@ class InstructionsExam extends StatelessWidget {
             ),
           ),
           SizedBox(height: 60),
-          StartButton()
+          StartButton(),
         ],
       ),
     );
   }
 }
-
-List<String> listOfInstructions = [
-  'Read all instructions carefully before starting the exam.',
-  'Answer all questions to the best of your ability.',
-  'Manage your time effectively.',
-  'Stay calm and focused.',
-];

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_exam_app/src/core/styles/app_colors.dart';
 import 'package:online_exam_app/src/core/styles/app_styles.dart';
 import 'package:online_exam_app/src/features/exam/presentation/manager/exam/exam_cubit.dart';
-import '../../../../core/dependency injection/di.dart';
+import '../../../../core/di/di.dart';
 import '../widgets/cached_network_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../widgets/custom_divider.dart';

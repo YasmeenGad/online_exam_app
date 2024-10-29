@@ -1,17 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/dependency injection/di.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../../../../core/di/di.dart';
 import '../../../../core/global/custom_button.dart';
 import '../../../../core/global/custom_toast.dart';
 import '../../../../core/routes/routes_name.dart';
-import '../../../../core/validators/validators.dart';
+import '../../../../core/utils/validators/validators.dart';
 import '../../domain/entities/reset_password_entity.dart';
 import '../cubit/auth/auth_states.dart';
 import '../cubit/auth/auth_view_model.dart';
 import 'custom_text_form_field.dart';
 import 'forget_password_description.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 
 class BuildResetPasswordForm extends StatefulWidget {
   const BuildResetPasswordForm({super.key});
@@ -26,11 +26,13 @@ class _BuildResetPasswordFormState extends State<BuildResetPasswordForm> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   late final AuthViewModel authViewModel;
+
   @override
   void initState() {
     super.initState();
     authViewModel = getIt.get<AuthViewModel>();
   }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -40,10 +42,12 @@ class _BuildResetPasswordFormState extends State<BuildResetPasswordForm> {
           if (state is ResetPasswordError) {
             CustomToast.showErrorToast(message: state.exception.toString());
           } else if (state is ResetPasswordSuccess) {
-            CustomToast.showSuccessToast(message: "${AppLocalizations.of(context)!.success}");
+            CustomToast.showSuccessToast(
+                message: "${AppLocalizations.of(context)!.success}");
             Navigator.pushNamed(context, RoutesName.loginView);
           } else if (state is ResetPasswordLoading) {
-            CustomToast.showLoadingToast(message: "${AppLocalizations.of(context)!.loading}");
+            CustomToast.showLoadingToast(
+                message: "${AppLocalizations.of(context)!.loading}");
           }
         },
         buildWhen: (previous, current) {
@@ -64,25 +68,27 @@ class _BuildResetPasswordFormState extends State<BuildResetPasswordForm> {
                   controller: emailController,
                   hintText: '${AppLocalizations.of(context)!.hintEmail}',
                   labelText: '${AppLocalizations.of(context)!.labelEmail}',
-                  validator: (value) => Validators.validateEmail(value,context),
+                  validator: (value) =>
+                      Validators.validateEmail(value, context),
                 ),
                 const SizedBox(height: 30),
                 CustomTextFormField(
                   controller: passwordController,
                   hintText: '${AppLocalizations.of(context)!.enterNewPassword}',
                   labelText: '${AppLocalizations.of(context)!.newPassword}',
-                  validator: (value) => Validators.validatePassword(value, context),
+                  validator: (value) =>
+                      Validators.validatePassword(value, context),
                 ),
                 const SizedBox(height: 50),
                 GestureDetector(
                     onTap: () {
                       if (formKey.currentState!.validate()) {
                         authViewModel.resetPassword(
-                      ResetPasswordEntity(
-                        email: emailController.text,
-                        newPassword: passwordController.text,
-                      ), context
-                        );
+                            ResetPasswordEntity(
+                              email: emailController.text,
+                              newPassword: passwordController.text,
+                            ),
+                            context);
                       }
                     },
                     child: CustomButton(

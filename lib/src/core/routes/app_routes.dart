@@ -18,8 +18,7 @@ import 'package:online_exam_app/src/core/global/layout.dart';
 import '../../features/exam/presentation/views/exam_view.dart';
 import '../../features/exam/presentation/widgets/exam_argument.dart';
 import '../../features/splash/view/splash_view.dart';
-import '../dependency injection/di.dart';
-
+import '../di/di.dart';
 
 class AppRoutes {
   static Map<String, WidgetBuilder> getRoutes() {

@@ -1,19 +1,18 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';
-import 'package:online_exam_app/src/core/dependency%20injection/di.dart';
 import 'package:online_exam_app/src/features/auth/data/datasources/contracts/offline_auth_datasource.dart';
 import 'package:online_exam_app/src/features/auth/domain/core/AppExceptions.dart';
-import 'package:online_exam_app/src/features/profile/domain/core/profile_%20result.dart';
 import 'package:online_exam_app/src/features/profile/domain/entities/response/edit_profile_response_entity.dart';
 import 'package:online_exam_app/src/features/profile/domain/entities/response/profile_data_response.dart';
 import 'package:online_exam_app/src/features/profile/domain/usecases/profile_usecase.dart';
 import 'package:online_exam_app/src/features/profile/presentation/cubit/profile_actions.dart';
 import 'package:online_exam_app/src/features/profile/presentation/cubit/profile_state.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../../../core/di/di.dart';
+import '../../../../core/utils/errors/result.dart';
 import '../../data/datasources/contracts/offline_datasource/offline_profile_datasource.dart';
 import '../../domain/entities/request/change_password_request_entity.dart';
 import '../../domain/entities/response/change_password_response_entity.dart';

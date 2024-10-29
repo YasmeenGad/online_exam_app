@@ -1,12 +1,12 @@
 import 'package:injectable/injectable.dart';
 import 'package:online_exam_app/src/features/profile/data/datasources/contracts/offline_datasource/offline_profile_datasource.dart';
 import 'package:online_exam_app/src/features/profile/data/datasources/contracts/online_datasource/online_profile_datasource.dart';
-import 'package:online_exam_app/src/features/profile/domain/core/profile_%20result.dart';
 import 'package:online_exam_app/src/features/profile/domain/entities/request/change_password_request_entity.dart';
 import 'package:online_exam_app/src/features/profile/domain/entities/response/change_password_response_entity.dart';
 import 'package:online_exam_app/src/features/profile/domain/entities/response/edit_profile_response_entity.dart';
 import 'package:online_exam_app/src/features/profile/domain/entities/response/profile_data_response.dart';
 
+import '../../../../core/utils/errors/result.dart';
 import '../../domain/contracts/profile_repository.dart';
 
 @Injectable(as: ProfileRepository)
@@ -19,8 +19,7 @@ class ProfileRepositoryImpl implements ProfileRepository {
       this._profileDataSource, this._offlineProfileDataSource);
 
   @override
-  Future<ProfileResult<ProfileDataResponse>> getProfileData(
-      String token) async {
+  Future<Result<ProfileDataResponse>> getProfileData(String token) async {
     final cachedProfile =
         await _offlineProfileDataSource.getCachedProfileData();
     if (cachedProfile != null) {
@@ -31,14 +30,14 @@ class ProfileRepositoryImpl implements ProfileRepository {
   }
 
   @override
-  Future<ProfileResult<ChangePasswordResponseEntity>> changePassword(
+  Future<Result<ChangePasswordResponseEntity>> changePassword(
       String token, ChangePasswordRequestEntity request) async {
     var response = await _profileDataSource.changePassword(token, request);
     return response;
   }
 
   @override
-  Future<ProfileResult<EditProfileResponseEntity>> editProfile(
+  Future<Result<EditProfileResponseEntity>> editProfile(
       String token, Map<String, dynamic> profileData) async {
     var response = await _profileDataSource.editProfile(token, profileData);
     return response;

@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_exam_app/src/core/dependency%20injection/di.dart';
 import 'package:online_exam_app/src/core/global/custom_toast.dart';
-import 'package:online_exam_app/src/core/routes/routes_name.dart';
-import 'package:online_exam_app/src/core/validators/validators.dart';
+import 'package:online_exam_app/src/core/utils/validators/validators.dart';
 import 'package:online_exam_app/src/features/auth/domain/entities/sign_in_entity.dart';
 import 'package:online_exam_app/src/features/auth/presentation/cubit/auth/auth_states.dart';
 import 'package:online_exam_app/src/core/global/custom_button.dart';
 import 'package:online_exam_app/src/features/auth/presentation/views/signup_view.dart';
 import 'package:online_exam_app/src/features/auth/presentation/widgets/custom_text_form_field.dart';
 import 'package:online_exam_app/src/features/auth/presentation/widgets/auth_footer.dart';
+import '../../../../core/di/di.dart';
 import '../cubit/auth/auth_view_model.dart';
 import '../widgets/forget_password_text.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

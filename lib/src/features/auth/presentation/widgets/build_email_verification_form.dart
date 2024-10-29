@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_exam_app/src/features/auth/presentation/widgets/auth_footer.dart';
 import 'package:online_exam_app/src/features/auth/presentation/widgets/verification_code.dart';
-import '../../../../core/dependency injection/di.dart';
+import '../../../../core/di/di.dart';
 import '../../../../core/global/custom_toast.dart';
 import '../../../../core/routes/routes_name.dart';
 import '../cubit/auth/auth_states.dart';

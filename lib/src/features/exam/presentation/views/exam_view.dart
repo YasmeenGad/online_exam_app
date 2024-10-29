@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_exam_app/src/core/global/custom_appbar.dart';
 import 'package:online_exam_app/src/features/exam/presentation/manager/exam/exam_cubit.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../../../core/di/di.dart';
 import '../../../../core/constants/assets.dart';
 import 'package:online_exam_app/src/features/exam/presentation/widgets/exam_item_loading.dart';
-import '../../../../core/dependency injection/di.dart';
 import '../widgets/build_empty_data_widget.dart';
 import '../widgets/exam_list.dart';
 

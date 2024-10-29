@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_exam_app/src/features/exam/presentation/widgets/build_success_widget.dart';
-import '../../../../core/dependency injection/di.dart';
+import '../../../../core/di/di.dart';
 import '../manager/subject/subject_cubit.dart';
 import '../widgets/subject_loading.dart';
 

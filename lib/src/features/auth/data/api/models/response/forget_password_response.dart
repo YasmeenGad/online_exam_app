@@ -13,4 +13,11 @@ class ForgetPasswordResponse {
       info: json['info'],
     );
   }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['message'] = message;
+    data['info'] = info;
+    return data;
+  }
 }
