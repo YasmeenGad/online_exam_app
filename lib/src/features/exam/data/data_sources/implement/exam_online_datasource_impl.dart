@@ -15,7 +15,7 @@ class ExamOnlineDataSourceImpl implements ExamOnlineDataSource {
   ExamOnlineDataSourceImpl(this._examClient);
 
   @override
-  Future<Result<Exam>> getExamById(String subjectId, String token) async {
+  Future<Result<List<Exam>>> getExamById(String subjectId, String token) async {
     return await apiExecute<Exam>(
       tryCode: () => _examClient.getExamById(subjectId, token),
       domainMapper: (response) => response.toDomain(),
@@ -27,9 +27,27 @@ class ExamOnlineDataSourceImpl implements ExamOnlineDataSource {
     return await apiExecute<List<Subject>>(
       tryCode: () => _examClient.getSubjects(token),
       domainMapper: (response) {
+    return await ExecuteApi(
+          () {
+        return _examClient.getSubjects(token);
+      },
+          (response) {
         final subjectsResponse = response as SubjectsResponseDto;
         return subjectsResponse.toDomain();
       },
     );
   }
+
+  @override
+  Future<Result<Exam>> getExamDetails(String examId, String token) {
+    return ExecuteApi(
+          () {
+        return _examClient.getExamDetails(token, examId);
+      },
+          (response) {
+        return response.toDomain();
+      },
+    );
+  }
+
 }

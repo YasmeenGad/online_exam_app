@@ -68,15 +68,19 @@
     "gallery": "Gallery",
     "camera": "Camera",
     "removePicture": "Remove Picture",
-    "updated": "Updated",
     "examApp": "Exam App",
     "search": "Search",
     "survey": "Survey",
     "browseBySubject": "Browse by subject",
     "exams": "Exams",
-    "minutes": "minutes",
-    "questions": "questions",
+    "minutes": "Minutes",
+    "question": "Question",
     "noSubjectsFound": "No subjects found",
+    "noExamsAvailable": "No exams available",
     "change": "Change",
-    "loadingItems": "Loading items..."
+    "loadingItems": "Loading items...",
+    "date": "Date",
+    "time": "Time",
+    "start": "Start",
+    "instructions": "Instructions"
 }

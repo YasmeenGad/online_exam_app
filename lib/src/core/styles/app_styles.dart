@@ -14,6 +14,12 @@ abstract class AppStyles {
       fontWeight: FontWeight.w500,
     );
   }
+  static TextStyle styleMedium14(BuildContext context) {
+    return GoogleFonts.inter(
+      fontSize: getResponsiveFontSize(context, fontSize: 14),
+      fontWeight: FontWeight.w500,
+    );
+  }
 
 static TextStyle styleRegular12(context) {
   return GoogleFonts.roboto(

@@ -33,4 +33,20 @@ class ExamCubit extends Cubit<ExamState> {
         break;
     }
   }
+
+
+  void getExamDetails(String examId) async {
+    emit(ExamDetailsLoading());
+    String? token = await offlineAuthDataSource.getToken();
+    final result = await _examUseCase.getExamDetails(examId, token!);
+
+    switch (result) {
+      case Success():
+        emit(ExamDetailsSuccess(result.data!));
+        break;
+      case Failure():
+        emit(ExamDetailsError(result.exception!));
+        break;
+    }
+  }
 }

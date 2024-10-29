@@ -5,6 +5,8 @@ import 'package:online_exam_app/src/features/exam/data/model/subjects_response_d
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
 import '../../../../core/constants/app_apis.dart';
+import '../model/exam_details_response_dto.dart';
+
 part 'exam_client.g.dart';
 
 @lazySingleton
@@ -20,9 +22,16 @@ abstract class ExamClient {
       @Header('token') String token,
       );
 
-  @GET('${AppApis.getExamsById}/{subjectId}')
+  @GET('${AppApis.getExamsBySubject}={subjectId}')
   Future<ExamResponseDto> getExamById(
       @Header('token') String token,
       @Path('subjectId') String subjectId,
       );
+
+  @GET("${AppApis.getExamById}/{examId}")
+  Future<ExamDetailsResponseDto> getExamDetails(
+      @Header('token') String token,
+      @Path('examId') String examId,
+      );
+
 }

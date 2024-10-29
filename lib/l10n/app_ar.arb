@@ -68,15 +68,19 @@
   "gallery": "المعرض",
   "camera": "الكاميرا",
   "removePicture": "إزالة الصورة",
-  "updated": "تم التحديث بنجاح",
   "examApp": "تطبيق الامتحان",
   "search": "بحث",
   "survey": "الاستبيان",
   "browseBySubject": "تصفح حسب الموضوع",
   "exams": "الامتحانات",
   "minutes": "دقيقة",
-  "questions": "الأسئلة",
+  "question": "سؤال",
   "noSubjectsFound": "لم يتم العثور على مواضيع",
+  "noExamsAvailable": "لا توجد امتحانات متاحة",
   "change": "تغيير",
-  "loadingItems": "جاري تحميل العناصر..."
+  "loadingItems": "جاري تحميل العناصر...",
+  "date": "التاريخ",
+  "time": "الوقت",
+  "start": "ابدأ",
+  "instructions": "التعليمات"
 }

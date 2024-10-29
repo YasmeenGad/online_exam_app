@@ -68,16 +68,20 @@
     "gallery": "Galeri",
     "camera": "Kamera",
     "removePicture": "Resmi kaldır",
-    "updated": "Güncellendi",
     "examApp": "Sınav Uygulaması",
     "search": "Arama",
     "survey": "Anket",
     "browseBySubject": "Konuya Göre Göz At",
     "exams": "Sınavlar",
     "minutes": "Dakika",
-    "questions": "Soru",
+    "question": "Soru",
     "noSubjectsFound": "Konu bulunamadı",
+    "noExamsAvailable": "Mevcut sınav yok",
+    "loadingItems": "Öğeler yükleniyor",
     "change": "Düzenle",
-    "loadingItems": "Öğeler yükleniyor..."
+    "date": "Tarih",
+    "time": "Saat",
+    "start": "Başla",
+    "instructions": "Talimatlar"
 }
   

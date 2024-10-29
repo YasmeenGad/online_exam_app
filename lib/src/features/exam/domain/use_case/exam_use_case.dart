@@ -11,12 +11,16 @@ class ExamUseCase {
 
   ExamUseCase(this._examRepo);
 
-  Future<Result<Exam>> getExamsById(String subjectId, String token) async {
+  Future<Result<List<Exam>>> getExamsById(String subjectId, String token) async {
     return await _examRepo.getExamsById(subjectId, token);
   }
 
   Future<Result<List<Subject>>> getSubjects(String token) async {
     return  await _examRepo.getSubjects(token);
 
+  }
+
+  Future<Result<Exam>> getExamDetails(String examId, String token) async {
+    return await _examRepo.getExamDetails(examId, token);
   }
 }
