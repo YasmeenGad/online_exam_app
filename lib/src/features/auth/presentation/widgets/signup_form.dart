@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:online_exam_app/src/core/validators/validators.dart';
+import 'package:online_exam_app/src/core/utils/validators/validators.dart';
 import 'package:online_exam_app/src/features/auth/presentation/widgets/custom_text_form_field.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

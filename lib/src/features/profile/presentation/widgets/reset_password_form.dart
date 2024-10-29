@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:online_exam_app/src/core/styles/app_styles.dart';
-import 'package:online_exam_app/src/core/validators/validators.dart';
+import 'package:online_exam_app/src/core/utils/validators/validators.dart';
 import 'package:online_exam_app/src/features/auth/presentation/widgets/custom_text_form_field.dart';
 
 import '../../../../core/styles/app_colors.dart';

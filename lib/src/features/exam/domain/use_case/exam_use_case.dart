@@ -1,6 +1,6 @@
 import 'package:injectable/injectable.dart';
 
-import '../../../../core/network/result.dart';
+import '../../../../core/utils/errors/result.dart';
 import '../entities/exam_entity.dart';
 import '../entities/subject_entity.dart';
 import '../repositories/exam_repo.dart';

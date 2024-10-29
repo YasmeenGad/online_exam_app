@@ -7,7 +7,7 @@ import 'package:online_exam_app/src/features/auth/domain/entities/forget_passwor
 import 'package:online_exam_app/src/features/auth/domain/entities/reset_password_entity.dart';
 import 'package:online_exam_app/src/features/auth/domain/entities/sign_in_entity.dart';
 import 'package:online_exam_app/src/features/auth/domain/entities/sign_up_entity.dart';
-import '../../../../core/network/result.dart';
+import '../../../../core/utils/errors/result.dart';
 import '../entities/email_verification_entity.dart';
 
 abstract class AuthRepo {

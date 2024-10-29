@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_exam_app/src/core/styles/app_styles.dart';
 import 'package:online_exam_app/src/features/exam/presentation/widgets/search_field.dart';
 import 'package:online_exam_app/src/features/exam/presentation/widgets/subject_list.dart';
-import '../../../../core/dependency injection/di.dart';
+import '../../../../core/di/di.dart';
 import '../../../../core/global/dialog.dart';
 import '../../../../core/styles/app_colors.dart';
 import '../../domain/entities/subject_entity.dart';

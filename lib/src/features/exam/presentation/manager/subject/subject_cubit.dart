@@ -1,13 +1,11 @@
-import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:meta/meta.dart';
-import 'package:online_exam_app/src/core/network/result.dart';
+import 'package:online_exam_app/src/core/utils/errors/result.dart';
 import 'package:online_exam_app/src/features/exam/domain/entities/subject_entity.dart';
 import 'package:online_exam_app/src/features/exam/domain/use_case/exam_use_case.dart';
 
-import '../../../../../core/dependency injection/di.dart';
+import '../../../../../core/di/di.dart';
 import '../../../../auth/data/datasources/contracts/offline_auth_datasource.dart';
 
 part 'subject_state.dart';

@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_exam_app/src/core/styles/app_colors.dart';
 
 import '../../../../core/constants/assets.dart';
-import '../../../../core/dependency injection/di.dart';
+import '../../../../core/di/di.dart';
 import '../cubit/profile_actions.dart';
 import '../cubit/profile_state.dart';
 import '../cubit/profile_view_model.dart';

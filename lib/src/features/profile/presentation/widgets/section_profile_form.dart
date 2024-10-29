@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:online_exam_app/src/features/profile/presentation/widgets/profile_form.dart';
-
-import '../../../../core/dependency injection/di.dart';
+import '../../../../core/di/di.dart';
 import '../../../../core/global/custom_button.dart';
 import '../../../../core/global/custom_toast.dart';
 import '../cubit/profile_actions.dart';

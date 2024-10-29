@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_exam_app/src/core/dependency%20injection/di.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:online_exam_app/src/core/global/custom_appbar.dart';
 import 'package:online_exam_app/src/core/global/custom_toast.dart';
 import 'package:online_exam_app/src/core/routes/routes_name.dart';
 import 'package:online_exam_app/src/core/styles/app_colors.dart';
 import 'package:online_exam_app/src/features/auth/presentation/cubit/auth/auth_states.dart';
 import 'package:online_exam_app/src/features/auth/presentation/cubit/auth/auth_view_model.dart';
-import 'package:online_exam_app/src/core/global/custom_appbar.dart';
 import 'package:online_exam_app/src/features/auth/presentation/views/login_view.dart';
-import 'package:online_exam_app/src/features/auth/presentation/widgets/signup_button.dart';
 import 'package:online_exam_app/src/features/auth/presentation/widgets/auth_footer.dart';
+import 'package:online_exam_app/src/features/auth/presentation/widgets/signup_button.dart';
 import 'package:online_exam_app/src/features/auth/presentation/widgets/signup_form.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../../../../core/di/di.dart';
 
 class SignUpView extends StatelessWidget {
   const SignUpView({super.key});
@@ -38,7 +39,8 @@ class SignUpView extends StatelessWidget {
             switch (state) {
               case SignUpLoadingState():
                 {
-                  CustomToast.showLoadingToast(message: "${AppLocalizations.of(context)!.loading}");
+                  CustomToast.showLoadingToast(
+                      message: "${AppLocalizations.of(context)!.loading}");
 
                   break;
                 }
@@ -50,7 +52,8 @@ class SignUpView extends StatelessWidget {
                 }
               case SignUpSuccessState():
                 {
-                  CustomToast.showSuccessToast(message: "${AppLocalizations.of(context)!.success}");
+                  CustomToast.showSuccessToast(
+                      message: "${AppLocalizations.of(context)!.success}");
                   Navigator.pushReplacementNamed(context, RoutesName.loginView);
                   // Navigator.pushNamed(context, RoutesName.homeView);
                   break;
@@ -71,7 +74,8 @@ class SignUpView extends StatelessWidget {
                       slivers: [
                         SliverToBoxAdapter(
                           child: CustomAppBar(
-                            appBarTxt: '${AppLocalizations.of(context)!.signUp}',
+                            appBarTxt:
+                                '${AppLocalizations.of(context)!.signUp}',
                           ),
                         ),
                         SliverToBoxAdapter(
@@ -113,8 +117,9 @@ class SignUpView extends StatelessWidget {
                                     confirmPasswordController,
                                 phoneNumberController: phoneNumberController,
                               ),
-                               AuthFooter(
-                                question: "${AppLocalizations.of(context)!.alreadyHaveAnAccount}?",
+                              AuthFooter(
+                                question:
+                                    "${AppLocalizations.of(context)!.alreadyHaveAnAccount}?",
                                 txt: "${AppLocalizations.of(context)!.login}",
                                 route: LoginView(),
                               ),

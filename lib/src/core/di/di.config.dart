@@ -55,10 +55,10 @@ import '../../features/profile/presentation/cubit/profile_view_model.dart'
     as _i516;
 import '../../features/questions/data/api/question_retrofit_client.dart'
     as _i287;
-import '../network/dio_factory.dart' as _i798;
-import '../network/network_module.dart' as _i200;
 import '../provider/language_provider.dart' as _i538;
 import '../provider/language_service.dart' as _i734;
+import '../utils/api/dio_factory.dart' as _i218;
+import '../utils/api/network_module.dart' as _i498;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -72,10 +72,10 @@ extension GetItInjectableX on _i174.GetIt {
       environmentFilter,
     );
     final networkModule = _$NetworkModule();
-    gh.factory<_i798.DioFactory>(() => _i798.DioFactory());
+    gh.factory<_i218.DioFactory>(() => _i218.DioFactory());
     gh.singleton<_i1023.ApiManager>(() => _i1023.ApiManager());
-    gh.lazySingleton<_i361.Dio>(() => networkModule.dio);
     gh.lazySingleton<_i734.LanguageService>(() => _i734.LanguageService());
+    gh.lazySingleton<_i361.Dio>(() => networkModule.dio);
     gh.factory<_i538.LanguageProvider>(
         () => _i538.LanguageProvider(gh<_i734.LanguageService>()));
     gh.factory<_i449.AuthDataSource>(
@@ -120,4 +120,4 @@ extension GetItInjectableX on _i174.GetIt {
   }
 }
 
-class _$NetworkModule extends _i200.NetworkModule {}
+class _$NetworkModule extends _i498.NetworkModule {}
