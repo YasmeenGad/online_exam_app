@@ -55,6 +55,14 @@ import '../../features/profile/presentation/cubit/profile_view_model.dart'
     as _i516;
 import '../../features/questions/data/api/question_retrofit_client.dart'
     as _i287;
+import '../../features/questions/data/datasource/contracts/online_datasource/questions_online_datasource.dart'
+    as _i94;
+import '../../features/questions/data/datasource/impl/questions_online_datasource_impl.dart'
+    as _i635;
+import '../../features/questions/domain/contracts/questions_repository.dart'
+    as _i912;
+import '../../features/questions/domain/usecase/questions_usecase.dart'
+    as _i279;
 import '../provider/language_provider.dart' as _i538;
 import '../provider/language_service.dart' as _i734;
 import '../utils/api/dio_factory.dart' as _i218;
@@ -78,6 +86,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i361.Dio>(() => networkModule.dio);
     gh.factory<_i538.LanguageProvider>(
         () => _i538.LanguageProvider(gh<_i734.LanguageService>()));
+    gh.factory<_i279.QuestionsUseCase>(
+        () => _i279.QuestionsUseCase(gh<_i912.QuestionsRepository>()));
     gh.factory<_i449.AuthDataSource>(
         () => _i239.AuthDataSourceImpl(gh<_i1023.ApiManager>()));
     gh.lazySingleton<_i12.ExamClient>(() => _i12.ExamClient(gh<_i361.Dio>()));
@@ -89,6 +99,9 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i110.OfflineAuthDataSourceImpl());
     gh.factory<_i804.OfflineProfileDataSource>(
         () => _i444.OfflineProfileDataSourceImpl());
+    gh.factory<_i94.QuestionsOnlineDatasource>(() =>
+        _i635.QuestionsOnlineDatasourceImpl(
+            gh<_i287.QuestionRetrofitClient>()));
     gh.factory<_i926.ExamOnlineDataSource>(
         () => _i742.ExamOnlineDataSourceImpl(gh<_i12.ExamClient>()));
     gh.factory<_i266.OnlineProfileDataSource>(

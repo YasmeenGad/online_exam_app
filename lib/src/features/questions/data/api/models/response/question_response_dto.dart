@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:online_exam_app/src/features/questions/domain/entities/response/question_response_entity.dart';
 
 part 'question_response_dto.g.dart';
 
@@ -21,6 +22,11 @@ class QuestionResponseDto {
   Map<String, dynamic> toJson() {
     return _$QuestionResponseDtoToJson(this);
   }
+
+  QuestionResponseEntity toEntity() => QuestionResponseEntity(
+        message: message,
+        questions: questions?.map((e) => e.toEntity()).toList(),
+      );
 }
 
 @JsonSerializable()
@@ -60,6 +66,17 @@ class Questions {
   Map<String, dynamic> toJson() {
     return _$QuestionsToJson(this);
   }
+
+  QuestionsEntity toEntity() => QuestionsEntity(
+        answers: answers?.map((e) => e.toEntity()).toList(),
+        type: type,
+        Id: Id,
+        question: question,
+        correct: correct,
+        subject: subject?.toEntity(),
+        exam: exam?.toEntity(),
+        createdAt: createdAt,
+      );
 }
 
 @JsonSerializable()
@@ -81,6 +98,11 @@ class Answers {
   Map<String, dynamic> toJson() {
     return _$AnswersToJson(this);
   }
+
+  AnswersEntity toEntity() => AnswersEntity(
+        answer: answer,
+        key: key,
+      );
 }
 
 @JsonSerializable()
@@ -108,6 +130,13 @@ class Subject {
   Map<String, dynamic> toJson() {
     return _$SubjectToJson(this);
   }
+
+  SubjectEntity toEntity() => SubjectEntity(
+        Id: Id,
+        name: name,
+        icon: icon,
+        createdAt: createdAt,
+      );
 }
 
 @JsonSerializable()
@@ -144,4 +173,14 @@ class Exam {
   Map<String, dynamic> toJson() {
     return _$ExamToJson(this);
   }
+
+  ExamEntity toEntity() => ExamEntity(
+        Id: Id,
+        title: title,
+        duration: duration,
+        subject: subject,
+        numberOfQuestions: numberOfQuestions,
+        active: active,
+        createdAt: createdAt,
+      );
 }

@@ -16,7 +16,6 @@ class InstructionsExam extends StatelessWidget {
       AppLocalizations.of(context)?.instruction3,
       AppLocalizations.of(context)?.instruction4,
     ];
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Column(
