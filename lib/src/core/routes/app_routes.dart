@@ -16,6 +16,7 @@ import '../../features/auth/presentation/views/email_verification_view.dart';
 import '../../features/auth/presentation/views/reset_password_view.dart';
 import '../../features/exam/presentation/views/exam_view.dart';
 import '../../features/exam/presentation/widgets/exam_argument.dart';
+import '../../features/questions/presentation/views/question_view.dart';
 import '../../features/splash/view/splash_view.dart';
 import '../di/di.dart';
 
@@ -52,7 +53,9 @@ class AppRoutes {
           subjectImage: arguments.subjectImage!,
         );
       },
-      RoutesName.questionsView: (context) => QuestionsView()
+      RoutesName.questionsView: (context) => QuestionsView(
+            examId: ModalRoute.of(context)!.settings.arguments as String,
+          )
     };
   }
 }

@@ -32,7 +32,7 @@ class QuestionsViewModel extends Cubit<QuestionsState> {
   Future<void> _getQuestions(String examId, BuildContext context) async {
     emit(GetQuestionsLoading());
     var token = await offlineAuthDataSource.getToken() ?? "";
-    final result = await _questionsUseCase.getQuestions(examId, token);
+    final result = await _questionsUseCase.getQuestions(token, examId);
     switch (result) {
       case Success<QuestionResponseEntity>():
         {

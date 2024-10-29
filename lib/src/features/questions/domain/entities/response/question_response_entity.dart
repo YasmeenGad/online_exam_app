@@ -1,7 +1,7 @@
 class QuestionResponseEntity {
-  final String? message;
+  String? message;
 
-  final List<QuestionsEntity>? questions;
+  List<QuestionsEntity>? questions;
 
   QuestionResponseEntity({
     this.message,
@@ -10,21 +10,21 @@ class QuestionResponseEntity {
 }
 
 class QuestionsEntity {
-  final List<AnswersEntity>? answers;
+  List<QuestionsAnswersEntity>? answers;
 
-  final String? type;
+  String? type;
 
-  final String? Id;
+  String? Id;
 
-  final String? question;
+  String? question;
 
-  final String? correct;
+  String? correct;
 
-  final SubjectEntity? subject;
+  QuestionsSubjectEntity? subject;
 
-  final ExamEntity? exam;
+  QuestionsExamEntity? exam;
 
-  final String? createdAt;
+  String? createdAt;
 
   QuestionsEntity({
     this.answers,
@@ -38,27 +38,27 @@ class QuestionsEntity {
   });
 }
 
-class AnswersEntity {
-  final String? answer;
+class QuestionsAnswersEntity {
+  String? answer;
 
-  final String? key;
+  String? key;
 
-  AnswersEntity({
+  QuestionsAnswersEntity({
     this.answer,
     this.key,
   });
 }
 
-class SubjectEntity {
-  final String? Id;
+class QuestionsSubjectEntity {
+  String? Id;
 
-  final String? name;
+  String? name;
 
-  final String? icon;
+  String? icon;
 
-  final String? createdAt;
+  String? createdAt;
 
-  SubjectEntity({
+  QuestionsSubjectEntity({
     this.Id,
     this.name,
     this.icon,
@@ -66,22 +66,22 @@ class SubjectEntity {
   });
 }
 
-class ExamEntity {
-  final String? Id;
+class QuestionsExamEntity {
+  String? Id;
 
-  final String? title;
+  String? title;
 
-  final int? duration;
+  int? duration;
 
-  final String? subject;
+  String? subject;
 
-  final int? numberOfQuestions;
+  int? numberOfQuestions;
 
-  final bool? active;
+  bool? active;
 
-  final String? createdAt;
+  String? createdAt;
 
-  ExamEntity({
+  QuestionsExamEntity({
     this.Id,
     this.title,
     this.duration,

@@ -86,5 +86,11 @@
     "instruction1": "Read all instructions carefully before starting the exam.",
     "instruction2": "Answer all questions to the best of your ability.",
     "instruction3": "Manage your time effectively.",
-    "instruction4": "Stay calm and focused."
+    "instruction4": "Stay calm and focused.",
+    "exam": "Exam",
+    "timeout": "Time out !!",
+    "viewScore": "View Score",
+    "next": "Next",
+    "back": "Back",
+    "noQuestions": "It looks like there are no questions for this exam."
 }

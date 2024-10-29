@@ -11,8 +11,8 @@ class QuestionsUseCase {
   @factoryMethod
   QuestionsUseCase(this._questionsRepository);
 
-  Future<Result<QuestionResponseEntity>> getQuestions(
-      String examId, String token) async {
-    return await _questionsRepository.getQuestions(examId, token);
+  Future<Result<QuestionResponseEntity>> getQuestions(String token,
+      String examId) async {
+    return await _questionsRepository.getQuestions(token, examId);
   }
 }

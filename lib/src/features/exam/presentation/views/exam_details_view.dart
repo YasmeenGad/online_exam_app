@@ -29,7 +29,9 @@ class ExamDetailsView extends StatelessWidget {
               thickness: 1,
             ),
             SizedBox(height: 20),
-            InstructionsExam(),
+            InstructionsExam(
+              examId: examId,
+            ),
           ],
         ),
       ),

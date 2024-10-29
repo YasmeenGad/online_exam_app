@@ -52,6 +52,12 @@ class Assets {
   /// assets/images/no_data.json
   static const String imagesNoData = 'assets/images/no_data.json';
 
+  /// Assets for imagesClock
+  /// assets/images/clock.png
+  static const String imagesClock = 'assets/images/clock.png';
 
+  /// Assets for imagesNoQuestions
+  /// assets/images/no_questions.gif
+  static const String imagesNoQuestions = 'assets/images/no_questions.gif';
 }
 

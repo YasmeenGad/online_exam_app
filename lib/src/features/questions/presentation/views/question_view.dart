@@ -1,0 +1,305 @@
+// import 'dart:async';
+//
+// import 'package:flutter/material.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+// import 'package:online_exam_app/generated/assets.dart';
+// import 'package:online_exam_app/src/core/styles/app_colors.dart';
+// import 'package:online_exam_app/src/features/questions/domain/entities/response/question_response_entity.dart';
+// import 'package:online_exam_app/src/features/questions/presentation/cubit/questions_action.dart';
+// import 'package:online_exam_app/src/features/questions/presentation/cubit/questions_states.dart';
+// import 'package:online_exam_app/src/features/questions/presentation/cubit/questions_view_model.dart';
+//
+// import '../../../../core/di/di.dart';
+// import '../../../../core/global/custom_appbar.dart';
+// import '../../../../core/styles/app_styles.dart';
+//
+// class QuestionsView extends StatefulWidget {
+//   const QuestionsView({super.key, required this.examId});
+//
+//   final String examId;
+//
+//   @override
+//   State<QuestionsView> createState() => _QuestionsViewState();
+// }
+//
+// class _QuestionsViewState extends State<QuestionsView> {
+//   late QuestionsViewModel questionsViewModel;
+//   int currentQuestionIndex = 0;
+//   late List<QuestionsEntity> questions = [];
+//   Timer? timer;
+//   int timeRemaining = 0;
+//   int examDuration = 0;
+//   bool isTimerStarted = false;
+//   String? selectedAnswer;
+//
+//   @override
+//   void initState() {
+//     super.initState();
+//     questionsViewModel = getIt.get<QuestionsViewModel>();
+//     questionsViewModel.doAction(GetQuestionsAction(context: context, examId: widget.examId));
+//   }
+//
+//   void startTimer() {
+//     timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+//       setState(() {
+//         if (timeRemaining > 0) {
+//           timeRemaining--;
+//         } else {
+//           timer.cancel();
+//           showTimeOutDialog();
+//         }
+//       });
+//     });
+//   }
+//
+//   void showTimeOutDialog() {
+//     showDialog(
+//       context: context,
+//       builder: (context) {
+//         return AlertDialog(
+//           content: Text(AppLocalizations.of(context)!.timeout),
+//           actions: [
+//             TextButton(
+//               onPressed: () {
+//                 // Navigate or perform any required action here
+//               },
+//               child: Text(AppLocalizations.of(context)!.viewScore),
+//             ),
+//           ],
+//         );
+//       },
+//     );
+//   }
+//
+//   void nextQuestion() {
+//     if (currentQuestionIndex < questions.length - 1) {
+//       setState(() {
+//         currentQuestionIndex++;
+//         selectedAnswer = null;
+//       });
+//     }
+//   }
+//
+//   void previousQuestion() {
+//     if (currentQuestionIndex > 0) {
+//       setState(() {
+//         currentQuestionIndex--;
+//       });
+//     }
+//   }
+//
+//   String formatTime(int seconds) {
+//     final minutes = seconds ~/ 60;
+//     final remainingSeconds = seconds % 60;
+//     return '$minutes:${remainingSeconds.toString().padLeft(2, '0')}';
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       backgroundColor: AppColors.whiteColor,
+//       body: Padding(
+//         padding: const EdgeInsets.only(top: 56, left: 16, right: 16),
+//         child: BlocProvider(
+//           create: (context) => questionsViewModel,
+//           child: BlocBuilder<QuestionsViewModel, QuestionsState>(
+//             builder: (context, state) {
+//               if (state is GetQuestionsLoading) {
+//                 return const Center(child: CircularProgressIndicator());
+//               } else if (state is GetQuestionsSuccess) {
+//                 questions = state.questionResponseEntity.questions ?? [];
+//                 examDuration = state.questionResponseEntity.questions?.isNotEmpty == true
+//                     ? state.questionResponseEntity.questions![0].exam?.duration ?? 0
+//                     : 0;
+//
+//                 if (!isTimerStarted && questions.isNotEmpty) {
+//                   timeRemaining = examDuration * 60;
+//                   startTimer();
+//                   isTimerStarted = true;
+//                 }
+//
+//
+//                 if (questions.isEmpty) {
+//                   return Container(
+//                     width: MediaQuery.sizeOf(context).width,
+//                     height: MediaQuery.sizeOf(context).height,
+//                     child: Column(
+//                       mainAxisAlignment: MainAxisAlignment.center,
+//                       crossAxisAlignment: CrossAxisAlignment.center,
+//                       children: [
+//                         Image.asset(
+//                           Assets.imagesNoQuestions,
+//                           width: MediaQuery.sizeOf(context).width * 0.4,
+//                           height: MediaQuery.sizeOf(context).height * 0.4,
+//                         ),
+//                         Text("data")
+//                       ],
+//                     ),
+//                   );
+//                 }
+//
+//                 return buildQuestionView(questions[currentQuestionIndex]);
+//               }
+//               return Container();
+//             },
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+//
+//   Widget buildQuestionView(QuestionsEntity question) {
+//
+//     return CustomScrollView(
+//       slivers: [
+//         SliverToBoxAdapter(
+//           child: Row(
+//             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//             children: [
+//               CustomAppBar(
+//                 showArrow: true,
+//                 appBarTxt: '${AppLocalizations.of(context)!.exam}',
+//               ),
+//               Row(
+//                 children: [
+//                   Image.asset(Assets.imagesClock, height: 30, width: 24),
+//                   const SizedBox(width: 8),
+//                   Text(
+//                     formatTime(timeRemaining),
+//                     style: AppStyles.styleRegular20(context).copyWith(color: AppColors.timeColor),
+//                   ),
+//                 ],
+//               ),
+//             ],
+//           ),
+//         ),
+//         SliverToBoxAdapter(
+//           child: SizedBox(height: 16),
+//         ),
+//         SliverToBoxAdapter(
+//           child: Column(
+//             crossAxisAlignment: CrossAxisAlignment.center,
+//             children: [
+//               Text("Question ${currentQuestionIndex + 1} of ${questions.length}",
+//                   style: AppStyles.styleMediumRoboto14(context).copyWith(color: AppColors.grayColor)),
+//               const SizedBox(height: 8),
+//               LinearProgressIndicator(
+//                 value: (currentQuestionIndex + 1) / questions.length,
+//                 backgroundColor: AppColors.grayColor.withOpacity(0.3),
+//                 color: AppColors.blueBaseColor,
+//                 minHeight: 6,
+//               )
+//             ],
+//           ),
+//         ),
+//         SliverToBoxAdapter(
+//           child: SizedBox(height: 32),
+//         ),
+//         SliverToBoxAdapter(
+//           child: Text(
+//             question.question ?? '',
+//             style: AppStyles.styleMediumInter18(context).copyWith(color: AppColors.blackBaseColor),
+//           ),
+//         ),
+//         SliverToBoxAdapter(
+//           child: SizedBox(height: 28),
+//         ),
+//         SliverList(
+//           delegate: SliverChildBuilderDelegate(
+//                 (context, index) {
+//               final answer = question.answers![index];
+//               return Padding(
+//                 padding: const EdgeInsets.only(bottom: 20),
+//                 child: AnimatedContainer(
+//                   duration: const Duration(milliseconds: 200),
+//                   // height: 60,
+//                   width: double.infinity,
+//                   decoration: BoxDecoration(
+//                     color: AppColors.lightBlue,
+//                     borderRadius: BorderRadius.circular(20),
+//                   ),
+//                   child: Center(
+//                     child: ListTile(
+//                       title: Text(
+//                         answer.answer ?? '',
+//                         style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+//                       ),
+//                       leading: Radio<String>(
+//                         activeColor: AppColors.blueBaseColor,
+//                         value: answer.key!,
+//                         groupValue: selectedAnswer, // استخدام selectedAnswer
+//                         onChanged: (value) {
+//                           setState(() {
+//                             selectedAnswer = value; // تخزين القيمة المختارة
+//                           });
+//                         },
+//                       ),
+//                     ),
+//                   ),
+//                 ),
+//               );
+//             },
+//             childCount: question.answers?.length ?? 0,
+//           ),
+//         ),
+//         SliverToBoxAdapter(
+//           child: SizedBox(height: 32),
+//         ),
+//         SliverToBoxAdapter(
+//           child: Row(
+//             children: [
+//               Expanded(
+//                 child: GestureDetector(
+//                   onTap: previousQuestion,
+//                   child: Container(
+//                     height: 48,
+//                     decoration: BoxDecoration(
+//                       color: AppColors.whiteColor, // White background color
+//                       borderRadius: BorderRadius.circular(10),
+//                       border: Border.all(
+//                         color: AppColors.blueBaseColor, // Blue border color
+//                         width: 2, // Set border width
+//                       ),
+//                     ),
+//                     child: Center(
+//                       child: Text(
+//                         AppLocalizations.of(context)!.back,
+//                         style: AppStyles.styleMedium16(context).copyWith(color: AppColors.blueBaseColor),
+//                       ),
+//                     ),
+//                   ),
+//                 ),
+//               ),
+//               const SizedBox(width: 16),
+//               Expanded(
+//                 child: GestureDetector(
+//                   onTap: nextQuestion,
+//                   child: Container(
+//                     height: 48,
+//                     decoration: BoxDecoration(
+//                       color: AppColors.blueBaseColor,
+//                       borderRadius: BorderRadius.circular(10),
+//                     ),
+//                     child: Center(
+//                       child: Text(
+//                         AppLocalizations.of(context)!.next,
+//                         style: AppStyles.styleMedium16(context).copyWith(color: AppColors.whiteColor),
+//                       ),
+//                     ),
+//                   ),
+//                 ),
+//               ),
+//             ],
+//           ),
+//         ),
+//       ],
+//     );
+//   }
+//
+//   @override
+//   void dispose() {
+//     timer?.cancel();
+//     super.dispose();
+//   }
+// }

@@ -24,7 +24,8 @@ class DioFactory {
         requestHeader: true,
         responseHeader: true,
         responseBody: true,
-      )
+              error: true,
+            )
           : const Interceptor(),
     );
 
