@@ -5,7 +5,6 @@ import 'package:online_exam_app/src/features/exam/data/model/subjects_response_d
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
 import '../../../../core/constants/app_apis.dart';
-
 part 'exam_client.g.dart';
 
 @lazySingleton
