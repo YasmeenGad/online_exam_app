@@ -92,5 +92,7 @@
   "viewScore": "Punktzahl anzeigen",
   "next": "Weiter",
   "back": "Zurück",
-  "noQuestions": "Es sieht so aus, als ob es für diese Prüfung keine Fragen gibt"
+  "noQuestions": "Es sieht so aus, als ob es für diese Prüfung keine Fragen gibt",
+  "invalidCode": "Ungültiger Code",
+  "sendSuccessful" : "Erfolgreich gesendet"
 }

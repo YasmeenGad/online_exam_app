@@ -49,7 +49,7 @@
     "login": "Login",
     "signUp": "Sign Up",
     "alreadyHaveAnAccount": "Already have an account?",
-    "dontReceiveCode": "Did not receive code?",
+    "dontReceiveCode": "Didn't receive code?",
     "resend": "Resend",
     "dontHaveAnAccount": "Do not have an account?",
     "enterNewPassword": "Enter new password",
@@ -92,5 +92,7 @@
     "viewScore": "View Score",
     "next": "Next",
     "back": "Back",
-    "noQuestions": "It looks like there are no questions for this exam."
+    "noQuestions": "It looks like there are no questions for this exam.",
+    "invalidCode": "Invalid code",
+    "sendSuccessful" : "Send successful"
 }

@@ -46,7 +46,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
               CustomToast.showErrorToast(message: state.exception.toString());
             } else if (state is ForgetPasswordSuccess) {
               CustomToast.showSuccessToast(message: "${AppLocalizations.of(context)!.success}");
-              Navigator.pushReplacementNamed(context, RoutesName.emailVerificationView);
+              Navigator.pushReplacementNamed(context, RoutesName.emailVerificationView, arguments: emailController.text.trim());
             }
           },
           buildWhen: (previous, current) => current is AuthInitialState,
@@ -57,6 +57,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                 children: [
                   CustomAppBar(
                     appBarTxt: '${AppLocalizations.of(context)!.labelPassword}',
+                    showArrow: true,
                   ),
                   Form(
                     key: forgetFormKey,
