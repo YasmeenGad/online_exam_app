@@ -16,4 +16,29 @@ class Exam {
     required this.active,
     required this.createdAt,
   });
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'title': title,
+      'duration': duration,
+      'subject': subject,
+      'numberOfQuestions': numberOfQuestions,
+      'active': active,
+      'createdAt': createdAt,
+    };
+  }
+
+  factory Exam.fromJson(Map<String, dynamic> json) {
+    return Exam(
+      id: json['id'],
+      title: json['title'],
+      duration: json['duration'],
+      subject: json['subject'],
+      numberOfQuestions: json['numberOfQuestions'],
+      active: json['active'],
+      createdAt: json['createdAt'],
+    );
+  }
+
 }

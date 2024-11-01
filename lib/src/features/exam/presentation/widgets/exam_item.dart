@@ -35,6 +35,7 @@ class ExamItem extends StatelessWidget {
       },
       child: shadowContainer(
           height: 110,
+          width: 0.5,
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
           child: Row(
             children: [

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:online_exam_app/src/features/exam/presentation/widgets/exam_argument.dart';
-import 'package:online_exam_app/src/features/exam/presentation/widgets/shadow_container_widget.dart';
-
 import '../../../../core/routes/routes_name.dart';
 import '../../../../core/styles/app_styles.dart';
 import '../../domain/entities/subject_entity.dart';
@@ -12,9 +10,7 @@ class SubjectListItem extends StatelessWidget {
   final Subject subject;
   @override
   Widget build(BuildContext context) {
-    return  shadowContainer(
-      height: 80,
-      child: Center(
+    return   Center(
         child: ListTile(
           onTap: () {
             Navigator.pushNamed(
@@ -30,7 +26,7 @@ class SubjectListItem extends StatelessWidget {
             style: AppStyles.styleRegular16(context),
           ),
         ),
-      ),
+
     );
   }
 }

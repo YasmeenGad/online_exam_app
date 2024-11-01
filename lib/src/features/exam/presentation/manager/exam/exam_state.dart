@@ -2,6 +2,19 @@ part of 'exam_cubit.dart';
 
 @immutable
 sealed class ExamState {}
+sealed  class examAction {}
+
+
+class getExamBySubject extends examAction {
+  final String subjectId;
+
+  getExamBySubject(this.subjectId);
+}
+class getExamDetails extends examAction {
+  final String examId;
+
+  getExamDetails(this.examId);
+}
 
 final class ExamInitial extends ExamState {}
 

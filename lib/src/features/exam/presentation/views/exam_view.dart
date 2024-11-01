@@ -32,7 +32,7 @@ class ExamView extends StatelessWidget {
             SizedBox(height: 15),
             BlocProvider(
               create: (context) =>
-                  getIt<ExamCubit>()..getExamBySubject(subjectId),
+                  getIt<ExamCubit>()..doAction(getExamBySubject(subjectId)),
               child: BlocBuilder<ExamCubit, ExamState>(
                 builder: (context, state) {
                   if (state is ExamLoading) {

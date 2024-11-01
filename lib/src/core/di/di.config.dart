@@ -27,8 +27,12 @@ import '../../features/auth/domain/usecases/auth_usecase.dart' as _i436;
 import '../../features/auth/presentation/cubit/auth/auth_view_model.dart'
     as _i616;
 import '../../features/exam/data/api/exam_client.dart' as _i12;
+import '../../features/exam/data/data_sources/contracts/exam_offline_datasource.dart'
+    as _i203;
 import '../../features/exam/data/data_sources/contracts/exam_online_datasource.dart'
     as _i926;
+import '../../features/exam/data/data_sources/implement/exam_offline_datasource_impl.dart'
+    as _i464;
 import '../../features/exam/data/data_sources/implement/exam_online_datasource_impl.dart'
     as _i742;
 import '../../features/exam/data/repositories/exam_repo_impl.dart' as _i1047;
@@ -90,6 +94,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i361.Dio>(() => networkModule.dio);
     gh.factory<_i538.LanguageProvider>(
         () => _i538.LanguageProvider(gh<_i734.LanguageService>()));
+    gh.factory<_i203.ExamOfflineDatasource>(
+        () => _i464.ExamOfflineDataSourceImpl());
     gh.factory<_i449.AuthDataSource>(
         () => _i239.AuthDataSourceImpl(gh<_i1023.ApiManager>()));
     gh.lazySingleton<_i12.ExamClient>(() => _i12.ExamClient(gh<_i361.Dio>()));
@@ -108,6 +114,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i742.ExamOnlineDataSourceImpl(gh<_i12.ExamClient>()));
     gh.factory<_i266.OnlineProfileDataSource>(
         () => _i407.ProfileDataSourceImpl(gh<_i915.ProfileRetrofitClient>()));
+    gh.factory<_i377.ExamRepo>(() => _i1047.ExamRepoImpl(
+          gh<_i926.ExamOnlineDataSource>(),
+          gh<_i203.ExamOfflineDatasource>(),
+        ));
     gh.factory<_i670.AuthRepo>(
         () => _i662.AuthRepositoryImpl(gh<_i449.AuthDataSource>()));
     gh.factory<_i435.ProfileRepository>(() => _i334.ProfileRepositoryImpl(
@@ -118,8 +128,6 @@ extension GetItInjectableX on _i174.GetIt {
         _i904.QuestionsRepositoryImpl(gh<_i94.QuestionsOnlineDatasource>()));
     gh.factory<_i436.AuthUsecase>(
         () => _i436.AuthUsecase(authRepo: gh<_i670.AuthRepo>()));
-    gh.factory<_i377.ExamRepo>(
-        () => _i1047.ExamRepoImpl(gh<_i926.ExamOnlineDataSource>()));
     gh.factory<_i315.ExamUseCase>(
         () => _i315.ExamUseCase(gh<_i377.ExamRepo>()));
     gh.factory<_i996.ProfileUseCase>(
