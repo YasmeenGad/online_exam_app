@@ -40,7 +40,7 @@ class ExamDetailsItem extends StatelessWidget {
                           ),
                           SizedBox(width: 7),
                           Text(
-                            '${AppLocalizations.of(context)?.exams}',
+                            '${AppLocalizations.of(context)?.languages}',
                             style: AppStyles.styleMedium20(context),
                           ),
                           Spacer(),
