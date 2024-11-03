@@ -94,5 +94,8 @@
   "back": "Zurück",
   "noQuestions": "Es sieht so aus, als ob es für diese Prüfung keine Fragen gibt",
   "invalidCode": "Ungültiger Code",
-  "sendSuccessful" : "Erfolgreich gesendet"
+  "sendSuccessful" : "Erfolgreich gesendet",
+  "results": "Ergebnisse",
+  "answers": "Antworten",
+  "language": "Sprache"
 }
