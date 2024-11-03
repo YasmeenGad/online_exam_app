@@ -1,12 +1,15 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 import 'package:online_exam_app/src/core/utils/errors/result.dart';
 import '../../../../../core/di/di.dart';
+import '../../../../../core/utils/errors/app_exception.dart';
 import '../../../../auth/data/datasources/contracts/offline_auth_datasource.dart';
 import '../../../data/data_sources/contracts/exam_offline_datasource.dart';
-import '../../../domain/entities/exam_entity.dart';
+import '../../../domain/entities/exams_entity.dart';
 import '../../../domain/use_case/exam_use_case.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 part 'exam_state.dart';
 
@@ -24,36 +27,49 @@ class ExamCubit extends Cubit<ExamState> {
     switch (action) {
       case getExamBySubject():
         {
-          _getExamBySubject(action.subjectId);
+          _getExamBySubject(action.subjectId , action.context);
           break;
         }
       case getExamDetails():
         {
-          _getExamDetails(action.examId);
+          _getExamDetails(action.examId , action.context);
           break;
         }
     }
 
   }
 
-  void _getExamBySubject(String subjectId) async {
+  void _getExamBySubject(String subjectId , BuildContext context) async {
     emit(ExamLoading());
     String? token = await offlineAuthDataSource.getToken();
-    final result = await _examUseCase.getExamsById(token!, subjectId);
+    final result = await _examUseCase.getExamsById( subjectId ,token!);
 
     switch (result) {
       case Success():
         emit(ExamSuccess(result.data!));
-        await examOfflineDataSource.cacheExams(result.data!);
+         examOfflineDataSource.cacheExams(result.data!, subjectId , token);
         break;
       case Failure():
-        emit(ExamError(result.exception!));
-        break;
+        final exception = result.exception;
+        final String massage;
+        {
+          if (exception is NoInternetException) {
+            massage = "${AppLocalizations.of(context)?.noInternetException}";
+            emit(ExamError(massage));
+          } else if (exception is ServerError) {
+            massage = "${AppLocalizations.of(context)?.serverErrorException}";
+            emit(ExamError(massage));
+          } else {
+            massage = "${AppLocalizations.of(context)?.unknownErrorException}";
+            emit(ExamError(massage));
+          }
+          break;
+        }
     }
   }
 
 
-  void _getExamDetails(String examId) async {
+  void _getExamDetails(String examId , BuildContext context) async {
     emit(ExamDetailsLoading());
     String? token = await offlineAuthDataSource.getToken();
     final result = await _examUseCase.getExamDetails(examId, token!);
@@ -61,11 +77,24 @@ class ExamCubit extends Cubit<ExamState> {
     switch (result) {
       case Success():
         emit(ExamDetailsSuccess(result.data!));
-        await examOfflineDataSource.cacheExam(result.data!);
+        await examOfflineDataSource.cacheExam(result.data!, examId , token);
         break;
       case Failure():
-        emit(ExamDetailsError(result.exception!));
-        break;
+          final exception = result.exception;
+        final String massage;
+        {
+          if (exception is NoInternetException) {
+            massage = "${AppLocalizations.of(context)?.noInternetException}";
+            emit(ExamDetailsError(massage));
+          } else if (exception is ServerError) {
+            massage = "${AppLocalizations.of(context)?.serverErrorException}";
+            emit(ExamDetailsError(massage));
+          } else {
+            massage = "${AppLocalizations.of(context)?.unknownErrorException}";
+            emit(ExamDetailsError(massage));
+          }
+          break;
+        }
     }
   }
 }

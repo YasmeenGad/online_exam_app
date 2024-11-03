@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:online_exam_app/src/features/exam/domain/entities/exam_entity.dart';
+import 'package:online_exam_app/src/features/exam/domain/entities/exams_entity.dart';
 
 import 'exam_item.dart';
 
 class ExamList extends StatelessWidget {
   const ExamList({super.key, required this.exams, required this.subjectImage});
-  final List<Exam> exams;
+  final List<Exams> exams;
   final String subjectImage;
 
   @override

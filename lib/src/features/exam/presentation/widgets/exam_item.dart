@@ -5,7 +5,7 @@ import "package:flutter_gen/gen_l10n/app_localizations.dart";
 import '../../../../core/routes/routes_name.dart';
 import '../../../../core/styles/app_colors.dart';
 import '../../../../core/styles/app_styles.dart';
-import '../../domain/entities/exam_entity.dart';
+import '../../domain/entities/exams_entity.dart';
 import 'package:intl/intl.dart';
 
 import 'exam_argument.dart';
@@ -13,7 +13,7 @@ import 'exam_argument.dart';
 class ExamItem extends StatelessWidget {
   const ExamItem({super.key, required this.exams, required this.subjectImage});
 
-  final Exam exams;
+  final Exams exams;
   final String subjectImage;
 
   @override
@@ -27,7 +27,7 @@ class ExamItem extends StatelessWidget {
         Navigator.of(context).pushNamed(
           RoutesName.examDetailView,
           arguments: ExamArguments(
-            subjectId: exams.id.toString(),
+            id: exams.id.toString(),
             subjectImage: subjectImage,
 
           ),

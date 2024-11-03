@@ -1,6 +1,6 @@
 
 import 'package:json_annotation/json_annotation.dart';
-import '../../domain/entities/exam_entity.dart';
+import '../../domain/entities/exams_entity.dart';
 part 'exam_dto.g.dart';
 @JsonSerializable()
 class ExamDto {
@@ -40,8 +40,8 @@ class ExamDto {
 
   Map<String, dynamic> toJson() => _$ExamDtoToJson(this);
 
-  Exam toDomain() {
-    return Exam(
+  Exams toDomain() {
+    return Exams(
       id: id,
       title: title,
       duration: duration,

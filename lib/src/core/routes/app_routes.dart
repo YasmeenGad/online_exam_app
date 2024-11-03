@@ -40,7 +40,7 @@ class AppRoutes {
         final arguments =
             ModalRoute.of(context)!.settings.arguments as ExamArguments;
         return ExamView(
-          subjectId: arguments.subjectId!,
+          subjectId: arguments.id!,
           subjectImage: arguments.subjectImage!,
         );
       },
@@ -49,7 +49,7 @@ class AppRoutes {
         final arguments =
             ModalRoute.of(context)!.settings.arguments as ExamArguments;
         return ExamDetailsView(
-          examId: arguments.subjectId!,
+          examId: arguments.id!,
           subjectImage: arguments.subjectImage!,
         );
       },

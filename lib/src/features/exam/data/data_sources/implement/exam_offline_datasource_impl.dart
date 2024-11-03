@@ -1,6 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';
-import 'package:online_exam_app/src/features/exam/domain/entities/exam_entity.dart';
+import 'package:online_exam_app/src/features/exam/domain/entities/exams_entity.dart';
 
 import '../../../domain/entities/subject_entity.dart';
 import '../contracts/exam_offline_datasource.dart';
@@ -10,9 +10,7 @@ class ExamOfflineDataSourceImpl implements ExamOfflineDatasource {
   static const String _subjectBox = 'subjectsBox';
   static const String _subjectKey = 'subjects';
   static const String _examsBox = 'examsBox';
-  static const String _examsKey = 'exams';
   static const String _examBox = 'examBox';
-  static const String _examKey = 'exam';
 
   @FactoryMethod()
   ExamOfflineDataSourceImpl() {
@@ -39,37 +37,38 @@ class ExamOfflineDataSourceImpl implements ExamOfflineDatasource {
   }
 
   @override
-  Future<void> cacheExam(Exam exam) async {
-    final box = await Hive.openBox(_examBox);
-
-    await box.put(_examKey, exam.toJson());
-  }
-
-  @override
-  Future<void> cacheExams(List<Exam> exams) async {
+  Future<void> cacheExams(
+      List<Exams> exams, String subjectId, String token) async {
     final box = await Hive.openBox(_examsBox);
-
-    await box.put(_examsKey, exams.map((exam) => exam.toJson()).toList());
+    await box.put(subjectId, exams.map((exam) => exam.toJson()).toList());
   }
 
   @override
-  Future<dynamic> getCachedExam() async {
-    final box = await Hive.openBox(_examBox);
-    final data = box.get(_examKey);
-    if (data != null) {
-      return Exam.fromJson(data);
-    }
-    return null ;
-  }
-
-  @override
-  Future<List<Exam>> getCachedExams() async {
+  Future<List<Exams>> getCachedExams(String subjectId, String token) async {
     final box = await Hive.openBox(_examsBox);
-    final data = box.get(_examsKey);
+    final data = box.get(subjectId);
     if (data != null) {
-      return Future.value(
-          List<Exam>.from(data.map((examJson) => Exam.fromJson(examJson))));
+      return List<Exams>.from(
+        (data as List).map(
+          (examJson) => Exams.fromJson(Map<String, dynamic>.from(examJson)),
+        ),
+      );
     }
-    return Future.value([]);
+    return [];
+  }
+
+  @override
+  Future<void> cacheExam(Exams exam, String examId, String token) async {
+    final box = await Hive.openBox(_examBox);
+    await box.put(examId, exam.toJson());
+  }
+
+  Future<Exams?> getCachedExam(String examId, String token) async {
+    final box = await Hive.openBox(_examBox);
+    final data = box.get(examId);
+    if (data != null) {
+      return Exams.fromJson(Map<String, dynamic>.from(data));
+    }
+    return null;
   }
 }

@@ -15,7 +15,7 @@ class SubjectListItem extends StatelessWidget {
           onTap: () {
             Navigator.pushNamed(
                 context, RoutesName.examView,
-                arguments: ExamArguments(subjectId: subject.id, subjectImage: subject.icon,));
+                arguments: ExamArguments(id: subject.id, subjectImage: subject.icon,));
 
           },
           leading: CachedNetworkWidget(

@@ -17,7 +17,7 @@ class ExamDetailsItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  BlocBuilder<ExamCubit, ExamState>(
-      bloc: getIt<ExamCubit>().. doAction(getExamDetails(examId)),
+      bloc: getIt<ExamCubit>().. doAction(getExamDetails(examId , context)),
       builder: (context, state) {
         if (state is ExamDetailsLoading) {
           return ExamLoadingData();
@@ -77,7 +77,7 @@ class ExamDetailsItem extends StatelessWidget {
             ),
           );
         } else if (state is ExamDetailsError) {
-          return Text(state.exception.toString());
+          return Text(state.message.toString());
         }
         return Container();
       },

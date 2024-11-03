@@ -1,4 +1,4 @@
-class Exam {
+class Exams {
   final String? id;
   final String? title;
   final int? duration;
@@ -7,7 +7,7 @@ class Exam {
   final bool? active;
   final String? createdAt;
 
-  Exam({
+  Exams({
     required this.id,
     required this.title,
     required this.duration,
@@ -19,7 +19,7 @@ class Exam {
 
   Map<String, dynamic> toJson() {
     return {
-      'id': id,
+      '_id': id,
       'title': title,
       'duration': duration,
       'subject': subject,
@@ -29,9 +29,9 @@ class Exam {
     };
   }
 
-  factory Exam.fromJson(Map<String, dynamic> json) {
-    return Exam(
-      id: json['id'],
+  factory Exams.fromJson(Map<String, dynamic> json) {
+    return Exams(
+      id: json['_id'],
       title: json['title'],
       duration: json['duration'],
       subject: json['subject'],
@@ -42,3 +42,4 @@ class Exam {
   }
 
 }
+

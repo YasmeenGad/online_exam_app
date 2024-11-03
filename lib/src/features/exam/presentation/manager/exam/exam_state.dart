@@ -7,13 +7,17 @@ sealed  class examAction {}
 
 class getExamBySubject extends examAction {
   final String subjectId;
+  final BuildContext context;
 
-  getExamBySubject(this.subjectId);
+
+  getExamBySubject(this.subjectId , this.context);
 }
 class getExamDetails extends examAction {
   final String examId;
+  final BuildContext context;
 
-  getExamDetails(this.examId);
+
+  getExamDetails(this.examId , this.context );
 }
 
 final class ExamInitial extends ExamState {}
@@ -21,19 +25,19 @@ final class ExamInitial extends ExamState {}
 final class ExamLoading extends ExamState {}
 
 final class ExamError extends ExamState {
-  final Exception exception;
+  final String message;
 
-  ExamError(this.exception);
+  ExamError(this.message);
 }
 
 final class ExamSuccess extends ExamState {
-  final List<Exam> exams;
+  final List<Exams> exams;
 
   ExamSuccess(this.exams);
 }
 
 final class ExamDetailsSuccess extends ExamState {
-  final Exam exam;
+  final Exams exam;
 
   ExamDetailsSuccess(this.exam);
 }
@@ -41,7 +45,7 @@ final class ExamDetailsSuccess extends ExamState {
 final class ExamDetailsLoading extends ExamState {}
 
 final class ExamDetailsError extends ExamState {
-  final Exception exception;
+  final String message;
 
-  ExamDetailsError(this.exception);
+  ExamDetailsError(this.message);
 }
