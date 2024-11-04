@@ -5,6 +5,7 @@ import 'package:online_exam_app/src/core/styles/app_colors.dart';
 import 'package:online_exam_app/src/core/styles/app_styles.dart';
 import 'package:online_exam_app/src/features/exam/presentation/views/subjects_view.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:online_exam_app/src/features/results/presentation/view/result_view.dart';
 
 import '../../features/profile/presentation/views/profile_view.dart';
 import '../constants/assets.dart';
@@ -33,7 +34,7 @@ class LayoutState extends State<Layout> {
 
     final List<Widget> _pages = [
       const SubjectsView(),
-      const SubjectsView(),
+      const ResultView(),
       const ProfileView(),
     ];
     double screenWidth = MediaQuery.of(context).size.width;

@@ -7,11 +7,11 @@ abstract class ExamOfflineDatasource {
 
   Future<List<Subject>> getCachedSubject( );
 
-  Future<void> cacheExams(List<Exams> exams, String subjectId , String token);
+  Future<void> cacheExams(List<Exams> exams, String subjectId);
 
-  Future<List<Exams>> getCachedExams( String subjectId , String token);
+  Future<List<Exams>> getCachedExams( String subjectId );
 
-  Future<void> cacheExam(Exams exam , String examId , String token);
+  Future<void> cacheExam(Exams exam , String examId);
 
-  Future<Exams?> getCachedExam( String examId , String token);
+  Future<Exams?> getCachedExam( String examId);
 }

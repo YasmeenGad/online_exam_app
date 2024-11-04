@@ -94,5 +94,8 @@
     "back": "Back",
     "noQuestions": "It looks like there are no questions for this exam.",
     "invalidCode": "Invalid code",
-    "sendSuccessful" : "Send successful"
+    "sendSuccessful" : "Send successful",
+    "results": "Results",
+    "answers": "Answers",
+    "language": "Language"
 }

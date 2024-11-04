@@ -94,6 +94,9 @@
     "back": "Geri",
     "noQuestions": "Bu sınavda soru yok gibi görünüyor.",
     "invalidCode": "Geçersiz kod",
-    "sendSuccessful" : "Başarılı bir şekilde gönderildi"
+    "sendSuccessful" : "Başarılı bir şekilde gönderildi",
+    "results": "Sonuçlar",
+    "answers": "Cevaplar",
+    "language": "Dil"
 }
   

@@ -47,7 +47,7 @@ class ExamCubit extends Cubit<ExamState> {
     switch (result) {
       case Success():
         emit(ExamSuccess(result.data!));
-         examOfflineDataSource.cacheExams(result.data!, subjectId , token);
+         examOfflineDataSource.cacheExams(result.data!, subjectId);
         break;
       case Failure():
         final exception = result.exception;
@@ -77,7 +77,7 @@ class ExamCubit extends Cubit<ExamState> {
     switch (result) {
       case Success():
         emit(ExamDetailsSuccess(result.data!));
-        await examOfflineDataSource.cacheExam(result.data!, examId , token);
+        await examOfflineDataSource.cacheExam(result.data!, examId);
         break;
       case Failure():
           final exception = result.exception;

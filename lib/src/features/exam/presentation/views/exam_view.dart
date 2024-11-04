@@ -27,7 +27,7 @@ class ExamView extends StatelessWidget {
           children: [
             SizedBox(height: 60),
             CustomAppBar(
-                appBarTxt: '${AppLocalizations.of(context)?.exams}',
+                appBarTxt: '${AppLocalizations.of(context)?.languages}',
                 showArrow: true),
             SizedBox(height: 15),
             BlocProvider(

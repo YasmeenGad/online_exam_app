@@ -94,5 +94,8 @@
   "back": "رجوع",
   "noQuestions": "يبدو أنه لا توجد أسئلة لهذا الاختبار.",
   "invalidCode": "الرمز غير صحيح",
-  "sendSuccessful" : "تم الإرسال بنجاح"
+  "sendSuccessful" : "تم الإرسال بنجاح",
+  "results": "النتائج",
+  "answers": "الإجابة",
+  "language": "اللغة"
 }

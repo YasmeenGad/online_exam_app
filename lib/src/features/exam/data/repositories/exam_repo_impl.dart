@@ -14,7 +14,7 @@ class ExamRepoImpl implements ExamRepo{
 
   @override
   Future<Result<List<Exams>>> getExamsById(String subjectId, String token) async {
-    final cachedExams = await _examOfflineDataSource.getCachedExams(subjectId , token);
+    final cachedExams = await _examOfflineDataSource.getCachedExams(subjectId);
     if(cachedExams.isNotEmpty){
       return Success(data: cachedExams);
     }
@@ -25,7 +25,7 @@ class ExamRepoImpl implements ExamRepo{
 
   @override
   Future<Result<Exams>> getExamDetails(String examId, String token) async{
-  final cachedExam = await _examOfflineDataSource.getCachedExam(examId , token);
+  final cachedExam = await _examOfflineDataSource.getCachedExam(examId);
     if(cachedExam  != null){
       return Success(data: cachedExam);
     }

@@ -38,13 +38,13 @@ class ExamOfflineDataSourceImpl implements ExamOfflineDatasource {
 
   @override
   Future<void> cacheExams(
-      List<Exams> exams, String subjectId, String token) async {
+      List<Exams> exams, String subjectId) async {
     final box = await Hive.openBox(_examsBox);
     await box.put(subjectId, exams.map((exam) => exam.toJson()).toList());
   }
 
   @override
-  Future<List<Exams>> getCachedExams(String subjectId, String token) async {
+  Future<List<Exams>> getCachedExams(String subjectId) async {
     final box = await Hive.openBox(_examsBox);
     final data = box.get(subjectId);
     if (data != null) {
@@ -58,12 +58,12 @@ class ExamOfflineDataSourceImpl implements ExamOfflineDatasource {
   }
 
   @override
-  Future<void> cacheExam(Exams exam, String examId, String token) async {
+  Future<void> cacheExam(Exams exam, String examId) async {
     final box = await Hive.openBox(_examBox);
     await box.put(examId, exam.toJson());
   }
 
-  Future<Exams?> getCachedExam(String examId, String token) async {
+  Future<Exams?> getCachedExam(String examId) async {
     final box = await Hive.openBox(_examBox);
     final data = box.get(examId);
     if (data != null) {
