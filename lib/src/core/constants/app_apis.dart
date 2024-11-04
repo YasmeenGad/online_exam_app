@@ -13,4 +13,5 @@ class AppApis {
   static const String getQuestions = "api/v1/questions";
   static const String getExamsBySubject = "api/v1/exams?subject";
   static const String getExamById = "api/v1/exams/";
+  static const String checkQuestion = "api/v1/questions/check";
 }

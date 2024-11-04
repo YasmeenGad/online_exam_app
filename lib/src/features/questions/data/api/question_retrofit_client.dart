@@ -1,5 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import 'package:online_exam_app/src/core/utils/errors/result.dart';
+import 'package:online_exam_app/src/features/questions/data/api/models/request/check_question_request_dto.dart';
+import 'package:online_exam_app/src/features/questions/data/api/models/response/check_question_response_dto.dart';
 import 'package:online_exam_app/src/features/questions/data/api/models/response/question_response_dto.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -19,4 +22,8 @@ abstract class QuestionRetrofitClient {
     @Header("token") String token,
     @Query("exam") String examId,
   );
+
+  @POST(AppApis.checkQuestion)
+  Future<CheckQuestionResponseDto> checkQuestion(@Header("token") String token,
+      @Body() CheckQuestionRequestDto checkQuestionRequestDto);
 }
