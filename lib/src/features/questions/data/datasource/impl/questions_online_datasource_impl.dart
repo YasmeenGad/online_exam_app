@@ -4,9 +4,7 @@ import 'package:online_exam_app/src/core/utils/errors/result.dart';
 import 'package:online_exam_app/src/features/questions/data/api/question_retrofit_client.dart';
 import 'package:online_exam_app/src/features/questions/domain/entities/request/check_question_request_entity.dart';
 import 'package:online_exam_app/src/features/questions/domain/entities/response/check_question_response_entity.dart';
-
 import 'package:online_exam_app/src/features/questions/domain/entities/response/question_response_entity.dart';
-
 import '../contracts/online_datasource/questions_online_datasource.dart';
 
 @Injectable(as: QuestionsOnlineDatasource)
@@ -25,9 +23,11 @@ class QuestionsOnlineDatasourceImpl implements QuestionsOnlineDatasource {
   }
 
   @override
-  Future<Result<CheckQuestionResponseEntity>> checkQuestions(
-      String token, CheckQuestionRequestEntity checkQuestionRequestEntity) {
-    // TODO: implement checkQuestions
-    throw UnimplementedError();
+  Future<Result<CheckQuestionResponseEntity>> checkQuestions(String token,
+      CheckQuestionRequestEntity checkQuestionRequestEntity) async {
+    return await apiExecute(
+        tryCode: () => _questionRetrofitClient.checkQuestion(
+            token, checkQuestionRequestEntity.toDto()),
+        domainMapper: (response) => response.toEntity());
   }
 }

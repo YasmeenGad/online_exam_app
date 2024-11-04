@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:online_exam_app/src/features/questions/domain/entities/response/check_question_response_entity.dart';
 
 part 'check_question_response_dto.g.dart';
 
@@ -33,6 +34,17 @@ class CheckQuestionResponseDto {
   Map<String, dynamic> toJson() {
     return _$CheckQuestionResponseDtoToJson(this);
   }
+
+  CheckQuestionResponseEntity toEntity() {
+    return CheckQuestionResponseEntity(
+      message: message,
+      correct: correct,
+      wrong: wrong,
+      total: total,
+      WrongQuestions: WrongQuestions?.map((e) => e.toEntity()).toList(),
+      correctQuestions: correctQuestions?.map((e) => e.toEntity()).toList(),
+    );
+  }
 }
 
 @JsonSerializable()
@@ -63,6 +75,14 @@ class WrongQuestion {
   Map<String, dynamic> toJson() {
     return _$WrongQuestionToJson(this);
   }
+
+  WrongQuestionEntity toEntity() => WrongQuestionEntity(
+        QID: QID,
+        Question: Question,
+        inCorrectAnswer: inCorrectAnswer,
+        correctAnswer: correctAnswer,
+        answers: answers?.toEntity(),
+      );
 }
 
 @JsonSerializable()
@@ -76,6 +96,8 @@ class AnswersResponse {
   Map<String, dynamic> toJson() {
     return _$AnswersResponseToJson(this);
   }
+
+  AnswersResponseEntity toEntity() => AnswersResponseEntity();
 }
 
 @JsonSerializable()
@@ -103,4 +125,11 @@ class CorrectQuestions {
   Map<String, dynamic> toJson() {
     return _$CorrectQuestionsToJson(this);
   }
+
+  CorrectQuestionsEntity toEntity() => CorrectQuestionsEntity(
+        QID: QID,
+        Question: Question,
+        correctAnswer: correctAnswer,
+        answers: answers?.toEntity(),
+      );
 }
