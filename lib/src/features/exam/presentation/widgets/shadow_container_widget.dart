@@ -4,7 +4,7 @@ import '../../../../core/styles/app_colors.dart';
 
 Container shadowContainer(
     {required Widget child,
-    required double height,
+    required double height,width,
     EdgeInsetsGeometry? padding}) {
   return Container(
     height: height,
@@ -12,6 +12,10 @@ Container shadowContainer(
     decoration: BoxDecoration(
       color: Colors.white,
       borderRadius: BorderRadius.circular(10),
+      border: Border.all(
+        width: width ?? 1,
+        color: AppColors.black30Color.withOpacity(0.3),
+      ),
       boxShadow: [
         BoxShadow(
           color: AppColors.black30Color.withOpacity(0.5),

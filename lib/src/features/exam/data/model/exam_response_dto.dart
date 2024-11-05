@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import '../../domain/entities/exam_entity.dart';
+import '../../domain/entities/exams_entity.dart';
 import 'exam_dto.dart';
 import 'meta_data_dto.dart';
 
@@ -26,7 +26,7 @@ class ExamResponseDto {
   Map<String, dynamic> toJson() => _$ExamResponseDtoToJson(this);
 
 
-  List<Exam> toDomain() {
+  List<Exams> toDomain() {
     return exams?.map((examDto) => examDto.toDomain()).toList() ?? [];
   }
 }

@@ -17,7 +17,7 @@ class ResetPasswordView extends StatelessWidget {
         child: CustomScrollView(
           slivers: [
             SliverToBoxAdapter(
-              child: CustomAppBar(appBarTxt: '${AppLocalizations.of(context)!.labelPassword}'),
+              child: CustomAppBar(appBarTxt: '${AppLocalizations.of(context)!.labelPassword}', showArrow: true,),
             ),
             SliverToBoxAdapter(
               child:BuildResetPasswordForm(),

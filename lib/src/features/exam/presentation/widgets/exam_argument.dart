@@ -1,6 +1,6 @@
 class ExamArguments {
-  final String? subjectId;
+  final String? id;
   final String? subjectImage;
 
-  ExamArguments({required this.subjectId, required this.subjectImage});
+  ExamArguments({required this.id, required this.subjectImage});
 }

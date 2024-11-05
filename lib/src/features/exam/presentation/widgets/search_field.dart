@@ -15,7 +15,7 @@ class SearchField extends StatelessWidget {
       cursorColor: AppColors.blueBaseColor,
       controller: cubit.searchController,
       onChanged: (value) {
-        cubit.doAction(SubjectActions.SearchByName);
+        cubit.doAction(SearchByName());
       },
       decoration: InputDecoration(
         hintText: '${AppLocalizations.of(context)?.search}',

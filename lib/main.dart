@@ -7,7 +7,6 @@ import 'package:online_exam_app/src/core/routes/routes_name.dart';
 import 'package:online_exam_app/src/core/provider/language_provider.dart';
 import 'package:online_exam_app/src/core/routes/app_routes.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:online_exam_app/src/features/auth/data/datasources/contracts/offline_auth_datasource.dart';
 import 'package:provider/provider.dart';
 
 void main() async {

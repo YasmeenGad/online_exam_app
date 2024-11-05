@@ -27,18 +27,18 @@ class ExamView extends StatelessWidget {
           children: [
             SizedBox(height: 60),
             CustomAppBar(
-                appBarTxt: '${AppLocalizations.of(context)?.exams}',
+                appBarTxt: '${AppLocalizations.of(context)?.languages}',
                 showArrow: true),
             SizedBox(height: 15),
             BlocProvider(
               create: (context) =>
-                  getIt<ExamCubit>()..getExamBySubject(subjectId),
+                  getIt<ExamCubit>()..doAction(getExamBySubject(subjectId , context)),
               child: BlocBuilder<ExamCubit, ExamState>(
                 builder: (context, state) {
                   if (state is ExamLoading) {
                     return ExamItemLoading();
                   } else if (state is ExamError) {
-                    return Text(state.exception.toString());
+                    return Text(state.message.toString());
                   } else if (state is ExamSuccess) {
                     if (state.exams.isEmpty) {
                       return EmptyDataWidget(

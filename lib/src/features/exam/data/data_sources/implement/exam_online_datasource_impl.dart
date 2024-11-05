@@ -5,7 +5,7 @@ import 'package:online_exam_app/src/features/exam/domain/entities/subject_entity
 
 import '../../../../../core/utils/api/api_execution.dart';
 import '../../../../../core/utils/errors/result.dart';
-import '../../../domain/entities/exam_entity.dart';
+import '../../../domain/entities/exams_entity.dart';
 import '../../model/subjects_response_dto.dart';
 
 @Injectable(as: ExamOnlineDataSource)
@@ -15,9 +15,9 @@ class ExamOnlineDataSourceImpl implements ExamOnlineDataSource {
   ExamOnlineDataSourceImpl(this._examClient);
 
   @override
-  Future<Result<List<Exam>>> getExamById(String subjectId, String token) async {
-    return await apiExecute<List<Exam>>(
-      tryCode: () => _examClient.getExamById(subjectId, token),
+  Future<Result<List<Exams>>> getExamById(String subjectId, String token) async {
+    return await apiExecute<List<Exams>>(
+      tryCode: () => _examClient.getExamById(token, subjectId),
       domainMapper: (response) {
         return response.toDomain();
       },
@@ -36,8 +36,8 @@ class ExamOnlineDataSourceImpl implements ExamOnlineDataSource {
   }
 
   @override
-  Future<Result<Exam>> getExamDetails(String examId, String token) async {
-    return await apiExecute<Exam>(
+  Future<Result<Exams>> getExamDetails(String examId, String token) async {
+    return await apiExecute<Exams>(
       tryCode: () => _examClient.getExamDetails(token, examId),
       domainMapper: (response) => response.toDomain(),
     );

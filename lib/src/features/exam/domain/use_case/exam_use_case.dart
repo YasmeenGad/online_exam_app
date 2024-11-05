@@ -1,7 +1,6 @@
 import 'package:injectable/injectable.dart';
-
 import '../../../../core/utils/errors/result.dart';
-import '../entities/exam_entity.dart';
+import '../entities/exams_entity.dart';
 import '../entities/subject_entity.dart';
 import '../repositories/exam_repo.dart';
 
@@ -11,7 +10,7 @@ class ExamUseCase {
 
   ExamUseCase(this._examRepo);
 
-  Future<Result<List<Exam>>> getExamsById(String subjectId, String token) async {
+  Future<Result<List<Exams>>> getExamsById(String subjectId, String token) async {
     return await _examRepo.getExamsById(subjectId, token);
   }
 
@@ -20,7 +19,7 @@ class ExamUseCase {
 
   }
 
-  Future<Result<Exam>> getExamDetails(String examId, String token) async {
+  Future<Result<Exams>> getExamDetails(String examId, String token) async {
     return await _examRepo.getExamDetails(examId, token);
   }
 }

@@ -11,14 +11,11 @@ import 'package:online_exam_app/src/features/exam/presentation/views/exam_detail
 import 'package:online_exam_app/src/features/profile/presentation/views/profile_view.dart';
 import 'package:online_exam_app/src/features/profile/presentation/views/reset_password_profile_view.dart';
 import 'package:online_exam_app/src/features/questions/presentation/views/questions_view.dart';
-import '../../features/auth/data/datasources/contracts/offline_auth_datasource.dart';
 import '../../features/auth/presentation/views/email_verification_view.dart';
 import '../../features/auth/presentation/views/reset_password_view.dart';
 import '../../features/exam/presentation/views/exam_view.dart';
 import '../../features/exam/presentation/widgets/exam_argument.dart';
-import '../../features/questions/presentation/views/question_view.dart';
 import '../../features/splash/view/splash_view.dart';
-import '../di/di.dart';
 
 class AppRoutes {
   static Map<String, WidgetBuilder> getRoutes() {
@@ -26,8 +23,13 @@ class AppRoutes {
       RoutesName.loginView: (context) => const LoginView(),
       RoutesName.signUpView: (context) => const SignUpView(),
       RoutesName.forgetPasswordView: (context) => const ForgetPasswordView(),
-      RoutesName.emailVerificationView: (context) =>
-          const EmailVerificationView(),
+      RoutesName.emailVerificationView: (context) {
+        final arguments =
+            ModalRoute.of(context)!.settings.arguments as String;
+        return EmailVerificationView(
+          email: arguments,
+        );
+      },
       RoutesName.resetPasswordView: (context) => const ResetPasswordView(),
       RoutesName.welcomeView: (context) => WelcomeView(),
       RoutesName.bottomNavigationBar: (context) => Layout(),
@@ -38,18 +40,16 @@ class AppRoutes {
         final arguments =
             ModalRoute.of(context)!.settings.arguments as ExamArguments;
         return ExamView(
-          subjectId: arguments.subjectId!,
+          subjectId: arguments.id!,
           subjectImage: arguments.subjectImage!,
         );
       },
-      RoutesName.splashView: (context) => SplashView(
-            offlineAuthDataSource: getIt<OfflineAuthDataSource>(),
-          ),
+      RoutesName.splashView: (context) => SplashView(),
       RoutesName.examDetailView: (context) {
         final arguments =
             ModalRoute.of(context)!.settings.arguments as ExamArguments;
         return ExamDetailsView(
-          examId: arguments.subjectId!,
+          examId: arguments.id!,
           subjectImage: arguments.subjectImage!,
         );
       },

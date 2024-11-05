@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_exam_app/src/features/auth/presentation/widgets/auth_footer.dart';
+import 'package:online_exam_app/src/features/auth/presentation/widgets/resend_botton.dart';
 import 'package:online_exam_app/src/features/auth/presentation/widgets/verification_code.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/global/custom_toast.dart';
 import '../../../../core/routes/routes_name.dart';
+import '../../domain/entities/forget_password_entity.dart';
 import '../cubit/auth/auth_states.dart';
 import '../cubit/auth/auth_view_model.dart';
 import 'forget_password_description.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import 'invalid_icon.dart';
+
 
 class BuildEmailVerificationForm extends StatefulWidget {
-  BuildEmailVerificationForm({super.key});
+  BuildEmailVerificationForm({super.key, required this.email});
+  final String email ;
 
   @override
   State<BuildEmailVerificationForm> createState() =>
@@ -48,8 +52,12 @@ class _BuildEmailVerificationFormState
             });
             CustomToast.showSuccessToast(message: "${AppLocalizations.of(context)!.success}");
             Navigator.pushNamed(context, RoutesName.resetPasswordView);
-          } else if (state is VerifyEmailLoading) {
+          } else if (state is VerifyEmailLoading && state is ForgetPasswordLoading) {
             CustomToast.showLoadingToast(message: "${AppLocalizations.of(context)!.loading}");
+          }else if (state is ForgetPasswordError) {
+            CustomToast.showErrorToast(message: state.exception.toString());
+          }else if (state is ForgetPasswordSuccess) {
+            CustomToast.showSuccessToast(message: "${AppLocalizations.of(context)!.sendSuccessful}");
           }
         },
         buildWhen: (previous, current) {
@@ -68,11 +76,17 @@ class _BuildEmailVerificationFormState
                 const SizedBox(height: 30),
                 VerificationCode(
                     hasError: hasError, authViewModel: authViewModel),
+                if (hasError == true)
+                InvalidIcon(context),
                 const SizedBox(height: 50),
-                AuthFooter(
-                  question: "${AppLocalizations.of(context)!.dontReceiveCode}?",
-                  txt: '${AppLocalizations.of(context)!.resend}',
-                  route: RoutesName.forgetPasswordView,
+                ResendBottom(
+                  onPressed: () {
+                      authViewModel.forgetPassword(
+                          ForgetPasswordEntity(email:widget.email),
+                          context
+                      );
+
+                  },
                 ),
               ],
             ),

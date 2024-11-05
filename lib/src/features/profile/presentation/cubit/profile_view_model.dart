@@ -64,6 +64,7 @@ class ProfileViewModel extends Cubit<ProfileState> {
         {
           emit(ProfileDataSuccess(result.data!));
           await offlineProfileDataSource.cacheProfileData(result.data!);
+          print(offlineProfileDataSource);
           break;
         }
       case Failure<ProfileDataResponse>():

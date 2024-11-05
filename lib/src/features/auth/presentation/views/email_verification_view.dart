@@ -6,7 +6,9 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 class EmailVerificationView extends StatelessWidget {
-  const EmailVerificationView({super.key});
+  const EmailVerificationView({super.key, required this.email});
+  final String email ;
+
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +19,12 @@ class EmailVerificationView extends StatelessWidget {
         child :CustomScrollView(
           slivers: [
             SliverToBoxAdapter(
-              child: CustomAppBar(appBarTxt: '${AppLocalizations.of(context)!.labelPassword}'),
+              child: CustomAppBar(appBarTxt: '${AppLocalizations.of(context)!.labelPassword}',showArrow: true,),
             ),
             SliverToBoxAdapter(
-              child: BuildEmailVerificationForm(),
+              child: BuildEmailVerificationForm(
+                email: email,
+              ),
             )
           ],
         )

@@ -2,8 +2,13 @@ part of 'subject_cubit.dart';
 
 @immutable
 sealed class SubjectState {}
-enum SubjectActions { GetAllSubjects, SearchByName }
+sealed  class SubjectActions {}
+class GetAllSubjects extends SubjectActions {
+  BuildContext context;
+  GetAllSubjects({required this.context});
+}
 
+class SearchByName extends SubjectActions {}
 final class SubjectInitial extends SubjectState {}
 
 final class SubjectLoading extends SubjectState {}
@@ -15,7 +20,7 @@ final class SubjectSuccess extends SubjectState {
 }
 
 final class SubjectError extends SubjectState {
-  final Exception exception;
+  final String message;
 
-  SubjectError(this.exception);
+  SubjectError(this.message);
 }

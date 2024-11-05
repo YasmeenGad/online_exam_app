@@ -92,6 +92,11 @@
     "viewScore": "Skoru görüntüle",
     "next": "Sonraki",
     "back": "Geri",
-    "noQuestions": "Bu sınavda soru yok gibi görünüyor."
+    "noQuestions": "Bu sınavda soru yok gibi görünüyor.",
+    "invalidCode": "Geçersiz kod",
+    "sendSuccessful" : "Başarılı bir şekilde gönderildi",
+    "results": "Sonuçlar",
+    "answers": "Cevaplar",
+    "language": "Dil"
 }
   

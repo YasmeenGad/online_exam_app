@@ -92,5 +92,10 @@
     "viewScore": "Voir le score",
     "next": "Suivant",
     "back": "Retour",
-    "noQuestions": "Il semble qu'il n'y ait aucune question pour cet examen."
+    "noQuestions": "Il semble qu'il n'y ait aucune question pour cet examen.",
+    "invalidCode": "Code invalide",
+    "sendSuccessful" : "Envoyé avec succès",
+    "results": "Résultats",
+    "answers": "Réponses",
+    "language": "Langue"
 }
