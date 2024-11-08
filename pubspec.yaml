@@ -61,6 +61,8 @@ dependencies:
   path_provider: ^2.1.4
   lottie:
   skeletonizer:
+  mockito: ^5.4.4
+  bloc_test: ^9.1.7
 
 
 flutter_assets:
