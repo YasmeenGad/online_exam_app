@@ -17,7 +17,7 @@ class EmptyDataWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(height: 40),
+          //SizedBox(height: 40),
           Lottie.asset(
             imageUrl,
             height: 200,

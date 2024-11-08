@@ -17,7 +17,8 @@ void main() async {
   configureDependencies();
   runApp(
     DevicePreview(
-      enabled: kReleaseMode,
+      //enabled: kReleaseMode,
+      enabled: false,
       builder: (context) => OnlineExamApp(), // Wrap your app
     ),
   );

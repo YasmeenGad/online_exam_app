@@ -79,11 +79,13 @@ class ResultView extends StatelessWidget {
                                       style: AppStyles.styleRegular13(context)
                                           .copyWith(color: AppColors.grayColor),
                                     ),
-                                    SizedBox(height: 13),
-                                    Text('18 corrected answers in 25 min.',
-                                        style: AppStyles.styleMedium13(context).copyWith(
-                                          color: AppColors.blueBaseColor
-                                        )),
+                                    SizedBox(height: 10),
+                                    Flexible(
+                                      child: Text('18 corrected answers in 25 min.',
+                                          style: AppStyles.styleMedium13(context).copyWith(
+                                            color: AppColors.blueBaseColor
+                                          )),
+                                    ),
                                   ],
                                 ),
                               ),

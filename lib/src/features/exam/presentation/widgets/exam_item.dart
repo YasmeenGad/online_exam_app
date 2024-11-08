@@ -18,9 +18,9 @@ class ExamItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final formattedDate = DateFormat('yyyy-MM-dd')
+    final formattedDate = DateFormat('MM-dd')
         .format(DateTime.parse(exams.createdAt.toString()));
-    final formattedTime = DateFormat('HH:mm:ss')
+    final formattedTime = DateFormat('HH:mm')
         .format(DateTime.parse(exams.createdAt.toString()));
     return InkWell(
       onTap: () {
@@ -78,14 +78,16 @@ class ExamItem extends StatelessWidget {
                           .copyWith(color: AppColors.grayColor),
                     ),
                     SizedBox(height: 13),
-                    Row(
-                      children: [
-                        Text('${AppLocalizations.of(context)?.date}: ${formattedDate}',
-                            style: AppStyles.styleMedium13(context)),
-                        SizedBox(width: 10),
-                        Text("${AppLocalizations.of(context)?.time}: ${formattedTime}",
-                            style: AppStyles.styleMedium13(context)),
-                      ],
+                    Flexible(
+                      child: Row(
+                        children: [
+                          Text('${AppLocalizations.of(context)?.date}: ${formattedDate}',
+                              style: AppStyles.styleMedium13(context)),
+                          SizedBox(width: 10),
+                          Text("${AppLocalizations.of(context)?.time}: ${formattedTime}",
+                              style: AppStyles.styleMedium13(context)),
+                        ],
+                      ),
                     ),
                   ],
                 ),
