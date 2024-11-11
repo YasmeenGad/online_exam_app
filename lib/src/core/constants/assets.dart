@@ -59,5 +59,9 @@ class Assets {
   /// Assets for imagesNoQuestions
   /// assets/images/no_questions.gif
   static const String imagesNoQuestions = 'assets/images/no_questions.gif';
+
+  /// Assets for imagesTimeOut
+  /// assets/images/time_out.svg
+  static const String imagesTimeOut = 'assets/images/time_out.svg';
 }
 

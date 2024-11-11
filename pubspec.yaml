@@ -63,6 +63,7 @@ dependencies:
   skeletonizer:
   mockito: ^5.4.4
   bloc_test: ^9.1.7
+  percent_indicator: ^4.2.3
 
 
 flutter_assets:
@@ -86,6 +87,7 @@ dev_dependencies:
   json_serializable: ^6.8.0
   flutter_lints: ^3.0.0
   injectable_generator:
+  hive_generator:
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

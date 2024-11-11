@@ -101,6 +101,14 @@ abstract class AppStyles {
       fontWeight: FontWeight.w400,
     );
   }
+
+  
+  static TextStyle styleRegular24(context) {
+    return GoogleFonts.roboto(
+      fontSize: getResponsiveFontSize(context, fontSize: 24),
+      fontWeight: FontWeight.w400,
+    );
+  }
 }
 
 // sacleFactor
