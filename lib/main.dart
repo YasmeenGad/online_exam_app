@@ -11,6 +11,7 @@ import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  configureDependencies();
   await Hive.initFlutter();
   await Hive.openBox('userToken');
   await Hive.openBox<String>('imageCache');
@@ -18,7 +19,7 @@ void main() async {
   runApp(
     DevicePreview(
       enabled: kReleaseMode,
-      builder: (context) => OnlineExamApp(), // Wrap your app
+      builder: (context) => OnlineExamApp(),
     ),
   );
 }
@@ -41,7 +42,7 @@ class OnlineExamApp extends StatelessWidget {
               useInheritedMediaQuery: true,
               builder: DevicePreview.appBuilder,
               debugShowCheckedModeBanner: false,
-              initialRoute: RoutesName.splashView,
+              initialRoute: RoutesName.welcomeView,
               routes: AppRoutes.getRoutes(),
             );
           },

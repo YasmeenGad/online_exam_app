@@ -3,11 +3,12 @@ import 'package:injectable/injectable.dart';
 import 'package:online_exam_app/src/core/models/language.dart';
 import 'language_service.dart';
 
-@Injectable()
+@injectable
 class LanguageProvider with ChangeNotifier {
   Language _selectedLanguage = Language(code: 'en');
   final LanguageService _languageService;
 
+  @factoryMethod
   LanguageProvider(this._languageService);
 
   Language get selectedLanguage => _selectedLanguage;

@@ -13,6 +13,8 @@ import '../../../../core/utils/errors/app_exception.dart';
 import '../../../auth/data/datasources/contracts/offline_auth_datasource.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../data/api/models/isar/question_model.dart';
+
 @injectable
 class QuestionsViewModel extends Cubit<QuestionsState> {
   final QuestionsUseCase _questionsUseCase;
@@ -64,7 +66,6 @@ class QuestionsViewModel extends Cubit<QuestionsState> {
 
   Future<void> _checkQuestions(
       CheckQuestionRequestEntity request, BuildContext context) async {
-    emit(CheckQuestionLoading());
     var token = await offlineAuthDataSource.getToken() ?? '';
     var result = await _questionsUseCase.checkQuestions(token, request);
     switch (result) {
@@ -91,5 +92,9 @@ class QuestionsViewModel extends Cubit<QuestionsState> {
           break;
         }
     }
+  }
+
+  Future<void> saveQuestion(QuestionModel question) async {
+    await _questionsUseCase.saveQuestion(question);
   }
 }
