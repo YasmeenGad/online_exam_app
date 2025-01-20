@@ -36,3 +36,17 @@ class CheckQuestionError extends QuestionsState {
 
   CheckQuestionError(this.message);
 }
+ class QuestionsUpdated extends QuestionsState {}
+
+class QuestionChanged extends QuestionsState {
+  final int questionIndex;
+
+  QuestionChanged(this.questionIndex);
+}
+class ExamFinished extends QuestionsState {}
+class TimeUpdated extends QuestionsState {
+  final int time;
+
+  TimeUpdated(this.time);
+}
+class TimeOut extends QuestionsState {}

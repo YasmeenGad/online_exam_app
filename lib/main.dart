@@ -7,6 +7,8 @@ import 'package:online_exam_app/src/core/routes/routes_name.dart';
 import 'package:online_exam_app/src/core/provider/language_provider.dart';
 import 'package:online_exam_app/src/core/routes/app_routes.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:online_exam_app/src/features/questions/domain/entities/response/check_question_response_entity.dart';
+import 'package:online_exam_app/src/features/questions/domain/entities/response/question_response_entity.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -17,8 +19,9 @@ void main() async {
   configureDependencies();
   runApp(
     DevicePreview(
-      enabled: kReleaseMode,
-      builder: (context) => OnlineExamApp(), // Wrap your app
+      //enabled: kReleaseMode,
+      enabled: false,
+      builder: (context) => OnlineExamApp(),
     ),
   );
 }

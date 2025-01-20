@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:online_exam_app/src/core/constants/assets.dart';
 import 'package:online_exam_app/src/core/styles/app_colors.dart';
 import 'package:online_exam_app/src/core/styles/app_styles.dart';
 
-import '../../../../../generated/assets.dart';
 import '../../../../core/global/custom_appbar.dart';
 
 class TimerDisplay extends StatelessWidget {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:online_exam_app/src/core/global/custom_appbar.dart';
 import "package:flutter_gen/gen_l10n/app_localizations.dart";
 import 'package:online_exam_app/src/features/exam/presentation/widgets/shadow_container_widget.dart';
+import '../../../../core/routes/routes_name.dart';
 import '../../../../core/styles/app_colors.dart';
 import '../../../../core/styles/app_styles.dart';
 import '../../../exam/presentation/widgets/cached_network_widget.dart';
@@ -34,7 +35,13 @@ class ResultView extends StatelessWidget {
               itemCount: 3,
               itemBuilder: (context, index){
                 return  InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(context, RoutesName.answerView,
+                        arguments: (){
+                          Navigator.pop(context);
+                        });
+
+                      },
                       child: shadowContainer(
                           height: 110,
                           width: 0.5,
@@ -79,11 +86,13 @@ class ResultView extends StatelessWidget {
                                       style: AppStyles.styleRegular13(context)
                                           .copyWith(color: AppColors.grayColor),
                                     ),
-                                    SizedBox(height: 13),
-                                    Text('18 corrected answers in 25 min.',
-                                        style: AppStyles.styleMedium13(context).copyWith(
-                                          color: AppColors.blueBaseColor
-                                        )),
+                                    SizedBox(height: 10),
+                                    Flexible(
+                                      child: Text('18 corrected answers in 25 min.',
+                                          style: AppStyles.styleMedium13(context).copyWith(
+                                            color: AppColors.blueBaseColor
+                                          )),
+                                    ),
                                   ],
                                 ),
                               ),
@@ -100,3 +109,4 @@ class ResultView extends StatelessWidget {
     );
   }
 }
+

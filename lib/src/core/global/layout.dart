@@ -6,7 +6,6 @@ import 'package:online_exam_app/src/core/styles/app_styles.dart';
 import 'package:online_exam_app/src/features/exam/presentation/views/subjects_view.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:online_exam_app/src/features/results/presentation/view/result_view.dart';
-
 import '../../features/profile/presentation/views/profile_view.dart';
 import '../constants/assets.dart';
 
