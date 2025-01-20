@@ -20,9 +20,8 @@ class QuestionsRepositoryImpl implements QuestionsRepository {
   final QuestionOfflineDataSource _localDataSource;
 
   @factoryMethod
-  QuestionsRepositoryImpl(
-      this._questionsOnlineDatasource, this._localDataSource);
-  QuestionsRepositoryImpl(this._questionsOnlineDatasource , this._questionsOfflineDatasource);
+  QuestionsRepositoryImpl(this._questionsOnlineDatasource,
+      this._questionsOfflineDatasource, this._localDataSource);
 
   @override
   Future<Result<QuestionResponseEntity>> getQuestions(

@@ -113,7 +113,7 @@ class _SectionProfileFormState extends State<SectionProfileForm> {
                     : null,
                 child: CustomButton(
                   txt: AppLocalizations.of(context)!.update,
-                  backgroundColor: isModified
+                  color: isModified
                       ? Colors.blue
                       : Colors.grey, // Change button color if modified
                 ),

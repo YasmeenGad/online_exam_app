@@ -43,7 +43,7 @@ class AnswerView extends StatelessWidget {
                 itemCount: 3,
                 itemBuilder: (context, index) {
                   return shadowContainer(
-                    height: 400,
+                    width: 0.5,
                     padding: const EdgeInsets.symmetric(
                         horizontal: 15, vertical: 10),
                     child: Column(

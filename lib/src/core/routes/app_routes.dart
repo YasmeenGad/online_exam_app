@@ -10,7 +10,6 @@ import 'package:online_exam_app/src/features/auth/presentation/views/welcome_vie
 import 'package:online_exam_app/src/features/exam/presentation/views/exam_details_view.dart';
 import 'package:online_exam_app/src/features/profile/presentation/views/profile_view.dart';
 import 'package:online_exam_app/src/features/profile/presentation/views/reset_password_profile_view.dart';
-import 'package:online_exam_app/src/features/questions/presentation/views/exam_score_view.dart';
 import 'package:online_exam_app/src/features/questions/presentation/views/questions_view.dart';
 import 'package:online_exam_app/src/features/results/presentation/widget/questions_card.dart';
 import '../../features/auth/presentation/views/email_verification_view.dart';
@@ -60,16 +59,6 @@ class AppRoutes {
       RoutesName.questionsView: (context) => QuestionsView(
             examId: ModalRoute.of(context)!.settings.arguments as String,
           ),
-      RoutesName.examScoreView: (context) {
-        final arguments =
-            ModalRoute.of(context)!.settings.arguments as questionsArguments;
-        return ExamScoreView(
-          correctScore: arguments.correctScore,
-          incorrectScore: arguments.incorrectScore,
-          totalScore: arguments.totalScore,
-          examId: arguments.examId,
-        );
-      },
       RoutesName.subjectView: (context) => SubjectsView(),
       RoutesName.questionsCard: (context) => QuestionsCard(),
       RoutesName.answerView: (context) => AnswerView(

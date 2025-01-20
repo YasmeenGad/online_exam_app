@@ -1,6 +1,4 @@
-import 'dart:async';
 
-import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
@@ -30,14 +28,6 @@ class QuestionsViewModel extends Cubit<QuestionsState> {
   var offlineAuthDataSource = getIt<OfflineAuthDataSource>();
   var offlineQuestionsDataSource = getIt<QuestionOfflineDataSource>();
 
-  int currentQuestionIndex = 0;
-  int timeRemaining = 0;
-  int examDuration = 0;
-  bool isTimerStarted = false;
-  String? selectedAnswer;
-  List<String?> selectedAnswers = [];
-  Timer? timer;
-  late List<QuestionsEntity> questions = [];
   var questionOfflineDataSource = getIt<QuestionsOfflineDatasource>();
 
 
@@ -92,17 +82,10 @@ class QuestionsViewModel extends Cubit<QuestionsState> {
     }
   }
 
-  Future<void> _checkQuestions(
-      CheckQuestionRequestEntity request, BuildContext context) async {
   Future<void> _checkQuestions(CheckQuestionRequestEntity request,
       BuildContext context) async {
-    if (isClosed) return;
-    emit(CheckQuestionLoading());
-
     var token = await offlineAuthDataSource.getToken() ?? '';
     var result = await _questionsUseCase.checkQuestions(token, request);
-
-    if (isClosed) return;
 
     switch (result) {
       case Success<CheckQuestionResponseEntity>():
@@ -114,22 +97,16 @@ class QuestionsViewModel extends Cubit<QuestionsState> {
         String message;
 
         if (exception is NoInternetException) {
-          message = "${AppLocalizations
-              .of(context)
-              ?.noInternetException}";
+          message = "${AppLocalizations.of(context)?.noInternetException}";
           if (!isClosed) emit(GetQuestionsError(message));
         } else if (exception is ServerError) {
-          message = "${AppLocalizations
-              .of(context)
-              ?.serverErrorException}";
+          message = "${AppLocalizations.of(context)?.serverErrorException}";
           if (!isClosed) emit(GetQuestionsError(message));
         } else if (exception is UnauthorizedException) {
           message = exception.message ?? "";
           if (!isClosed) emit(GetQuestionsError(message));
         } else {
-          message = "${AppLocalizations
-              .of(context)
-              ?.unknownErrorException}";
+          message = "${AppLocalizations.of(context)?.unknownErrorException}";
           if (!isClosed) emit(GetQuestionsError(message));
         }
         break;
@@ -157,4 +134,3 @@ class QuestionsViewModel extends Cubit<QuestionsState> {
     );
   }
 }
-
