@@ -11,18 +11,17 @@ class QuestionModel {
   @Index()
   late String questionId;
 
-  late String questionText; // نص السؤال
-  late String questionType; // نوع السؤال
+  late String questionText;
+  late String questionType;
 
-  late String correctAnswer; // الإجابة الصحيحة
-  late String? userAnswer; // إجابة المستخدم
+  late String correctAnswer;
+  late String? userAnswer;
 
-  late List<AnswerModel> suggestedAnswers; // الإجابات المقترحة
+  late List<AnswerModel> suggestedAnswers;
 
   @Index()
   late String examId;
 
-  // التحقق من صحة الإجابة
   bool get isCorrect => userAnswer == correctAnswer;
 
   QuestionModel({
@@ -38,7 +37,7 @@ class QuestionModel {
 
 @Embedded()
 class AnswerModel {
-  late String? answerText; // نص الإجابة
+  late String? answerText;
 
   AnswerModel({
     this.answerText,
@@ -47,14 +46,14 @@ class AnswerModel {
 
 @Embedded()
 class CheckResultModel {
-  late String? message; // رسالة السيرفر
-  late int? correct; // عدد الإجابات الصحيحة
-  late int? wrong; // عدد الإجابات الخاطئة
-  late String? total; // إجمالي عدد الأسئلة
+  late String? message;
+  late int? correct;
+  late int? wrong;
+  late String? total;
 
-  late List<WrongQuestionModel>? wrongQuestions; // قائمة الأسئلة الخاطئة
+  late List<WrongQuestionModel>? wrongQuestions;
 
-  late List<CorrectQuestionModel>? correctQuestions; // قائمة الأسئلة الصحيحة
+  late List<CorrectQuestionModel>? correctQuestions;
 
   CheckResultModel({
     this.message,
@@ -68,12 +67,11 @@ class CheckResultModel {
 
 @Embedded()
 class WrongQuestionModel {
-  late String? questionId; // رقم السؤال
-  late String? questionText; // نص السؤال
-  late String? incorrectAnswer; // الإجابة الخاطئة
-  late String? correctAnswer; // الإجابة الصحيحة
+  late String? questionId;
+  late String? questionText;
+  late String? incorrectAnswer;
+  late String? correctAnswer;
 
-  // جعل المعلمات اختيارية
   WrongQuestionModel({
     this.questionId,
     this.questionText,
@@ -84,11 +82,10 @@ class WrongQuestionModel {
 
 @Embedded()
 class CorrectQuestionModel {
-  late String? questionId; // رقم السؤال
-  late String? questionText; // نص السؤال
-  late String? correctAnswer; // الإجابة الصحيحة
+  late String? questionId;
+  late String? questionText;
+  late String? correctAnswer;
 
-  // جعل المعلمات اختيارية
   CorrectQuestionModel({
     this.questionId,
     this.questionText,

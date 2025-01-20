@@ -32,7 +32,7 @@ class SubjectLoadingWidget extends StatelessWidget {
               physics: BouncingScrollPhysics(),
               padding: const EdgeInsets.only(bottom: 20, top: 10),
               itemBuilder: (context, index) => shadowContainer(
-                height: 80,
+                width: 0.5,
                 child: Center(
                   child: ListTile(
                     leading: Icon(Icons.image),

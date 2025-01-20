@@ -15,6 +15,7 @@ import '../widgets/question_card.dart';
 import '../widgets/question_indicator.dart';
 import '../widgets/question_navigation_buttons.dart';
 import '../widgets/timer_display.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class QuestionsView extends StatefulWidget {
   const QuestionsView({super.key, required this.examId});
@@ -46,33 +47,102 @@ class _QuestionsViewState extends State<QuestionsView> {
 
   void startTimer() {
     isTimerStarted = true;
+    timeRemaining = 60;
+
     timer = Timer.periodic(const Duration(seconds: 1), (Timer t) {
       setState(() {
         if (timeRemaining > 0) {
           timeRemaining--;
         } else {
           timer!.cancel();
+          showTimeOutDialog();
         }
       });
     });
   }
 
+  void showTimeOutDialog() {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+          title: const Text(
+            'Time Out!',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SpinKitPouringHourGlassRefined(
+                color: Colors.red,
+                size: 50.0,
+              ),
+              const SizedBox(height: 16),
+              const Text(
+                'Your time is up!',
+                style: TextStyle(fontSize: 16),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+          actions: [
+            Center(
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.blueBaseColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                onPressed: () async {
+                  var score = await questionsViewModel.getScoreStatistics();
+                  Navigator.pop(context); // إغلاق الـ Dialog
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ExamScoreView(
+                        correctAnswers: score.correctAnswers,
+                        incorrectAnswers: score.incorrectAnswers,
+                        percentage: score.percentage,
+                        examId: score.examId,
+                      ),
+                    ),
+                  );
+                },
+                child: const Text(
+                  'View Score',
+                  style: TextStyle(fontSize: 16, color: Colors.white),
+                ),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   void onAnswerSelected(String? answer) async {
     setState(() {
-      selectedAnswer = answer; // تعيين الإجابة المختارة أو null
+      selectedAnswer = answer;
     });
 
-    // تأكيد إرسال الإجابة للسيرفر
     final answerEntity = AnswersEntity(
       questionId: questions[currentQuestionIndex].Id,
-      correct: selectedAnswer, // إرسال null أو الإجابة المختارة
+      correct: selectedAnswer,
     );
 
     final checkQuestionRequest = CheckQuestionRequestEntity(
       answers: [answerEntity],
     );
 
-    // إرسال الطلب للسيرفر
     questionsViewModel.doAction(CheckQuestionAction(
       context: context,
       request: checkQuestionRequest,
@@ -80,7 +150,6 @@ class _QuestionsViewState extends State<QuestionsView> {
 
     final question = questions[currentQuestionIndex];
 
-    // هنا نقوم بحفظ السؤال مع الإجابة المختارة (التي قد تكون null)
     final questionModel = QuestionModel(
       examId: widget.examId,
       questionId: question.Id ?? '',
@@ -88,15 +157,12 @@ class _QuestionsViewState extends State<QuestionsView> {
       questionType: question.type ?? '',
       correctAnswer: question.correct ?? '',
       userAnswer: selectedAnswer,
-      // يمكن أن تكون null
       suggestedAnswers: question.answers
               ?.map((suggestedAnswer) =>
                   AnswerModel(answerText: suggestedAnswer.answer ?? ''))
               .toList() ??
           [],
     );
-
-    // حفظ السؤال مع التحقق أولاً
     questionsViewModel.saveQuestion(questionModel);
   }
 
@@ -139,7 +205,12 @@ class _QuestionsViewState extends State<QuestionsView> {
         child: BlocBuilder<QuestionsViewModel, QuestionsState>(
           builder: (context, state) {
             if (state is GetQuestionsLoading) {
-              return const Center(child: CircularProgressIndicator());
+              return Center(
+                child: SpinKitPouringHourGlassRefined(
+                  color: Colors.blue, // Replace with your preferred color
+                  size: 50.0, // Adjust size as needed
+                ),
+              );
             } else if (state is GetQuestionsSuccess) {
               questions = state.questionResponseEntity.questions ?? [];
               examDuration = questions.isNotEmpty
@@ -193,7 +264,6 @@ class _QuestionsViewState extends State<QuestionsView> {
                 ),
               );
             } else if (state is CheckQuestionSuccess) {
-              // عند نجاح التحقق من السؤال، نقوم بإظهار الحالة بنفس طريقة الـ GetQuestionsSuccess
               return Padding(
                 padding: const EdgeInsets.only(top: 56, left: 16, right: 16),
                 child: CustomScrollView(

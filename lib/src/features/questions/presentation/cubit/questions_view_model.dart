@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
@@ -22,6 +24,15 @@ class QuestionsViewModel extends Cubit<QuestionsState> {
   final QuestionsUseCase _questionsUseCase;
   var offlineAuthDataSource = getIt<OfflineAuthDataSource>();
   var offlineQuestionsDataSource = getIt<QuestionOfflineDataSource>();
+
+  int currentQuestionIndex = 0;
+  int timeRemaining = 0;
+  int examDuration = 0;
+  bool isTimerStarted = false;
+  String? selectedAnswer;
+  List<String?> selectedAnswers = [];
+  Timer? timer;
+  late List<QuestionsEntity> questions = [];
 
   @factoryMethod
   QuestionsViewModel(this._questionsUseCase) : super(QuestionsInitial());

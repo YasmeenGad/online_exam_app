@@ -34,7 +34,6 @@ class ExamItem extends StatelessWidget {
         );
       },
       child: shadowContainer(
-          height: 110,
           width: 0.5,
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
           child: Row(
@@ -80,11 +79,17 @@ class ExamItem extends StatelessWidget {
                     SizedBox(height: 13),
                     Row(
                       children: [
-                        Text('${AppLocalizations.of(context)?.date}: ${formattedDate}',
-                            style: AppStyles.styleMedium13(context)),
+                        Expanded(
+                          child: Text(
+                              '${AppLocalizations.of(context)?.date}: ${formattedDate}',
+                              style: AppStyles.styleMedium12(context)),
+                        ),
                         SizedBox(width: 10),
-                        Text("${AppLocalizations.of(context)?.time}: ${formattedTime}",
-                            style: AppStyles.styleMedium13(context)),
+                        Expanded(
+                          child: Text(
+                              "${AppLocalizations.of(context)?.time}: ${formattedTime}",
+                              style: AppStyles.styleMedium12(context)),
+                        )
                       ],
                     ),
                   ],
