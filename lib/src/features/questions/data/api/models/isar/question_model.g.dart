@@ -22,34 +22,39 @@ const QuestionModelSchema = CollectionSchema(
       name: r'correctAnswer',
       type: IsarType.string,
     ),
-    r'isCorrect': PropertySchema(
+    r'examId': PropertySchema(
       id: 1,
+      name: r'examId',
+      type: IsarType.string,
+    ),
+    r'isCorrect': PropertySchema(
+      id: 2,
       name: r'isCorrect',
       type: IsarType.bool,
     ),
     r'questionId': PropertySchema(
-      id: 2,
+      id: 3,
       name: r'questionId',
       type: IsarType.string,
     ),
     r'questionText': PropertySchema(
-      id: 3,
+      id: 4,
       name: r'questionText',
       type: IsarType.string,
     ),
     r'questionType': PropertySchema(
-      id: 4,
+      id: 5,
       name: r'questionType',
       type: IsarType.string,
     ),
     r'suggestedAnswers': PropertySchema(
-      id: 5,
+      id: 6,
       name: r'suggestedAnswers',
       type: IsarType.objectList,
       target: r'AnswerModel',
     ),
     r'userAnswer': PropertySchema(
-      id: 6,
+      id: 7,
       name: r'userAnswer',
       type: IsarType.string,
     )
@@ -72,6 +77,19 @@ const QuestionModelSchema = CollectionSchema(
           caseSensitive: true,
         )
       ],
+    ),
+    r'examId': IndexSchema(
+      id: 8639766665118373825,
+      name: r'examId',
+      unique: false,
+      replace: false,
+      properties: [
+        IndexPropertySchema(
+          name: r'examId',
+          type: IndexType.hash,
+          caseSensitive: true,
+        )
+      ],
     )
   },
   links: {},
@@ -89,6 +107,7 @@ int _questionModelEstimateSize(
 ) {
   var bytesCount = offsets.last;
   bytesCount += 3 + object.correctAnswer.length * 3;
+  bytesCount += 3 + object.examId.length * 3;
   bytesCount += 3 + object.questionId.length * 3;
   bytesCount += 3 + object.questionText.length * 3;
   bytesCount += 3 + object.questionType.length * 3;
@@ -116,17 +135,18 @@ void _questionModelSerialize(
   Map<Type, List<int>> allOffsets,
 ) {
   writer.writeString(offsets[0], object.correctAnswer);
-  writer.writeBool(offsets[1], object.isCorrect);
-  writer.writeString(offsets[2], object.questionId);
-  writer.writeString(offsets[3], object.questionText);
-  writer.writeString(offsets[4], object.questionType);
+  writer.writeString(offsets[1], object.examId);
+  writer.writeBool(offsets[2], object.isCorrect);
+  writer.writeString(offsets[3], object.questionId);
+  writer.writeString(offsets[4], object.questionText);
+  writer.writeString(offsets[5], object.questionType);
   writer.writeObjectList<AnswerModel>(
-    offsets[5],
+    offsets[6],
     allOffsets,
     AnswerModelSchema.serialize,
     object.suggestedAnswers,
   );
-  writer.writeString(offsets[6], object.userAnswer);
+  writer.writeString(offsets[7], object.userAnswer);
 }
 
 QuestionModel _questionModelDeserialize(
@@ -137,17 +157,18 @@ QuestionModel _questionModelDeserialize(
 ) {
   final object = QuestionModel(
     correctAnswer: reader.readString(offsets[0]),
-    questionId: reader.readString(offsets[2]),
-    questionText: reader.readString(offsets[3]),
-    questionType: reader.readString(offsets[4]),
+    examId: reader.readString(offsets[1]),
+    questionId: reader.readString(offsets[3]),
+    questionText: reader.readString(offsets[4]),
+    questionType: reader.readString(offsets[5]),
     suggestedAnswers: reader.readObjectList<AnswerModel>(
-          offsets[5],
+          offsets[6],
           AnswerModelSchema.deserialize,
           allOffsets,
           AnswerModel(),
         ) ??
         [],
-    userAnswer: reader.readStringOrNull(offsets[6]),
+    userAnswer: reader.readStringOrNull(offsets[7]),
   );
   object.id = id;
   return object;
@@ -163,14 +184,16 @@ P _questionModelDeserializeProp<P>(
     case 0:
       return (reader.readString(offset)) as P;
     case 1:
-      return (reader.readBool(offset)) as P;
-    case 2:
       return (reader.readString(offset)) as P;
+    case 2:
+      return (reader.readBool(offset)) as P;
     case 3:
       return (reader.readString(offset)) as P;
     case 4:
       return (reader.readString(offset)) as P;
     case 5:
+      return (reader.readString(offset)) as P;
+    case 6:
       return (reader.readObjectList<AnswerModel>(
             offset,
             AnswerModelSchema.deserialize,
@@ -178,7 +201,7 @@ P _questionModelDeserializeProp<P>(
             AnswerModel(),
           ) ??
           []) as P;
-    case 6:
+    case 7:
       return (reader.readStringOrNull(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -322,6 +345,51 @@ extension QuestionModelQueryWhere
       }
     });
   }
+
+  QueryBuilder<QuestionModel, QuestionModel, QAfterWhereClause> examIdEqualTo(
+      String examId) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.equalTo(
+        indexName: r'examId',
+        value: [examId],
+      ));
+    });
+  }
+
+  QueryBuilder<QuestionModel, QuestionModel, QAfterWhereClause>
+      examIdNotEqualTo(String examId) {
+    return QueryBuilder.apply(this, (query) {
+      if (query.whereSort == Sort.asc) {
+        return query
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'examId',
+              lower: [],
+              upper: [examId],
+              includeUpper: false,
+            ))
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'examId',
+              lower: [examId],
+              includeLower: false,
+              upper: [],
+            ));
+      } else {
+        return query
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'examId',
+              lower: [examId],
+              includeLower: false,
+              upper: [],
+            ))
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'examId',
+              lower: [],
+              upper: [examId],
+              includeUpper: false,
+            ));
+      }
+    });
+  }
 }
 
 extension QuestionModelQueryFilter
@@ -457,6 +525,142 @@ extension QuestionModelQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'correctAnswer',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<QuestionModel, QuestionModel, QAfterFilterCondition>
+      examIdEqualTo(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'examId',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<QuestionModel, QuestionModel, QAfterFilterCondition>
+      examIdGreaterThan(
+    String value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'examId',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<QuestionModel, QuestionModel, QAfterFilterCondition>
+      examIdLessThan(
+    String value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'examId',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<QuestionModel, QuestionModel, QAfterFilterCondition>
+      examIdBetween(
+    String lower,
+    String upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'examId',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<QuestionModel, QuestionModel, QAfterFilterCondition>
+      examIdStartsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.startsWith(
+        property: r'examId',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<QuestionModel, QuestionModel, QAfterFilterCondition>
+      examIdEndsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.endsWith(
+        property: r'examId',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<QuestionModel, QuestionModel, QAfterFilterCondition>
+      examIdContains(String value, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.contains(
+        property: r'examId',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<QuestionModel, QuestionModel, QAfterFilterCondition>
+      examIdMatches(String pattern, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.matches(
+        property: r'examId',
+        wildcard: pattern,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<QuestionModel, QuestionModel, QAfterFilterCondition>
+      examIdIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'examId',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<QuestionModel, QuestionModel, QAfterFilterCondition>
+      examIdIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        property: r'examId',
         value: '',
       ));
     });
@@ -1207,6 +1411,18 @@ extension QuestionModelQuerySortBy
     });
   }
 
+  QueryBuilder<QuestionModel, QuestionModel, QAfterSortBy> sortByExamId() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'examId', Sort.asc);
+    });
+  }
+
+  QueryBuilder<QuestionModel, QuestionModel, QAfterSortBy> sortByExamIdDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'examId', Sort.desc);
+    });
+  }
+
   QueryBuilder<QuestionModel, QuestionModel, QAfterSortBy> sortByIsCorrect() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'isCorrect', Sort.asc);
@@ -1288,6 +1504,18 @@ extension QuestionModelQuerySortThenBy
       thenByCorrectAnswerDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'correctAnswer', Sort.desc);
+    });
+  }
+
+  QueryBuilder<QuestionModel, QuestionModel, QAfterSortBy> thenByExamId() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'examId', Sort.asc);
+    });
+  }
+
+  QueryBuilder<QuestionModel, QuestionModel, QAfterSortBy> thenByExamIdDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'examId', Sort.desc);
     });
   }
 
@@ -1381,6 +1609,13 @@ extension QuestionModelQueryWhereDistinct
     });
   }
 
+  QueryBuilder<QuestionModel, QuestionModel, QDistinct> distinctByExamId(
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'examId', caseSensitive: caseSensitive);
+    });
+  }
+
   QueryBuilder<QuestionModel, QuestionModel, QDistinct> distinctByIsCorrect() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'isCorrect');
@@ -1428,6 +1663,12 @@ extension QuestionModelQueryProperty
       correctAnswerProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'correctAnswer');
+    });
+  }
+
+  QueryBuilder<QuestionModel, String, QQueryOperations> examIdProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'examId');
     });
   }
 

@@ -19,6 +19,9 @@ class QuestionModel {
 
   late List<AnswerModel> suggestedAnswers; // الإجابات المقترحة
 
+  @Index()
+  late String examId;
+
   // التحقق من صحة الإجابة
   bool get isCorrect => userAnswer == correctAnswer;
 
@@ -29,6 +32,7 @@ class QuestionModel {
     required this.correctAnswer,
     required this.userAnswer,
     required this.suggestedAnswers,
+    required this.examId,
   });
 }
 

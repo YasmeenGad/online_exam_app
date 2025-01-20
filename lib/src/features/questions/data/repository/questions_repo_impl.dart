@@ -1,6 +1,7 @@
 import 'package:injectable/injectable.dart';
 import 'package:online_exam_app/src/core/utils/errors/result.dart';
 import 'package:online_exam_app/src/features/questions/data/datasource/contracts/online_datasource/questions_online_datasource.dart';
+import 'package:online_exam_app/src/features/questions/domain/entities/isar/exam_score.dart';
 import 'package:online_exam_app/src/features/questions/domain/entities/request/check_question_request_entity.dart';
 import 'package:online_exam_app/src/features/questions/domain/entities/response/check_question_response_entity.dart';
 
@@ -37,20 +38,7 @@ class QuestionsRepositoryImpl implements QuestionsRepository {
 
   @override
   Future<void> saveQuestion(QuestionModel question) async {
-    // التحقق من وجود السؤال في قاعدة البيانات أولاً
-    final existingQuestion =
-        await _localDataSource.getQuestionById(question.questionId);
-
-    if (existingQuestion != null) {
-      // إذا كان السؤال موجودًا، تحقق مما إذا كانت الإجابة قد تغيرت
-      if (existingQuestion.userAnswer != question.userAnswer) {
-        // إذا كانت الإجابة مختلفة، قم بتحديث الإجابة
-        await _localDataSource.updateQuestion(question);
-      }
-    } else {
-      // إذا لم يكن السؤال موجودًا، قم بحفظه كـ new question
       await _localDataSource.saveQuestion(question);
-    }
   }
 
   @override

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:online_exam_app/src/core/utils/errors/result.dart';
+import 'package:online_exam_app/src/features/questions/data/datasource/contracts/offline_datasource/question_offline_data_source.dart';
 import 'package:online_exam_app/src/features/questions/domain/entities/request/check_question_request_entity.dart';
 import 'package:online_exam_app/src/features/questions/domain/entities/response/check_question_response_entity.dart';
 import 'package:online_exam_app/src/features/questions/domain/entities/response/question_response_entity.dart';
@@ -14,11 +15,13 @@ import '../../../auth/data/datasources/contracts/offline_auth_datasource.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../data/api/models/isar/question_model.dart';
+import '../../domain/entities/isar/exam_score.dart';
 
 @injectable
 class QuestionsViewModel extends Cubit<QuestionsState> {
   final QuestionsUseCase _questionsUseCase;
   var offlineAuthDataSource = getIt<OfflineAuthDataSource>();
+  var offlineQuestionsDataSource = getIt<QuestionOfflineDataSource>();
 
   @factoryMethod
   QuestionsViewModel(this._questionsUseCase) : super(QuestionsInitial());
@@ -96,5 +99,22 @@ class QuestionsViewModel extends Cubit<QuestionsState> {
 
   Future<void> saveQuestion(QuestionModel question) async {
     await _questionsUseCase.saveQuestion(question);
+  }
+
+  Future<ExamScore> getScoreStatistics() async {
+    final questions = await offlineQuestionsDataSource.getIsarQuestions();
+    final correctAnswers =
+        questions.where((q) => q.userAnswer == q.correctAnswer).length;
+    final incorrectAnswers = questions.length - correctAnswers;
+    final percentage =
+        (questions.isNotEmpty) ? correctAnswers / questions.length : 0.0;
+    final examId = questions.first.examId;
+
+    return ExamScore(
+      correctAnswers: correctAnswers,
+      incorrectAnswers: incorrectAnswers,
+      percentage: percentage * 100,
+      examId: examId,
+    );
   }
 }

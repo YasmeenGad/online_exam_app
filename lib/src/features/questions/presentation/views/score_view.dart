@@ -1,123 +1,113 @@
 import 'package:flutter/material.dart';
 import 'package:online_exam_app/src/core/global/custom_appbar.dart';
-import 'package:percent_indicator/percent_indicator.dart';
+import 'package:online_exam_app/src/core/global/custom_button.dart';
+import 'package:online_exam_app/src/core/styles/app_colors.dart';
+import 'package:online_exam_app/src/core/styles/app_styles.dart';
 
-void main() {
-  runApp(ExamScoreApp());
-}
+import '../../../../core/routes/routes_name.dart';
+import '../widgets/custom_circular_percent_indicator.dart';
+import '../widgets/score_circle.dart';
+import '../widgets/score_row.dart';
 
-class ExamScoreApp extends StatelessWidget {
+class ExamScoreView extends StatelessWidget {
+  final int correctAnswers;
+  final int incorrectAnswers;
+  final double percentage;
+  final String examId;
+
+  const ExamScoreView({
+    Key? key,
+    required this.examId,
+    required this.correctAnswers,
+    required this.incorrectAnswers,
+    required this.percentage,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: ExamScoreScreen(),
-    );
-  }
-}
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
 
-class ExamScoreScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Padding(
-        padding: const EdgeInsets.only(top: 35, left: 16, right: 16),
+        padding: EdgeInsets.only(
+          top: screenHeight * 0.07,
+          left: screenWidth * 0.05,
+          right: screenWidth * 0.05,
+        ),
         child: CustomScrollView(
           slivers: [
             SliverToBoxAdapter(
-              child: CustomAppBar(
-                appBarTxt: 'Exam Score',
-                showArrow: true,
+              child: CustomAppBar(appBarTxt: 'Exam Score', showArrow: true),
+            ),
+            SliverToBoxAdapter(
+              child: SizedBox(height: screenHeight * 0.05),
+            ),
+            SliverToBoxAdapter(
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Your Score',
+                  style: AppStyles.styleMediumInter18(context).copyWith(
+                    color: AppColors.blackBaseColor,
+                  ),
+                ),
               ),
             ),
             SliverToBoxAdapter(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
+              child: SizedBox(height: screenHeight * 0.03),
+            ),
+            SliverToBoxAdapter(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  CircularPercentIndicator(
-                    radius: 100.0,
-                    lineWidth: 10.0,
-                    percent: 0.8,
-                    center: Text(
-                      "80%",
-                      style:
-                          TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                    ),
-                    progressColor: Colors.blue,
-                  ),
-                  SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                  CustomCircularPercentIndicator(percentage: percentage),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Column(
-                        children: [
-                          Text(
-                            'Correct',
-                            style: TextStyle(color: Colors.blue, fontSize: 16),
-                          ),
-                          Text(
-                            '18',
-                            style: TextStyle(
-                                color: Colors.blue,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                      SizedBox(width: 40),
-                      Column(
-                        children: [
-                          Text(
-                            'Incorrect',
-                            style: TextStyle(color: Colors.red, fontSize: 16),
-                          ),
-                          Text(
-                            '2',
-                            style: TextStyle(
-                                color: Colors.red,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
+                      ScoreRow(
+                          label: 'Correct', color: AppColors.blueBaseColor),
+                      SizedBox(height: screenHeight * 0.02),
+                      ScoreRow(label: 'Incorrect', color: AppColors.errorColor),
                     ],
                   ),
-                  SizedBox(height: 40),
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue,
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 40, vertical: 12),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                    child: Text(
-                      'Show results',
-                      style: TextStyle(color: Colors.white, fontSize: 16),
-                    ),
+                  Column(
+                    children: [
+                      ScoreCircle(
+                          value: correctAnswers,
+                          color: AppColors.blueBaseColor),
+                      SizedBox(height: screenHeight * 0.01),
+                      ScoreCircle(
+                          value: incorrectAnswers, color: AppColors.errorColor),
+                    ],
                   ),
-                  SizedBox(height: 20),
-                  OutlinedButton(
-                    onPressed: () {},
-                    style: OutlinedButton.styleFrom(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 40, vertical: 12),
-                      side: BorderSide(color: Colors.blue),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                    child: Text(
-                      'Start again',
-                      style: TextStyle(color: Colors.blue, fontSize: 16),
+                ],
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: SizedBox(height: screenHeight * 0.1),
+            ),
+            SliverToBoxAdapter(
+              child: Column(
+                children: [
+                  CustomButton(txt: 'Show Results'),
+                  SizedBox(height: screenHeight * 0.03),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushReplacementNamed(
+                          context, RoutesName.questionsView,
+                          arguments: examId);
+                    },
+                    child: CustomButton(
+                      txt: 'Try Again',
+                      color: AppColors.whiteColor,
+                      textColor: AppColors.blueBaseColor,
                     ),
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

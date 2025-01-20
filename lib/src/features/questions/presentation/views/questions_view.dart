@@ -82,6 +82,7 @@ class _QuestionsViewState extends State<QuestionsView> {
 
     // هنا نقوم بحفظ السؤال مع الإجابة المختارة (التي قد تكون null)
     final questionModel = QuestionModel(
+      examId: widget.examId,
       questionId: question.Id ?? '',
       questionText: question.question ?? '',
       questionType: question.type ?? '',
@@ -99,20 +100,23 @@ class _QuestionsViewState extends State<QuestionsView> {
     questionsViewModel.saveQuestion(questionModel);
   }
 
-  void onNextQuestion() {
+  void onNextQuestion() async {
     if (currentQuestionIndex < questions.length - 1) {
       setState(() {
         currentQuestionIndex++;
-        selectedAnswer =
-            null; // إعادة تعيين الإجابة عندما ينتقل المستخدم إلى السؤال التالي
+        selectedAnswer = null;
       });
     } else {
-      // إذا كانت هذه هي آخر سؤال، انتقل إلى صفحة النتيجة
-      Navigator.pushReplacement(
+      var score = await questionsViewModel.getScoreStatistics();
+      Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) =>
-              ExamScoreApp(), // استبدل بـ صفحة النتيجة التي تريدها
+          builder: (context) => ExamScoreView(
+            correctAnswers: score.correctAnswers,
+            incorrectAnswers: score.incorrectAnswers,
+            percentage: score.percentage,
+            examId: score.examId,
+          ),
         ),
       );
     }

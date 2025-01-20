@@ -2,6 +2,8 @@ import 'package:injectable/injectable.dart';
 import 'package:isar/isar.dart';
 import 'package:online_exam_app/src/features/questions/data/datasource/contracts/offline_datasource/question_offline_data_source.dart';
 
+import '../../../../../core/di/di.dart';
+import '../../../domain/entities/isar/exam_score.dart';
 import '../../api/models/isar/question_model.dart';
 
 @Injectable(as: QuestionOfflineDataSource)
@@ -12,8 +14,20 @@ class QuestionOfflineDataSourceImpl implements QuestionOfflineDataSource {
 
   @override
   Future<void> saveQuestion(QuestionModel question) async {
+    final isar = getIt<Isar>();
+
     await isar.writeTxn(() async {
-      await isar.questionModels.put(question);
+      final existingQuestion = await isar.questionModels
+          .filter()
+          .questionIdEqualTo(question.questionId)
+          .findFirst();
+
+      if (existingQuestion != null) {
+        existingQuestion.userAnswer = question.userAnswer;
+        await isar.questionModels.put(existingQuestion);
+      } else {
+        await isar.questionModels.put(question);
+      }
     });
   }
 
@@ -28,23 +42,5 @@ class QuestionOfflineDataSourceImpl implements QuestionOfflineDataSource {
         .filter()
         .questionIdEqualTo(questionId)
         .findFirst();
-  }
-
-  @override
-  Future<void> updateQuestion(QuestionModel question) async {
-    final existingQuestion = await isar.questionModels
-        .filter()
-        .questionIdEqualTo(question.questionId)
-        .findFirst();
-
-    if (existingQuestion != null) {
-      await isar.writeTxn(() async {
-        await isar.questionModels.put(question);
-      });
-    } else {
-      await isar.writeTxn(() async {
-        await isar.questionModels.put(question);
-      });
-    }
   }
 }
