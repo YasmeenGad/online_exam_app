@@ -4,7 +4,7 @@ import 'package:online_exam_app/src/core/styles/app_styles.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton(
-      {super.key, required this.txt, this.color, this.textColor});
+      {super.key, required this.txt, this.backgroundColor, this.color, this.textColor});
   final String txt;
   final Color? color, textColor;
 
@@ -14,7 +14,7 @@ class CustomButton extends StatelessWidget {
         width: MediaQuery.sizeOf(context).width,
         height: 48,
         decoration: BoxDecoration(
-        color: color ?? AppColors.blueBaseColor,
+        color: backgroundColor ?? AppColors.blueBaseColor,
         borderRadius: BorderRadius.circular(100),
         border: Border.all(color: AppColors.blueBaseColor),
       ),

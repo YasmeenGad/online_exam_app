@@ -3,9 +3,7 @@ import 'package:online_exam_app/src/features/questions/data/api/models/request/c
 class CheckQuestionRequestEntity {
   final List<AnswersEntity>? answers;
 
-  CheckQuestionRequestEntity({
-    this.answers,
-  });
+  CheckQuestionRequestEntity({this.answers});
 
   CheckQuestionRequestDto toDto() {
     return CheckQuestionRequestDto(
@@ -18,10 +16,7 @@ class AnswersEntity {
   final String? questionId;
   final String? correct;
 
-  AnswersEntity({
-    this.questionId,
-    this.correct,
-  });
+  AnswersEntity({this.questionId, this.correct});
 
   AnswersDto toDto() {
     return AnswersDto(

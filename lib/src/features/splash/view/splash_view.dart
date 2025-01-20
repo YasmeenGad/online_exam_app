@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:online_exam_app/src/core/constants/assets.dart';
 import 'package:online_exam_app/src/features/splash/view_model/splash_cubit.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import '../../../../generated/assets.dart';
 import '../../../core/styles/app_colors.dart';
 import '../../../core/styles/app_styles.dart';
 

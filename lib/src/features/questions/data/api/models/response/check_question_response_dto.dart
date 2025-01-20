@@ -41,7 +41,7 @@ class CheckQuestionResponseDto {
       correct: correct,
       wrong: wrong,
       total: total,
-      WrongQuestions: WrongQuestions?.map((e) => e.toEntity()).toList(),
+      wrongQuestions: WrongQuestions?.map((e) => e.toEntity()).toList(),
       correctQuestions: correctQuestions?.map((e) => e.toEntity()).toList(),
     );
   }

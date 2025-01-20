@@ -4,9 +4,14 @@ import 'package:online_exam_app/src/core/styles/app_styles.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar(
-      {super.key, required this.appBarTxt, this.showArrow = false});
+      {super.key,
+      required this.appBarTxt,
+      this.showArrow = false,
+      this.navigation});
+
   final String appBarTxt;
   final bool? showArrow;
+  final VoidCallback? navigation;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +20,11 @@ class CustomAppBar extends StatelessWidget {
         showArrow == true
             ? GestureDetector(
                 onTap: () {
-                  Navigator.pop(context);
+                  if (navigation != null) {
+                    navigation!();
+                  } else {
+                    Navigator.pop(context);
+                  }
                 },
                 child: const Icon(
                   Icons.arrow_back_ios,

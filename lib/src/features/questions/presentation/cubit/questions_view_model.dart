@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
@@ -19,6 +20,10 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../data/api/models/isar/question_model.dart';
 import '../../domain/entities/isar/exam_score.dart';
 
+import '../../data/datasource/contracts/offline_datasource/question_offline_datasource.dart';
+
+
+
 @injectable
 class QuestionsViewModel extends Cubit<QuestionsState> {
   final QuestionsUseCase _questionsUseCase;
@@ -33,6 +38,8 @@ class QuestionsViewModel extends Cubit<QuestionsState> {
   List<String?> selectedAnswers = [];
   Timer? timer;
   late List<QuestionsEntity> questions = [];
+  var questionOfflineDataSource = getIt<QuestionsOfflineDatasource>();
+
 
   @factoryMethod
   QuestionsViewModel(this._questionsUseCase) : super(QuestionsInitial());
@@ -40,8 +47,8 @@ class QuestionsViewModel extends Cubit<QuestionsState> {
   void doAction(QuestionsAction action) {
     switch (action) {
       case GetQuestionsAction():
-          _getQuestions(action.examId, action.context);
-          break;
+        _getQuestions(action.examId, action.context);
+        break;
       case CheckQuestionAction():
         _checkQuestions(action.request, action.context);
         break;
@@ -54,23 +61,30 @@ class QuestionsViewModel extends Cubit<QuestionsState> {
     final result = await _questionsUseCase.getQuestions(token, examId);
     switch (result) {
       case Success<QuestionResponseEntity>():
-          emit(GetQuestionsSuccess(result.data!));
-          break;
+        emit(GetQuestionsSuccess(result.data!));
+        questionOfflineDataSource.cacheQuestions(result.data!, examId);
+        break;
       case Failure<QuestionResponseEntity>():
         {
           final exception = result.exception;
           String message;
           if (exception is NoInternetException) {
-            message = "${AppLocalizations.of(context)?.noInternetException}";
+            message = "${AppLocalizations
+                .of(context)
+                ?.noInternetException}";
             emit(GetQuestionsError(message));
           } else if (exception is ServerError) {
-            message = "${AppLocalizations.of(context)?.serverErrorException}";
+            message = "${AppLocalizations
+                .of(context)
+                ?.serverErrorException}";
             emit(GetQuestionsError(message));
           } else if (exception is UnauthorizedException) {
             message = exception.message ?? "";
             emit(GetQuestionsError(message));
           } else {
-            message = "${AppLocalizations.of(context)?.unknownErrorException}";
+            message = "${AppLocalizations
+                .of(context)
+                ?.unknownErrorException}";
             emit(GetQuestionsError(message));
           }
           break;
@@ -80,31 +94,45 @@ class QuestionsViewModel extends Cubit<QuestionsState> {
 
   Future<void> _checkQuestions(
       CheckQuestionRequestEntity request, BuildContext context) async {
+  Future<void> _checkQuestions(CheckQuestionRequestEntity request,
+      BuildContext context) async {
+    if (isClosed) return;
+    emit(CheckQuestionLoading());
+
     var token = await offlineAuthDataSource.getToken() ?? '';
     var result = await _questionsUseCase.checkQuestions(token, request);
+
+    if (isClosed) return;
+
     switch (result) {
       case Success<CheckQuestionResponseEntity>():
-        emit(CheckQuestionSuccess(result.data!));
+        if (!isClosed) emit(CheckQuestionSuccess(result.data!));
+        questionOfflineDataSource.cacheCheckQuestions(result.data!);
         break;
       case Failure<CheckQuestionResponseEntity>():
-        {
-          final exception = result.exception;
-          String message;
-          if (exception is NoInternetException) {
-            message = "${AppLocalizations.of(context)?.noInternetException}";
-            emit(GetQuestionsError(message));
-          } else if (exception is ServerError) {
-            message = "${AppLocalizations.of(context)?.serverErrorException}";
-            emit(GetQuestionsError(message));
-          } else if (exception is UnauthorizedException) {
-            message = exception.message ?? "";
-            emit(GetQuestionsError(message));
-          } else {
-            message = "${AppLocalizations.of(context)?.unknownErrorException}";
-            emit(GetQuestionsError(message));
-          }
-          break;
+        final exception = result.exception;
+        String message;
+
+        if (exception is NoInternetException) {
+          message = "${AppLocalizations
+              .of(context)
+              ?.noInternetException}";
+          if (!isClosed) emit(GetQuestionsError(message));
+        } else if (exception is ServerError) {
+          message = "${AppLocalizations
+              .of(context)
+              ?.serverErrorException}";
+          if (!isClosed) emit(GetQuestionsError(message));
+        } else if (exception is UnauthorizedException) {
+          message = exception.message ?? "";
+          if (!isClosed) emit(GetQuestionsError(message));
+        } else {
+          message = "${AppLocalizations
+              .of(context)
+              ?.unknownErrorException}";
+          if (!isClosed) emit(GetQuestionsError(message));
         }
+        break;
     }
   }
 
@@ -129,3 +157,4 @@ class QuestionsViewModel extends Cubit<QuestionsState> {
     );
   }
 }
+

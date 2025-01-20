@@ -10,29 +10,42 @@ import 'package:online_exam_app/src/features/questions/domain/entities/response/
 import '../../domain/contracts/questions_repository.dart';
 import '../api/models/isar/question_model.dart';
 import '../datasource/contracts/offline_datasource/question_offline_data_source.dart';
+import '../datasource/contracts/offline_datasource/question_offline_datasource.dart';
 
 @Injectable(as: QuestionsRepository)
 class QuestionsRepositoryImpl implements QuestionsRepository {
   final QuestionsOnlineDatasource _questionsOnlineDatasource;
+  final QuestionsOfflineDatasource _questionsOfflineDatasource;
 
   final QuestionOfflineDataSource _localDataSource;
 
   @factoryMethod
   QuestionsRepositoryImpl(
       this._questionsOnlineDatasource, this._localDataSource);
+  QuestionsRepositoryImpl(this._questionsOnlineDatasource , this._questionsOfflineDatasource);
 
   @override
   Future<Result<QuestionResponseEntity>> getQuestions(
       String token, String examId) async {
+    final cachedQuestions = await _questionsOfflineDatasource.getCachedQuestions(examId);
+    print('questions: ${cachedQuestions}');
+    if(cachedQuestions != null){
+      return Success(data: cachedQuestions);
+    }
     var response = await _questionsOnlineDatasource.getQuestions(token, examId);
     return response;
   }
 
   @override
-  Future<Result<CheckQuestionResponseEntity>> checkQuestions(String token,
-      CheckQuestionRequestEntity checkQuestionRequestEntity) async {
-    var response = await _questionsOnlineDatasource.checkQuestions(
-        token, checkQuestionRequestEntity);
+  Future<Result<CheckQuestionResponseEntity>> checkQuestions(
+      String token, CheckQuestionRequestEntity checkQuestionRequestEntity) async {
+    final cachedCheckQuestions = await _questionsOfflineDatasource.getCachedCheckQuestions(checkQuestionRequestEntity);
+    print('checkQuestions: ${cachedCheckQuestions}');
+    if (cachedCheckQuestions != null) {
+      return Success(data: cachedCheckQuestions);
+    }
+
+    var response = await _questionsOnlineDatasource.checkQuestions(token, checkQuestionRequestEntity);
     return response;
   }
 
@@ -51,3 +64,4 @@ class QuestionsRepositoryImpl implements QuestionsRepository {
     return await _localDataSource.getQuestionById(questionId);
   }
 }
+

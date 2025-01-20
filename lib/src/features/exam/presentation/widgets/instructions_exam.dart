@@ -11,7 +11,6 @@ class InstructionsExam extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Create the list of instructions here using the context
     final listOfInstructions = [
       AppLocalizations.of(context)?.instruction1,
       AppLocalizations.of(context)?.instruction2,
