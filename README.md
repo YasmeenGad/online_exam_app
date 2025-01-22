@@ -1,16 +1,36 @@
-# online_exam_app
+# Online Exam App
 
-A new Flutter project.
+**Online Exam App** is a mobile application designed to facilitate online exam-taking for both students and instructors. It allows instructors to create and manage exams while providing students with an interactive platform to take exams, track their progress, and view results in real time.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🚀 Features
 
-A few resources to get you started if this is your first Flutter project:
+- **User Authentication**: Secure login and registration system for both students and instructors.
+- **Exam Creation**: Instructors can easily create and manage exams with various types of questions.
+- **Real-Time Exam Participation**: Students can take exams and track their progress live.
+- **Instant Feedback**: Receive immediate results after completing an exam.
+- **Multiple Question Types**: Support for multiple-choice, true/false, short answer, and essay questions.
+- **Progress Tracking**: Real-time progress indicator for both students and instructors.
+- **Responsive Design**: Optimized for both Android and iOS devices.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+##  Technology Stack
+
+- **Frontend**: 
+  - Flutter (Cross-platform mobile development)
+  - Dart (Programming language)
+  - Firebase Authentication (User Authentication)
+  - Firestore (Real-time database)
+
+
+##  Usage
+
+### For Students:
+1. Log in using your credentials.
+2. Browse available exams and join them.
+3. Complete your exam by answering the questions.
+4. Receive real-time results after submission.
+ 
+
