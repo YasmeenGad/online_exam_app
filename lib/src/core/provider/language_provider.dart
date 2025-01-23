@@ -8,7 +8,7 @@ class LanguageProvider with ChangeNotifier {
   Language _selectedLanguage = Language(code: 'en');
   final LanguageService _languageService;
 
-  @factoryMethod
+  //@factoryMethod
   LanguageProvider(this._languageService);
 
   Language get selectedLanguage => _selectedLanguage;
