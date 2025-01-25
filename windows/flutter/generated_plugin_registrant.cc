@@ -18,6 +18,6 @@ void RegisterPlugins(flutter::PluginRegistry* registry) {
       registry->GetRegistrarForPlugin("FileSelectorWindows"));
   FlutterLocalizationPluginCApiRegisterWithRegistrar(
       registry->GetRegistrarForPlugin("FlutterLocalizationPluginCApi"));
-    IsarFlutterLibsPluginRegisterWithRegistrar(
-            registry->GetRegistrarForPlugin("IsarFlutterLibsPlugin"));
+  IsarFlutterLibsPluginRegisterWithRegistrar(
+      registry->GetRegistrarForPlugin("IsarFlutterLibsPlugin"));
 }

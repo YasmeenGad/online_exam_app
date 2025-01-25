@@ -10,7 +10,7 @@ class QuestionModel {
 
   @Index()
   late String questionId;
-
+  late String? attemptId;
   late String questionText;
   late String questionType;
 
@@ -32,6 +32,7 @@ class QuestionModel {
     required this.userAnswer,
     required this.suggestedAnswers,
     required this.examId,
+    this.attemptId,
   });
 }
 

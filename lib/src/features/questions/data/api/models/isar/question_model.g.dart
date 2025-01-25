@@ -17,44 +17,49 @@ const QuestionModelSchema = CollectionSchema(
   name: r'QuestionModel',
   id: -2676110388347547262,
   properties: {
-    r'correctAnswer': PropertySchema(
+    r'attemptId': PropertySchema(
       id: 0,
+      name: r'attemptId',
+      type: IsarType.string,
+    ),
+    r'correctAnswer': PropertySchema(
+      id: 1,
       name: r'correctAnswer',
       type: IsarType.string,
     ),
     r'examId': PropertySchema(
-      id: 1,
+      id: 2,
       name: r'examId',
       type: IsarType.string,
     ),
     r'isCorrect': PropertySchema(
-      id: 2,
+      id: 3,
       name: r'isCorrect',
       type: IsarType.bool,
     ),
     r'questionId': PropertySchema(
-      id: 3,
+      id: 4,
       name: r'questionId',
       type: IsarType.string,
     ),
     r'questionText': PropertySchema(
-      id: 4,
+      id: 5,
       name: r'questionText',
       type: IsarType.string,
     ),
     r'questionType': PropertySchema(
-      id: 5,
+      id: 6,
       name: r'questionType',
       type: IsarType.string,
     ),
     r'suggestedAnswers': PropertySchema(
-      id: 6,
+      id: 7,
       name: r'suggestedAnswers',
       type: IsarType.objectList,
       target: r'AnswerModel',
     ),
     r'userAnswer': PropertySchema(
-      id: 7,
+      id: 8,
       name: r'userAnswer',
       type: IsarType.string,
     )
@@ -106,6 +111,12 @@ int _questionModelEstimateSize(
   Map<Type, List<int>> allOffsets,
 ) {
   var bytesCount = offsets.last;
+  {
+    final value = object.attemptId;
+    if (value != null) {
+      bytesCount += 3 + value.length * 3;
+    }
+  }
   bytesCount += 3 + object.correctAnswer.length * 3;
   bytesCount += 3 + object.examId.length * 3;
   bytesCount += 3 + object.questionId.length * 3;
@@ -134,19 +145,20 @@ void _questionModelSerialize(
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
-  writer.writeString(offsets[0], object.correctAnswer);
-  writer.writeString(offsets[1], object.examId);
-  writer.writeBool(offsets[2], object.isCorrect);
-  writer.writeString(offsets[3], object.questionId);
-  writer.writeString(offsets[4], object.questionText);
-  writer.writeString(offsets[5], object.questionType);
+  writer.writeString(offsets[0], object.attemptId);
+  writer.writeString(offsets[1], object.correctAnswer);
+  writer.writeString(offsets[2], object.examId);
+  writer.writeBool(offsets[3], object.isCorrect);
+  writer.writeString(offsets[4], object.questionId);
+  writer.writeString(offsets[5], object.questionText);
+  writer.writeString(offsets[6], object.questionType);
   writer.writeObjectList<AnswerModel>(
-    offsets[6],
+    offsets[7],
     allOffsets,
     AnswerModelSchema.serialize,
     object.suggestedAnswers,
   );
-  writer.writeString(offsets[7], object.userAnswer);
+  writer.writeString(offsets[8], object.userAnswer);
 }
 
 QuestionModel _questionModelDeserialize(
@@ -156,19 +168,20 @@ QuestionModel _questionModelDeserialize(
   Map<Type, List<int>> allOffsets,
 ) {
   final object = QuestionModel(
-    correctAnswer: reader.readString(offsets[0]),
-    examId: reader.readString(offsets[1]),
-    questionId: reader.readString(offsets[3]),
-    questionText: reader.readString(offsets[4]),
-    questionType: reader.readString(offsets[5]),
+    attemptId: reader.readStringOrNull(offsets[0]),
+    correctAnswer: reader.readString(offsets[1]),
+    examId: reader.readString(offsets[2]),
+    questionId: reader.readString(offsets[4]),
+    questionText: reader.readString(offsets[5]),
+    questionType: reader.readString(offsets[6]),
     suggestedAnswers: reader.readObjectList<AnswerModel>(
-          offsets[6],
+          offsets[7],
           AnswerModelSchema.deserialize,
           allOffsets,
           AnswerModel(),
         ) ??
         [],
-    userAnswer: reader.readStringOrNull(offsets[7]),
+    userAnswer: reader.readStringOrNull(offsets[8]),
   );
   object.id = id;
   return object;
@@ -182,18 +195,20 @@ P _questionModelDeserializeProp<P>(
 ) {
   switch (propertyId) {
     case 0:
-      return (reader.readString(offset)) as P;
+      return (reader.readStringOrNull(offset)) as P;
     case 1:
       return (reader.readString(offset)) as P;
     case 2:
-      return (reader.readBool(offset)) as P;
-    case 3:
       return (reader.readString(offset)) as P;
+    case 3:
+      return (reader.readBool(offset)) as P;
     case 4:
       return (reader.readString(offset)) as P;
     case 5:
       return (reader.readString(offset)) as P;
     case 6:
+      return (reader.readString(offset)) as P;
+    case 7:
       return (reader.readObjectList<AnswerModel>(
             offset,
             AnswerModelSchema.deserialize,
@@ -201,7 +216,7 @@ P _questionModelDeserializeProp<P>(
             AnswerModel(),
           ) ??
           []) as P;
-    case 7:
+    case 8:
       return (reader.readStringOrNull(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -394,6 +409,160 @@ extension QuestionModelQueryWhere
 
 extension QuestionModelQueryFilter
     on QueryBuilder<QuestionModel, QuestionModel, QFilterCondition> {
+  QueryBuilder<QuestionModel, QuestionModel, QAfterFilterCondition>
+      attemptIdIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'attemptId',
+      ));
+    });
+  }
+
+  QueryBuilder<QuestionModel, QuestionModel, QAfterFilterCondition>
+      attemptIdIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'attemptId',
+      ));
+    });
+  }
+
+  QueryBuilder<QuestionModel, QuestionModel, QAfterFilterCondition>
+      attemptIdEqualTo(
+    String? value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'attemptId',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<QuestionModel, QuestionModel, QAfterFilterCondition>
+      attemptIdGreaterThan(
+    String? value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'attemptId',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<QuestionModel, QuestionModel, QAfterFilterCondition>
+      attemptIdLessThan(
+    String? value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'attemptId',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<QuestionModel, QuestionModel, QAfterFilterCondition>
+      attemptIdBetween(
+    String? lower,
+    String? upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'attemptId',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<QuestionModel, QuestionModel, QAfterFilterCondition>
+      attemptIdStartsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.startsWith(
+        property: r'attemptId',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<QuestionModel, QuestionModel, QAfterFilterCondition>
+      attemptIdEndsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.endsWith(
+        property: r'attemptId',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<QuestionModel, QuestionModel, QAfterFilterCondition>
+      attemptIdContains(String value, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.contains(
+        property: r'attemptId',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<QuestionModel, QuestionModel, QAfterFilterCondition>
+      attemptIdMatches(String pattern, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.matches(
+        property: r'attemptId',
+        wildcard: pattern,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<QuestionModel, QuestionModel, QAfterFilterCondition>
+      attemptIdIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'attemptId',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<QuestionModel, QuestionModel, QAfterFilterCondition>
+      attemptIdIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        property: r'attemptId',
+        value: '',
+      ));
+    });
+  }
+
   QueryBuilder<QuestionModel, QuestionModel, QAfterFilterCondition>
       correctAnswerEqualTo(
     String value, {
@@ -1397,6 +1566,19 @@ extension QuestionModelQueryLinks
 
 extension QuestionModelQuerySortBy
     on QueryBuilder<QuestionModel, QuestionModel, QSortBy> {
+  QueryBuilder<QuestionModel, QuestionModel, QAfterSortBy> sortByAttemptId() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'attemptId', Sort.asc);
+    });
+  }
+
+  QueryBuilder<QuestionModel, QuestionModel, QAfterSortBy>
+      sortByAttemptIdDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'attemptId', Sort.desc);
+    });
+  }
+
   QueryBuilder<QuestionModel, QuestionModel, QAfterSortBy>
       sortByCorrectAnswer() {
     return QueryBuilder.apply(this, (query) {
@@ -1493,6 +1675,19 @@ extension QuestionModelQuerySortBy
 
 extension QuestionModelQuerySortThenBy
     on QueryBuilder<QuestionModel, QuestionModel, QSortThenBy> {
+  QueryBuilder<QuestionModel, QuestionModel, QAfterSortBy> thenByAttemptId() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'attemptId', Sort.asc);
+    });
+  }
+
+  QueryBuilder<QuestionModel, QuestionModel, QAfterSortBy>
+      thenByAttemptIdDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'attemptId', Sort.desc);
+    });
+  }
+
   QueryBuilder<QuestionModel, QuestionModel, QAfterSortBy>
       thenByCorrectAnswer() {
     return QueryBuilder.apply(this, (query) {
@@ -1601,6 +1796,13 @@ extension QuestionModelQuerySortThenBy
 
 extension QuestionModelQueryWhereDistinct
     on QueryBuilder<QuestionModel, QuestionModel, QDistinct> {
+  QueryBuilder<QuestionModel, QuestionModel, QDistinct> distinctByAttemptId(
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'attemptId', caseSensitive: caseSensitive);
+    });
+  }
+
   QueryBuilder<QuestionModel, QuestionModel, QDistinct> distinctByCorrectAnswer(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -1656,6 +1858,12 @@ extension QuestionModelQueryProperty
   QueryBuilder<QuestionModel, int, QQueryOperations> idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'id');
+    });
+  }
+
+  QueryBuilder<QuestionModel, String?, QQueryOperations> attemptIdProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'attemptId');
     });
   }
 

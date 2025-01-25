@@ -63,8 +63,8 @@ dependencies:
   path_provider: ^2.1.4
   lottie:
   skeletonizer:
-  isar: ^3.1.0+1
-  isar_flutter_libs: ^3.1.0+1
+  isar:
+  isar_flutter_libs:
 
 
 flutter_assets:

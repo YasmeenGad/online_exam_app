@@ -49,8 +49,8 @@ class QuestionsRepositoryImpl implements QuestionsRepository {
   }
 
   @override
-  Future<void> saveQuestion(QuestionModel question) async {
-      await _localDataSource.saveQuestion(question);
+  Future<void> saveQuestion(QuestionModel question , String attemptId) async {
+      await _localDataSource.saveQuestion(question, attemptId);
   }
 
   @override

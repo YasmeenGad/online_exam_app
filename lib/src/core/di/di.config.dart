@@ -143,8 +143,12 @@ extension GetItInjectableX on _i1.GetIt {
         ));
     gh.factory<_i35.QuestionsUseCase>(
         () => _i35.QuestionsUseCase(gh<_i33.QuestionsRepository>()));
-    gh.factory<_i36.QuestionsViewModel>(
-        () => _i36.QuestionsViewModel(gh<_i35.QuestionsUseCase>()));
+    gh.factory<_i36.QuestionsViewModel>(() => _i36.QuestionsViewModel(
+          gh<_i35.QuestionsUseCase>(),
+          gh<_i21.OfflineAuthDataSource>(),
+          gh<_i26.QuestionOfflineDataSource>(),
+          gh<_i29.QuestionsOfflineDatasource>(),
+        ));
     gh.factory<_i37.SubjectCubit>(
         () => _i37.SubjectCubit(gh<_i18.ExamUseCase>()));
     gh.factory<_i38.AuthViewModel>(() => _i38.AuthViewModel(

@@ -26,8 +26,8 @@ class QuestionsUseCase {
         token, checkQuestionRequestEntity);
   }
 
-  Future<void> saveQuestion(QuestionModel question) async {
-    await _questionsRepository.saveQuestion(question);
+  Future<void> saveQuestion(QuestionModel question , String attemptId) async {
+    await _questionsRepository.saveQuestion(question , attemptId);
   }
 
   Future<List<QuestionModel>> getIsarQuestions() async {

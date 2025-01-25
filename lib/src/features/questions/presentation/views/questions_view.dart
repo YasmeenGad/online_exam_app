@@ -1,11 +1,14 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:online_exam_app/src/core/di/di.dart';
 import 'package:online_exam_app/src/core/styles/app_colors.dart';
 import 'package:online_exam_app/src/features/questions/presentation/cubit/questions_action.dart';
 import 'package:online_exam_app/src/features/questions/presentation/cubit/questions_view_model.dart';
 import 'package:online_exam_app/src/features/questions/presentation/views/score_view.dart';
+
 import '../../data/api/models/isar/question_model.dart';
 import '../../domain/entities/request/check_question_request_entity.dart';
 import '../../domain/entities/response/question_response_entity.dart';
@@ -15,7 +18,7 @@ import '../widgets/question_card.dart';
 import '../widgets/question_indicator.dart';
 import '../widgets/question_navigation_buttons.dart';
 import '../widgets/timer_display.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
+
 
 class QuestionsView extends StatefulWidget {
   const QuestionsView({super.key, required this.examId});
@@ -35,14 +38,21 @@ class _QuestionsViewState extends State<QuestionsView> {
   int examDuration = 0;
   bool isTimerStarted = false;
   String? selectedAnswer;
-  List<String?> selectedAnswers = [];
 
   @override
   void initState() {
     super.initState();
     questionsViewModel = getIt<QuestionsViewModel>();
-    questionsViewModel
-        .doAction(GetQuestionsAction(context: context, examId: widget.examId));
+
+    questionsViewModel.generateNewAttemptId();
+
+    questionsViewModel.doAction(GetQuestionsAction(context: context, examId: widget.examId));
+  }
+
+  @override
+  void dispose() {
+    timer?.cancel();
+    super.dispose();
   }
 
   void startTimer() {
@@ -102,7 +112,9 @@ class _QuestionsViewState extends State<QuestionsView> {
                   ),
                 ),
                 onPressed: () async {
-                  var score = await questionsViewModel.getScoreStatistics();
+                  var score = await questionsViewModel.getScoreStatistics(
+                    questionsViewModel.currentAttemptId!,
+                  );
                   Navigator.pop(context);
                   Navigator.push(
                     context,
@@ -112,6 +124,7 @@ class _QuestionsViewState extends State<QuestionsView> {
                         incorrectAnswers: score.incorrectAnswers,
                         percentage: score.percentage,
                         examId: score.examId,
+                      //  attemptId: questionsViewModel.currentAttemptId!,
                       ),
                     ),
                   );
@@ -157,13 +170,13 @@ class _QuestionsViewState extends State<QuestionsView> {
       correctAnswer: question.correct ?? '',
       userAnswer: selectedAnswer,
       suggestedAnswers: question.answers
-              ?.map((suggestedAnswer) =>
-                  AnswerModel(answerText: suggestedAnswer.answer ?? ''))
-              .toList() ??
-          [],
+          ?.map((suggestedAnswer) =>
+          AnswerModel(answerText: suggestedAnswer.answer ?? ''))
+          .toList() ?? [],
+      attemptId: questionsViewModel.currentAttemptId!,
     );
 
-    questionsViewModel.saveQuestion(questionModel);
+    await questionsViewModel.saveQuestionsWithCurrentAttemptId([questionModel]);
   }
 
   void onNextQuestion() async {
@@ -173,7 +186,9 @@ class _QuestionsViewState extends State<QuestionsView> {
         selectedAnswer = null;
       });
     } else {
-      var score = await questionsViewModel.getScoreStatistics();
+      var score = await questionsViewModel.getScoreStatistics(
+        questionsViewModel.currentAttemptId!,
+      );
       Navigator.push(
         context,
         MaterialPageRoute(
@@ -182,6 +197,7 @@ class _QuestionsViewState extends State<QuestionsView> {
             incorrectAnswers: score.incorrectAnswers,
             percentage: score.percentage,
             examId: score.examId,
+          //  attemptId: questionsViewModel.currentAttemptId!,
           ),
         ),
       );
@@ -207,15 +223,14 @@ class _QuestionsViewState extends State<QuestionsView> {
             if (state is GetQuestionsLoading) {
               return Center(
                 child: SpinKitPouringHourGlassRefined(
-                  color: Colors.blue, // Replace with your preferred color
-                  size: 50.0, // Adjust size as needed
+                  color: Colors.blue,
+                  size: 50.0,
                 ),
               );
             } else if (state is GetQuestionsSuccess) {
               questions = state.questionResponseEntity.questions ?? [];
               examDuration = questions.isNotEmpty
-                  ? state.questionResponseEntity.questions![0].exam?.duration ??
-                      0
+                  ? state.questionResponseEntity.questions![0].exam?.duration ?? 0
                   : 0;
 
               if (!isTimerStarted && questions.isNotEmpty) {
@@ -234,7 +249,7 @@ class _QuestionsViewState extends State<QuestionsView> {
                     SliverToBoxAdapter(
                       child: TimerDisplay(
                           time:
-                              '${(timeRemaining ~/ 60).toString().padLeft(2, '0')}:${(timeRemaining % 60).toString().padLeft(2, '0')}'),
+                          '${(timeRemaining ~/ 60).toString().padLeft(2, '0')}:${(timeRemaining % 60).toString().padLeft(2, '0')}'),
                     ),
                     SliverToBoxAdapter(
                       child: Column(
@@ -271,7 +286,7 @@ class _QuestionsViewState extends State<QuestionsView> {
                     SliverToBoxAdapter(
                       child: TimerDisplay(
                           time:
-                              '${(timeRemaining ~/ 60).toString().padLeft(2, '0')}:${(timeRemaining % 60).toString().padLeft(2, '0')}'),
+                          '${(timeRemaining ~/ 60).toString().padLeft(2, '0')}:${(timeRemaining % 60).toString().padLeft(2, '0')}'),
                     ),
                     SliverToBoxAdapter(
                       child: Column(

@@ -12,7 +12,7 @@ abstract class QuestionsRepository {
   Future<Result<CheckQuestionResponseEntity>> checkQuestions(
       String token, CheckQuestionRequestEntity checkQuestionRequestEntity);
 
-  Future<void> saveQuestion(QuestionModel question);
+  Future<void> saveQuestion(QuestionModel question , String attemptId);
 
   Future<List<QuestionModel>> getIsarQuestions();
 

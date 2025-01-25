@@ -56,15 +56,11 @@ class ExamItem extends StatelessWidget {
                           exams.title.toString(),
                           style: AppStyles.styleMedium16(context),
                         ),
-                        Expanded(
-                          child: Align(
-                            alignment: Alignment.topRight,
-                            child: Text(
-                              '${exams.duration.toString()} ${AppLocalizations.of(context)?.minutes}',
-                              style: AppStyles.styleRegular13(context)
-                                  .copyWith(color: AppColors.blueBaseColor),
-                            ),
-                          ),
+                        Spacer(),
+                        Text(
+                          '${exams.duration.toString()} ${AppLocalizations.of(context)?.minutes}',
+                          style: AppStyles.styleRegular13(context)
+                              .copyWith(color: AppColors.blueBaseColor),
                         ),
                       ],
                     ),

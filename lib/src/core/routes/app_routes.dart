@@ -54,15 +54,16 @@ class AppRoutes {
         return ExamDetailsView(
           examId: arguments.id!,
           subjectImage: arguments.subjectImage!,
-        );
+            );
       },
       RoutesName.questionsView: (context) => QuestionsView(
             examId: ModalRoute.of(context)!.settings.arguments as String,
+          // attemptId: ModalRoute.of(context)!.settings.arguments as String,
           ),
       RoutesName.subjectView: (context) => SubjectsView(),
       RoutesName.questionsCard: (context) => QuestionsCard(),
       RoutesName.answerView: (context) => AnswerView(
-          navigation: ModalRoute.of(context)!.settings.arguments as  VoidCallback ),
+          ),
 
     };
   }
