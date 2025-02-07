@@ -1,6 +1,6 @@
 # Quizzy
 
-**Quizzy** This app is designed to help users improve their knowledge by taking quizzes in various subjects such as HTML, CSS,Flutter and JavaScript.
+**Quizzy** app is designed to help users improve their knowledge by taking quizzes in various subjects such as HTML, CSS,Flutter and JavaScript.
 ---
 
 ## 📸 Screenshots
