@@ -1,36 +1,34 @@
-# Online Exam App
+# Quizzy
 
-**Online Exam App** is a mobile application designed to facilitate online exam-taking for both students and instructors. It allows instructors to create and manage exams while providing students with an interactive platform to take exams, track their progress, and view results in real time.
+**Quizzy** This app is designed to help users improve their knowledge by taking quizzes in various subjects such as HTML, CSS,Flutter and JavaScript.
+---
+
+## 📸 Screenshots
+
+###
+![Screenshot](https://github.com/user-attachments/assets/a5ddb728-3a6a-4a24-963d-05ad2781e2dd)
+
+###
+![Screenshots](https://github.com/user-attachments/assets/8af1b0a6-b5b9-4c34-9b2d-b50fd0d75cc2)
+
 
 ---
 
 ## 🚀 Features
 
 - **User Authentication**: Secure login and registration system for both students and instructors.
-- **Exam Creation**: Instructors can easily create and manage exams with various types of questions.
-- **Real-Time Exam Participation**: Students can take exams and track their progress live.
-- **Instant Feedback**: Receive immediate results after completing an exam.
-- **Multiple Question Types**: Support for multiple-choice, true/false, short answer, and essay questions.
-- **Progress Tracking**: Real-time progress indicator for both students and instructors.
-- **Responsive Design**: Optimized for both Android and iOS devices.
+- **Browse Quizzes by Subject**: Easily find quizzes categorized by subject for focused learning.
+- **Search for Quizzes**: Use the search functionality to locate specific quizzes.
+- **Take Timed Quizzes**: Challenge yourself with quizzes that have a set time limit.
+- **Review Results**: View your quiz results immediately and understand your mistakes.
+- **Learn from Mistakes**: Review incorrect answers with detailed feedback to enhance learning.
 
 ---
 
-##  Technology Stack
-
-- **Frontend**: 
-  - Flutter (Cross-platform mobile development)
-  - Dart (Programming language)
-  - Firebase Authentication (User Authentication)
-  - Firestore (Real-time database)
-
-
-##  Usage
+## 📌 Usage
 
 ### For Students:
 1. Log in using your credentials.
 2. Browse available exams and join them.
 3. Complete your exam by answering the questions.
 4. Receive real-time results after submission.
- 
-
