@@ -97,5 +97,14 @@
     "sendSuccessful" : "Send successful",
     "results": "Results",
     "answers": "Answers",
-    "language": "Language"
+    "language": "Language",
+    "showResults": "Show Results",
+    "noResultsFound": "No results found",
+    "correctedAnswers": "Corrected Answers",
+    "tryAgain": "Try again",
+    "correct": "Correct",
+    "inCorrect": "Incorrect",
+    "examScore": "Exam Score",
+    "yourScore": "your score",
+    "noQuestionsFound": "No Questions Found"
 }

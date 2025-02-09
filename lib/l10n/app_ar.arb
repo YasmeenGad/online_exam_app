@@ -97,5 +97,14 @@
   "sendSuccessful" : "تم الإرسال بنجاح",
   "results": "النتائج",
   "answers": "الإجابة",
-  "language": "اللغة"
+  "language": "اللغة",
+  "showResults": "عرض النتائج",
+  "noResultsFound": "لم يتم العثور على نتائج",
+  "correctedAnswers": "الإجابات الصحيحة",
+  "tryAgain": "حاول مرة أخرى",
+  "correct": "صحيح",
+  "inCorrect": "خاطئ",
+  "examScore": "نتيجة الامتحان",
+  "yourScore": "نتيجتك",
+  "noQuestionsFound": "لم يتم العثور على أسئلة"
 }

@@ -17,7 +17,6 @@ import '../../features/auth/presentation/views/reset_password_view.dart';
 import '../../features/exam/presentation/views/exam_view.dart';
 import '../../features/exam/presentation/views/subjects_view.dart';
 import '../../features/exam/presentation/widgets/exam_argument.dart';
-import '../../features/questions/presentation/widgets/question_argument.dart';
 import '../../features/results/presentation/view/answer_view.dart';
 import '../../features/splash/view/splash_view.dart';
 
@@ -63,7 +62,10 @@ class AppRoutes {
       RoutesName.subjectView: (context) => SubjectsView(),
       RoutesName.questionsCard: (context) => QuestionsCard(),
       RoutesName.answerView: (context) => AnswerView(
-          ),
+        navigation: (ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>)['navigation'] as VoidCallback?,
+        attemptId: (ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>)['attemptId'] as String,
+      ),
+
 
     };
   }

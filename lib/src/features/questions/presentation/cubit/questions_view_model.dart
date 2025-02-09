@@ -124,10 +124,6 @@ class QuestionsViewModel extends Cubit<QuestionsState> {
     }
   }
 
-  Future<List<QuestionModel>> getQuestionsByAttemptId(String attemptId) async {
-    return await offlineQuestionsDataSource.getQuestionsByAttempt(attemptId);
-  }
-
   Future<List<Map<String, dynamic>>> getAttemptsWithQuestionCount() async {
     return await offlineQuestionsDataSource.getAttemptsWithQuestionCount();
   }

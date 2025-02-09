@@ -124,7 +124,7 @@ class _QuestionsViewState extends State<QuestionsView> {
                         incorrectAnswers: score.incorrectAnswers,
                         percentage: score.percentage,
                         examId: score.examId,
-                      //  attemptId: questionsViewModel.currentAttemptId!,
+                        attemptId: questionsViewModel.currentAttemptId!,
                       ),
                     ),
                   );
@@ -197,7 +197,7 @@ class _QuestionsViewState extends State<QuestionsView> {
             incorrectAnswers: score.incorrectAnswers,
             percentage: score.percentage,
             examId: score.examId,
-          //  attemptId: questionsViewModel.currentAttemptId!,
+           attemptId: questionsViewModel.currentAttemptId!,
           ),
         ),
       );

@@ -97,5 +97,14 @@
   "sendSuccessful" : "Erfolgreich gesendet",
   "results": "Ergebnisse",
   "answers": "Antworten",
-  "language": "Sprache"
+  "language": "Sprache",
+  "showResults": "Ergebnisse anzeigen",
+  "noResultsFound": "Keine Ergebnisse gefunden",
+  "correctedAnswers": "Korrigierte Antworten",
+  "tryAgain": "Versuchen Sie es erneut",
+  "correct": "Richtig",
+  "inCorrect": "Falsch",
+  "examScore": "Prüfungsergebnis",
+  "yourScore": "Ihre Punktzahl",
+  "noQuestionsFound": "Keine Fragen gefunden"
 }
