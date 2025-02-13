@@ -106,5 +106,9 @@
   "inCorrect": "خاطئ",
   "examScore": "نتيجة الامتحان",
   "yourScore": "نتيجتك",
-  "noQuestionsFound": "لم يتم العثور على أسئلة"
+  "noQuestionsFound": "لم يتم العثور على أسئلة",
+  "cancel": "الغاء",
+  "logoutDesc": "هل تريد الخروج؟",
+  "logout": "خروج"
+
 }

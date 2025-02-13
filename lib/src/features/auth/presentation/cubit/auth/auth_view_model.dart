@@ -5,7 +5,7 @@ import 'package:online_exam_app/src/features/auth/data/api/models/response/forge
 import 'package:online_exam_app/src/features/auth/data/api/models/response/reset_password_response.dart';
 import 'package:online_exam_app/src/features/auth/data/api/models/response/sign_in_response.dart';
 import 'package:online_exam_app/src/features/auth/data/api/models/response/sign_up_response.dart';
-import 'package:online_exam_app/src/features/auth/data/datasources/contracts/offline_auth_datasource.dart';
+import 'package:online_exam_app/src/features/auth/data/data_sources/contracts/offline_auth_datasource.dart';
 import 'package:online_exam_app/src/features/auth/domain/core/AppExceptions.dart';
 import 'package:online_exam_app/src/core/utils/errors/result.dart';
 import 'package:online_exam_app/src/features/auth/domain/entities/forget_password_entity.dart';

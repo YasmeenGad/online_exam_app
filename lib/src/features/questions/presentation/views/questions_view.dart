@@ -29,7 +29,7 @@ class QuestionsView extends StatefulWidget {
   State<QuestionsView> createState() => _QuestionsViewState();
 }
 
-class _QuestionsViewState extends State<QuestionsView> {
+class _QuestionsViewState extends State<QuestionsView> with WidgetsBindingObserver {
   late QuestionsViewModel questionsViewModel;
   int currentQuestionIndex = 0;
   late List<QuestionsEntity> questions = [];
@@ -42,6 +42,7 @@ class _QuestionsViewState extends State<QuestionsView> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     questionsViewModel = getIt<QuestionsViewModel>();
 
     questionsViewModel.generateNewAttemptId();
@@ -51,10 +52,21 @@ class _QuestionsViewState extends State<QuestionsView> {
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     timer?.cancel();
     super.dispose();
   }
 
+
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.paused) {
+      timer?.cancel();
+    } else if (state == AppLifecycleState.resumed) {
+      if (isTimerStarted && timeRemaining > 0) {
+        startTimer();
+      }
+    }
+  }
   void startTimer() {
     isTimerStarted = true;
 
@@ -238,10 +250,12 @@ class _QuestionsViewState extends State<QuestionsView> {
                 startTimer();
                 isTimerStarted = true;
               }
+
               if (questions.isEmpty) {
                 return NoQuestionsView(
                     onBackPressed: () => Navigator.pop(context));
               }
+
               return Padding(
                 padding: const EdgeInsets.only(top: 56, left: 16, right: 16),
                 child: CustomScrollView(

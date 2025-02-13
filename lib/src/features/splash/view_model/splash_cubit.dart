@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:online_exam_app/src/core/di/di.dart';
 import '../../../core/routes/routes_name.dart';
-import '../../auth/data/datasources/contracts/offline_auth_datasource.dart';
+import '../../auth/data/data_sources/contracts/offline_auth_datasource.dart';
 
 part 'splash_state.dart';
 

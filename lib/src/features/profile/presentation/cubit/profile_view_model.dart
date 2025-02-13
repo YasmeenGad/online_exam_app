@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';
-import 'package:online_exam_app/src/features/auth/data/datasources/contracts/offline_auth_datasource.dart';
+import 'package:online_exam_app/src/features/auth/data/data_sources/contracts/offline_auth_datasource.dart';
 import 'package:online_exam_app/src/features/auth/domain/core/AppExceptions.dart';
 import 'package:online_exam_app/src/features/profile/domain/entities/response/edit_profile_response_entity.dart';
 import 'package:online_exam_app/src/features/profile/domain/entities/response/profile_data_response.dart';

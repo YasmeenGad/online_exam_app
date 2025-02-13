@@ -13,7 +13,7 @@ import 'package:online_exam_app/src/features/questions/presentation/cubit/questi
 import 'package:uuid/uuid.dart';
 
 import '../../../../core/utils/errors/app_exception.dart';
-import '../../../auth/data/datasources/contracts/offline_auth_datasource.dart';
+import '../../../auth/data/data_sources/contracts/offline_auth_datasource.dart';
 import '../../data/api/models/isar/question_model.dart';
 import '../../data/datasource/contracts/offline_datasource/question_offline_datasource.dart';
 import '../../domain/entities/isar/exam_score.dart';

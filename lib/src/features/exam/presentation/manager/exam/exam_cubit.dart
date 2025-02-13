@@ -5,7 +5,7 @@ import 'package:meta/meta.dart';
 import 'package:online_exam_app/src/core/utils/errors/result.dart';
 import '../../../../../core/di/di.dart';
 import '../../../../../core/utils/errors/app_exception.dart';
-import '../../../../auth/data/datasources/contracts/offline_auth_datasource.dart';
+import '../../../../auth/data/data_sources/contracts/offline_auth_datasource.dart';
 import '../../../data/data_sources/contracts/exam_offline_datasource.dart';
 import '../../../domain/entities/exams_entity.dart';
 import '../../../domain/use_case/exam_use_case.dart';

@@ -7,7 +7,7 @@ import 'package:online_exam_app/src/features/exam/domain/entities/subject_entity
 import 'package:online_exam_app/src/features/exam/domain/use_case/exam_use_case.dart';
 import '../../../../../core/di/di.dart';
 import '../../../../../core/utils/errors/app_exception.dart';
-import '../../../../auth/data/datasources/contracts/offline_auth_datasource.dart';
+import '../../../../auth/data/data_sources/contracts/offline_auth_datasource.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 part 'subject_state.dart';

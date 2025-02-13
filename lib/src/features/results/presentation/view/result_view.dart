@@ -59,7 +59,7 @@ class ResultView extends StatelessWidget {
                             RoutesName.answerView,
                             arguments: {
                               'attemptId': attempt['attemptId'],
-                              'navigation': () {
+                              'onPressed': () {
                                 Navigator.pop(context);
                               },
                             },

@@ -106,5 +106,9 @@
   "inCorrect": "Falsch",
   "examScore": "Prüfungsergebnis",
   "yourScore": "Ihre Punktzahl",
-  "noQuestionsFound": "Keine Fragen gefunden"
+  "noQuestionsFound": "Keine Fragen gefunden",
+  "cancel": "Annulla",
+  "logoutDesc": "Vuoi uscire?",
+  "logout": "Esci"
+
 }

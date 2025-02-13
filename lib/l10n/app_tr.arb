@@ -106,6 +106,9 @@
     "inCorrect": "Yanlış",
     "examScore": "Sınav sonucu",
     "yourScore": "Puanınız",
-    "noQuestionsFound": "Soru bulunamadı"
+    "noQuestionsFound": "Soru bulunamadı",
+    "cancel": "İptal",
+    "logoutDesc": "Çıkış yapmak istiyor musunuz?",
+    "logout": "Çıkış Yap"
 }
   

@@ -106,5 +106,8 @@
     "inCorrect": "Incorrect",
     "examScore": "Exam Score",
     "yourScore": "your score",
-    "noQuestionsFound": "No Questions Found"
+    "noQuestionsFound": "No Questions Found",
+    "cancel": "Cancel",
+    "logoutDesc": "Do you want to logout?",
+    "logout": "Logout"
 }

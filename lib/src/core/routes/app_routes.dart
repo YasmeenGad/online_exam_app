@@ -62,7 +62,7 @@ class AppRoutes {
       RoutesName.subjectView: (context) => SubjectsView(),
       RoutesName.questionsCard: (context) => QuestionsCard(),
       RoutesName.answerView: (context) => AnswerView(
-        navigation: (ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>)['navigation'] as VoidCallback?,
+        onPressed: (ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>)['navigation'] as VoidCallback?,
         attemptId: (ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>)['attemptId'] as String,
       ),
 
