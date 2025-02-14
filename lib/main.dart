@@ -12,7 +12,6 @@ import 'package:provider/provider.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // تهيئة Hive وفتح البوكسات
   await Hive.initFlutter();
   await Hive.openBox('userToken');
   await Hive.openBox<String>('imageCache');

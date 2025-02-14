@@ -83,7 +83,7 @@ class _QuestionsViewState extends State<QuestionsView> with WidgetsBindingObserv
   }
 
   void showTimeOutDialog() {
-    timer?.cancel(); // إيقاف الـ Timer
+    timer?.cancel();
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -242,7 +242,7 @@ class _QuestionsViewState extends State<QuestionsView> with WidgetsBindingObserv
             } else if (state is GetQuestionsSuccess) {
               questions = state.questionResponseEntity.questions ?? [];
               examDuration = questions.isNotEmpty
-                  ? 1
+                  ? state.questionResponseEntity.questions![0].exam?.duration ?? 0
                   : 0;
 
               if (!isTimerStarted && questions.isNotEmpty) {
