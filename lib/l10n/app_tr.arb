@@ -97,6 +97,18 @@
     "sendSuccessful" : "Başarılı bir şekilde gönderildi",
     "results": "Sonuçlar",
     "answers": "Cevaplar",
-    "language": "Dil"
+    "language": "Dil",
+    "showResults": "Sonuçları göster",
+    "noResultsFound": "Sonuç bulunamadı",
+    "correctedAnswers": "Düzeltildi Cevaplar",
+    "tryAgain": "Tekrar dene",
+    "correct": "Doğru",
+    "inCorrect": "Yanlış",
+    "examScore": "Sınav sonucu",
+    "yourScore": "Puanınız",
+    "noQuestionsFound": "Soru bulunamadı",
+    "cancel": "İptal",
+    "logoutDesc": "Çıkış yapmak istiyor musunuz?",
+    "logout": "Çıkış Yap"
 }
   

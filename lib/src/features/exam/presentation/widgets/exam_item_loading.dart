@@ -16,7 +16,6 @@ class ExamItemLoading extends StatelessWidget {
           physics: BouncingScrollPhysics(),
           itemCount: 2,
           itemBuilder: (context, index) => shadowContainer(
-            height: 110,
             padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,6 +43,7 @@ class ExamItemLoading extends StatelessWidget {
                 ),
               ],
             ),
+            width: 0.5,
           ),
         ),
       ),

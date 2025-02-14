@@ -19,13 +19,14 @@ class CustomAppBar extends StatelessWidget {
       children: [
         showArrow == true
             ? GestureDetector(
-                onTap: () {
-                  if (navigation != null) {
-                    navigation!();
-                  } else {
-                    Navigator.pop(context);
-                  }
-                },
+                // onTap: () {
+                //   if (navigation != null) {
+                //     navigation!();
+                //   } else {
+                //     Navigator.pop(context);
+                //   }
+                // },
+          onTap: navigation ?? () => Navigator.pop(context),
                 child: const Icon(
                   Icons.arrow_back_ios,
                   color: AppColors.blackBaseColor,

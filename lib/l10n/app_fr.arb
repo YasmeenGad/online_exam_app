@@ -97,5 +97,17 @@
     "sendSuccessful" : "Envoyé avec succès",
     "results": "Résultats",
     "answers": "Réponses",
-    "language": "Langue"
+    "language": "Langue",
+    "showResults": "Afficher les résultats",
+    "noResultsFound": "Aucun résultat trouvé",
+    "correctedAnswers": "Réponses corrigées",
+    "tryAgain": "Réessayer",
+    "correct": "Correct",
+    "inCorrect": "Incorrect",
+    "examScore": "Score de l'examen",
+    "yourScore": "Votre score",
+    "noQuestionsFound": "Aucune question trouvée",
+    "cancel": "Annuler",
+    "logoutDesc": "Voulez-vous vous déconnecter ?",
+    "logout": "Déconnexion"
 }

@@ -11,4 +11,3 @@ class questionsArguments {
     required this.examId,
   });
 }
-

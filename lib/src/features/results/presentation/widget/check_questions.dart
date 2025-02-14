@@ -2,7 +2,8 @@ import 'package:hive/hive.dart';
 import '../../../questions/domain/entities/response/check_question_response_entity.dart';
 
 class CheckQuestionRepository {
-  Future<void> saveCheckQuestions(List<CheckQuestionResponseEntity> questions) async {
+  Future<void> saveCheckQuestions(
+      List<CheckQuestionResponseEntity> questions) async {
     var box = await Hive.openBox<CheckQuestionResponseEntity>('checkQuestions');
     await box.addAll(questions);
   }

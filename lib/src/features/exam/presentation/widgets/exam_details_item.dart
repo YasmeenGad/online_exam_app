@@ -38,7 +38,7 @@ class ExamDetailsItem extends StatelessWidget {
                             width: 42,
                             imageUrl: subjectImage,
                           ),
-                          SizedBox(width: 7),
+                          SizedBox(width: 10),
                           Text(
                             '${AppLocalizations.of(context)?.languages}',
                             style: AppStyles.styleMedium20(context),

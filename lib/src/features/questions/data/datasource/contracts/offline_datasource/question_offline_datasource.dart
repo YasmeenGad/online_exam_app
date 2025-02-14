@@ -9,7 +9,6 @@ abstract class QuestionsOfflineDatasource {
 
   Future<void> cacheCheckQuestions(CheckQuestionResponseEntity checkQuestion);
 
-  Future<CheckQuestionResponseEntity?> getCachedCheckQuestions(CheckQuestionRequestEntity checkQuestionRequestEntity);
-
-
+  Future<CheckQuestionResponseEntity?> getCachedCheckQuestions(
+      CheckQuestionRequestEntity checkQuestionRequestEntity);
 }

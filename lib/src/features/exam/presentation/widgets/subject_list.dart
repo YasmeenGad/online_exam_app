@@ -16,7 +16,8 @@ class SubjectList extends StatelessWidget {
          physics: BouncingScrollPhysics(),
          padding: const EdgeInsets.only(bottom: 20, top: 10),
         itemBuilder: (context, index) => shadowContainer(
-          height: 80,
+          padding: EdgeInsets.symmetric(vertical: 10),
+          width: 0.5,
           child: SubjectListItem(subject: subjects[index]),
         ),
         separatorBuilder: (context, index) => SizedBox(

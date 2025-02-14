@@ -4,10 +4,9 @@ import '../../../../core/styles/app_colors.dart';
 
 Container shadowContainer(
     {required Widget child,
-    required double height,width,
+    required double width,
     EdgeInsetsGeometry? padding}) {
   return Container(
-    height: height,
     padding: padding,
     decoration: BoxDecoration(
       color: Colors.white,

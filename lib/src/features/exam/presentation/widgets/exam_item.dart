@@ -34,7 +34,6 @@ class ExamItem extends StatelessWidget {
         );
       },
       child: shadowContainer(
-          height: 110,
           width: 0.5,
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
           child: Row(
@@ -57,15 +56,11 @@ class ExamItem extends StatelessWidget {
                           exams.title.toString(),
                           style: AppStyles.styleMedium16(context),
                         ),
-                        Expanded(
-                          child: Align(
-                            alignment: Alignment.topRight,
-                            child: Text(
-                              '${exams.duration.toString()} ${AppLocalizations.of(context)?.minutes}',
-                              style: AppStyles.styleRegular13(context)
-                                  .copyWith(color: AppColors.blueBaseColor),
-                            ),
-                          ),
+                        Spacer(),
+                        Text(
+                          '${exams.duration.toString()} ${AppLocalizations.of(context)?.minutes}',
+                          style: AppStyles.styleRegular13(context)
+                              .copyWith(color: AppColors.blueBaseColor),
                         ),
                       ],
                     ),
@@ -78,16 +73,20 @@ class ExamItem extends StatelessWidget {
                           .copyWith(color: AppColors.grayColor),
                     ),
                     SizedBox(height: 13),
-                    Flexible(
-                      child: Row(
-                        children: [
-                          Text('${AppLocalizations.of(context)?.date}: ${formattedDate}',
-                              style: AppStyles.styleMedium13(context)),
-                          SizedBox(width: 10),
-                          Text("${AppLocalizations.of(context)?.time}: ${formattedTime}",
-                              style: AppStyles.styleMedium13(context)),
-                        ],
-                      ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                              '${AppLocalizations.of(context)?.date}: ${formattedDate}',
+                              style: AppStyles.styleMedium12(context)),
+                        ),
+                        SizedBox(width: 10),
+                        Expanded(
+                          child: Text(
+                              "${AppLocalizations.of(context)?.time}: ${formattedTime}",
+                              style: AppStyles.styleMedium12(context)),
+                        )
+                      ],
                     ),
                   ],
                 ),

@@ -2,6 +2,8 @@ import 'package:injectable/injectable.dart';
 import 'package:online_exam_app/src/features/questions/domain/contracts/questions_repository.dart';
 
 import '../../../../core/utils/errors/result.dart';
+import '../../data/api/models/isar/question_model.dart';
+import '../entities/isar/exam_score.dart';
 import '../entities/request/check_question_request_entity.dart';
 import '../entities/response/check_question_response_entity.dart';
 import '../entities/response/question_response_entity.dart';
@@ -22,5 +24,17 @@ class QuestionsUseCase {
       CheckQuestionRequestEntity checkQuestionRequestEntity) async {
     return await _questionsRepository.checkQuestions(
         token, checkQuestionRequestEntity);
+  }
+
+  Future<void> saveQuestion(QuestionModel question , String attemptId) async {
+    await _questionsRepository.saveQuestion(question , attemptId);
+  }
+
+  Future<List<QuestionModel>> getIsarQuestions() async {
+    return await _questionsRepository.getIsarQuestions();
+  }
+
+  Future<QuestionModel?> getQuestionById(String questionId) async {
+    return await _questionsRepository.getQuestionById(questionId);
   }
 }

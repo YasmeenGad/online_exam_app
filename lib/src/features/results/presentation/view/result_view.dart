@@ -1,112 +1,147 @@
 import 'package:flutter/material.dart';
-import 'package:online_exam_app/src/core/global/custom_appbar.dart';
 import "package:flutter_gen/gen_l10n/app_localizations.dart";
+import 'package:online_exam_app/generated/assets.dart';
+import 'package:online_exam_app/src/core/global/custom_appbar.dart';
 import 'package:online_exam_app/src/features/exam/presentation/widgets/shadow_container_widget.dart';
+
+import '../../../../core/di/di.dart';
 import '../../../../core/routes/routes_name.dart';
 import '../../../../core/styles/app_colors.dart';
 import '../../../../core/styles/app_styles.dart';
-import '../../../exam/presentation/widgets/cached_network_widget.dart';
+import '../../../questions/domain/entities/isar/exam_score.dart';
+import '../../../questions/presentation/cubit/questions_view_model.dart';
 
 class ResultView extends StatelessWidget {
   const ResultView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final questionsViewModel =
+        getIt<QuestionsViewModel>();
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: CustomAppBar(appBarTxt: '${AppLocalizations.of(context)?.results}')
+        title:
+            CustomAppBar(appBarTxt: '${AppLocalizations.of(context)?.results}'),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 35),
-            Text(
-              '${AppLocalizations.of(context)?.language}',
-              style: AppStyles.styleMedium20(context) ,
-            ),
-            SizedBox(height: 30),
-            ListView.separated(
-              separatorBuilder:(context, index) => SizedBox(height: 15),
-              shrinkWrap: true,
-              itemCount: 3,
-              itemBuilder: (context, index){
-                return  InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(context, RoutesName.answerView,
-                        arguments: (){
-                          Navigator.pop(context);
-                        });
+            const SizedBox(height: 20),
+            Expanded(
+              child: FutureBuilder<List<Map<String, dynamic>>>(
+                future: questionsViewModel.getAttemptsWithQuestionCount(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(child: CircularProgressIndicator());
+                  }
 
-                      },
-                      child: shadowContainer(
-                          height: 110,
+                  if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                    return Center(child: Text('${AppLocalizations.of(context)?.noResultsFound}'));
+                  }
+
+                  final attempts = snapshot.data!;
+                  return ListView.separated(
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(height: 15),
+                    shrinkWrap: true,
+                    itemCount: attempts.length,
+                    itemBuilder: (context, index) {
+                      final attempt = attempts[index];
+                      return InkWell(
+                        onTap: () {
+                          Navigator.pushNamed(
+                            context,
+                            RoutesName.answerView,
+                            arguments: {
+                              'attemptId': attempt['attemptId'],
+                              'onPressed': () {
+                                Navigator.pop(context);
+                              },
+                            },
+                          );
+                        },
+                        child: shadowContainer(
                           width: 0.5,
-                          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 15, vertical: 10),
                           child: Row(
                             children: [
-                              CachedNetworkWidget(
+                              Image.asset(
+                                Assets.imagesProfit,
                                 width: 60,
                                 height: 71,
-                                imageUrl: 'https://cdn-icons-png.flaticon.com/512/149/149071.png',
                               ),
-                              SizedBox(
-                                width: 12,
-                              ),
+                              const SizedBox(width: 12),
                               Expanded(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                         'Flutter',
-                                          style: AppStyles.styleMedium16(context),
+                                          '${AppLocalizations.of(context)?.exam} ${index + 1}',
+                                          style:
+                                              AppStyles.styleMedium16(context),
                                         ),
-                                        Expanded(
-                                          child: Align(
-                                            alignment: Alignment.topRight,
-                                            child: Text(
-                                              '30 ${AppLocalizations.of(context)?.minutes}',
-                                              style: AppStyles.styleRegular13(context)
-
-                                            ),
-                                          ),
+                                        Text(
+                                          '30 ${AppLocalizations.of(context)?.minutes}',
+                                          style:
+                                              AppStyles.styleRegular13(context),
                                         ),
                                       ],
                                     ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
+                                    const SizedBox(height: 5),
                                     Text(
-                                      "20 ${AppLocalizations.of(context)?.question}",
+                                      '${attempt['questionCount']} ${AppLocalizations.of(context)?.question}',
                                       style: AppStyles.styleRegular13(context)
                                           .copyWith(color: AppColors.grayColor),
                                     ),
-                                    SizedBox(height: 10),
-                                    Flexible(
-                                      child: Text('18 corrected answers in 25 min.',
-                                          style: AppStyles.styleMedium13(context).copyWith(
-                                            color: AppColors.blueBaseColor
-                                          )),
+                                    const SizedBox(height: 10),
+                                    FutureBuilder<ExamScore>(
+                                      future:
+                                          questionsViewModel.getScoreStatistics(
+                                              attempt['attemptId']),
+                                      builder: (context, scoreSnapshot) {
+                                        if (scoreSnapshot.connectionState ==
+                                            ConnectionState.waiting) {
+                                          return CircularProgressIndicator();
+                                        }
+                                        if (scoreSnapshot.hasError) {
+                                          return Text('${AppLocalizations.of(context)?.noResultsFound}');
+                                        }
+                                        final score = scoreSnapshot.data!;
+                                        return Text(
+                                          '${score.correctAnswers} ${AppLocalizations.of(context)?.correctedAnswers} ${attempt['questionCount']} ${AppLocalizations.of(context)?.question}',
+                                          style:
+                                              AppStyles.styleMedium13(context)
+                                                  .copyWith(
+                                                      color: AppColors
+                                                          .blueBaseColor),
+                                        );
+                                      },
                                     ),
                                   ],
                                 ),
                               ),
                             ],
-                          )),
-                    );
-
-              },
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                },
+              ),
             )
           ],
         ),
       ),
-
     );
   }
 }
-
