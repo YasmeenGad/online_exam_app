@@ -68,6 +68,8 @@ class AuthViewModel extends Cubit<AuthState> {
         {
           emit(LoginSuccess(signInResponse: result.data!));
           await offlineAuthDataSource.saveToken(result.data!.token);
+          debugPrint("Token: ${result.data!.token}");
+          debugPrint(offlineAuthDataSource.getToken().toString());
           Navigator.pushReplacementNamed(
               context, RoutesName.bottomNavigationBar);
 

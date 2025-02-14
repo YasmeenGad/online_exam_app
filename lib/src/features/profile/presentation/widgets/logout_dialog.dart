@@ -9,8 +9,7 @@ import '../../../../core/styles/app_colors.dart';
 import '../../../../core/styles/app_styles.dart';
 
 void showLogoutDialog(BuildContext context) {
-  final OfflineAuthDataSource offlineAuthDataSource =
-      getIt<OfflineAuthDataSource>();
+  final OfflineAuthDataSource offlineAuthDataSource = getIt<OfflineAuthDataSource>();
   showDialog(
       context: context,
       builder: (context) {
@@ -57,17 +56,16 @@ void showLogoutDialog(BuildContext context) {
                         width: 100,
                         height: 50,
                         child: GestureDetector(
-                          onTap: () {
-                            offlineAuthDataSource.deleteToken();
+                          onTap: () async {
+                            await offlineAuthDataSource.deleteToken();
                             Navigator.pushNamedAndRemoveUntil(
                               context,
                               RoutesName.loginView,
                                   (route) => false,
                             );
-
+                            debugPrint(offlineAuthDataSource.getToken().toString());
                             CustomToast.showLoadingToast(
-                                message:
-                                    "${AppLocalizations.of(context)!.success}");
+                                message: "${AppLocalizations.of(context)!.success}");
                           },
                           child: CustomButton(
                             txt: AppLocalizations.of(context)!.logout,

@@ -83,6 +83,7 @@ class _QuestionsViewState extends State<QuestionsView> with WidgetsBindingObserv
   }
 
   void showTimeOutDialog() {
+    timer?.cancel(); // إيقاف الـ Timer
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -152,7 +153,6 @@ class _QuestionsViewState extends State<QuestionsView> with WidgetsBindingObserv
       },
     );
   }
-
   void onAnswerSelected(String? answer) async {
     setState(() {
       selectedAnswer = answer;
@@ -198,6 +198,7 @@ class _QuestionsViewState extends State<QuestionsView> with WidgetsBindingObserv
         selectedAnswer = null;
       });
     } else {
+      timer?.cancel();
       var score = await questionsViewModel.getScoreStatistics(
         questionsViewModel.currentAttemptId!,
       );
@@ -209,13 +210,12 @@ class _QuestionsViewState extends State<QuestionsView> with WidgetsBindingObserv
             incorrectAnswers: score.incorrectAnswers,
             percentage: score.percentage,
             examId: score.examId,
-           attemptId: questionsViewModel.currentAttemptId!,
+            attemptId: questionsViewModel.currentAttemptId!,
           ),
         ),
       );
     }
   }
-
   void onPreviousQuestion() {
     if (currentQuestionIndex > 0) {
       setState(() {
@@ -242,7 +242,7 @@ class _QuestionsViewState extends State<QuestionsView> with WidgetsBindingObserv
             } else if (state is GetQuestionsSuccess) {
               questions = state.questionResponseEntity.questions ?? [];
               examDuration = questions.isNotEmpty
-                  ? state.questionResponseEntity.questions![0].exam?.duration ?? 0
+                  ? 1
                   : 0;
 
               if (!isTimerStarted && questions.isNotEmpty) {

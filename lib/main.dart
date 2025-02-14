@@ -12,43 +12,58 @@ import 'package:provider/provider.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  // تهيئة Hive وفتح البوكسات
   await Hive.initFlutter();
   await Hive.openBox('userToken');
   await Hive.openBox<String>('imageCache');
 
   configureDependencies();
 
-
-
   runApp(
     DevicePreview(
       enabled: false,
-      builder: (context) => OnlineExamApp( offlineAuthDataSource: getIt<OfflineAuthDataSource>(),),
+      builder: (context) =>
+          OnlineExamApp(offlineAuthDataSource: getIt<OfflineAuthDataSource>()),
     ),
   );
 }
 
-class OnlineExamApp extends StatelessWidget {
- final OfflineAuthDataSource offlineAuthDataSource;
 
-  const OnlineExamApp({super.key , required this.offlineAuthDataSource});
+class OnlineExamApp extends StatelessWidget {
+  final OfflineAuthDataSource offlineAuthDataSource;
+
+  const OnlineExamApp({super.key, required this.offlineAuthDataSource});
 
   @override
   Widget build(BuildContext context) {
-
     return ChangeNotifierProvider(
       create: (context) => getIt<LanguageProvider>()..loadSelectedLanguage(),
       child: Consumer<LanguageProvider>(
         builder: (context, languageProvider, _) {
-          return MaterialApp(
-            supportedLocales: AppLocalizations.supportedLocales,
-            locale: Locale(languageProvider.selectedLanguage.code),
-            localizationsDelegates: AppLocalizations.localizationsDelegates,
-            useInheritedMediaQuery: true,
-            builder: DevicePreview.appBuilder,
-            debugShowCheckedModeBanner: false,
-            initialRoute:offlineAuthDataSource.getToken() != null ? RoutesName.bottomNavigationBar : RoutesName.welcomeView,
-            routes: AppRoutes.getRoutes(),
+          return FutureBuilder<String?>(
+            future: offlineAuthDataSource.getToken(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return CircularProgressIndicator();
+              } else if (snapshot.hasError) {
+                return Text('Error: ${snapshot.error}');
+              } else {
+                final String initialRoute = snapshot.data != null
+                    ? RoutesName.bottomNavigationBar
+                    : RoutesName.welcomeView;
+
+                return MaterialApp(
+                  supportedLocales: AppLocalizations.supportedLocales,
+                  locale: Locale(languageProvider.selectedLanguage.code),
+                  localizationsDelegates: AppLocalizations.localizationsDelegates,
+                  useInheritedMediaQuery: true,
+                  builder: DevicePreview.appBuilder,
+                  debugShowCheckedModeBanner: false,
+                  initialRoute: initialRoute,
+                  routes: AppRoutes.getRoutes(),
+                );
+              }
+            },
           );
         },
       ),

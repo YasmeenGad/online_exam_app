@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';
 
@@ -14,14 +15,16 @@ class OfflineAuthDataSourceImpl implements OfflineAuthDataSource {
   @override
   Future<String?> getToken() async {
     var box = await _openBox();
-    return box.get('token');
+    final token = box.get('token');
+    debugPrint('Token retrieved: $token');
+    return token;
   }
-
   @override
   Future<void> saveToken(String? token) async {
     if (token != null) {
       var box = await _openBox();
       await box.put('token', token);
+      debugPrint('Token saved: $token');
     }
   }
 
@@ -29,5 +32,6 @@ class OfflineAuthDataSourceImpl implements OfflineAuthDataSource {
   Future<void> deleteToken() async {
     var box = await _openBox();
     await box.delete('token');
+    debugPrint('Token deleted');
   }
 }
