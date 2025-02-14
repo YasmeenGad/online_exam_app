@@ -26,7 +26,7 @@ import '../../features/auth/data/repositories/auth_repo_impl.dart' as _i7;
 import '../../features/auth/domain/contracts/auth_repo.dart' as _i6;
 import '../../features/auth/domain/usecases/auth_usecase.dart' as _i8;
 import '../../features/auth/presentation/cubit/auth/auth_view_model.dart'
-    as _i37;
+    as _i38;
 import '../../features/exam/data/api/exam_client.dart' as _i11;
 import '../../features/exam/data/data_sources/contracts/exam_offline_datasource.dart'
     as _i12;
@@ -39,49 +39,51 @@ import '../../features/exam/data/data_sources/implement/exam_online_datasource_i
 import '../../features/exam/data/repositories/exam_repo_impl.dart' as _i17;
 import '../../features/exam/domain/repositories/exam_repo.dart' as _i16;
 import '../../features/exam/domain/use_case/exam_use_case.dart' as _i18;
-import '../../features/exam/presentation/manager/exam/exam_cubit.dart' as _i38;
+import '../../features/exam/presentation/manager/exam/exam_cubit.dart' as _i39;
 import '../../features/exam/presentation/manager/subject/subject_cubit.dart'
-    as _i36;
+    as _i37;
 import '../../features/profile/data/api/profile_retrofit_client.dart' as _i25;
 import '../../features/profile/data/datasources/contracts/offline_datasource/offline_profile_datasource.dart'
     as _i23;
 import '../../features/profile/data/datasources/contracts/online_datasource/online_profile_datasource.dart'
-    as _i40;
+    as _i41;
 import '../../features/profile/data/datasources/impl/offline_profile_datasource_impl.dart'
     as _i24;
 import '../../features/profile/data/datasources/impl/online_profile_datasource_impl.dart'
-    as _i41;
-import '../../features/profile/data/repositories/profile_repository_impl.dart'
-    as _i43;
-import '../../features/profile/domain/contracts/profile_repository.dart'
     as _i42;
-import '../../features/profile/domain/usecases/profile_usecase.dart' as _i44;
+import '../../features/profile/data/repositories/profile_repository_impl.dart'
+    as _i44;
+import '../../features/profile/domain/contracts/profile_repository.dart'
+    as _i43;
+import '../../features/profile/domain/usecases/profile_usecase.dart' as _i45;
 import '../../features/profile/presentation/cubit/profile_view_model.dart'
-    as _i45;
+    as _i46;
 import '../../features/questions/data/api/question_retrofit_client.dart'
     as _i28;
 import '../../features/questions/data/datasource/contracts/offline_datasource/question_offline_data_source.dart'
     as _i26;
 import '../../features/questions/data/datasource/contracts/offline_datasource/question_offline_datasource.dart'
-    as _i33;
-import '../../features/questions/data/datasource/contracts/online_datasource/questions_online_datasource.dart'
     as _i29;
+import '../../features/questions/data/datasource/contracts/online_datasource/questions_online_datasource.dart'
+    as _i31;
 import '../../features/questions/data/datasource/impl/question_offline_data_source_impl.dart'
     as _i27;
-import '../../features/questions/data/datasource/impl/questions_online_datasource_impl.dart'
+import '../../features/questions/data/datasource/impl/questions_offline_datasource_impl.dart'
     as _i30;
-import '../../features/questions/data/repository/questions_repo_impl.dart'
+import '../../features/questions/data/datasource/impl/questions_online_datasource_impl.dart'
     as _i32;
+import '../../features/questions/data/repository/questions_repo_impl.dart'
+    as _i34;
 import '../../features/questions/domain/contracts/questions_repository.dart'
-    as _i31;
-import '../../features/questions/domain/usecase/questions_usecase.dart' as _i34;
+    as _i33;
+import '../../features/questions/domain/usecase/questions_usecase.dart' as _i35;
 import '../../features/questions/presentation/cubit/questions_view_model.dart'
-    as _i35;
-import '../database/isar_service.dart' as _i47;
-import '../provider/language_provider.dart' as _i39;
+    as _i36;
+import '../database/isar_service.dart' as _i48;
+import '../provider/language_provider.dart' as _i40;
 import '../provider/language_service.dart' as _i20;
 import '../utils/api/dio_factory.dart' as _i10;
-import '../utils/api/network_module.dart' as _i46;
+import '../utils/api/network_module.dart' as _i47;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -130,44 +132,46 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i27.QuestionOfflineDataSourceImpl(gh<_i19.Isar>()));
     gh.singleton<_i28.QuestionRetrofitClient>(
         () => _i28.QuestionRetrofitClient(gh<_i9.Dio>()));
-    gh.factory<_i29.QuestionsOnlineDatasource>(() =>
-        _i30.QuestionsOnlineDatasourceImpl(gh<_i28.QuestionRetrofitClient>()));
-    gh.factory<_i31.QuestionsRepository>(() => _i32.QuestionsRepositoryImpl(
-          gh<_i29.QuestionsOnlineDatasource>(),
-          gh<_i33.QuestionsOfflineDatasource>(),
+    gh.factory<_i29.QuestionsOfflineDatasource>(
+        () => _i30.QuestionsOfflineDatasourceImpl());
+    gh.factory<_i31.QuestionsOnlineDatasource>(() =>
+        _i32.QuestionsOnlineDatasourceImpl(gh<_i28.QuestionRetrofitClient>()));
+    gh.factory<_i33.QuestionsRepository>(() => _i34.QuestionsRepositoryImpl(
+          gh<_i31.QuestionsOnlineDatasource>(),
+          gh<_i29.QuestionsOfflineDatasource>(),
           gh<_i26.QuestionOfflineDataSource>(),
         ));
-    gh.factory<_i34.QuestionsUseCase>(
-        () => _i34.QuestionsUseCase(gh<_i31.QuestionsRepository>()));
-    gh.factory<_i35.QuestionsViewModel>(() => _i35.QuestionsViewModel(
-          gh<_i34.QuestionsUseCase>(),
+    gh.factory<_i35.QuestionsUseCase>(
+        () => _i35.QuestionsUseCase(gh<_i33.QuestionsRepository>()));
+    gh.factory<_i36.QuestionsViewModel>(() => _i36.QuestionsViewModel(
+          gh<_i35.QuestionsUseCase>(),
           gh<_i21.OfflineAuthDataSource>(),
           gh<_i26.QuestionOfflineDataSource>(),
-          gh<_i33.QuestionsOfflineDatasource>(),
+          gh<_i29.QuestionsOfflineDatasource>(),
         ));
-    gh.factory<_i36.SubjectCubit>(
-        () => _i36.SubjectCubit(gh<_i18.ExamUseCase>()));
-    gh.factory<_i37.AuthViewModel>(() => _i37.AuthViewModel(
+    gh.factory<_i37.SubjectCubit>(
+        () => _i37.SubjectCubit(gh<_i18.ExamUseCase>()));
+    gh.factory<_i38.AuthViewModel>(() => _i38.AuthViewModel(
           gh<_i8.AuthUsecase>(),
           gh<_i21.OfflineAuthDataSource>(),
         ));
-    gh.factory<_i38.ExamCubit>(() => _i38.ExamCubit(gh<_i18.ExamUseCase>()));
-    gh.factory<_i39.LanguageProvider>(
-        () => _i39.LanguageProvider(gh<_i20.LanguageService>()));
-    gh.factory<_i40.OnlineProfileDataSource>(
-        () => _i41.ProfileDataSourceImpl(gh<_i25.ProfileRetrofitClient>()));
-    gh.factory<_i42.ProfileRepository>(() => _i43.ProfileRepositoryImpl(
-          gh<_i40.OnlineProfileDataSource>(),
+    gh.factory<_i39.ExamCubit>(() => _i39.ExamCubit(gh<_i18.ExamUseCase>()));
+    gh.factory<_i40.LanguageProvider>(
+        () => _i40.LanguageProvider(gh<_i20.LanguageService>()));
+    gh.factory<_i41.OnlineProfileDataSource>(
+        () => _i42.ProfileDataSourceImpl(gh<_i25.ProfileRetrofitClient>()));
+    gh.factory<_i43.ProfileRepository>(() => _i44.ProfileRepositoryImpl(
+          gh<_i41.OnlineProfileDataSource>(),
           gh<_i23.OfflineProfileDataSource>(),
         ));
-    gh.factory<_i44.ProfileUseCase>(
-        () => _i44.ProfileUseCase(gh<_i42.ProfileRepository>()));
-    gh.factory<_i45.ProfileViewModel>(
-        () => _i45.ProfileViewModel(gh<_i44.ProfileUseCase>()));
+    gh.factory<_i45.ProfileUseCase>(
+        () => _i45.ProfileUseCase(gh<_i43.ProfileRepository>()));
+    gh.factory<_i46.ProfileViewModel>(
+        () => _i46.ProfileViewModel(gh<_i45.ProfileUseCase>()));
     return this;
   }
 }
 
-class _$NetworkModule extends _i46.NetworkModule {}
+class _$NetworkModule extends _i47.NetworkModule {}
 
-class _$IsarModule extends _i47.IsarModule {}
+class _$IsarModule extends _i48.IsarModule {}

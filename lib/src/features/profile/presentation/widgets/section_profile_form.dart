@@ -98,22 +98,22 @@ class _SectionProfileFormState extends State<SectionProfileForm> {
               GestureDetector(
                 onTap: isModified
                     ? () {
-                        if (formKey.currentState!.validate()) {
-                          Map<String, dynamic> profileData = {
-                            'username': usernameController.text,
-                            'firstName': firstNameController.text,
-                            'lastName': lastNameController.text,
-                            'email': emailController.text,
-                            'phone': phoneNumberController.text,
-                          };
-                          profileViewModel.doAction(EditProfile(
-                              context: context, profileData: profileData));
-                        }
-                      }
+                  if (formKey.currentState!.validate()) {
+                    Map<String, dynamic> profileData = {
+                      'username': usernameController.text,
+                      'firstName': firstNameController.text,
+                      'lastName': lastNameController.text,
+                      'email': emailController.text,
+                      'phone': phoneNumberController.text,
+                    };
+                    profileViewModel.doAction(EditProfile(
+                        context: context, profileData: profileData));
+                  }
+                }
                     : null,
                 child: CustomButton(
                   txt: AppLocalizations.of(context)!.update,
-                  backgroundColor: isModified
+                  color: isModified
                       ? Colors.blue
                       : Colors.grey, // Change button color if modified
                 ),
