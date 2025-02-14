@@ -1,0 +1,262 @@
+[33mcommit cf1cc9c3c127904644efc4ae2f190d3cd1bcd72f[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mquestions[m[33m)[m
+Merge: 96a235d 185ee5a
+Author: YasmeenGad <gadyasmeen335@gmail.com>
+Date:   Mon Jan 20 05:12:34 2025 +0200
+
+    Merge branch 'main' into questions
+    
+    # Conflicts:
+    #       lib/main.dart
+    #       lib/src/core/di/di.config.dart
+    #       lib/src/core/global/custom_button.dart
+    #       lib/src/features/exam/presentation/widgets/exam_item.dart
+    #       lib/src/features/questions/data/repository/questions_repo_impl.dart
+    #       lib/src/features/questions/presentation/cubit/questions_view_model.dart
+    #       lib/src/features/questions/presentation/views/questions_view.dart
+    #       pubspec.lock
+
+[33mcommit 96a235d755e459f048dcff744dc7885bb230e7da[m[33m ([m[1;31monline_exam_app/questions[m[33m)[m
+Author: YasmeenGad <gadyasmeen335@gmail.com>
+Date:   Mon Jan 20 05:05:11 2025 +0200
+
+    fix: fix some issues😭
+
+[33mcommit 185ee5ad68b9ef3b224292c33e5465aa3d267ca3[m[33m ([m[1;32mmain[m[33m)[m
+Author: YasmeenGad <gadyasmeen335@gmail.com>
+Date:   Mon Jan 20 05:03:07 2025 +0200
+
+    fix: fix some issues😭
+
+[33mcommit 195b3a77234b8753f0446d58f6a8ade62548d08d[m
+Author: YasmeenGad <gadyasmeen335@gmail.com>
+Date:   Mon Jan 20 05:01:59 2025 +0200
+
+    fix: fix some issues😭
+
+[33mcommit 04d5b3ad17377b48c29d6758bc639ceffef7b15d[m
+Author: YasmeenGad <gadyasmeen335@gmail.com>
+Date:   Mon Jan 20 04:58:11 2025 +0200
+
+    chore: merge question feature
+
+[33mcommit 1d8c5f546f1cbbae335a980b045985c22ee44e48[m
+Author: YasmeenGad <gadyasmeen335@gmail.com>
+Date:   Mon Jan 20 04:51:32 2025 +0200
+
+    chore: merge question feature
+
+[33mcommit 1773098cae79b2c28408f734bd3c6a506313bfbf[m
+Merge: affa03a 4b13186
+Author: YasmeenGad <gadyasmeen335@gmail.com>
+Date:   Mon Jan 20 04:49:10 2025 +0200
+
+    Merge branch 'main' into questions
+
+[33mcommit affa03a6575190257d753afc56cf90406aa6c8ef[m
+Author: YasmeenGad <gadyasmeen335@gmail.com>
+Date:   Mon Jan 20 04:46:13 2025 +0200
+
+    feat: create dialog
+
+[33mcommit 8f1c6decf89c82bfeb233de97604deba5c4bcaa4[m
+Author: YasmeenGad <gadyasmeen335@gmail.com>
+Date:   Mon Jan 20 03:58:00 2025 +0200
+
+    feat: create score view
+
+[33mcommit cc91a57e510d42b074bd9d56a2f02a927a70792c[m
+Author: YasmeenGad <gadyasmeen335@gmail.com>
+Date:   Sun Jan 19 02:56:12 2025 +0200
+
+    feat: cache data in isar database
+
+[33mcommit 78bb64ab016e6682c08199df45db5f18ed159a79[m
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Sat Nov 16 20:27:14 2024 +0200
+
+    refactor: refactor code
+
+[33mcommit 4b13186c12e3479ba17bff22e6e2d6402d0ae849[m
+Merge: 62a13af 4b6c7ba
+Author: Yasmeen Gad <139927333+YasmeenGad@users.noreply.github.com>
+Date:   Tue Nov 5 02:32:17 2024 +0200
+
+    Merge pull request #20 from YasmeenGad/questions
+    
+    implement check question call api using clean arch with retrofit
+
+[33mcommit 4b6c7ba772e5d02f64e591ad8ad1e42116a564e7[m
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Tue Nov 5 02:28:54 2024 +0200
+
+    resolve conflicts
+
+[33mcommit 681a08cdc05b1dd46fb263a2c0296dbce8bdbc00[m
+Merge: 2715d3f 62a13af
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Tue Nov 5 02:26:16 2024 +0200
+
+    Merge remote-tracking branch 'online_exam_app/main' into questions
+    
+    # Conflicts:
+    #       lib/src/core/constants/app_apis.dart
+
+[33mcommit 2715d3fc4708091510d82b3dcd07aa7c0ae8fd13[m
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Tue Nov 5 02:25:20 2024 +0200
+
+    add some updates
+
+[33mcommit 0233d53fd7afb8e477088bedf979230bb13e34ac[m
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Tue Nov 5 02:23:11 2024 +0200
+
+    impl cubit
+
+[33mcommit 27a515752f547a14c38b0128329938c719631ad5[m
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Tue Nov 5 01:58:30 2024 +0200
+
+    create states
+
+[33mcommit 8f5a0ee57be913ad8b74d31c136656e345d68ee4[m
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Tue Nov 5 01:54:30 2024 +0200
+
+    create repo interface and impl for check questions
+    impl data source
+
+[33mcommit 8315fc76af0c3f949fab33e37a83b704a8b83be9[m
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Tue Nov 5 01:35:26 2024 +0200
+
+    create response model and entity and online data source
+
+[33mcommit 0af75d83c13a08e36157643ee074d4ffcb77ef6b[m
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Tue Nov 5 00:42:14 2024 +0200
+
+    create model and entity of check question api
+
+[33mcommit 62a13afb2af4031d881d6c47c54d0b9eec68619d[m
+Merge: ca6ed5e b8b2d47
+Author: Haidy <136759109+haidyhesham95@users.noreply.github.com>
+Date:   Mon Nov 4 02:00:19 2024 +0200
+
+    Merge pull request #19 from YasmeenGad/result_ui
+    
+    Result UI
+
+[33mcommit b8b2d4731ea1245658aa2c54ba458c8f7f2dca8a[m[33m ([m[1;31monline_exam_app/result_ui[m[33m)[m
+Author: Haidy <hh7234699@gmail.com>
+Date:   Mon Nov 4 01:59:38 2024 +0200
+
+    change title to language
+
+[33mcommit ae77adb887f07504ff98dff0440cd9d99d870d98[m
+Author: Haidy <hh7234699@gmail.com>
+Date:   Mon Nov 4 01:58:45 2024 +0200
+
+    added ui result view
+
+[33mcommit 940b89cdeb0554a27b4db41f2518de6142b83e5b[m
+Author: Haidy <hh7234699@gmail.com>
+Date:   Sun Nov 3 05:22:14 2024 +0200
+
+    saving exam in hive
+
+[33mcommit ca6ed5ebc626a57cd90b3d364ac950977f18bd19[m
+Author: Haidy <hh7234699@gmail.com>
+Date:   Sun Nov 3 05:14:28 2024 +0200
+
+    saving exam in hive
+
+[33mcommit ad7ca6401ec021af4a817a33c169d02204d5c15a[m
+Author: Haidy <hh7234699@gmail.com>
+Date:   Sat Nov 2 00:28:29 2024 +0200
+
+    add offline datasource in exam views
+
+[33mcommit 400dbfe167cda378ef8e80286396e7cc52a9a594[m
+Author: Haidy <hh7234699@gmail.com>
+Date:   Sat Nov 2 00:23:30 2024 +0200
+
+    create resend otp function
+
+[33mcommit d626a2856b65eb4eb23f04e15bfcb5a8b346c2ed[m
+Author: Haidy <hh7234699@gmail.com>
+Date:   Sat Nov 2 00:17:11 2024 +0200
+
+    edit splash view
+
+[33mcommit b3f4e13e2225edf48f3b74c1541b77165897a951[m
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Wed Oct 30 00:43:44 2024 +0200
+
+    add some fixes
+
+[33mcommit 80c620aa9321d3473d4305aa67641a0ca3eff03a[m
+Merge: 2d542cd c2bd28d
+Author: Yasmeen Gad <139927333+YasmeenGad@users.noreply.github.com>
+Date:   Tue Oct 29 23:41:17 2024 +0200
+
+    Merge pull request #18 from YasmeenGad/questions
+    
+    get question by special exam with retrofit
+
+[33mcommit c2bd28d892bc4d75aaaeeb307edfa6a41339af46[m
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Wed Oct 30 00:39:29 2024 +0200
+
+    get question
+
+[33mcommit 021434feb5bb582c6e0da4ebb70db4c614d5158b[m
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Tue Oct 29 18:16:16 2024 +0200
+
+    create questions view
+
+[33mcommit fdd904de8b774a305ff2d47560f2dddfe3880380[m
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Tue Oct 29 18:12:13 2024 +0200
+
+    create view model of get questions
+
+[33mcommit ff4ff3381c83bb99c48326daeae3b07646582548[m
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Tue Oct 29 17:46:25 2024 +0200
+
+    create question repo and use case
+
+[33mcommit 8d3bf5b729f8b2e3f358ca5ed5d9d613eb042e8a[m
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Tue Oct 29 17:12:28 2024 +0200
+
+    fix issues
+
+[33mcommit 2d542cd6f74b8acd2078b57f56f56446d69a4a90[m
+Merge: b66e0af 8d3bf5b
+Author: Yasmeen Gad <139927333+YasmeenGad@users.noreply.github.com>
+Date:   Tue Oct 29 16:12:42 2024 +0200
+
+    Merge pull request #17 from YasmeenGad/questions
+    
+    refactor api execution
+
+[33mcommit b939850e65a5028e14ce4b0726ceadf4b114cbc7[m
+Merge: fa67a08 b66e0af
+Author: Yasmeen Gad <gadyasmeen335@gmail.com>
+Date:   Tue Oct 29 14:56:15 2024 +0200
+
+    Merge remote-tracking branch 'online_exam_app/main' into questions
+    
+    # Conflicts:
+    #       lib/main.dart
+    #       lib/src/core/constants/app_apis.dart
+    #       lib/src/features/exam/data/api/exam_client.dart
+    #       lib/src/features/exam/data/data_sources/implement/exam_online_datasource_impl.dart
+    #       lib/src/features/exam/presentation/views/exam_view.dart
+    #       lib/src/features/exam/presentation/views/subjects_view.dart
+
+[33mcommit fa67a085960f0b3cbb0387bee4e0dcf04fd85edb[m
+Author: Yasmeen Gad <gadyasmeen33
