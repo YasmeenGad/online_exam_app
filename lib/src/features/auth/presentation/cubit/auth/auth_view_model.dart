@@ -13,6 +13,7 @@ import 'package:online_exam_app/src/features/auth/domain/entities/sign_in_entity
 import 'package:online_exam_app/src/features/auth/domain/entities/sign_up_entity.dart';
 import 'package:online_exam_app/src/features/auth/domain/usecases/auth_usecase.dart';
 import 'package:online_exam_app/src/features/auth/presentation/cubit/auth/auth_states.dart';
+import '../../../../../core/di/di.dart';
 import '../../../../../core/routes/routes_name.dart';
 import '../../../data/api/models/response/email_verification_response.dart';
 import '../../../domain/entities/email_verification_entity.dart';
@@ -22,11 +23,10 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 @injectable
 class AuthViewModel extends Cubit<AuthState> {
   AuthUsecase authUsecase;
-  OfflineAuthDataSource offlineAuthDataSource;
-
+  OfflineAuthDataSource offlineAuthDataSource = getIt<OfflineAuthDataSource>();
 
   @FactoryMethod()
-  AuthViewModel(this.authUsecase, this.offlineAuthDataSource) : super(AuthInitialState());
+  AuthViewModel(this.authUsecase) : super(AuthInitialState());
 
   void signUp(SignUpEntity signUpEntity, BuildContext context) async {
     emit(SignUpLoadingState());
